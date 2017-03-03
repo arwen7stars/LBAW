@@ -1,24 +1,26 @@
-body
-{
-	background: url("../img/backg.jpg") no-repeat center center fixed;
+body {
+	/* necessary because of navbar fixed to top */
+  padding-top: 70px;
+  /* background */
+  background: url("../img/backg.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
 div.outter-box {
-    display: table;
-    position: absolute;
-    height: 80%;
-    width: 100%;
+  display: table;
+  position: absolute;
+  height: 80%;
+  width: 100%;
 }
 
 div.middle-box {
-    display: table-cell;
-    vertical-align: middle;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 div.inner-box {
-    margin-left: auto;
-    margin-right: auto;
-    width: 800px;
-    background-color: lightblue;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  background-color: lightblue;
 }
