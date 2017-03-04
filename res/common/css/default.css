@@ -1,6 +1,6 @@
 body {
 	/* necessary because of navbar fixed to top */
-  padding-top: 70px;
+  padding-top: 50px;
   /* background */
   background: url("../img/backg.jpg") no-repeat center center fixed;
   background-size: cover;
