@@ -1,0 +1,30 @@
+.content {
+  margin-top: 55px;
+}
+
+.content-middle {
+  border: 1px solid black;
+}
+
+.make-post {
+  /* /* necessary for .read-more */
+  position: relative;
+  border: 1px solid black;
+  padding: 0;
+}
+
+.make-post .form-group {
+  margin: 0;
+}
+
+.txtarea-post {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-post {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0 20px;
+}
