@@ -1,3 +1,13 @@
+h1 {
+  /* original bootstrap value is too much */
+  margin-top: 10px;
+}
+
+h2 {
+  /* original bootstrap value is too much */
+  margin-top: 5px;
+}
+
 .content {
   margin-top: 55px;
 }
@@ -7,10 +17,11 @@
 }
 
 .make-post {
-  /* /* necessary for .read-more */
+  /* necessary for .read-more */
   position: relative;
   border: 1px solid black;
   padding: 0;
+  margin-top: 20px;
 }
 
 .make-post .form-group {
@@ -27,4 +38,50 @@
   right: 0;
   bottom: 0;
   padding: 0 20px;
+}
+
+.feed {
+  border: 1px solid black;
+  margin-top: 20px;
+}
+
+.like-share {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.like-share li {
+  display: inline;
+}
+
+.make-comment-wrap {
+  position: relative;
+  margin-top: 5px;
+}
+
+.make-comment-wrap .form-group {
+  margin: 0;
+}
+
+.btn-comment {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  padding: 0 20px;
+}
+
+.post-body {
+  border: 1px solid black;
+  padding: 0 5px 5px 5px;
+}
+
+.like-share {
+  margin-top: 5px;
+  padding-left: 5px;
+}
+
+.post-body p {
+  margin: 0;
 }
