@@ -133,7 +133,7 @@ a:hover {
 .friends .thumb {
 	width: 180px;
 	height: 180px;
-	margin: 0.2rem 0.1rem;
+	margin: 0.2rem 0.5rem;
 }
 
 .post .thumb {
@@ -152,16 +152,9 @@ a:hover {
 	height: 32px;
 }
 
-.comment .dropdown-toggle, .post .dropdown-toggle {
-	background-color: white;
-	border: 0px;
-	color: #000;
-	border-radius: 0px;
-}
-
 .comment {
-	padding: 1rem;
-	box-shadow: 0 0 4px #9c9898;
+  box-shadow: 0 0 4px black;
+  padding: 1rem;
 }
 
 #make-post {
@@ -205,4 +198,11 @@ input[type=submit] {
     width: auto; 
     max-width: 90%; 
     display: block;
+}
+
+.comment .dropdown-toggle, .post .dropdown-toggle {
+	color: #000;
+	background-color: #fff;
+	border: 0px;
+	border-radius: 0px;
 }
