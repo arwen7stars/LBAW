@@ -1,0 +1,141 @@
+a {
+	color: #8a2f2f;
+	text-decoration:none;
+}
+
+a:hover {
+	color: #7d7c7c;
+	text-decoration: none;
+}
+
+.user_bar h1{
+  	text-align: center;
+}
+
+.user_info {
+	text-indent: 10px;
+}
+
+.user_info img {
+    margin-left: auto;
+    border-radius: 10px;
+    margin-right: auto;
+    box-shadow: 0 0 10px black;
+    border-color: #ffffff;
+    border-style: solid;
+    border-width: 3px;
+    margin-top: 2rem;
+    height: auto; 
+    width: auto; 
+    max-width: 90%; 
+    max-height: 90%;
+    display: block;
+}
+
+
+.user_info {
+	box-shadow: 0 0 10px black;
+	margin: 1.5rem;
+	padding: 0.5rem;
+	background: url('http://i41.tinypic.com/28h3fwh.png');
+}
+
+.timeline {
+	padding: 0.5rem;
+	line-height: 180%;
+	margin: 1.5rem;
+}
+
+.profile-header.btn {
+	border-radius: 3px 3px 0px 0px;
+	background-color: white;
+	border-color: #ccc;
+  	border-style: solid;
+  	border-width: 1px;
+}
+.profile-header.btn-group {
+	display:inline-block;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus  {
+	outline: none;
+}
+
+.about-body {
+	text-indent: 10px;
+	text-align: justify;
+}
+
+.friends-body, .photos-body {
+	text-align: center;
+	font-weight: bold;
+}
+
+.friends .imgContainer {
+	display: inline-block;
+}
+
+.about, .friends, .post, .photos, .photo-display {
+	margin: 1rem 0rem;
+	padding: 1rem;
+	background-color: white;
+	overflow:auto;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.friends .thumb {
+	width: 180px;
+	height: 180px;
+	margin: 0.2rem 0.5rem;
+}
+
+.photos .thumb {
+	width: 180px;
+	height: 180px;
+	margin: 0.2rem 0.1rem;
+}
+
+#make-post {
+	border-radius:0px;
+}
+
+.user_options {
+	margin: 1.5rem;
+}
+
+input[type=submit] {
+	margin: 0.5rem 0rem;
+    padding:0.3rem 4rem; 
+    background-color:#ccc; 
+    border-color: #fff;
+    cursor:pointer;
+    border-radius: 5px;
+	font-weight:bold;
+	width: 150px;
+}
+
+.btn-wrap {
+	text-align: right;
+}
+
+.type.form-control {
+	margin: 0.5rem 0rem; 
+	background-color: #ccc;
+    border-color: #fff;
+	color: #000;
+    border-radius: 5px;
+	font-weight: bold;
+	width: 150px;
+}
+
+.photo-display img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    height: auto; 
+    width: auto; 
+    max-width: 90%; 
+    display: block;
+}
