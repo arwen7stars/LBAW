@@ -131,9 +131,9 @@ a:hover {
 }
 
 .friends .thumb {
-	width: 180px;
-	height: 180px;
-	margin: 0.2rem 0.5rem;
+	width: 150px;
+	height: 150px;
+	margin: 0.2rem 0.1rem;
 }
 
 .post .thumb {
@@ -142,8 +142,8 @@ a:hover {
 }
 
 .photos .thumb {
-	width: 180px;
-	height: 180px;
+	width: 150px;
+	height: 150px;
 	margin: 0.2rem 0.1rem;
 }
 

@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <!-- NAVBAR -->
+	  <!-- NAVBAR -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <!-- LOGO -->
@@ -24,13 +24,13 @@
         <a href="#"><img class="navbar-brand" src="res\common\img\logo.png"></a>
       </div>
       <!-- SEARCH-BAR TODO change search-bar width to match moqup -->
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left " role="search">
         <div class="form-group">
           <label class="sr-only" for="search-bar">Search bar</label>
           <div class="input-group">
             <input type="search" id="search-bar" class="form-control" placeholder="Search..." autocomplete="on">
             <span class="input-group-btn">
-              <button class="search btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
             </span>
           </div>
         </div>
@@ -51,8 +51,8 @@
   </nav>
 
 <div class="container">
-    <div class="row">
-        <div class="user_bar col-xs-3 hidden-xs hidden-sm">
+    <div class="row justify-content-start">
+        <div class="user_bar col-md-3 hidden-xs hidden-sm">
 			<div class= "user_info">
 				<img src="https://s3.postimg.org/nde4doxa7/Tear_Avatar_1.jpg" alt="Default Profile Photo">
 				<h1>7thfonist</h1>
@@ -63,18 +63,12 @@
 					<li><span class="glyphicon glyphicon-glass"></span><b> Birthday on</b> May 14th</li>	  
 					<li><span class="glyphicon glyphicon-time"></span><b> Joined on</b> 2016-12-04</li>
 				</ul>
-			</div>
-			<div class="user_options">
-<div class="btn-group btn-group-justified" role="group" aria-label="...">
-<a href="./profile.html" class="btn-group" role="group">
-				<button type="button" class="btn btn-default"><b>Add Friend</b></button>
-  			</a>
-  			</div>
-			</div>
+			</div>	
         </div>
-        <div class="timeline col-xs-8">
+        
+        <div class="timeline col-md-8">
 
-<div class="btn-group btn-group-justified" role="group" aria-label="...">
+<div class="profile-header btn-group btn-group-justified" role="group" aria-label="...">
 			<a href="./profile.html" class="btn-group" role="group">
 				<button type="button" class="btn btn-default">Profile</button>
   			</a>
@@ -92,7 +86,6 @@
   			</a>
   		</div>
   		<br>
-		<br>
 		
 		        <!-- MAKE-POST -->
           <div class="make-post">
