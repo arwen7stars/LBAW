@@ -85,10 +85,60 @@ a:hover {
 	border-width: 1px;
 }
 
+.post {
+  margin-bottom: 50px;
+}
+
+.post-body p {
+  margin: 0;
+  text-align: justify;
+}
+
+.poster a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.like-share {
+  list-style: none;
+  padding: 0 0 0 5px;
+  margin: 5px 0 0 0;
+}
+
+.like-share li {
+  display: inline;
+}
+
+.like-share a {
+  text-decoration: none;
+}
+
+.make-comment-wrap {
+  position: relative;
+  margin-top: 5px;
+}
+
+.make-comment-wrap .form-group {
+  margin: 0;
+}
+
+.btn-comment {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  padding: 0 20px;
+}
+
 .friends .thumb {
 	width: 180px;
 	height: 180px;
 	margin: 0.2rem 0.5rem;
+}
+
+.post .thumb {
+	width: 64px;
+	height: 64px;
 }
 
 .photos .thumb {
@@ -130,7 +180,7 @@ input[type=submit] {
 	width: 150px;
 }
 
-.photo-display img {
+.ph_display {
     margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;
