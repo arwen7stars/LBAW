@@ -23,3 +23,15 @@ div.inner-box {
   margin-right: auto;
   width: 900px;
 }
+
+@media (max-width: 979px) {
+  body {
+    padding-top: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 175px;
+  }
+}
