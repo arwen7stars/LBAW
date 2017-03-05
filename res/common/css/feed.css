@@ -1,4 +1,5 @@
 /* necessary for footer */
+
 html {
   position: relative;
   min-height: 100%;
@@ -21,6 +22,7 @@ h2 {
 .content-middle {
   border: 1px solid purple;
 }
+
 
 /* --- MAKE-POST --- */
 
@@ -46,7 +48,9 @@ h2 {
   padding: 0 20px;
 }
 
+
 /* --- ! MAKE-POST --- */
+
 
 /* --- FEED --- */
 
@@ -106,11 +110,13 @@ h2 {
   padding: 0 20px;
 }
 
+
 /* --- ! FEED --- */
 
 .content-left {
   border: 1px solid purple;
 }
+
 
 /* --- EVENTS & GROUPS & CHAT --- */
 
@@ -119,7 +125,7 @@ h2 {
   margin: 20px auto auto 0;
 }
 
-.event-header a, .group-header a, .chat-header a {
+.event-header a, .group-header a, .chat-header a, .notifications-wrap a {
   color: inherit;
   text-decoration: none;
 }
@@ -150,6 +156,53 @@ h2 {
   color: inherit;
   text-decoration: none;
   display: block;
+}
+
+
+/* --- NOTIFICATIONS --- */
+
+.notifications-wrap {
+  border: solid 1px black;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+.notifications-list-wrap {
+  list-style: none;
+  padding-left: 5px;
+}
+
+.notifications-list-wrap li {
+  background-color: #f5f5f5;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.notifications-list-wrap a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+.notifications-list-wrap p {
+  margin: 0;
+}
+
+.recent-news-wrap {
+  border: 1px solid black;
+  margin-top: 20px;
+  padding: 0 5px;
+  position: relative;
+}
+
+.recent-news {
+  margin-bottom: 20px;
+}
+
+.read-more {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .footer {
