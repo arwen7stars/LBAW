@@ -1,0 +1,9 @@
+.group {
+  margin-top: 55px;
+}
+
+.img-responsive{
+	display: block;
+	margin-left:auto;
+    margin-right:auto;
+}

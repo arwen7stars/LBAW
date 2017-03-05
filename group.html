@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <title>Group</title>
+
+  <!-- Bootstrap -->
+  <link href="res/lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Default stylesheet -->
+  <link href="res/common/css/default.css" rel="stylesheet">
+  <link href="res/common/css/feed.css" rel="stylesheet">
+  <link href="res/common/css/group.css" rel="stylesheet">
+</head>
+
+<body>
+	<!-- NAVBAR -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- LOGO -->
+      <div class="navbar-header">
+        <a href="#"><img class="navbar-brand" src="res\common\img\logo.png"></a>
+      </div>
+	  
+	  <div class="col-md-2 col-md-offset-3">
+      <!-- SEARCH-BAR TODO change search-bar width to match moqup -->
+      <form class="navbar-form navbar " role="search">
+        <div class="form-group">
+          <label class="sr-only" for="search-bar">Search bar</label>
+          <div class="input-group">
+            <input type="search" id="search-bar" class="form-control" placeholder="Search..." autocomplete="on">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+          </div>
+        </div>
+      </form>
+	  </div>
+      <!-- DROPDOWN MENU -->
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Sayonara<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Log Out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!--Group Stuff-->  	
+	<div class="container group">
+	<img src="res\common\img\group.png" class="img-responsive" alt="Group Image">
+	<form class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search in this group">
+        </div>
+        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
+	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+	  <div class="btn-group" role="group">
+  <button type="button" class="btn btn-default">Posts</button>
+  </div>
+  <div class="btn-group" role="group">
+  <button type="button" class="btn btn-default">Members</button>
+  </div>
+  <div class="btn-group" role="group">
+  <button type="button" class="btn btn-default">Photos</button>
+  </div>
+  <div class="btn-group" role="group">
+  <button type="button" class="btn btn-default">About</button>
+  </div>
+	</div>
+</div>
+
+<!-- CONTENT -->
+  <div class="container-fluid content">
+    <div class="row">
+      <!--LEFT -->
+      <div class="col-xs-2">LEFT</div>
+      <!-- MIDDLE -->
+      <div class="col-xs-6 col-xs-offset-1 content-middle">
+        <!-- MAKE-POST -->
+        <div class="row make-post-wrap">
+          <div class="col-xs-10 col-xs-offset-1 make-post">
+            <form class="form">
+              <div class="form-group">
+                <label for="make-post" class="sr-only">Write a post</label>
+                <textarea id="make-post" class="form-control txtarea-post" rows="3" placeholder="Write something to post..."></textarea>
+              </div>
+            </form>
+            <button type="submit" class="btn btn-default btn-post">Post</button>
+          </div>
+        </div>
+        <!-- FEED -->
+        <div class="row feed-wrap">
+          <div class="col-xs-10 col-xs-offset-1 feed">
+            <h1>Group Feed</h1>
+            <div class="post">
+              <div class="post-body">
+                <h2 class="poster"><a href="#"><span class="glyphicon glyphicon-user"></span>Sayonara</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu enim augue. Quisque mollis nisi eget urna rutrum laoreet. Nunc vehicula arcu diam, vel elementum nisi pretium nec. Suspendisse sollicitudin neque sed lacus condimentum maximus. Sed id lacus eget velit luctus consequat. Etiam efficitur dui eget ante ornare, quis dapibus ipsum elementum. Ut sit amet iaculis turpis. Sed convallis mi sed libero vestibulum cursus. Sed ut neque urna. Duis sodales urna pellentesque tellus scelerisque lacinia. Quisque vitae enim condimentum, feugiat lectus id, eleifend sapien.</p>
+              </div>
+              <div class="like-share-wrap">
+                <ul class="like-share">
+                  <li><a href="#">Like</a></li>
+                  <li><a href="#">Share</a></li>
+                </ul>
+              </div>
+              <div class="make-comment-wrap">
+                <form class="form">
+                  <div class="form-group">
+                    <label for="make-comment" class="sr-only">Write a comment</label>
+                    <textarea id="make-comment" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+                  </div>
+                </form>
+                <button type="submit" class="btn btn-default btn-comment">Comment</button>
+              </div>
+            </div>
+            <div class="post">
+              <div class="post-body">
+                <h2 class="poster"><a href="#"><span class="glyphicon glyphicon-user"></span>Sayonara</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu enim augue. Quisque mollis nisi eget urna rutrum laoreet. Nunc vehicula arcu diam, vel elementum nisi pretium nec. Suspendisse sollicitudin neque sed lacus condimentum maximus. Sed id lacus eget velit luctus consequat. Etiam efficitur dui eget ante ornare, quis dapibus ipsum elementum. Ut sit amet iaculis turpis. Sed convallis mi sed libero vestibulum cursus. Sed ut neque urna. Duis sodales urna pellentesque tellus scelerisque lacinia. Quisque vitae enim condimentum, feugiat lectus id, eleifend sapien.</p>
+              </div>
+              <div class="like-share-wrap">
+                <ul class="like-share">
+                  <li><a href="#">Like</a></li>
+                  <li><a href="#">Share</a></li>
+                </ul>
+              </div>
+              <div class="make-comment-wrap">
+                <form class="form">
+                  <div class="form-group">
+                    <label for="make-commen2" class="sr-only">Write a comment</label>
+                    <textarea id="make-comment2" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+                  </div>
+                </form>
+                <button type="submit" class="btn btn-default btn-comment">Comment</button>
+              </div>
+            </div>
+            <div class="post">
+              <div class="post-body">
+                <h2 class="poster"><a href="#"><span class="glyphicon glyphicon-user"></span>Sayonara</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu enim augue. Quisque mollis nisi eget urna rutrum laoreet. Nunc vehicula arcu diam, vel elementum nisi pretium nec. Suspendisse sollicitudin neque sed lacus condimentum maximus. Sed id lacus eget velit luctus consequat. Etiam efficitur dui eget ante ornare, quis dapibus ipsum elementum. Ut sit amet iaculis turpis. Sed convallis mi sed libero vestibulum cursus. Sed ut neque urna. Duis sodales urna pellentesque tellus scelerisque lacinia. Quisque vitae enim condimentum, feugiat lectus id, eleifend sapien.</p>
+              </div>
+              <div class="like-share-wrap">
+                <ul class="like-share">
+                  <li><a href="#">Like</a></li>
+                  <li><a href="#">Share</a></li>
+                </ul>
+              </div>
+              <div class="make-comment-wrap">
+                <form class="form">
+                  <div class="form-group">
+                    <label for="make-comment3" class="sr-only">Write a comment</label>
+                    <textarea id="make-comment3" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+                  </div>
+                </form>
+                <button type="submit" class="btn btn-default btn-comment">Comment</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--RIGHT -->
+      <div class="col-xs-2 col-xs-offset-1">RIGHT</div>
+    </div>
+  </div>
+  
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="text-muted" align="center">Anibook.com is a property of Anibook, LLC. ©2017 All Rights Reserved.</p>
+  </footer>
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
