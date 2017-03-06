@@ -16,6 +16,8 @@ a:hover {
 	text-indent: 10px;
 }
 
+
+
 .user_info img {
     margin-left: auto;
     border-radius: 10px;
@@ -33,11 +35,18 @@ a:hover {
 }
 
 
-.user_info {
+.user_photos, .user_info {
 	box-shadow: 0 0 10px black;
 	margin: 1.5rem;
 	padding: 0.5rem;
 	background: url('http://i41.tinypic.com/28h3fwh.png');
+	font-size: 95%;
+    line-height: 150%;
+
+}
+
+.user_opt {
+	margin: 0rem 1rem;
 }
 
 .timeline {
@@ -130,26 +139,25 @@ a:hover {
   padding: 0 20px;
 }
 
-.friends .thumb {
+.thumb-150px {
 	width: 150px;
 	height: 150px;
 	margin: 0.2rem 0.1rem;
 }
 
-.post .thumb {
-	width: 64px;
-	height: 64px;
+.thumb-64px {
+  width: 64px;
+  height: 64px;
+  margin: 0.1rem 0rem;
 }
 
-.photos .thumb {
-	width: 150px;
-	height: 150px;
-	margin: 0.2rem 0.1rem;
-}
-
-.comment .thumb {
+.thumb-32px {
 	width: 32px;
 	height: 32px;
+}
+
+.user_photos {
+	text-align: center;
 }
 
 .comment {
@@ -162,7 +170,7 @@ a:hover {
 }
 
 .user_options {
-	margin: 1.5rem;
+	margin: 2rem;
 }
 
 input[type=submit] {

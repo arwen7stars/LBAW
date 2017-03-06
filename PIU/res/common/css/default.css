@@ -24,6 +24,10 @@ div.inner-box {
   width: 900px;
 }
 
+input[type="search"] {
+  height: 34px;
+}
+
 @media (max-width: 979px) {
   body {
     padding-top: 50px;
@@ -34,4 +38,8 @@ div.inner-box {
   body {
     padding-top: 175px;
   }
+}
+
+.footer {
+   text-shadow: 0 0 10px #ffffff;
 }
