@@ -16,32 +16,57 @@
 </head>
 
 <body>
-	<!-- NAVBAR -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a href="#"><img class="navbar-brand" src="res\common\img\logo.png"></a>
-			</div>
-			
-			<!-- SEARCH-BAR TODO change search-bar width to match moqup -->
-			<form class="navbar-form navbar-left" role="search">
-				<div class="form-group">
-					<label class="sr-only" for="search-bar">Search bar</label>
-					<div class="input-group">
-						<input type="search" id="search-bar" class="form-control" placeholder="Search..." autocomplete="on">
-							<span class="input-group-btn">
-								<button class="search btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-							</span>
-					</div>
-				</div>
-			</form>
+ <!--  Navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container-fluid">
+        <div class="navbar-header">
+          <!-- Menu for mobile display -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Website logo -->
+          <a class="navbar-brand" href="#"><img alt="Brand" src="res/common/img/logo.png"></a>
+        </div>
 
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-			</ul>
-		</div>
-	</nav>
+        <!-- Navbar content (collapsed in mobile view) -->
+        <div id="navbar" class="navbar-collapse collapse">
+
+          <!-- Float right -->
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Home</a></li>
+            <!-- Dropdown under profile name -->
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sayonara <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="profile.html">Profile</a></li>
+                <li class="visible-xs"><a href="#">Notifications</a></li>
+                <li class="visible-xs"><a href="group.html">Groups</a></li>
+                <li class="visible-xs"><a href="event.html">Events</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <!--  Search bar -->
+          <form role="search">
+            <div class="form-group">
+              <label for="search-bar" class="sr-only">Search bar</label>
+              <div class="input-group navbar-search-bar">
+                <input type="search" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                  <button class="search-btn btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </nav>
 
 <div class="container">
     <div class="row justify-content-start">
@@ -97,7 +122,7 @@
                 <h3 class="poster"><a href="#"><img src="https://s3.postimg.org/nde4doxa7/Tear_Avatar_1.jpg" class="thumb-64px">7thfonist</a></h3></p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu enim augue. Quisque mollis nisi eget urna rutrum laoreet. Nunc vehicula arcu diam, vel elementum nisi pretium nec. Suspendisse sollicitudin neque sed lacus condimentum maximus. Sed id lacus eget velit luctus consequat. Etiam efficitur dui eget ante ornare, quis dapibus ipsum elementum. Ut sit amet iaculis turpis. Sed convallis mi sed libero vestibulum cursus. Sed ut neque urna. Duis sodales urna pellentesque tellus scelerisque lacinia. Quisque vitae enim condimentum, feugiat lectus id, eleifend sapien.</p>
 			</div>
-		<p>					
+					
 		<p><a href="#" class="btn-group" role="group">
 			<button type="button" class="btn btn-default"><a href="#"><span class="glyphicon glyphicon-heart"></span> Like</a> <span class="badge">99+</span></button>
   		</a>

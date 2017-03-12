@@ -1,0 +1,14 @@
+#edit {
+	margin: 1rem 0rem;
+	padding: 1rem;
+	background-color: white;
+	overflow:auto;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.formfield label {
+	width: 100%;
+
+}

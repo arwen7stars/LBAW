@@ -24,22 +24,32 @@ div.inner-box {
   width: 900px;
 }
 
-input[type="search"] {
+.footer {
+   text-shadow: 0 0 10px #ffffff;
+}
+
+.navbar-search-bar {
+  margin-top: 8px;
+  margin-bottom: -8px;
+}
+
+.navbar {
+  /* const size */
+  flex: none;
+  /* remove bootstrap margin */
+  margin-bottom: 0;
+}
+
+.search-btn {
   height: 34px;
 }
 
-@media (max-width: 979px) {
-  body {
-    padding-top: 50px;
-  }
+a {
+	color: #8a2f2f;
+	text-decoration:none;
 }
 
-@media (max-width: 768px) {
-  body {
-    padding-top: 175px;
-  }
-}
-
-.footer {
-   text-shadow: 0 0 10px #ffffff;
+a:hover {
+	color: #7d7c7c;
+	text-decoration: none;
 }

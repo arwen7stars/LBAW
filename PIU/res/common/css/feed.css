@@ -2,6 +2,16 @@ html {
   height: 100%;
 }
 
+a {
+	color: #8a2f2f;
+	text-decoration:none;
+}
+
+a:hover {
+	color: #7d7c7c;
+	text-decoration: none;
+}
+
 body {
   height: 100%;
   background: url("../img/backg.jpg") no-repeat center center fixed;
@@ -136,17 +146,18 @@ h2 > a {
 }
 
 .post {
-  margin: 25px 15px;
-  padding: 5px;
-}
-
-.post-body {
-  border: 1px solid black;
-  padding: 0 5px 5px 5px;
+	margin: 25px 20px;
+	padding: 1rem;
+	background-color: white;
+	overflow:auto;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	text-align: justify;
 }
 
 .post-body p {
-  margin: 0;
+  margin: 1.5rem;
 }
 
 .poster a {
