@@ -15,39 +15,56 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container-fluid">
+        <div class="navbar-header">
+          <!-- Menu for mobile display -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Website logo -->
+          <a class="navbar-brand" href="#"><img alt="Brand" src="res/common/img/logo.png"></a>
+        </div>
 
-		<div class="container-fluid">
+        <!-- Navbar content (collapsed in mobile view) -->
+        <div id="navbar" class="navbar-collapse collapse">
 
-			<div class="navbar-header">
-				<a href="#"><img class="navbar-brand" src="res\common\img\logo.png"></a>
-			</div>
+          <!-- Float right -->
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Home</a></li>
+            <!-- Dropdown under profile name -->
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sayonara <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="profile.html">Profile</a></li>
+                <li class="visible-xs"><a href="#">Notifications</a></li>
+                <li class="visible-xs"><a href="group.html">Groups</a></li>
+                <li class="visible-xs"><a href="event.html">Events</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
 
-			<div class="col-md-2 col-md-offset-3">
-				<form class="navbar-form" role="search">
-					<div class="input-group add-on">
-						<input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-						</div>
-					</div>
-				</form>
-			</div>
+          <!--  Search bar -->
+          <form role="search">
+            <div class="form-group">
+              <label for="search-bar" class="sr-only">Search bar</label>
+              <div class="input-group navbar-search-bar">
+                <input type="search" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                  <button class="search-btn btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+              </div>
+            </div>
+          </form>
 
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Sayonara <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Profile</a></li>
-						<li><a href="#">Settings</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Log Out</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
+        </div>
+      </div>
+    </nav>
 	<div class="outter-box">
 		<div class="middle-box">
 			<div class="inner-box">
