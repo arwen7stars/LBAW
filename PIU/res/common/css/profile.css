@@ -88,6 +88,24 @@
   margin-bottom: 50px;
 }
 
+.opt-group .btn {
+	border-color: #fff;
+}
+
+.post-opt:hover {
+	background-color: transparent;
+}
+
+.post-opt:hover a {
+	color: #999;
+}
+
+
+
+.post-content {
+	padding: 1.5rem;
+}
+
 .post-body p {
   margin: 0;
   text-align: justify;
