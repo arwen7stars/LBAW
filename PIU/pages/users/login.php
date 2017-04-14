@@ -49,10 +49,10 @@
 		<form id="login" method="post" action="../../actions/users/login.php">
 			<fieldset>
 				<p><label for="username">Username</label>
-				<input type="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Type username"></p>
+				<input type="username" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Type username"></p>
 				
 				<p><label for="password">Password</label>
-				<input type="password" class="form-control" id="password" placeholder="Type password"></p>							
+				<input type="password" class="form-control" id="password" name="password" placeholder="Type password"></p>							
 
 				<p><button type="submit" class="submit btn btn-primary">Login</button></p>
 			</fieldset>
@@ -67,7 +67,7 @@
 
   <!-- Placed at the end of the document so the pages load faster -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="res/lib/jquery-3.1.1.min.js"></script>
+  <script src="../../res/lib/jquery-3.1.1.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="res/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+  <script src="../../res/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </body>

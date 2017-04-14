@@ -33,4 +33,3 @@ catch(PDOException $e){
 	echo "\n";
 	echo $e->getMessage();
 }
-?>

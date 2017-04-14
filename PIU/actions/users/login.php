@@ -6,9 +6,12 @@ include_once('../../database/users.php');
 $username = trim(strip_tags($_POST['username']));
 $password= $_POST['password'];
 
-if(userExists($username,$password){
+//echo(password_hash("ola123456",PASSWORD_DEFAULT));
+
+if(userExists($username,$password)){
 	$_SESSION['username'] = $username;
-}else{
+}
+else{
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	die();
 }
