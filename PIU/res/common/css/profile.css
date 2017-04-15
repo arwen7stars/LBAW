@@ -6,7 +6,9 @@
 	text-indent: 10px;
 }
 
-
+#2 {
+	display: none;
+}
 
 .user_info img {
     margin-left: auto;
@@ -173,10 +175,6 @@
   padding: 1rem;
 }
 
-#make-post {
-	border-radius:0px;
-}
-
 .user_options {
 	margin: 2rem;
 }
@@ -192,8 +190,8 @@ input[type=submit] {
 	width: 150px;
 }
 
-.btn-wrap {
-	text-align: right;
+.button-container input{
+	display: inline;
 }
 
 .type.form-control {
@@ -222,3 +220,8 @@ input[type=submit] {
 	border: 0px;
 	border-radius: 0px;
 }
+
+.btn-wrap {
+	text-align: right;
+}
+
