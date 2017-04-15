@@ -174,28 +174,41 @@
                             </div>
                         </form>
                     </div>
-
-                    <div class="post">
+												
+					<?php
+					$result = getUserPosts($user_id);
+					$row = pg_fetch_array($result);
+					
+					while ($row = pg_fetch_assoc($result)) {?>
+					
+					<div class="post">
                         <div class="post-body">
-                            <p>
-
-                                <div class="dropdown pull-right">
+							<p>
+								<div class="dropdown pull-right">
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Edit</a></li>
                                         <li><a href="#">Delete</a></li>
                                     </ul>
                                 </div>
-
-                                <p class="poster">
+								
+								<p class="poster">
                                     <a href="#">
                                         <img src="https://s3.postimg.org/nde4doxa7/Tear_Avatar_1.jpg" class="thumb-32px">
                                         <?=$username?>
                                     </a>
                                 </p>
-                            </p>
-                            <div class="post-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu enim augue. Quisque mollis nisi eget urna rutrum laoreet. Nunc vehicula arcu diam, vel elementum nisi pretium nec. Suspendisse sollicitudin neque sed lacus condimentum maximus. Sed id lacus eget velit luctus consequat. Etiam efficitur dui eget ante ornare, quis dapibus ipsum elementum. Ut sit amet iaculis turpis. Sed convallis mi sed libero vestibulum cursus. Sed ut neque urna. Duis sodales urna pellentesque tellus scelerisque lacinia. Quisque vitae enim condimentum, feugiat lectus id, eleifend sapien.
-                            </div>
+							</p>
+							<div class="post-content"><?= $row['body']?>
+						
+							<?php
+								$image = getImagePost($row['id']);
+								if (!($image === false)) { ?>
+								<img src="<?=$image['url']?>" class="ph_display">
+							<?php	}
+							?>
+							</div>
+
                         </div>
 
                         <p><span class="opt-group">
@@ -221,49 +234,8 @@
                         </div>
                         <a>Show comments...</a>
                     </div>
+					<?php } ?>
 					
-                    <div class="post">
-                        <p>
-                            <div class="dropdown pull-right">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Edit</a></li>
-                                    <li><a href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                            <p class="poster">
-                                <a href="#"><img src="https://s3.postimg.org/nde4doxa7/Tear_Avatar_1.jpg" class="thumb-32px">
-                                    <?=$username?>
-                                </a>
-                            </p>
-                        </p>
-                        <div>
-                            <center>
-                                <img src="https://s17.postimg.org/4jxs2uahr/TEAR.jpg" class="ph_display">
-                            </center>
-                        </div>
-                        <p><span class="opt-group">
-							<a href="#" class="opt btn-group" role="group">
-								<button type="button" class="btn btn-default post-opt"><a href="#"><span class="glyphicon glyphicon-heart"></span> Like</a> <span class="badge">99+</span></button>
-                            </a>
-                            <a href="#" class="opt btn-group" role="group">
-                                <button type="button" class="btn btn-default post-opt"><a href="#"><span class="glyphicon glyphicon-comment"></span> Comment</a> <span class="badge">99+</span></button>
-                            </a>
-                            <a href="#" class="opt btn-group" role="group">
-                                <button type="button" class="btn btn-default post-opt"><a href="#"><span class="glyphicon glyphicon-share"></span> Share</a> <span class="badge">99+</span></button>
-                            </a>
-                        </span></p>
-                        <div class="make-comment-wrap">
-                            <form class="form">
-                                <div class="form-group">
-                                    <label for="make-comment" class="sr-only">Write a comment</label>
-                                    <textarea id="make-comment" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
-                                </div>
-                            </form>
-                            <button type="submit" class="btn btn-default btn-comment">Comment</button>
-                        </div>
-                        <a>Show comments...</a>
-                    </div>
                 </div>
             </div>
         </div>

@@ -18,6 +18,26 @@
 		
 		return $row;
 	}
+	
+	function getUserPosts($user_id) {
+		global $db;
+		
+		$query = 'SELECT * FROM "Post" WHERE "user-id" = $1 ORDER BY date DESC, id DESC';
+		$result = pg_query_params($db, $query, array($user_id));
+		
+		return $result;
+	}
+	
+	function getImagePost($post_id) {
+		global $db;
+		
+		$query = 'SELECT * FROM "Image" WHERE "post-id" = $1';
+		$result = pg_query_params($db, $query, array($post_id));
+		$row = pg_fetch_array($result);
+		
+		return $row;
+		
+	}
 
 	function userExists($username, $password) {
         global $dbh;
