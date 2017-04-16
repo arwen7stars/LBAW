@@ -10,7 +10,7 @@ try{
   // OR!!
   
   date_default_timezone_set("Europe/Lisbon");
-  $db = pg_connect("host=dbm.fe.up.pt port=5432 dbname=lbaw1624 user=lbaw1624 password=sp58bd97");
+  $db = pg_connect("host=dbm.fe.up.pt port=5432 dbname=lbaw1624 user=lbaw1624 password=sp58bd97"); //desnecessário
   
   //$dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   //$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

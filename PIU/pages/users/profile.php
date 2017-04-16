@@ -4,6 +4,9 @@ if(!isset($_SESSION['username'])){
 	header('Location: login.php');
 	die();
 }
+
+include_once('../../database/init.php');
+include_once('../../database/users.php');
 ?>
 
 <head>
@@ -62,6 +65,21 @@ if(!isset($_SESSION['username'])){
 					<li><span class="glyphicon glyphicon-glass"></span><b> Birthday on</b> May 14th</li>	  <!--data-->
 					<li><span class="glyphicon glyphicon-time"></span><b> Joined on</b> 2016-12-04</li> <!--join-->
 				</ul>
+				
+				<?php
+				if(checkFriendship(5,6)) : ?>
+				<div class= "user_opt">
+				<div class="btn-group btn-group-justified" role="group" aria-label="...">
+					<form href="./profile.php" method="post" action="../../actions/users/friendship.php" class="btn-group" role="group">
+						<input type="hidden" id="user1" name="user1" value='5'>
+						<input type="hidden" id="user2" name="user2" value='6'>
+						<button type="submit" value="Post" name="friendship_button" class="btn btn-default"><b>Add friend <span class="glyphicon glyphicon-plus"></span></b></button>
+					</form>
+				</div>				
+			</div>
+			<?php
+			endif; ?>
+			
 			</div>
 
 			<div class= "user_photos">

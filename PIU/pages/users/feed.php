@@ -48,7 +48,7 @@ if(!isset($_SESSION['username'])){
             <!-- Dropdown under profile name -->
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sayonara <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="profile.html">Profile</a></li>
+                <li><a href="profile.php">Profile</a></li>
                 <li class="visible-xs"><a href="#">Notifications</a></li>
                 <li class="visible-xs"><a href="group.html">Groups</a></li>
                 <li class="visible-xs"><a href="event.html">Events</a></li>
