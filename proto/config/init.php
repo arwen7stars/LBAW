@@ -7,13 +7,13 @@
   $dbh = new PDO('pgsql:host=dbm.fe.up.pt;port=5432;dbname=lbaw1624', 'lbaw1624', 'sp58bd97');
   
   date_default_timezone_set("Europe/Lisbon");
-  //$db = pg_connect("host=dbm.fe.up.pt port=5432 dbname=lbaw1624 user=lbaw1624 password=sp58bd97");
+  $db = pg_connect("host=dbm.fe.up.pt port=5432 dbname=lbaw1624 user=lbaw1624 password=sp58bd97");
   
   $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $dbh->exec('SET SCHEMA \'public\'');
   
-  include_once($BASE_DIR . 'lib/smarty/Smarty.class.php');
+  /*include_once($BASE_DIR . 'lib/smarty/Smarty.class.php');
  
   $smarty = new Smarty;
   $smarty->template_dir = $BASE_DIR . 'templates/';
@@ -29,6 +29,6 @@
   unset($_SESSION['success_messages']);
   unset($_SESSION['error_messages']);  
   unset($_SESSION['field_errors']);
-  unset($_SESSION['form_values']);
+  unset($_SESSION['form_values']);*/
 ?>
 

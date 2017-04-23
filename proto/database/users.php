@@ -1,7 +1,5 @@
 <?php
 
-include_once('../../database/init.php');
-
 function userExists($username, $password) {
         global $dbh;
         $stmt = $dbh->prepare('SELECT * FROM "User" WHERE username = ?');
@@ -68,6 +66,15 @@ function checkFriendship($user1id, $user2id)
 		
 		return $row;
 		
+	}
+	
+	function getUserImages($user_id) {
+		global $db;
+		
+		$query = 'SELECT * FROM "Post", "Image" WHERE "Post"."user-id" = $1 AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC LIMIT 6';
+		$result = pg_query_params($db, $query, array($user_id));
+		
+		return $result;
 	}
 /*
 	function getUserInfo($id) {

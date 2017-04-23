@@ -8,16 +8,16 @@
     <title>LBAW
     </title>
     <!-- Bootstrap -->
-    <link href="res/lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../res/lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Default stylesheet -->
-    <link href="res/common/css/profile.css" rel="stylesheet">
-    <link href="res/common/css/default.css" rel="stylesheet">
+    <link href="../../res/common/css/profile.css" rel="stylesheet">
+    <link href="../../res/common/css/default.css" rel="stylesheet">
 
 </head>
 
 <body>
     <?php
-		include_once("database/init.php");
+		chdir('../..');
 		include_once("database/users.php");
 
 		$username = "tirafesi";
@@ -38,7 +38,7 @@
                     </button>
                     <!-- Website logo -->
                     <a class="navbar-brand" href="#">
-                        <img alt="Brand" src="res/common/img/logo.png">
+                        <img alt="Brand" src="../../res/common/img/logo.png">
                     </a>
                 </div>
                 <!-- Navbar content (collapsed in mobile view) -->
@@ -128,13 +128,15 @@
                     </div>
                     <div class="user_photos">
                         <h3><b>Photos</b></h3>
-                        <img src="https://s3.postimg.org/x859jx18f/Mieu_Avatar_2.jpg" class="thumb-64px">
-                        <img src="https://s3.postimg.org/nde4doxa7/Tear_Avatar_1.jpg" class="thumb-64px">
-                        <img src="https://s3.postimg.org/7tbc0wcjj/Tear_Avatar_2.jpg" class="thumb-64px">
-                        <br>
-                        <img src="https://s3.postimg.org/jm95548zj/Tear_Avatar_7.jpg" class="thumb-64px">
-                        <img src="https://s3.postimg.org/qiyq3wfwf/Mieu_Avatar.png[" class="thumb-64px">
-                        <img src="https://s3.postimg.org/m2ayiyr27/Tear_Avatar_6.jpg" class="thumb-64px">
+						<?php
+							$result = getUserImages($user_id);
+							$i = 0;
+					
+							while ($row = pg_fetch_assoc($result)) {
+								$i++;?>
+								<img src="<?=$row['url']?>" class="thumb-64px">
+								<?php if(i === 3) {?><br><?php } ?>
+						<?php } ?>
                         <br>
                         <a href="">
                             <b>View more...</b>
