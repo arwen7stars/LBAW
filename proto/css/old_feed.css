@@ -1,0 +1,212 @@
+/* necessary for footer */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+h1 {
+  /* original bootstrap value is too much */
+  margin-top: 10px;
+}
+
+h2 {
+  /* original bootstrap value is too much */
+  margin-top: 5px;
+}
+
+.content {
+  margin-top: 55px;
+}
+
+.content-middle {
+  border: 1px solid black;
+}
+
+
+/* --- MAKE-POST --- */
+
+.make-post {
+  border: 1px solid black;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.make-post .form-group {
+  margin: 0;
+}
+
+.txtarea-post {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-post {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0 20px;
+}
+
+
+/* --- ! MAKE-POST --- */
+
+
+/* --- FEED --- */
+
+.feed {
+  border: 1px solid black;
+  margin-top: 20px;
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
+.post {
+  margin-bottom: 50px;
+}
+
+.post-body {
+  border: 1px solid black;
+  padding: 0 5px 5px 5px;
+}
+
+.post-body p {
+  margin: 0;
+}
+
+.poster a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.like-share {
+  list-style: none;
+  padding: 0 0 0 5px;
+  margin: 5px 0 0 0;
+}
+
+.like-share li {
+  display: inline;
+}
+
+.like-share a {
+  text-decoration: none;
+}
+
+.make-comment-wrap {
+  position: relative;
+  margin-top: 5px;
+}
+
+.make-comment-wrap .form-group {
+  margin: 0;
+}
+
+.btn-comment {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  padding: 0 20px;
+}
+
+
+/* --- ! FEED --- */
+
+.content-left {
+  border: 1px solid black;
+}
+
+
+/* --- EVENTS & GROUPS & CHAT --- */
+
+.event-wrap, .group-wrap, .chat-wrap {
+  border: 1px solid black;
+  margin: 20px auto auto 0;
+}
+
+.event-header a, .group-header a, .chat-header a, .notifications-wrap a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.event-list, .group-list, .contacts-list {
+  list-style: none;
+  padding-left: 5px;
+}
+
+.event-list a, .group-list a {
+  text-decoration: none;
+}
+
+.contacts-list {
+  max-height: 15vh;
+  overflow-y: scroll;
+}
+
+.contacts-list li {
+  background-color: #e8e8e8;
+  border: 1px solid black;
+  border-radius: 2px;
+  margin: 0 auto 10px auto;
+  width: 80%;
+}
+
+.contacts-list a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+
+/* --- NOTIFICATIONS --- */
+
+.notifications-wrap {
+  border: solid 1px black;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+.notifications-list-wrap {
+  list-style: none;
+  padding-left: 5px;
+}
+
+.notifications-list-wrap li {
+  background-color: #f5f5f5;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.notifications-list-wrap a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+.notifications-list-wrap p {
+  margin: 0;
+}
+
+.recent-news-wrap {
+  border: 1px solid black;
+  margin-top: 20px;
+  padding: 0 5px;
+  position: relative;
+}
+
+.recent-news {
+  margin-bottom: 20px;
+}
+
+.read-more {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

@@ -1,0 +1,227 @@
+.user_bar h1{
+  	text-align: center;
+}
+
+.user_info {
+	text-indent: 10px;
+}
+
+#2 {
+	display: none;
+}
+
+.user_info img {
+    margin-left: auto;
+    border-radius: 10px;
+    margin-right: auto;
+    box-shadow: 0 0 10px black;
+    border-color: #ffffff;
+    border-style: solid;
+    border-width: 3px;
+    margin-top: 2rem;
+    height: auto; 
+    width: auto; 
+    max-width: 90%; 
+    max-height: 90%;
+    display: block;
+}
+
+
+.user_photos, .user_info {
+	box-shadow: 0 0 10px black;
+	margin: 1.5rem;
+	padding: 0.5rem;
+	background: url('http://i41.tinypic.com/28h3fwh.png');
+	font-size: 95%;
+    line-height: 150%;
+
+}
+
+.user_opt {
+	margin: 0rem 1rem;
+}
+
+.timeline {
+	padding: 0.5rem;
+	line-height: 180%;
+	margin: 1.5rem;
+}
+
+.profile-header.btn {
+	border-radius: 3px 3px 0px 0px;
+	background-color: white;
+	border-color: #ccc;
+  	border-style: solid;
+  	border-width: 1px;
+}
+.profile-header.btn-group {
+	display:inline-block;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus  {
+	outline: none;
+}
+
+.about-body {
+	text-indent: 10px;
+	text-align: justify;
+}
+
+.friends-body, .photos-body {
+	text-align: center;
+	font-weight: bold;
+}
+
+.friends .imgContainer {
+	display: inline-block;
+}
+
+.about, .friends, .post, .photos, .photo-display {
+	margin: 1rem 0rem;
+	padding: 1rem;
+	background-color: white;
+	overflow:auto;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.post {
+  margin-bottom: 50px;
+}
+
+.opt-group .btn {
+	border-color: #fff;
+}
+
+.post-opt:hover {
+	background-color: transparent;
+}
+
+.post-opt:hover a {
+	color: #999;
+}
+
+
+
+.post-content {
+	padding: 1.5rem;
+}
+
+.post-body p {
+  margin: 0;
+  text-align: justify;
+}
+
+.poster a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.like-share {
+  list-style: none;
+  padding: 0 0 0 5px;
+  margin: 5px 0 0 0;
+}
+
+.like-share li {
+  display: inline;
+}
+
+.like-share a {
+  text-decoration: none;
+}
+
+.make-comment-wrap {
+  position: relative;
+  margin-top: 5px;
+}
+
+.make-comment-wrap .form-group {
+  margin: 0;
+}
+
+.btn-comment {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  padding: 0 20px;
+}
+
+.thumb-150px {
+	width: 150px;
+	height: 150px;
+	margin: 0.2rem 0.1rem;
+}
+
+.thumb-64px {
+  width: 64px;
+  height: 64px;
+  margin: 0.1rem 0rem;
+}
+
+.thumb-32px {
+	width: 32px;
+	height: 32px;
+}
+
+.user_photos {
+	text-align: center;
+}
+
+.comment {
+  box-shadow: 0 0 4px black;
+  padding: 1rem;
+}
+
+.user_options {
+	margin: 2rem;
+}
+
+input[type=submit] {
+	margin: 0.5rem 0rem;
+    padding:0.3rem 4rem; 
+    background-color:#ccc; 
+    border-color: #fff;
+    cursor:pointer;
+    border-radius: 5px;
+	font-weight:bold;
+	width: 150px;
+}
+
+.button-container input{
+	display: inline;
+}
+
+.type.form-control {
+	margin: 0.5rem 0rem; 
+	background-color: #ccc;
+    border-color: #fff;
+	color: #000;
+    border-radius: 5px;
+	font-weight: bold;
+	width: 150px;
+}
+
+.ph_display {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    height: auto; 
+    width: auto; 
+    max-width: 90%; 
+    display: block;
+}
+
+.comment .dropdown-toggle, .post .dropdown-toggle {
+	color: #000;
+	background-color: #fff;
+	border: 0px;
+	border-radius: 0px;
+}
+
+.btn-wrap {
+	text-align: right;
+}
+

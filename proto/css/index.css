@@ -1,0 +1,55 @@
+/* necessary for footer */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+h1 {
+  /* original bootstrap value is too much */
+  margin-top: 10px;
+}
+
+h2 {
+  /* original bootstrap value is too much */
+  margin-top: 5px;
+}
+
+.search-bar-wrap {
+  margin-top: 55px;
+}
+
+.news-section-wrap {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.news-section {
+  border: 1px solid black;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.news {
+  /* necessary for .read-more */
+  position: relative;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.news-body {
+  margin-bottom: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.read-more {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

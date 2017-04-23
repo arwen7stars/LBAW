@@ -1,0 +1,55 @@
+body {
+	/* necessary because of navbar fixed to top */
+  padding-top: 51px;
+  /* background */
+  background: url("../images/backg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+div.outter-box {
+  display: table;
+  position: absolute;
+  height: 80%;
+  width: 100%;
+}
+
+div.middle-box {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+div.inner-box {
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+}
+
+.footer {
+   text-shadow: 0 0 10px #ffffff;
+}
+
+.navbar-search-bar {
+  margin-top: 8px;
+  margin-bottom: -8px;
+}
+
+.navbar {
+  /* const size */
+  flex: none;
+  /* remove bootstrap margin */
+  margin-bottom: 0;
+}
+
+.search-btn {
+  height: 34px;
+}
+
+a {
+	color: #8a2f2f;
+	text-decoration:none;
+}
+
+a:hover {
+	color: #7d7c7c;
+	text-decoration: none;
+}
