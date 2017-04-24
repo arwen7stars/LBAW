@@ -10,14 +10,18 @@
   <title>Homepage</title>
 
   <!-- Bootstrap -->
-  <link href="res/lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-  <link href="res/common/css/feed.css" rel="stylesheet">
+  <link href="css/feed.css" rel="stylesheet">
 </head>
 
 <body>
 
   <div class="body-flex">
+  
+  <?php
+  echo session_id();
+  ?>
 
     <!--  Navbar -->
     <nav class="navbar navbar-inverse">
@@ -31,7 +35,7 @@
             <span class="icon-bar"></span>
           </button>
           <!-- Website logo -->
-          <a class="navbar-brand" href="#"><img alt="Brand" src="res/common/img/logo.png"></a>
+          <a class="navbar-brand" href="#"><img alt="Brand" src="images/logo.png"></a>
         </div>
 
         <!-- Navbar content (collapsed in mobile view) -->
@@ -248,9 +252,9 @@
 
   <!-- Placed at the end of the document so the pages load faster -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="res/lib/jquery-3.1.1.min.js"></script>
+  <script src="lib/jquery-3.1.1.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="res/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+  <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>
