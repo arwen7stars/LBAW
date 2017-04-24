@@ -76,10 +76,11 @@ function checkFriendship($user1id, $user2id)
 	function getUserImages($user_id) {
 		global $dbh;
 		
-		$query = 'SELECT * FROM "Post", "Image" WHERE "Post"."user-id" = $1 AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC LIMIT 6';
-		$result = pg_query_params($db, $query, array($user_id));
+		$query = 'SELECT * FROM "Post", "Image" WHERE "Post"."user-id" = ? AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC LIMIT 6';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($user_id));
 		
-		return $result;
+		return $stmt;
 	}
 /*
 	function getUserInfo($id) {

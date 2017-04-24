@@ -131,10 +131,10 @@
                     <div class="user_photos">
                         <h3><b>Photos</b></h3>
 						<?php
-							$result = getUserImages($user_id);
+							$stmt = getUserImages($user_id);
 							$i = 0;
 					
-							while ($row = pg_fetch_assoc($result)) {
+							while ($row = $stmt->fetch()) {
 								$i++;?>
 								<img src="<?=$row['url']?>" class="thumb-64px">
 								<?php if(i === 3) {?><br><?php } ?>
