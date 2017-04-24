@@ -8,16 +8,18 @@
     <title>LBAW
     </title>
     <!-- Bootstrap -->
-    <link href="res/lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Default stylesheet -->
-    <link href="res/common/css/profile.css" rel="stylesheet">
-    <link href="res/common/css/default.css" rel="stylesheet">
+    <link href="../../css/profile.css" rel="stylesheet">
+    <link href="../../css/default.css" rel="stylesheet">
 
 </head>
 
 <body>
     <?php
-		include_once("database/init.php");
+		chdir('../..');
+		
+		include_once("config/init.php");
 		include_once("database/users.php");
 
 		$username = "tirafesi";
@@ -38,7 +40,7 @@
                     </button>
                     <!-- Website logo -->
                     <a class="navbar-brand" href="#">
-                        <img alt="Brand" src="res/common/img/logo.png">
+                        <img alt="Brand" src="../../images/logo.png">
                     </a>
                 </div>
                 <!-- Navbar content (collapsed in mobile view) -->
@@ -128,13 +130,15 @@
                     </div>
                     <div class="user_photos">
                         <h3><b>Photos</b></h3>
-                        <img src="https://s3.postimg.org/x859jx18f/Mieu_Avatar_2.jpg" class="thumb-64px">
-                        <img src="https://s3.postimg.org/nde4doxa7/Tear_Avatar_1.jpg" class="thumb-64px">
-                        <img src="https://s3.postimg.org/7tbc0wcjj/Tear_Avatar_2.jpg" class="thumb-64px">
-                        <br>
-                        <img src="https://s3.postimg.org/jm95548zj/Tear_Avatar_7.jpg" class="thumb-64px">
-                        <img src="https://s3.postimg.org/qiyq3wfwf/Mieu_Avatar.png[" class="thumb-64px">
-                        <img src="https://s3.postimg.org/m2ayiyr27/Tear_Avatar_6.jpg" class="thumb-64px">
+						<?php
+							$result = getUserImages($user_id);
+							$i = 0;
+					
+							while ($row = pg_fetch_assoc($result)) {
+								$i++;?>
+								<img src="<?=$row['url']?>" class="thumb-64px">
+								<?php if(i === 3) {?><br><?php } ?>
+						<?php } ?>
                         <br>
                         <a href="">
                             <b>View more...</b>
@@ -143,16 +147,16 @@
                 </div>
                 <div class="timeline col-md-7">
                     <div class="profile-header btn-group btn-group-justified" role="group" aria-label="...">
-                        <a href="./profile.html" class="btn-group" role="group">
+                        <a href="#" class="btn-group" role="group">
                             <button type="button" class="btn btn-default">Profile</button>
                         </a>
-                        <a href="./about.html" class="btn-group" role="group">
+                        <a href="#" class="btn-group" role="group">
                             <button type="button" class="btn btn-default">About</button>
                         </a>
-                        <a href="./friends.html" class="btn-group" role="group">
+                        <a href="#" class="btn-group" role="group">
                             <button type="button" class="btn btn-default">Friends</button>
                         </a>
-                        <a href="./photos.html" class="btn-group" role="group">
+                        <a href="#" class="btn-group" role="group">
                             <button type="button" class="btn btn-default">Photos</button>
                         </a>
                     </div>
@@ -160,7 +164,7 @@
 
                     <!-- MAKE-POST -->
                     <div class="make-post">
-                        <form class="form" action="actions/posts/post.php" method="post" enctype="multipart/form-data">
+                        <form class="form" action="../../actions/posts/post.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <br>
                                 <div class="btn-wrap">
@@ -176,11 +180,9 @@
                     </div>
 												
 					<?php
-					$result = getUserPosts($user_id);
-					$row = pg_fetch_array($result);
+					$stmt = getUserPosts($user_id);
 					
-					while ($row = pg_fetch_assoc($result)) {?>
-					
+					while ($row = $stmt->fetch()) { ?>
 					<div class="post">
                         <div class="post-body">
 							<p>

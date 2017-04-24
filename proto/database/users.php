@@ -1,7 +1,5 @@
 <?php
 
-include_once('../../database/init.php');
-
 function userExists($username, $password) {
         global $dbh;
         $stmt = $dbh->prepare('SELECT * FROM "User" WHERE username = ?');
@@ -20,6 +18,7 @@ function userExists($username, $password) {
         $exists = $stmt->fetch();
 		return($exists !== false);
 	}*/
+	
 function checkFriendship($user1id, $user2id)
 	{
 		global $dbh;
@@ -29,45 +28,58 @@ function checkFriendship($user1id, $user2id)
 		$stmt->execute();
         $exists = $stmt->fetch();
 		return($exists !== false);
-	}	
+	}
+	
 	function getLoginID($username) {
-		global $db;
+		global $dbh;
 		
-		$query = 'SELECT * FROM "User" WHERE username = $1';
-		$result = pg_query_params($db, $query, array($username));
-		$row = pg_fetch_array($result);
+		$query = 'SELECT * FROM "User" WHERE username = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($username));
+		$row = $stmt->fetch();
 		
 		return $row['id'];
 	}
 	
 	function getUserInfo($id) {
-		global $db;
+		global $dbh;
 		
-		$query = 'SELECT * FROM "User" WHERE id = $1';
-		$result = pg_query_params($db, $query, array($id));
-		$row = pg_fetch_array($result);
+		$query = 'SELECT * FROM "User" WHERE id = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+		$row = $stmt->fetch();
 		
 		return $row;
 	}
 	
 	function getUserPosts($user_id) {
-		global $db;
+		global $dbh;
 		
-		$query = 'SELECT * FROM "Post" WHERE "user-id" = $1 ORDER BY date DESC, id DESC';
-		$result = pg_query_params($db, $query, array($user_id));
+		$query = 'SELECT * FROM "Post" WHERE "user-id" = ? ORDER BY date DESC, id DESC';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($user_id));
 		
-		return $result;
+		return $stmt;
 	}
 	
 	function getImagePost($post_id) {
-		global $db;
+		global $dbh;
 		
-		$query = 'SELECT * FROM "Image" WHERE "post-id" = $1';
-		$result = pg_query_params($db, $query, array($post_id));
-		$row = pg_fetch_array($result);
+		$query = 'SELECT * FROM "Image" WHERE "post-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($post_id));
 		
-		return $row;
+		return $stmt->fetch();
 		
+	}
+	
+	function getUserImages($user_id) {
+		global $dbh;
+		
+		$query = 'SELECT * FROM "Post", "Image" WHERE "Post"."user-id" = $1 AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC LIMIT 6';
+		$result = pg_query_params($db, $query, array($user_id));
+		
+		return $result;
 	}
 /*
 	function getUserInfo($id) {

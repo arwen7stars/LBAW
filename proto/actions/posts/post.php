@@ -1,5 +1,5 @@
 <?php
-	include_once('../../database/init.php');
+	include_once('../../config/init.php');
 	include_once('../../database/users.php');
 	session_start();
 	
@@ -42,7 +42,7 @@
 	
 	if (!empty($_FILES['image']['name'])){
 		$name_file = $_FILES['image']['name'];
-		$destination = '../../res/common/img/' . $name_file;
+		$destination = '../../images/' . $name_file;
 		$tmp_file = $_FILES['image']['tmp_name'];
 
 		move_uploaded_file($tmp_file, $destination);
@@ -51,7 +51,7 @@
 		$username = $user_info['username'];
 		$description = "Profile Picture of $username";
 		$usr_id = null;
-		$path = 'res/common/img/' . $name_file;
+		$path = 'images/' . $name_file;
 		
 		$query = 'INSERT INTO "Image" ("url", "description", "date", "post-id", "user-id") VALUES ($1, $2, $3, $4, $5)';
 		$result = pg_query_params($db, $query, array($path, $description, $date, $post_id, $usr_id));
@@ -63,7 +63,7 @@
 		}
 	}
 	
-    $referer = '../../profile_logged.php?user-id=' . $user_id;
+    $referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
 	
 	header('Location: ' . $referer);
 ?>
