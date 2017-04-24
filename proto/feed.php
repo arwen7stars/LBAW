@@ -18,10 +18,6 @@
 <body>
 
   <div class="body-flex">
-  
-  <?php
-  echo session_id();
-  ?>
 
     <!--  Navbar -->
     <nav class="navbar navbar-inverse">
