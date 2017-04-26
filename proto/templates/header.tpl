@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
           </button>
           <!-- Website logo -->
-          <a class="navbar-brand" href="#"><img alt="Brand" src="../../images/logo.png"></a>
+          <a class="navbar-brand" href="{$BASE_DIR}index.php"><img alt="Brand" src="../../images/logo.png"></a>
         </div>
 
         <!-- Navbar content (collapsed in mobile view) -->
@@ -17,7 +17,7 @@
 
           <!-- Float right -->
 		  <ul class="nav navbar-nav navbar-right">
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			<li><a href="../../pages/users/signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 			<li><a href="../../pages/users/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 		</ul>
 		  

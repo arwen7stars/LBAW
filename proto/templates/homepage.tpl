@@ -9,13 +9,57 @@
   <title>Homepage</title>
   <!-- Bootstrap -->
   <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../css/feed.css" rel="stylesheet">
+  <link href="../../css/default.css" rel="stylesheet">
+  <link href="../../css/index.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-{include file='header.tpl'}
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <!-- Menu for mobile display -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Website logo -->
+          <a class="navbar-brand" href="{$BASE_DIR}index.php"><img alt="Brand" src="../../images/logo.png"></a>
+        </div>
+
+        <!-- Navbar content (collapsed in mobile view) -->
+        <div id="navbar" class="navbar-collapse collapse">
+
+          <!-- Float right -->
+		  <ul class="nav navbar-nav navbar-right">
+			<li><a href="../../pages/users/signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			<li><a href="../../pages/users/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		</ul>
+        </div>
+      </div>
+    </nav>
+
+  <!-- SEARCH BAR -->
+  <div class="container-fluid search-bar-wrap">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <form>
+          <div class="form-group">
+            <label class="sr-only" for="search-bar">Search bar</label>
+            <div class="input-group">
+              <input type="search" id="search-bar" class="form-control" placeholder="Search..." autocomplete="on">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
 <div class="container-fluid news-section-wrap">
 
@@ -68,10 +112,9 @@
 
 </body>
 
-<!-- Placed at the end of the document so the pages load faster -->
+	<!-- Placed at the end of the document so the pages load faster -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="../../lib/jquery-3.1.1.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 
 </html>
