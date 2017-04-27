@@ -1,4 +1,25 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-27 11:54:59
+         compiled from "/usr/users2/mieic2014/up201404587/public_html/proto/templates/feed.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:17442158335901cc2f34c5f5-64008723%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'a8f70c55cef773fb3fef832d2ae02f56b0dbd4f2' => 
+    array (
+      0 => '/usr/users2/mieic2014/up201404587/public_html/proto/templates/feed.tpl',
+      1 => 1493290496,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '17442158335901cc2f34c5f5-64008723',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_5901cc2f3ee906_09187332',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5901cc2f3ee906_09187332')) {function content_5901cc2f3ee906_09187332($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,7 +36,8 @@
 
 <body>
 
-{include file='header_logged.tpl'}
+<?php echo $_smarty_tpl->getSubTemplate ('header_logged.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 
 <div class="content">
 
@@ -182,7 +204,8 @@
       </div>
     </div>
 	
-{include file='footer.tpl'}
+<?php echo $_smarty_tpl->getSubTemplate ('footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 
 </body>
 
@@ -191,4 +214,4 @@
   <script src="../../lib/jquery-3.1.1.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
 
-</html>
+</html><?php }} ?>
