@@ -15,7 +15,11 @@
 
 <body>
 
+<div class="body-flex">
+
 {include file='header_logged.tpl'}
+
+
 
 <div class="content">
 
@@ -112,6 +116,28 @@
 		  <a>Show comments...</a>
         </div>
 
+		<div class="post">
+          <div class="post-body">
+            <h2 class="poster"><a href="#"><span class="glyphicon glyphicon-user"></span> Hikari</a></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu enim augue. Quisque mollis nisi eget urna rutrum laoreet. Nunc vehicula arcu diam, vel elementum nisi pretium nec. Suspendisse sollicitudin neque sed lacus condimentum maximus. Sed id lacus eget velit luctus consequat. Etiam efficitur dui eget ante ornare, quis dapibus ipsum elementum. Ut sit amet iaculis turpis. Sed convallis mi sed libero vestibulum cursus. Sed ut neque urna. Duis sodales urna pellentesque tellus scelerisque lacinia. Quisque vitae enim condimentum, feugiat lectus id, eleifend sapien.</p>
+          </div>
+		<p><a href="#" class="btn-group" role="group">
+			<button type="button" class="btn btn-default"><a href="#"><span class="glyphicon glyphicon-heart"></span> Like</a> <span class="badge">99+</span></button>
+  		</a>
+  		<a href="#" class="btn-group" role="group">
+    		<button type="button" class="btn btn-default"><a href="#"><span class="glyphicon glyphicon-comment"></span> Comment</a> <span class="badge">99+</span></button>
+  		</a></p>
+          <div class="make-comment-wrap">
+            <form class="form">
+              <div class="form-group">
+                <textarea class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+              </div>
+            </form>
+            <button type="submit" class="btn btn-default btn-comment">Comment</button>
+          </div>
+		  <a>Show comments...</a>
+        </div>
+
         <div class="post">
           <div class="post-body">
             <h2 class="poster"><a href="#"><span class="glyphicon glyphicon-user"></span> Himari</a></h2>
@@ -145,7 +171,7 @@
   		<a href="#" class="btn-group" role="group">
     		<button type="button" class="btn btn-default"><a href="#"><span class="glyphicon glyphicon-comment"></span> Comment</a> <span class="badge">99+</span></button>
   		</a></p>
-	
+
           <div class="make-comment-wrap">
             <form class="form">
               <div class="form-group">
@@ -178,11 +204,13 @@
 			<a href="#">Read more...</a>
 		  </div>
         </div>
-		
+
       </div>
     </div>
-	
+
 {include file='footer.tpl'}
+
+</div>
 
 </body>
 
@@ -190,5 +218,5 @@
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="../../lib/jquery-3.1.1.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-
+  <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </html>

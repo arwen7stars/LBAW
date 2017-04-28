@@ -92,4 +92,9 @@ function checkFriendship($user1id, $user2id)
 
 		return $stmt->fetch();
 	}*/
+	
+	function getUserCharacterName($user_id)
+	{
+		//SELECT "Character"."name" FROM "Character","User" WHERE "User".username = 'user5' AND "User".id = "Character".id;
+	}
 ?>

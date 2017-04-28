@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2017-04-27 11:54:59
+<?php /* Smarty version Smarty-3.1.15, created on 2017-04-28 14:26:52
          compiled from "/usr/users2/mieic2014/up201404587/public_html/proto/templates/feed.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17442158335901cc2f34c5f5-64008723%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a8f70c55cef773fb3fef832d2ae02f56b0dbd4f2' => 
     array (
       0 => '/usr/users2/mieic2014/up201404587/public_html/proto/templates/feed.tpl',
-      1 => 1493290496,
+      1 => 1493386003,
       2 => 'file',
     ),
   ),
@@ -36,7 +36,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <body>
 
+<div class="body-flex">
+
 <?php echo $_smarty_tpl->getSubTemplate ('header_logged.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+
 
 
 <div class="content">
@@ -133,6 +137,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
           </div>
 		  <a>Show comments...</a>
         </div>
+		
+		<div class="post">
+          <div class="post-body">
+            <h2 class="poster"><a href="#"><span class="glyphicon glyphicon-user"></span> Hikari</a></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu enim augue. Quisque mollis nisi eget urna rutrum laoreet. Nunc vehicula arcu diam, vel elementum nisi pretium nec. Suspendisse sollicitudin neque sed lacus condimentum maximus. Sed id lacus eget velit luctus consequat. Etiam efficitur dui eget ante ornare, quis dapibus ipsum elementum. Ut sit amet iaculis turpis. Sed convallis mi sed libero vestibulum cursus. Sed ut neque urna. Duis sodales urna pellentesque tellus scelerisque lacinia. Quisque vitae enim condimentum, feugiat lectus id, eleifend sapien.</p>
+          </div>
+		<p><a href="#" class="btn-group" role="group">
+			<button type="button" class="btn btn-default"><a href="#"><span class="glyphicon glyphicon-heart"></span> Like</a> <span class="badge">99+</span></button>
+  		</a>
+  		<a href="#" class="btn-group" role="group">
+    		<button type="button" class="btn btn-default"><a href="#"><span class="glyphicon glyphicon-comment"></span> Comment</a> <span class="badge">99+</span></button>
+  		</a></p>
+          <div class="make-comment-wrap">
+            <form class="form">
+              <div class="form-group">
+                <textarea class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+              </div>
+            </form>
+            <button type="submit" class="btn btn-default btn-comment">Comment</button>
+          </div>
+		  <a>Show comments...</a>
+        </div>
 
         <div class="post">
           <div class="post-body">
@@ -206,6 +232,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	
 <?php echo $_smarty_tpl->getSubTemplate ('footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
+
+</div>
 
 </body>
 

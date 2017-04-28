@@ -4,6 +4,10 @@ h2{
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
  }
 
+.navbar-search-bar {
+ 	display: none;
+ }
+
 .forms {
     margin-top:1.5rem;
     padding: 2rem;

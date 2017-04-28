@@ -1,5 +1,4 @@
 {block name=head}
-    <link href="../../css/index.css" rel="stylesheet" type="text/css"/>
 	<link href="../../css/default.css" rel="stylesheet" type="text/css"/>
 {/block}
 
@@ -23,9 +22,9 @@
           <!-- Float right -->
           <ul class="nav navbar-nav navbar-right">
             <!-- Dropdown under profile name -->
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sayonara <span class="caret"></span></a>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$username} <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="../../pages/users/profile.php">Profile</a></li>
+                <li><a href="../../pages/users/profile_feed.php">Profile</a></li>
                 <li class="visible-xs"><a href="../../pages/users/groups.php">Groups</a></li>
                 <li class="visible-xs"><a href="../../pages/users/events.php">Events</a></li>
                 <li><a href="../../pages/users/settings.php">Settings</a></li>

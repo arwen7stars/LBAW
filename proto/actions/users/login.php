@@ -10,6 +10,7 @@ $password= $_POST['password'];
 
 if(userExists($username,$password)){
 	$_SESSION['username'] = $username;
+	$_SESSION['id'] = getLoginID($username);
 }
 else{
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
