@@ -6,7 +6,6 @@ include_once('../../database/users.php');
 $username = trim(strip_tags($_POST['username']));
 $password= $_POST['password'];
 
-//echo(password_hash("ola123456",PASSWORD_DEFAULT));
 
 if(userExists($username,$password)){
 	$_SESSION['username'] = $username;

@@ -93,8 +93,13 @@ function checkFriendship($user1id, $user2id)
 		return $stmt->fetch();
 	}*/
 	
-	function getUserCharacterName($user_id)
+	function getUserCharacterName($username)
 	{
-		//SELECT "Character"."name" FROM "Character","User" WHERE "User".username = 'user5' AND "User".id = "Character".id;
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT "Character"."name" FROM "Character","User" WHERE "User".username = :username AND "User".id = "Character".id');
+		$stmt->bindParam(':username', $username);
+        $stmt->execute(array($username));
+        $name = $stmt->fetch();
+		return $name['name'];
 	}
 ?>

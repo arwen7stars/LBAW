@@ -13,7 +13,7 @@
             <span class="icon-bar"></span>
           </button>
           <!-- Website logo -->
-          <a class="navbar-brand" href="#"><img alt="Brand" src="../../images/logo.png"></a>
+          <a class="navbar-brand" href="../../pages/users/feed.php"><img alt="Brand" src="../../images/logo.png"></a>
         </div>
 
         <!-- Navbar content (collapsed in mobile view) -->
@@ -49,4 +49,4 @@
 
         </div>
       </div>
-    </nav>
+</nav>

@@ -5,7 +5,8 @@ include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/users.php');
 
 // global variables
-$smarty->assign('username', $_SESSION['username']);
+$character_name = getUserCharacterName($_SESSION['username']);
+$smarty->assign('username', $character_name);
 $smarty->assign('user_id', $_SESSION['id']);
 
 // fetch user timeline imags

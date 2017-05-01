@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -7,14 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>LBAW
-    </title>
+    <title>Profile</title>
     <!-- Bootstrap -->
     <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Default stylesheet -->
     <link href="../../css/profile.css" rel="stylesheet">
     <link href="../../css/default.css" rel="stylesheet">
-
 </head>
 
 <body>
