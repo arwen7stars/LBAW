@@ -3,6 +3,7 @@
 ## In development
 
 * fixing footer
+* see profiles user story (US002) almost complete (only photos left)
 
 ## User Stories
 
