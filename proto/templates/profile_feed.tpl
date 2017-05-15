@@ -39,10 +39,12 @@
 						{if ! ($username == $username_logged) }
                         <div class="user_opt">
                             <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                <a href="./profile.html" class="btn-group" role="group">
-                                    <button type="button" class="btn btn-default">
+                                <a href="../../actions/users/friendship.php" class="btn-group" role="group">
+									{if !($friends) }
+                                    <button type="submit" value="Post" name="friendship-button" class="btn btn-default">
                                         <b>Add friend <span class="glyphicon glyphicon-plus"></span></b>
                                     </button>
+									{/if}
                                 </a>
                             </div>
                         </div>

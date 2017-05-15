@@ -116,7 +116,6 @@ function checkFriendship($user1id, $user2id)
 		$query = 'SELECT "city", "country" FROM "User", "Location" WHERE "User"."id" = ? AND "User"."location-id" = "Location"."id"';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($user_id));
-		
 		return $stmt->fetch();
 		
 	}
@@ -177,5 +176,15 @@ function checkFriendship($user1id, $user2id)
 		$result = $stmt->fetch();
 		
 		return $result['date-of-birth'];
+	}
+	
+	function getUserCharacterName($username)
+	{
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT "Character"."name" FROM "Character","User" WHERE "User".username = :username AND "User".id = "Character".id');
+		$stmt->bindParam(':username', $username);
+        $stmt->execute(array($username));
+        $name = $stmt->fetch();
+		return $name['name'];
 	}
 ?>

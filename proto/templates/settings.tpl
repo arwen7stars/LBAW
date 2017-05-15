@@ -16,7 +16,7 @@
 
 <body>
 
-{include file='header_logged.tpl' username=$username}
+{include file='header_logged.tpl'}
 
 <div class="outter-box">
 	<div class="middle-box">
