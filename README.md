@@ -4,6 +4,7 @@
 
 * fixing footer
 * see profiles user story (US002) almost complete (only photos left)
+* edit/delete (US108 & US109) in progress
 
 ## User Stories
 
