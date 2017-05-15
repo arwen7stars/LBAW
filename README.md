@@ -9,7 +9,7 @@
 ### User
 
 | Identifier | Name | Priority | Description |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | US001 | Search | High | As an user, I want to use the search bar to look for public profiles, groups and events, so that I can find them |
 | US002 | See Profiles | High | As an user, I want to see public information (posts, comments, photos) on a public profile, so that I can see them |
 
@@ -17,7 +17,7 @@
 ### Logged in
 
 | Identifier | Name | Priority | Description |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | ~~US101~~ | Post Text | High | As a logged in user, I want to publish text posts, so that other users can see them |
 | US102 | Comment | High | As a logged in user, I want to comment on posts, so that other users can see them |
 | US103 | Befriend | High | As a logged in user, I want to accept and send friend requests to other users, so that we become friends|
