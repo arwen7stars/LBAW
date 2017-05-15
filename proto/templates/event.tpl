@@ -10,10 +10,10 @@
   <title>Event</title>
 
   <!-- Bootstrap -->
-  <link href="lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <!-- Default stylesheet -->
-  <link href="css/feed.css" rel="stylesheet">
-  <link href="css/event.css" rel="stylesheet">
+  <link href="../../css/feed.css" rel="stylesheet">
+  <link href="../../css/event.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,61 +21,10 @@
 	  
 	  {include file='header_logged.tpl'}
 
-    <!--  Navbar -->
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <!-- Menu for mobile display -->
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!-- Website logo -->
-          <a class="navbar-brand" href="#"><img alt="Brand" src="images/logo.png"></a>
-        </div>
-
-        <!-- Navbar content (collapsed in mobile view) -->
-        <div id="navbar" class="navbar-collapse collapse">
-
-          <!-- Float right -->
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Home</a></li>
-            <!-- Dropdown under profile name -->
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sayonara <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="profile.html">Profile</a></li>
-                <li class="visible-xs"><a href="#">Notifications</a></li>
-                <li class="visible-xs"><a href="group.html">Groups</a></li>
-                <li class="visible-xs"><a href="event.html">Events</a></li>
-                <li><a href="settings.html">Settings</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Logout</a></li>
-              </ul>
-            </li>
-          </ul>
-
-          <!--  Search bar -->
-          <form role="search">
-            <div class="form-group">
-              <label for="search-bar" class="sr-only">Search bar</label>
-              <div class="input-group navbar-search-bar">
-                <input type="search" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-              </div>
-            </div>
-          </form>
-
-        </div>
-      </div>
-    </nav>
   
   <!--Event Stuff-->  	
 	<div class="container text-center event">
-	<img src="res\common\img\group.png" class="img-responsive" alt="Group Image">
+	<img src="../../images/group.png" class="img-responsive" alt="Group Image">
 	<div class="btn-group-lg info" role="group" aria-label="...">
 	  <div class="btn-group" role="group">
   <button type="button" class="btn btn-lg">Interested</button>
@@ -264,8 +213,8 @@
 
  <!-- Placed at the end of the document so the pages load faster -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="lib/jquery-3.1.1.min.js"></script>
+  <script src="../../lib/jquery-3.1.1.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+  <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 
 </html>
