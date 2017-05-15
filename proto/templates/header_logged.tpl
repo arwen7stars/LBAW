@@ -24,7 +24,7 @@
             <!-- Dropdown under profile name -->
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$username} <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="../../pages/users/profile_feed.php">Profile</a></li>
+                <li><a href="../../pages/users/profile_feed.php?user-id={$id_logged}">Profile</a></li>
                 <li class="visible-xs"><a href="../../pages/users/groups.php">Groups</a></li>
                 <li class="visible-xs"><a href="../../pages/users/events.php">Events</a></li>
                 <li><a href="../../pages/users/settings.php">Settings</a></li>

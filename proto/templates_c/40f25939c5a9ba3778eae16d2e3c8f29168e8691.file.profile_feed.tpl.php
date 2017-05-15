@@ -1,4 +1,47 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.15, created on 2017-05-15 08:55:24
+         compiled from "C:\xampp\htdocs\myfiles\LBAW\proto\templates\profile_feed.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:214659121493b80ef7-28594135%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '40f25939c5a9ba3778eae16d2e3c8f29168e8691' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\myfiles\\LBAW\\proto\\templates\\profile_feed.tpl',
+      1 => 1494834919,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '214659121493b80ef7-28594135',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_59121493c322f1_08652939',
+  'variables' => 
+  array (
+    'image' => 0,
+    'character' => 0,
+    'series' => 0,
+    'username' => 0,
+    'username_logged' => 0,
+    'images' => 0,
+    'img' => 0,
+    'id' => 0,
+    'posts' => 0,
+    'post' => 0,
+    'comments' => 0,
+    'k' => 0,
+    'v' => 0,
+    'comment' => 0,
+    'name' => 0,
+    'age' => 0,
+    'location' => 0,
+    'about' => 0,
+    'all_images' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_59121493c322f1_08652939')) {function content_59121493c322f1_08652939($_smarty_tpl) {?><!DOCTYPE html>
 <html>
 
 <head>
@@ -18,25 +61,33 @@
 
 
 
-  {include file='header_logged.tpl'}
+  <?php echo $_smarty_tpl->getSubTemplate ('header_logged.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 
         <div class="container">
             <div class="row justify-content-start">
                 <div class="user_bar col-md-3 hidden-xs hidden-sm">
                     <div class="user_info">
-                        <img class="centered-and-cropped" src="{$image.url}" alt="{$image.description}">
-                        <center><h2>{$character.name}</h2></center>
+                        <img class="centered-and-cropped" src="<?php echo $_smarty_tpl->tpl_vars['image']->value['url'];?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['image']->value['description'];?>
+">
+                        <center><h2><?php echo $_smarty_tpl->tpl_vars['character']->value['name'];?>
+</h2></center>
                         <ul class="list-unstyled">
                             <li>
                                 <span class="glyphicon glyphicon-user"></span>
-								<b>Character is</b> <a href="{$character.url}">{$character.name}</a>
+								<b>Character is</b> <a href="<?php echo $_smarty_tpl->tpl_vars['character']->value['url'];?>
+"><?php echo $_smarty_tpl->tpl_vars['character']->value['name'];?>
+</a>
                             </li>
                             <li>
                                 <span class="glyphicon glyphicon-book"></span>
-                                <b> Series is</b> <a href="{$series.url}">{$series.name}</a>
+                                <b> Series is</b> <a href="<?php echo $_smarty_tpl->tpl_vars['series']->value['url'];?>
+"><?php echo $_smarty_tpl->tpl_vars['series']->value['name'];?>
+</a>
                             </li>
                         </ul>
-						{if ! ($username == $username_logged) }
+						<?php if (!($_smarty_tpl->tpl_vars['username']->value==$_smarty_tpl->tpl_vars['username_logged']->value)) {?>
                         <div class="user_opt">
                             <div class="btn-group btn-group-justified" role="group" aria-label="...">
                                 <a href="./profile.html" class="btn-group" role="group">
@@ -46,17 +97,23 @@
                                 </a>
                             </div>
                         </div>
-						{/if}
+						<?php }?>
                     </div>
-					{if !empty($images)}
+					<?php if (!empty($_smarty_tpl->tpl_vars['images']->value)) {?>
                     <div class="user_photos">
-                        <h3><b>Photos</b></h3>{foreach $images as $img}<img class="centered-and-cropped thumb-64px" src="{$img.url}" alt="{$img.description}"> {/foreach}
+                        <h3><b>Photos</b></h3><?php  $_smarty_tpl->tpl_vars['img'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['img']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['images']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['img']->key => $_smarty_tpl->tpl_vars['img']->value) {
+$_smarty_tpl->tpl_vars['img']->_loop = true;
+?><img class="centered-and-cropped thumb-64px" src="<?php echo $_smarty_tpl->tpl_vars['img']->value['url'];?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['img']->value['description'];?>
+"> <?php } ?>
                         <br>
                         <a href="#photos" data-toggle="tab">
                             View more...
                         </a>
                     </div>
-					{/if}
+					<?php }?>
                 </div>
 
                 <div class="timeline col-md-7">
@@ -70,14 +127,15 @@
 				
 					  <div class="tab-content">
 						<div id="home" class="tab-pane fade in active">
-						  {if $username == $username_logged }
+						  <?php if ($_smarty_tpl->tpl_vars['username']->value==$_smarty_tpl->tpl_vars['username_logged']->value) {?>
 							<!-- MAKE-POST -->
 							<div class="make-post">
 								<form class="form" action="../../actions/posts/post.php" method="post" enctype="multipart/form-data">
 									<div class="form-group">
 										<br>
 										<div class="btn-wrap">
-											<input type="hidden" name="id" value="{$id}">
+											<input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+">
 											<textarea id="make-post" name="body" class="form-control txtarea-post" rows="3" placeholder="Write something to post..."></textarea>
 											<span class="button-container">
 												<label class="btn btn-primary" for="my-file-selector">
@@ -92,9 +150,13 @@
 									</div>
 								</form>
 							</div>
-							{/if}
+							<?php }?>
 
-							{foreach $posts as $post}
+							<?php  $_smarty_tpl->tpl_vars['post'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['post']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['posts']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['post']->key => $_smarty_tpl->tpl_vars['post']->value) {
+$_smarty_tpl->tpl_vars['post']->_loop = true;
+?>
 							<p><div class="post">
 								<div class="post-body">
 									<p>
@@ -108,24 +170,31 @@
 
 										<p class="poster">
 											<a href="#">
-												<img src="{$post.charurl}" class="centered-and-cropped thumb-32px">
-												{$post.charname}
+												<img src="<?php echo $_smarty_tpl->tpl_vars['post']->value['charurl'];?>
+" class="centered-and-cropped thumb-32px">
+												<?php echo $_smarty_tpl->tpl_vars['post']->value['charname'];?>
+
 											</a>
 										</p>
 									</p>
 									<div class="post-content">
-										{$post.body}
-										<img src="{$post.url}" alt="{$post.description}" class="ph_display">
+										<?php echo $_smarty_tpl->tpl_vars['post']->value['body'];?>
+
+										<img src="<?php echo $_smarty_tpl->tpl_vars['post']->value['url'];?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['post']->value['description'];?>
+" class="ph_display">
 									</div>
 
 								</div>
 								
 								<p><span class="opt-group">
 									<a href="#" class="opt btn-group" role="group">
-									<button type="button" class="btn btn-default post-opt"><a href="#"><span class="glyphicon glyphicon-heart"></span> Likes {$post.likes}</a></button>
+									<button type="button" class="btn btn-default post-opt"><a href="#"><span class="glyphicon glyphicon-heart"></span> Likes <?php echo $_smarty_tpl->tpl_vars['post']->value['likes'];?>
+</a></button>
 									</a>
 									<a href="#" class="opt btn-group" role="group">
-										<button type="button" class="btn btn-default post-opt"><a href="#"><span class="glyphicon glyphicon-comment"></span> Comments {$post.comments}</a></button>
+										<button type="button" class="btn btn-default post-opt"><a href="#"><span class="glyphicon glyphicon-comment"></span> Comments <?php echo $_smarty_tpl->tpl_vars['post']->value['comments'];?>
+</a></button>
 									</a>
 									<a href="#" class="opt btn-group" role="group">
 										<button type="button" class="btn btn-default post-opt"><a href="#"><span class="glyphicon glyphicon-share"></span> Shares 99</a></button>
@@ -143,8 +212,19 @@
 								</div>
 							</div>
 							<div class="post_space">
-								<div class="comments {$post.postid}">
-								{foreach from=$comments key=k item=v}{if $k == $post.postid}{foreach $v as $comment}
+								<div class="comments <?php echo $_smarty_tpl->tpl_vars['post']->value['postid'];?>
+">
+								<?php  $_smarty_tpl->tpl_vars['v'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['v']->_loop = false;
+ $_smarty_tpl->tpl_vars['k'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['comments']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['v']->key => $_smarty_tpl->tpl_vars['v']->value) {
+$_smarty_tpl->tpl_vars['v']->_loop = true;
+ $_smarty_tpl->tpl_vars['k']->value = $_smarty_tpl->tpl_vars['v']->key;
+?><?php if ($_smarty_tpl->tpl_vars['k']->value==$_smarty_tpl->tpl_vars['post']->value['postid']) {?><?php  $_smarty_tpl->tpl_vars['comment'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['comment']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['v']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['comment']->key => $_smarty_tpl->tpl_vars['comment']->value) {
+$_smarty_tpl->tpl_vars['comment']->_loop = true;
+?>
 									<div class="comment">
 										<p>
 											<div class="dropdown pull-right">
@@ -155,19 +235,24 @@
 													<li><a href="#">Delete</a></li>
 												</ul>
 											</div>
-										<a href="profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" class="centered-and-cropped thumb-32px"><b>{$comment.name}</b></a>
+										<a href="profile_feed.php?user-id=<?php echo $_smarty_tpl->tpl_vars['comment']->value['userid'];?>
+"><img src="<?php echo $_smarty_tpl->tpl_vars['comment']->value['url'];?>
+" class="centered-and-cropped thumb-32px"><b><?php echo $_smarty_tpl->tpl_vars['comment']->value['name'];?>
+</b></a>
 										</p>
-										<p>{$comment.body}</p>
+										<p><?php echo $_smarty_tpl->tpl_vars['comment']->value['body'];?>
+</p>
 												
 										
-										<a href="#"><span class="glyphicon glyphicon-heart"></span> {$comment.likes}</a>
+										<a href="#"><span class="glyphicon glyphicon-heart"></span> <?php echo $_smarty_tpl->tpl_vars['comment']->value['likes'];?>
+</a>
 									</div>
-								{/foreach}{/if}{/foreach}
+								<?php } ?><?php }?><?php } ?>
 								</div>
 								
 							</div></p>
 								
-							{/foreach}
+							<?php } ?>
 						</div>
 						<div id="about" class="tab-pane fade">
 							<div class="about">
@@ -179,17 +264,23 @@
 								</div>
 								<hr>
 								<div class="about-body">
-								<p><b>Name:</b> {$name}</p>
-								<p><b>Nickname:</b> {$username}</p>
-								{if !empty($age)}
-								<p><b>Age:</b> {$age}</p>
-								{/if}
-								{if !empty($location)}
-								<p><b>Location:</b> {$location.city}, {$location.country}</p>
-								{/if}
-								{if !empty($about)}
-								<p><b>Additional information:</b> {$about}</p>
-								{/if}
+								<p><b>Name:</b> <?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+</p>
+								<p><b>Nickname:</b> <?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+</p>
+								<?php if (!empty($_smarty_tpl->tpl_vars['age']->value)) {?>
+								<p><b>Age:</b> <?php echo $_smarty_tpl->tpl_vars['age']->value;?>
+</p>
+								<?php }?>
+								<?php if (!empty($_smarty_tpl->tpl_vars['location']->value)) {?>
+								<p><b>Location:</b> <?php echo $_smarty_tpl->tpl_vars['location']->value['city'];?>
+, <?php echo $_smarty_tpl->tpl_vars['location']->value['country'];?>
+</p>
+								<?php }?>
+								<?php if (!empty($_smarty_tpl->tpl_vars['about']->value)) {?>
+								<p><b>Additional information:</b> <?php echo $_smarty_tpl->tpl_vars['about']->value;?>
+</p>
+								<?php }?>
 								</div>
 							</div>
 						</div>
@@ -238,7 +329,13 @@
 								<h2>Photos</h2>
 								<hr>
 								<div class="photos-body">
-								{foreach $all_images as $img}<img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"> {/foreach}
+								<?php  $_smarty_tpl->tpl_vars['img'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['img']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['all_images']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['img']->key => $_smarty_tpl->tpl_vars['img']->value) {
+$_smarty_tpl->tpl_vars['img']->_loop = true;
+?><img class="centered-and-cropped thumb-150px" src="<?php echo $_smarty_tpl->tpl_vars['img']->value['url'];?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['img']->value['description'];?>
+"> <?php } ?>
 								</div>
 							</div>
 						</div>
@@ -262,3 +359,4 @@
 </body>
 
 </html>
+<?php }} ?>
