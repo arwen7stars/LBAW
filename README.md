@@ -9,7 +9,7 @@
 ### User
 
 | Identifier | Name | Priority | Description |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | US001 | Search | High | As an user, I want to use the search bar to look for public profiles, groups and events, so that I can find them |
 | US002 | See Profiles | High | As an user, I want to see public information (posts, comments, photos) on a public profile, so that I can see them |
 
@@ -17,7 +17,7 @@
 ### Logged in
 
 | Identifier | Name | Priority | Description |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | ~~US101~~ | Post Text | High | As a logged in user, I want to publish text posts, so that other users can see them |
 | US102 | Comment | High | As a logged in user, I want to comment on posts, so that other users can see them |
 | US103 | Befriend | High | As a logged in user, I want to accept and send friend requests to other users, so that we become friends|
@@ -43,7 +43,7 @@
 ### Visitor
 
 | Identifier | Name | Priority | Description |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | US201 | Sign in | High | As a visitor, I want to use register a new account, so that I can login |
 | ~~US202~~ | Login | High | As a visitor, I want to login so that I can fully enjoy the web app |
 | US203 | Sign in using external API | Low | As a visitor, I want to use register a new account linked to my Google+ account, so that I can login |
@@ -53,7 +53,7 @@
 ### Group Admin
 
 | Identifier | Name| Priority | Description |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | US301 | Invite | Low | As a group admin, I want to invite people to join the group, so that they become members |
 | US302 | Remove | Low | As a group admin, I want to remove people from the group, so that they are no longer members |
 | US303 | Edit| Low | As a group admin, I want to edit the group's profile, posts and comments, so that they stay updated |
@@ -63,7 +63,7 @@
 ### Event Admin
 
 | Identifier | Name| Priority | Description |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | US401 | Invite | Medium | As a event admin, I want to invite people to join the event, so that they participate in it |
 | US402 | Remove | Medium | As a event admin, I want to remove people from the event, so that they no longer participate in it |
 | US403 | Edit| Low | As a event admin, I want to edit the event's profile, posts and comments, so that they stay updated |
@@ -73,7 +73,7 @@
 ### Admin
 
 | Identifier | Name| Priority | Description |
-|:---|:---|:---|:---|
+| :--- | :--- | :--- | :--- |
 | US501 | Edit Posts | Low | As an admin, I want to edit posts, so that I can manage the web app |
 | US502 | Edit Profiles | Low | As an admin, I want to edit profiles, so that I can manage the web app |
 | US503 | Edit Groups | Low | As an admin, I want to edit groups, so that I can manage the web app|
