@@ -116,7 +116,6 @@ function checkFriendship($user1id, $user2id)
 		$query = 'SELECT "city", "country" FROM "User", "Location" WHERE "User"."id" = ? AND "User"."location-id" = "Location"."id"';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($user_id));
-		
 		return $stmt->fetch();
 		
 	}

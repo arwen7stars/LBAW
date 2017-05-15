@@ -8,6 +8,7 @@ include_once($BASE_DIR . 'database/users.php');
 $id = $_GET['user-id'];
 $location = getUserLocation($id);
 $user = getUserInfo($id);
+$id_logged = $_SESSION['id'];
 $username_page = $user['username'];
 
 $character = getUserCharacter($username_page);
@@ -29,7 +30,7 @@ $character_name = getUserCharacterName($_SESSION['username']);
 $smarty->assign('username', $character_name);
 $smarty->assign('id', $id);
 $smarty->assign('username_logged', $username_page);
-$smarty->assign('id_logged', $id);
+$smarty->assign('id_logged', $id_logged);
 $smarty->assign('character', $character);
 $smarty->assign('image', $image);
 $smarty->assign('user_id', $id);
