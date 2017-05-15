@@ -15,6 +15,8 @@ $character = getUserCharacter($username_page);
 $image = getUserProfileImage($character['charid']);
 $series = getAnime($character['charid']);
 
+$friendship = checkFriendship($_SESSION['id'], $id);
+
 if(!empty($user['date-of-birth'])){
 	
 	$birthDate = explode("-", $user['date-of-birth']);
@@ -39,6 +41,7 @@ $smarty->assign('about', $user['about']);
 $smarty->assign('name', $user['name']);
 $smarty->assign('series', $series);
 $smarty->assign('age', $age);
+$smarty->assign('friends', $friendship);
 
 // fetch user timeline imags
 $stmt = getUserImages($id);
