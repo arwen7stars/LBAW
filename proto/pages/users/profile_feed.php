@@ -25,7 +25,8 @@ if(!empty($user['date-of-birth'])){
 		: (date("Y") - $birthDate[0]));
 }
 
-$smarty->assign('username', $_SESSION['username']);
+$character_name = getUserCharacterName($_SESSION['username']);
+$smarty->assign('username', $character_name);
 $smarty->assign('id', $id);
 $smarty->assign('username_logged', $username_page);
 $smarty->assign('id_logged', $id);

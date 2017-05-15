@@ -178,4 +178,14 @@ function checkFriendship($user1id, $user2id)
 		
 		return $result['date-of-birth'];
 	}
+	
+	function getUserCharacterName($username)
+	{
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT "Character"."name" FROM "Character","User" WHERE "User".username = :username AND "User".id = "Character".id');
+		$stmt->bindParam(':username', $username);
+        $stmt->execute(array($username));
+        $name = $stmt->fetch();
+		return $name['name'];
+	}
 ?>
