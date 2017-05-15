@@ -41,8 +41,7 @@
 	}
 
 	if (!empty($_FILES['image']['name'])){
-		$string = $_FILES['image']['name'];
-		$name_file = str_replace(' ', '', $string);
+		$name_file = $_FILES['image']['name'];
 		$destination = '../../images/' . $name_file;
 		$tmp_file = $_FILES['image']['tmp_name'];
 
@@ -50,7 +49,7 @@
 
 		$user_info = getUserInfo($user_id);
 		$username = $user_info['username'];
-		$description = "Photo of $username";
+		$description = "Profile Picture of $username";
 		$usr_id = null;
 		$path = '../../images/' . $name_file;
 

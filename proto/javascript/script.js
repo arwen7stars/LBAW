@@ -10,15 +10,4 @@ $(document).ready(function () {
 		
 		$('.' + clickedID).show();
 	})
-	
-	$('.white_content').on('click',function(){		
-		$('.white_content').hide();
-		$('.black_overlay').hide();
-	})
-	
-	$('.edit a').on('click', function() {
-		$(".white_content").css("display", "block");
-		$(".black_overlay").css("display", "block");
-	})
-	
 });
