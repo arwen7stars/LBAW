@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -25,7 +25,7 @@
                 <div class="user_bar col-md-3 hidden-xs hidden-sm">
                     <div class="user_info">
                         <img class="centered-and-cropped" src="{$image.url}" alt="{$image.description}">
-                        <center><h2>{$character.name}</h2></center>
+                        <h2>{$character.name}</h2>
                         <ul class="list-unstyled">
                             <li>
                                 <span class="glyphicon glyphicon-user"></span>
@@ -37,15 +37,7 @@
                             </li>
                         </ul>
 						{if ! ($username == $username_logged) }
-                        <div class="user_opt">
-                            <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                <a href="./profile.html" class="btn-group" role="group">
-                                    <button type="button" class="btn btn-default">
-                                        <b>Add friend <span class="glyphicon glyphicon-plus"></span></b>
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
+							<b><a href="#" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></a></b>
 						{/if}
                     </div>
 					{if !empty($images)}
@@ -95,48 +87,44 @@
 							{/if}
 
 							{foreach $posts as $post}
-							<p><div class="post">
+							<div class="post">
+							  <div class="white_content"><textarea>{$post.body}</textarea><a href="javascript:void(0)">Close</a></div>
+							  <div class="black_overlay"></div>
 								<div class="post-body">
-									<p>
 										<div class="dropdown pull-right">
 											<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 											<ul class="dropdown-menu">
-												<li><a href="#">Edit</a></li>
-												<li><a href="#">Delete</a></li>
+												<li class="edit"><a href="javascript:void(0)">Edit</a></li>
+												<li class="delete"><a href="#">Delete</a></li>
 											</ul>
 										</div>
 
 										<p class="poster">
 											<a href="#">
-												<img src="{$post.charurl}" class="centered-and-cropped thumb-32px">
+												<img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px">
 												{$post.charname}
 											</a>
 										</p>
-									</p>
 									<div class="post-content">
 										{$post.body}
+										{if !empty($post.url)}
 										<img src="{$post.url}" alt="{$post.description}" class="ph_display">
+										{/if}
 									</div>
 
 								</div>
 								
-								<p><span class="opt-group">
-									<a href="#" class="opt btn-group" role="group">
-									<button type="button" class="btn btn-default post-opt"><a href="#"><span class="glyphicon glyphicon-heart"></span> Likes {$post.likes}</a></button>
-									</a>
-									<a href="#" class="opt btn-group" role="group">
-										<button type="button" class="btn btn-default post-opt"><a href="#"><span class="glyphicon glyphicon-comment"></span> Comments {$post.comments}</a></button>
-									</a>
-									<a href="#" class="opt btn-group" role="group">
-										<button type="button" class="btn btn-default post-opt"><a href="#"><span class="glyphicon glyphicon-share"></span> Shares 99</a></button>
-									</a>
-								</span></p>
+								<div class="opt-group">
+									<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
+									<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
+									<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
+								</div>
 
 								<div class="make-comment-wrap">
 									<form class="form">
 										<div class="form-group">
-											<label for="make-comment" class="sr-only">Write a comment</label>
-											<textarea id="make-comment" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+											<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
+											<textarea id="make-comment-{$post.postid}" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
 										</div>
 									</form>
 									<button type="submit" class="btn btn-default btn-comment">Comment</button>
@@ -146,7 +134,6 @@
 								<div class="comments {$post.postid}">
 								{foreach from=$comments key=k item=v}{if $k == $post.postid}{foreach $v as $comment}
 									<div class="comment">
-										<p>
 											<div class="dropdown pull-right">
 												<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
 												<span class="glyphicon glyphicon-chevron-down"></span></button>
@@ -155,8 +142,7 @@
 													<li><a href="#">Delete</a></li>
 												</ul>
 											</div>
-										<a href="profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" class="centered-and-cropped thumb-32px"><b>{$comment.name}</b></a>
-										</p>
+										<a href="profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" class="centered-and-cropped thumb-32px" alt="Profile picture of {$comment.name}"><b>{$comment.name}</b></a>
 										<p>{$comment.body}</p>
 												
 										
@@ -164,17 +150,14 @@
 									</div>
 								{/foreach}{/if}{/foreach}
 								</div>
-								
-							</div></p>
+							</div>
 								
 							{/foreach}
 						</div>
 						<div id="about" class="tab-pane fade">
 							<div class="about">
 								<div class="about-header">
-									<a href="#" class="btn-group pull-right" role="group">
-										<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
-									</a>
+									<a href="#" class="btn btn-default pull-right"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
 									<h2>Information about user</h2>
 								</div>
 								<hr>
@@ -198,38 +181,38 @@
 								<h2>Friends</h2>
 								<hr>
 								<div class="friends-body">
-									<div class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/6s38iwe0l/Luke_Avatar_1.jpg" class="thumb-150px">
-										<figcaption>Luke Fon Fabre</figcaption></a>
-									</div>
-									<div class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/qdrpf3gfp/Van.jpg" class="thumb-150px">
-										<figcaption>Van Grants</figcaption></a>
-									</div>
-									<div class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/j99w6296d/Natalia_Avatar_1.jpg" class="thumb-150px">
-										<figcaption>Natalia Luzu</figcaption></a>
-									</div>
-									<div class="imgContainer">
-										<a href="#"><img src="https://s11.postimg.org/chyn6djj7/Anise_Avatar_1.jpg" class="thumb-150px">
-										<figcaption>Anise Tatlin</figcaption></a>
-									</div>
-									<div class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/z2a98s6ph/Ion_Avatar.jpg" class="thumb-150px">
-										<figcaption>Ion</figcaption></a>
-									</div>
-									<div class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/mmdjf1ddh/Guy_Avatar_1.jpg" class="thumb-150px">
-										<figcaption>Guy Cecil</figcaption></a>
-									</div>
-									<div class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/vk2uq4v79/Jade_Avatar_1.jpg" class="thumb-150px">
-										<figcaption>Jade Curtiss</figcaption></a>
-									</div>
-									<div class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/dq2rb3mr9/Asch_Avatar_1.png" class="thumb-150px">
-										<figcaption>Asch the Bloody</figcaption></a>
-									</div>
+									<figure class="imgContainer">
+										<a href="#"><img src="https://s8.postimg.org/6s38iwe0l/Luke_Avatar_1.jpg" alt="" class="thumb-150px"></a>
+										<figcaption><a href="#">Luke Fon Fabre</a></figcaption>
+									</figure>
+									<figure class="imgContainer">
+										<a href="#"><img src="https://s8.postimg.org/qdrpf3gfp/Van.jpg" alt="" class="thumb-150px"></a>
+										<figcaption><a href="#">Van Grants</a></figcaption>
+									</figure>
+									<figure class="imgContainer">
+										<a href="#"><img src="https://s8.postimg.org/j99w6296d/Natalia_Avatar_1.jpg" alt="" class="thumb-150px"></a>
+										<figcaption><a href="#">Natalia Luzu</a></figcaption>
+									</figure>
+									<figure class="imgContainer">
+										<a href="#"><img src="https://s11.postimg.org/chyn6djj7/Anise_Avatar_1.jpg" alt="" class="thumb-150px"></a>
+										<figcaption><a href="#">Anise Tatlin</a></figcaption>
+									</figure>
+									<figure class="imgContainer">
+										<a href="#"><img src="https://s8.postimg.org/z2a98s6ph/Ion_Avatar.jpg" alt="" class="thumb-150px"></a>
+										<figcaption><a href="#">Ion</a></figcaption>
+									</figure>
+									<figure class="imgContainer">
+										<a href="#"><img src="https://s8.postimg.org/mmdjf1ddh/Guy_Avatar_1.jpg" alt="" class="thumb-150px"></a>
+										<figcaption><a href="#">Guy Cecil</a></figcaption>
+									</figure>
+									<figure class="imgContainer">
+										<a href="#"><img src="https://s8.postimg.org/vk2uq4v79/Jade_Avatar_1.jpg" alt="" class="thumb-150px"></a>
+										<figcaption><a href="#">Jade Curtiss</a></figcaption>
+									</figure>
+									<figure class="imgContainer">
+										<a href="#"><img src="https://s8.postimg.org/dq2rb3mr9/Asch_Avatar_1.png" alt="" class="thumb-150px"></a>
+										<figcaption><a href="#">Asch the Bloody</a></figcaption>
+									</figure>
 								</div>
 							</div>
 						</div>
