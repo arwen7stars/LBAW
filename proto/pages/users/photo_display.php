@@ -1,21 +1,18 @@
 <?php
 
 include_once('../../config/init.php');
-
 include_once($BASE_DIR . 'database/users.php');
 
 // global variables
 $id = $_GET['user-id'];
+$imageid = $_GET['image-id'];
 $location = getUserLocation($id);
 $user = getUserInfo($id);
-$id_logged = $_SESSION['id'];
 $username_page = $user['username'];
 
 $character = getUserCharacter($username_page);
 $image = getUserProfileImage($character['charid']);
 $series = getAnime($character['charid']);
-
-$friendship = checkFriendship($_SESSION['id'], $id);
 
 if(!empty($user['date-of-birth'])){
 	
@@ -28,12 +25,10 @@ if(!empty($user['date-of-birth'])){
 		: (date("Y") - $birthDate[0]));
 }
 
-$character_name = getUserCharacterName($_SESSION['username']);
-$smarty->assign('character', $character_name);
+$smarty->assign('username', $_SESSION['username']);
 $smarty->assign('id', $id);
-$smarty->assign('username', $username_page);
-$smarty->assign('username_logged', $_SESSION['username']);
-$smarty->assign('id_logged', $id_logged);
+$smarty->assign('username_logged', $username_page);
+$smarty->assign('id_logged', $id);
 $smarty->assign('character', $character);
 $smarty->assign('image', $image);
 $smarty->assign('user_id', $id);
@@ -42,28 +37,13 @@ $smarty->assign('about', $user['about']);
 $smarty->assign('name', $user['name']);
 $smarty->assign('series', $series);
 $smarty->assign('age', $age);
-$smarty->assign('friends', $friendship);
 
-// fetch user timeline imags
+// fetch user timeline images
 $stmt = getUserImages($id);
 $res = $stmt->fetchAll();
 
 $images = array_slice($res, 0, 6);
 $smarty->assign('images', $images);
-$smarty->assign('all_images', $res);
 
-
-// fetch user posts
-$stmt = getUserPosts($_GET['user-id']);
-$posts = $stmt->fetchAll();
-
-foreach($posts as $post){
-	$stmt = getCommentsPost($post['postid']);
-	$comments[$post['postid']] = $stmt->fetchAll();
-}
-
-$smarty->assign('posts', $posts);
-$smarty->assign('comments', $comments);
-
-$smarty->display($BASE_DIR . 'templates/profile_feed.tpl');
+$smarty->display($BASE_DIR . 'templates/photo_display.tpl');
 ?>
