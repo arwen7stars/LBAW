@@ -1,7 +1,7 @@
 <?php
 	function getPost($id) {
         global $dbh;
-        $stmt = $dbh->prepare('SELECT "Post"."id" AS postid, "Post"."body" AS body, "Post"."date" AS date, "Post"."user-id" as user,
+        $stmt = $dbh->prepare('SELECT "Post"."id" AS postid, "Post"."body" AS body, "Post"."public" as public, "Post"."date" AS date, "Post"."user-id" as user,
 		"Post-Images"."id" as imgid, "Post-Images"."url" AS url, "Post-Images"."description" AS description,
 		"Character"."name" AS charname, "Image"."url" AS "charurl",
 		COUNT("Likes"."id") AS "likes"

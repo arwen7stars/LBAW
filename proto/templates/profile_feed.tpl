@@ -91,20 +91,53 @@
 								</form>
 							</div>
 							{/if}
-
 							{foreach $posts as $post}
 							{if ($id_logged == $id) || $post.public}
 							<div class="post">
-							  <div class="white_content"><a href="javascript:void(0)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-							  <textarea>{$post.body}</textarea></div>
-							  <div class="black_overlay"></div>
-							  
+								<div id="edit-{$post.postid}" class="edit_post">
+									<a href="javascript:void(0)" class="pull-right" onclick="document.getElementById('edit-{$post.postid}').style.display='none';document.getElementById('black-{$post.postid}').style.display='none'">
+									<span class="close glyphicon glyphicon-remove"></span></a>
+									
+									<div class="poster">
+										<p><a href="profile_feed.php?user-id={$id}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px">
+											<span>{$post.charname}</span></a>
+											<br><span class="post-date">{$post.date|date_format}</span>
+										</p>
+									</div>
+									
+									<form class="form" action="../../actions/posts/edit_post.php" method="post">
+										<div class="wrapper">
+											<input type="hidden" name="user-id" value="{$id_logged}">
+											<input type="hidden" name="post-id" value="{$post.postid}">
+											<input type="hidden" name="profile" value="true">
+											{if !empty($post.url)}
+											<textarea name="body" class="form-control" rows="5">{$post.body}</textarea>
+											{else}
+											<textarea name="body" class="form-control" rows="5" required>{$post.body}</textarea>
+											{/if}
+											<div class="controls">
+												<select name="public" class="selectpicker" data-width="fit">
+													{if $post.public}
+														<option data-icon="glyphicon-globe" value="t" selected="selected">Public</option>
+														<option data-icon="glyphicon-lock" value="f" >Private</option>
+													{else}
+														<option data-icon="glyphicon-globe" value="t">Public</option>
+														<option data-icon="glyphicon-lock" value="f" selected="selected">Private</option>
+													{/if}
+												</select>
+												<button class="update" type="submit">Update</button>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div id="black-{$post.postid}" class="black_overlay"></div>
+
 								<div class="post-body">
 										{if $post.user == $id_logged}
 										<div class="dropdown pull-right">
 											<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 											<ul class="dropdown-menu">
-												<li class="edit"><a href="javascript:void(0)">Edit</a></li>
+												<li class="edit"><a href="javascript:void(0)" onclick="document.getElementById('edit-{$post.postid}').style.display='block';document.getElementById('black-{$post.postid}').style.display='block'">Edit</a></li>
 												<li class="delete"><a href="#">Delete</a></li>
 											</ul>
 										</div>

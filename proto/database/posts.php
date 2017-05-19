@@ -73,4 +73,13 @@
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($body, $user_id, $post_id));		
 	}
+	
+	function updatePost($post_id, $body, $public) {
+		global $dbh;
+		$query = 'UPDATE "Post"
+		SET ("body", "public") = (?, ?)
+		WHERE "Post"."id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($body, $public, $post_id));
+	}
 ?>

@@ -198,7 +198,7 @@ margin-bottom: 0;
 input[type=submit] {
 	margin: 0.5rem 0rem;
     padding:0.3rem 4rem; 
-    background-color:#ccc; 
+    background: linear-gradient(to bottom, #ffffff,#e5e5e5);
     border-color: #fff;
     cursor:pointer;
     border-radius: 5px;
@@ -210,7 +210,7 @@ input[type=submit] {
 	display: inline;
 }
 
-.type.form-control {
+/*.type.form-control {
 	margin: 0.5rem 0rem; 
 	background-color: #ccc;
     border-color: #fff;
@@ -218,7 +218,7 @@ input[type=submit] {
     border-radius: 5px;
 	font-weight: bold;
 	width: 150px;
-}
+}*/
 
 .ph_display {
     margin-left: auto;
@@ -272,16 +272,20 @@ input[type=submit] {
   opacity: .80;
   filter: alpha(opacity=80);
 }
-.white_content {
-  display: none;
-  position: fixed;
-  width: 30%;
-  margin: 0 auto;
-  padding: 16px;
-  border: 16px solid #999;
-  background-color: white;
-  z-index: 1002;
-  overflow: auto;
+.edit_post {
+	display: none;
+	position: fixed;
+	padding: 16px;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	background-color: white;
+	z-index: 1002;
+	width: 50rem;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px; /* Negative half of height. */
+	margin-left: -250px; /* Negative half of width. */
 }
 
 .photo-display img {
@@ -294,4 +298,40 @@ input[type=submit] {
 
 .comment-poster {
 	padding: 0.5rem;
+}
+
+.edit_post .controls{
+    text-align: right;
+	line-height: 80%;
+}
+.edit_post .update {
+	background: linear-gradient(to bottom, #ffffff,#e5e5e5);
+    border: 1px solid #999;
+    padding: 10px 25px;
+    font-weight: bold;
+    color: rgb(77,77,77);
+    border-width: 1px 0 0 1px;
+	margin-top: -0.1rem;
+}
+
+.edit_post .bootstrap-select .btn {
+	background-color: white;
+	border: 1px solid #999;
+	margin-top: -0.1rem;
+}
+
+.edit_post textarea {
+    background: linear-gradient(to bottom, #e5e5e5,#f2f2f2);
+    border:none;
+    width:100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 1px dotted #999;
+    resize: none;
+}
+
+.edit_post .wrapper {
+	background: #eee;
+    border: 1px solid #999;
+	margin: 0rem 1rem 1rem 1rem;
 }
