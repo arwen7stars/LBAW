@@ -56,6 +56,7 @@
 		</div>
 	</div>
 </div>
+
 {include file='footer.tpl'}
 
 	<!-- Placed at the end of the document so the pages load faster -->

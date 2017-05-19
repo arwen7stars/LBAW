@@ -2,10 +2,11 @@
 
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/users.php');
+include_once($BASE_DIR . 'database/images.php');
 
 // global variables
 $id = $_GET['user-id'];
-$imageid = $_GET['image-id'];
+$postid = $_GET['post-id'];
 $location = getUserLocation($id);
 $user = getUserInfo($id);
 $username_page = $user['username'];
@@ -25,10 +26,10 @@ if(!empty($user['date-of-birth'])){
 		: (date("Y") - $birthDate[0]));
 }
 
-$smarty->assign('username', $_SESSION['username']);
+$smarty->assign('username_logged', $_SESSION['username']);
+$smarty->assign('username_page', $username_page);
 $smarty->assign('id', $id);
-$smarty->assign('username_logged', $username_page);
-$smarty->assign('id_logged', $id);
+$smarty->assign('id_logged', $_SESSION['id']);
 $smarty->assign('character', $character);
 $smarty->assign('image', $image);
 $smarty->assign('user_id', $id);
@@ -41,9 +42,21 @@ $smarty->assign('age', $age);
 // fetch user timeline images
 $stmt = getUserImages($id);
 $res = $stmt->fetchAll();
-
 $images = array_slice($res, 0, 6);
 $smarty->assign('images', $images);
+
+$post = getPost($postid);
+$smarty->assign('post', $post);
+
+$next_img = getNextImage($id, $post['imgid']);
+$smarty->assign('nextimg', $next_img);
+
+$previous_img = getPreviousImage($id, $post['imgid']);
+$smarty->assign('previousimg', $previous_img);
+
+$stmt = getCommentsPost($postid);
+$comments = $stmt->fetchAll();
+$smarty->assign('comments', $comments);
 
 $smarty->display($BASE_DIR . 'templates/photo_display.tpl');
 ?>

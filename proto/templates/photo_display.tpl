@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -8,11 +9,11 @@
 
   	<title>LBAW</title>
 
-  	<!-- Bootstrap -->
-  	<link href="res/lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  	<!-- Default stylesheet -->
-  	<link href="res/common/css/profile.css" rel="stylesheet">
-  	<link href="res/common/css/default.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Default stylesheet -->
+    <link href="../../css/profile.css" rel="stylesheet">
+    <link href="../../css/default.css" rel="stylesheet">
 </head>
 
 <body>
@@ -35,46 +36,77 @@
 						<b> Series is</b> <a href="{$series.url}">{$series.name}</a>
 					</li>
 				</ul>
-				{if !($username == $username_logged)}
+				{if !($username_page == $username_logged)}
 					<b><a href="../../actions/users/friendship.php" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></a></b>
 				{/if}
 			</div>
-			{if !empty($images)}
 			<div class="user_photos">
-				<h3><b>Photos</b></h3>{foreach $images as $img}<img class="centered-and-cropped thumb-64px" src="{$img.url}" alt="{$img.description}"> {/foreach}
-				<br>
-				<a href="#photos" data-toggle="tab">
-					View more...
-				</a>
-			</div>
-			{/if}
+				<h3><b>Photos</b></h3>
+				{if !empty($previousimg)}
+				<figure class="imgContainer">
+					<a href="photo_display.php?user-id={$id}&post-id={$previousimg.id}"><img class="centered-and-cropped thumb-100px" src="{$previousimg.url}" alt="{$previousimg.description}"></a>
+					<figcaption><a href="photo_display.php?user-id={$id}&post-id={$previousimg.id}">Previous</a></figcaption>
+				</figure>
+				{/if}
+				
+				{if !empty($nextimg)}
+				<figure class="imgContainer">
+					<a href="photo_display.php?user-id={$id}&post-id={$nextimg.id}"><img class="centered-and-cropped thumb-100px" src="{$nextimg.url}" alt="{$nextimg.description}"></a>
+					<figcaption><a href="photo_display.php?user-id={$id}&post-id={$nextimg.id}">Next</a>
+				</figure>
+				{/if}
+            </div>
 		</div>
         
         <div class="timeline col-md-7">
 
-<div class="photo-display">
-		<p><center><img src="https://s17.postimg.org/4jxs2uahr/TEAR.jpg" class="ph_display"></center></p>
-		<a href="#" class="btn-group" role="group">
-    		<button type="button" class="btn btn-default"><a href="#"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">1</span></a></button>
-  		</a>
-		<a href="#" class="btn-group" role="group">
-			<button type="button" class="btn btn-default"><a href="#"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge">10</span></a></button>
-  		</a>
+			<div class="photo-display">
+				<div class="white_content">
+					<a href="javascript:void(0)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+					<textarea>{$post.body}</textarea>
+				</div>
+				<div class="black_overlay"></div>
+			
+				{if $post.user == $id_logged}
+				<div class="dropdown pull-right">
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
+					<ul class="dropdown-menu">
+						<li class="edit"><a href="javascript:void(0)">Edit</a></li>
+						<li class="delete"><a href="#">Delete</a></li>
+					</ul>
+				</div>
+				{/if}
+				<div class="poster">
+					<p><a href="profile_feed.php?user-id={$id}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px"></a>
+					<a href="profile_feed.php?user-id={$id}">{$post.charname}</a>
+						<br><span class="post-date">{$post.date|date_format}</span>
+					</p>
+				</div>
 
-  		<hr>
-		
-              <div class="make-comment-wrap">
-                <form class="form">
-                  <div class="form-group">
-                    <label for="make-comment" class="sr-only">Write a comment</label>
-                    <textarea id="make-comment" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
-                  </div>
-                </form>
-                <button type="submit" class="btn btn-default btn-comment">Comment</button>
-              </div>
-          
-          <div class="comment">
-                <p>
+				{$post.body}
+				<img src="{$post.url}" alt="{$post.description}" class="ph_display">
+			
+				<div class="opt-group">
+					<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
+					<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
+					<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
+				</div>
+			
+				<hr class="separator">
+				<div class="make-comment-wrap">
+					<form class="form">
+						<div class="form-group">
+							<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
+							<textarea id="make-comment-{$post.postid}" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+						</div>
+					</form>
+					<button type="submit" class="btn btn-default btn-comment">Comment</button>
+				</div>
+			</div>
+			<div class="comments">
+			{foreach $comments as $comment}
+				<div class="comment">
+					{if $comment.userid == $id_logged}
 					<div class="dropdown pull-right">
 						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
 						<span class="glyphicon glyphicon-chevron-down"></span></button>
@@ -83,17 +115,20 @@
 							<li><a href="#">Delete</a></li>
 						</ul>
 					</div>
-                <a href="#"><img src="https://s3.postimg.org/nde4doxa7/Tear_Avatar_1.jpg" class="thumb-32px"><b>7thfonist</b></a>
-				</p>
-				
-                <p>H-Hello...</p>
-                <a href="#"><span class="glyphicon glyphicon-heart"></span> Like</a> | 2 <span class="glyphicon glyphicon-heart"></span>
+					{/if}
+					<div class="comment-poster">
+						<a href="profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" class="centered-and-cropped thumb-32px" alt="Profile picture of {$comment.name}"><b>{$comment.name}</b></a>
+					</div>
+					
+					<p>{$comment.body}</p>
+					
+					<a href="#"><span class="glyphicon glyphicon-heart"></span> {$comment.likes}</a>
+				</div>
+			{/foreach}
 			</div>
-</div>
-
         </div>
 
-         <div class="col-xs  hidden-xs hidden-sm">
+        <div class="col-xs  hidden-xs hidden-sm">
         </div>
     </div>
 </div>
@@ -103,12 +138,12 @@
     <p class="text-muted" align="center">Anibook.com is a property of Anibook, LLC. ©2017 All Rights Reserved.</p>
   </footer>
 
-  <!-- Placed at the end of the document so the pages load faster -->
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="res/lib/jquery-3.1.1.min.js"></script>
-  <script src="res/common/js/script.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="res/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="../../lib/jquery-3.1.1.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script src="../../javascript/script.js"></script>
 	
 </body>
 </html>

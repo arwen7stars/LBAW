@@ -29,11 +29,12 @@ if(!empty($user['date-of-birth'])){
 }
 
 $character_name = getUserCharacterName($_SESSION['username']);
-$smarty->assign('character', $character_name);
-$smarty->assign('id', $id);
-$smarty->assign('username', $username_page);
+
 $smarty->assign('username_logged', $_SESSION['username']);
+$smarty->assign('username_page', $username_page);
+$smarty->assign('id', $id);
 $smarty->assign('id_logged', $id_logged);
+
 $smarty->assign('character', $character);
 $smarty->assign('image', $image);
 $smarty->assign('user_id', $id);
@@ -42,7 +43,7 @@ $smarty->assign('about', $user['about']);
 $smarty->assign('name', $user['name']);
 $smarty->assign('series', $series);
 $smarty->assign('age', $age);
-$smarty->assign('friends', $friendship);
+$smarty->assign('friendship', $friendship);
 
 // fetch user timeline imags
 $stmt = getUserImages($id);
@@ -54,7 +55,7 @@ $smarty->assign('all_images', $res);
 
 
 // fetch user posts
-$stmt = getUserPosts($_GET['user-id']);
+$stmt = getUserPosts($id);
 $posts = $stmt->fetchAll();
 
 foreach($posts as $post){
@@ -62,8 +63,12 @@ foreach($posts as $post){
 	$comments[$post['postid']] = $stmt->fetchAll();
 }
 
+$stmt = getUserFriends($id);
+$friends = $stmt->fetchAll();
+
 $smarty->assign('posts', $posts);
 $smarty->assign('comments', $comments);
+$smarty->assign('friends', $friends);
 
 $smarty->display($BASE_DIR . 'templates/profile_feed.tpl');
 ?>

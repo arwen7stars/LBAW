@@ -22,15 +22,15 @@
 		$body = $_POST['body'];
 	}
 
-	$date = date('m/d/Y', time());
+	//$date = date('m/d/Y', time());
 
 	$shared = 'f';
 	$original_poster = null;
 
 	$public = 't';
 
-	$query = 'INSERT INTO "Post" ("body", "shared", "date", "public", "user-id", "op-id", "event-id", "group-id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id';
-	$result = pg_query_params($db, $query, array($body, $shared, $date, $public, $user_id, $original_poster, $event_id, $group_id));
+	$query = 'INSERT INTO "Post" ("body", "shared", "public", "user-id", "op-id", "event-id", "group-id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id';
+	$result = pg_query_params($db, $query, array($body, $shared, $public, $user_id, $original_poster, $event_id, $group_id));
 	$row = pg_fetch_array($result);
 	$post_id = $row['id'];
 

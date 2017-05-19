@@ -36,13 +36,13 @@
                                 <b> Series is</b> <a href="{$series.url}">{$series.name}</a>
                             </li>
                         </ul>
-						{if !($username == $username_logged)}
+						{if !($username_page == $username_logged)}{if !($friendship) }
 							<b><a href="../../actions/users/friendship.php" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></a></b>
-						{/if}
+						{/if}{/if}
                     </div>
 					{if !empty($images)}
                     <div class="user_photos">
-                        <h3><b>Photos</b></h3>{foreach $images as $img}<img class="centered-and-cropped thumb-64px" src="{$img.url}" alt="{$img.description}"> {/foreach}
+                        <h3><b>Photos</b></h3>{foreach $images as $img}<a href="photo_display.php?user-id={$id}&post-id={$img.id}"><img class="centered-and-cropped thumb-64px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
                         <br>
                         <a href="#photos" data-toggle="tab">
                             View more...
@@ -62,7 +62,7 @@
 				
 					  <div class="tab-content">
 						<div id="home" class="tab-pane fade in active">
-						  {if $username == $username_logged }
+						  {if $username_page == $username_logged }
 							<!-- MAKE-POST -->
 							<div class="make-post">
 								<form class="form" action="../../actions/posts/post.php" method="post" enctype="multipart/form-data">
@@ -88,9 +88,12 @@
 
 							{foreach $posts as $post}
 							<div class="post">
-							  <div class="white_content"><textarea>{$post.body}</textarea><a href="javascript:void(0)">Close</a></div>
+							  <div class="white_content"><a href="javascript:void(0)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+							  <textarea>{$post.body}</textarea></div>
 							  <div class="black_overlay"></div>
+							  
 								<div class="post-body">
+										{if $post.user == $id_logged}
 										<div class="dropdown pull-right">
 											<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 											<ul class="dropdown-menu">
@@ -98,17 +101,18 @@
 												<li class="delete"><a href="#">Delete</a></li>
 											</ul>
 										</div>
+										{/if}
 
-										<p class="poster">
-											<a href="#">
-												<img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px">
-												{$post.charname}
-											</a>
+									<div class="poster">
+										<p><a href="profile_feed.php?user-id={$id}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px">
+											<span>{$post.charname}</span></a>
+											<br><span class="post-date">{$post.date|date_format}</span>
 										</p>
+									</div>
 									<div class="post-content">
 										{$post.body}
 										{if !empty($post.url)}
-										<img src="{$post.url}" alt="{$post.description}" class="ph_display">
+										<a href="photo_display.php?user-id={$id}&post-id={$post.postid}"><img src="{$post.url}" alt="{$post.description}" class="ph_display"></a>
 										{/if}
 									</div>
 
@@ -131,9 +135,13 @@
 								</div>
 							</div>
 							<div class="post_space">
-								<div class="comments {$post.postid}">
-								{foreach from=$comments key=k item=v}{if $k == $post.postid}{foreach $v as $comment}
+								
+								<div class="comments">
+								{foreach from=$comments key=k item=v}{if $k == $post.postid}{if !empty($v)}
+								<a class="read-more-show hide" href="#">Show more comments...</a><span class="read-more-content">
+								{foreach $v as $comment}
 									<div class="comment">
+											{if $comment.userid == $id_logged}
 											<div class="dropdown pull-right">
 												<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
 												<span class="glyphicon glyphicon-chevron-down"></span></button>
@@ -142,13 +150,17 @@
 													<li><a href="#">Delete</a></li>
 												</ul>
 											</div>
-										<a href="profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" class="centered-and-cropped thumb-32px" alt="Profile picture of {$comment.name}"><b>{$comment.name}</b></a>
-										<p>{$comment.body}</p>
-												
+											{/if}
+										<div class="comment-poster">
+											<a href="profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" class="centered-and-cropped thumb-32px" alt="Profile picture of {$comment.name}"><b>{$comment.name}</b></a>
+											<p>{$comment.body}</p>
+										</div>
 										
 										<a href="#"><span class="glyphicon glyphicon-heart"></span> {$comment.likes}</a>
 									</div>
-								{/foreach}{/if}{/foreach}
+								{/foreach}
+								<a class="read-more-hide hide" href="#">Show less comments...</a></span>
+								{/if}{/if}{/foreach}
 								</div>
 							</div>
 								
@@ -163,7 +175,7 @@
 								<hr>
 								<div class="about-body">
 								<p><b>Name:</b> {$name}</p>
-								<p><b>Nickname:</b> {$character}</p>
+								<p><b>Nickname:</b> {$username_page}</p>
 								{if !empty($age)}
 								<p><b>Age:</b> {$age}</p>
 								{/if}
@@ -180,49 +192,29 @@
 							<div class="friends">
 								<h2>Friends</h2>
 								<hr>
+								{if !empty($friends)}
 								<div class="friends-body">
+									{foreach $friends as $friend}
 									<figure class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/6s38iwe0l/Luke_Avatar_1.jpg" alt="" class="thumb-150px"></a>
-										<figcaption><a href="#">Luke Fon Fabre</a></figcaption>
+										<a href="profile_feed.php?user-id={$friend.id}"><img src="{$friend.url}" alt="{$friend.alt}" class="thumb-150px centered-and-cropped"></a>
+										<figcaption><a href="profile_feed.php?user-id={$friend.id}">{$friend.name}</a></figcaption>
 									</figure>
-									<figure class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/qdrpf3gfp/Van.jpg" alt="" class="thumb-150px"></a>
-										<figcaption><a href="#">Van Grants</a></figcaption>
-									</figure>
-									<figure class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/j99w6296d/Natalia_Avatar_1.jpg" alt="" class="thumb-150px"></a>
-										<figcaption><a href="#">Natalia Luzu</a></figcaption>
-									</figure>
-									<figure class="imgContainer">
-										<a href="#"><img src="https://s11.postimg.org/chyn6djj7/Anise_Avatar_1.jpg" alt="" class="thumb-150px"></a>
-										<figcaption><a href="#">Anise Tatlin</a></figcaption>
-									</figure>
-									<figure class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/z2a98s6ph/Ion_Avatar.jpg" alt="" class="thumb-150px"></a>
-										<figcaption><a href="#">Ion</a></figcaption>
-									</figure>
-									<figure class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/mmdjf1ddh/Guy_Avatar_1.jpg" alt="" class="thumb-150px"></a>
-										<figcaption><a href="#">Guy Cecil</a></figcaption>
-									</figure>
-									<figure class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/vk2uq4v79/Jade_Avatar_1.jpg" alt="" class="thumb-150px"></a>
-										<figcaption><a href="#">Jade Curtiss</a></figcaption>
-									</figure>
-									<figure class="imgContainer">
-										<a href="#"><img src="https://s8.postimg.org/dq2rb3mr9/Asch_Avatar_1.png" alt="" class="thumb-150px"></a>
-										<figcaption><a href="#">Asch the Bloody</a></figcaption>
-									</figure>
+									{/foreach}
 								</div>
+								{else}No friends yet...
+								{/if}
 							</div>
 						</div>
 						<div id="photos" class="tab-pane fade">
 							<div class="photos">
 								<h2>Photos</h2>
 								<hr>
+								{if !empty($all_images)}
 								<div class="photos-body">
-								{foreach $all_images as $img}<img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"> {/foreach}
+								{foreach $all_images as $img}<a href="photo_display.php?user-id={$id}&post-id={$img.id}"><img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
 								</div>
+								{else} No photos yet...
+								{/if}
 							</div>
 						</div>
 					  </div>

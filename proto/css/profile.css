@@ -1,3 +1,11 @@
+.nav-justified > li {
+display: table-cell;
+width: 1%;
+}
+.nav-justified > li > a {
+margin-bottom: 0;
+}
+
 .user_bar {
   	text-align: center;
 }
@@ -65,11 +73,14 @@
 }
 
 .friends-body, .photos-body {
-	text-align: center;
 	font-weight: bold;
 }
 
-.friends .imgContainer {
+.friends-body figcaption {
+	text-align: center;
+}
+
+.imgContainer {
 	display: inline-block;
 }
 
@@ -109,10 +120,15 @@
   text-align: justify;
 }
 
-.poster a {
-  color: inherit;
-  text-decoration: none;
-}
+.poster img {
+  float: left;
+  margin: 5px;
+ }
+ 
+.poster .post-date span {
+  padding-top: 50px;
+  vertical-align:top;
+ }
 
 .like-share {
   list-style: none;
@@ -157,13 +173,15 @@
   margin: 0.1rem 0rem;
 }
 
+.thumb-100px {
+  width: 100px;
+  height: 100px;
+  margin: 0.1rem 0rem;
+}
+
 .thumb-32px {
 	width: 32px;
 	height: 32px;
-}
-
-.user_photos {
-	text-align: center;
 }
 
 .comment {
@@ -205,14 +223,13 @@ input[type=submit] {
 .ph_display {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2rem;
     height: auto; 
     width: auto; 
     max-width: 90%; 
     display: block;
 }
 
-.comment .dropdown-toggle, .post .dropdown-toggle, .open>.dropdown-toggle.btn-primary:focus, .btn-primary.active:hover {
+.comment .dropdown-toggle, .photo-display .dropdown-toggle, .post .dropdown-toggle, .open>.dropdown-toggle.btn-primary:focus, .btn-primary.active:hover {
 	color: #000;
 	background-color: transparent;
 	border: 0px;
@@ -229,12 +246,16 @@ input[type=submit] {
 	border-color: #ccc;
 }
 
+.hide {
+  display: none;
+}
+
 .post_space {
 	margin-bottom: 5rem;
 }
 
 .comments {
-	max-height: 20rem;
+	max-height: 30rem;
     overflow-y: auto;
 }
 
@@ -261,4 +282,16 @@ input[type=submit] {
   background-color: white;
   z-index: 1002;
   overflow: auto;
+}
+
+.photo-display img {
+	text-align: center;
+}
+
+.separator {
+	margin: 1rem 0rem 2rem 0rem;
+}
+
+.comment-poster {
+	padding: 0.5rem;
 }

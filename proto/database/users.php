@@ -55,13 +55,13 @@ function checkFriendship($user1id, $user2id)
 	function getUserPosts($user_id) {
 		global $dbh;
 
-		$query = 'SELECT "Post"."id" AS postid, "Post"."body" AS body, "Post"."date" AS date,
-		"Post-Images"."url" AS url, "Post-Images"."description" AS description,
+		$query = 'SELECT "Post"."id" AS postid, "Post"."body" AS body, "Post"."date" AS date, "Post"."user-id" as user,
+		"Post-Images"."id" as imgid, "Post-Images"."url" AS url, "Post-Images"."description" AS description,
 		"Character"."name" AS charname, "Image"."url" AS "charurl",
 		COUNT("Likes"."id") AS "likes"
 		FROM "User", "Character-Image", "Character", "Image", "Post"		
 		LEFT JOIN (
-		  SELECT "Image"."url", "Image"."description", "Image"."post-id"
+		  SELECT "Image"."id", "Image"."url", "Image"."description", "Image"."post-id"
 		  FROM "Image"
 		  WHERE "Image"."post-id" IS NOT NULL
 		) AS "Post-Images"
@@ -72,7 +72,7 @@ function checkFriendship($user1id, $user2id)
 			AND "Character"."id" = "User"."character-id"
 			AND "Character-Image"."character-id" = "Character"."id"
 			AND "Character-Image"."image-id" = "Image"."id"
-		GROUP BY "Post"."id", "Post-Images"."url", "Post-Images"."description", "Character"."name", "Image"."url"
+		GROUP BY "Post"."id", "Post-Images"."id", "Post-Images"."url", "Post-Images"."description", "Character"."name", "Image"."url"
 		ORDER BY date DESC, "Post"."id" DESC;';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($user_id));
@@ -99,17 +99,6 @@ function checkFriendship($user1id, $user2id)
 		return $stmt;
 	}
 	
-	function getImagePost($post_id) {
-		global $dbh;
-		
-		$query = 'SELECT * FROM "Image" WHERE "post-id" = ?';
-		$stmt = $dbh->prepare($query);
-		$stmt->execute(array($post_id));
-		
-		return $stmt->fetch();
-		
-	}
-	
 	function getUserLocation($user_id) {
 		global $dbh;
 		
@@ -123,7 +112,7 @@ function checkFriendship($user1id, $user2id)
 	function getUserImages($user_id) {
 		global $dbh;
 		
-		$query = 'SELECT * FROM "Post", "Image" WHERE "Post"."user-id" = ? AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC';
+		$query = 'SELECT "Post"."id" AS id, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id" FROM "Post", "Image" WHERE "Post"."user-id" = ? AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($user_id));
 		
@@ -186,5 +175,33 @@ function checkFriendship($user1id, $user2id)
         $stmt->execute(array($username));
         $name = $stmt->fetch();
 		return $name['name'];
+	}
+	
+	function getUserFriends($id)
+	{
+		global $dbh;
+		$query = 'SELECT "Character"."name" AS name, "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id
+		FROM "Character-Image", "Character", "Image", "User", ( 
+		  SELECT "user1-id" AS "user-id" FROM "Friendship"
+		  WHERE "user2-id" = :id
+			AND "accepted" = TRUE
+		 
+		  UNION
+		 
+		  SELECT "user2-id" FROM "Friendship"
+		  WHERE "user1-id" = :id
+			AND "accepted" = TRUE
+		 
+		  ORDER BY "user-id"
+		) AS "Friends"
+		WHERE "Friends"."user-id" = "User"."id" AND "Character"."id" = "User"."character-id"
+					AND "Character-Image"."character-id" = "Character"."id"
+					AND "Character-Image"."image-id" = "Image"."id"
+		ORDER BY "User"."id";';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':id', $id);
+		$stmt->execute(array($id));
+		
+		return $stmt;
 	}
 ?>
