@@ -9,6 +9,8 @@
     <title>Profile</title>
     <!-- Bootstrap -->
     <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
     <!-- Default stylesheet -->
     <link href="../../css/profile.css" rel="stylesheet">
     <link href="../../css/default.css" rel="stylesheet">
@@ -72,11 +74,15 @@
 											<input type="hidden" name="id" value="{$id}">
 											<textarea id="make-post" name="body" class="form-control txtarea-post" rows="3" placeholder="Write something to post..."></textarea>
 											<span class="button-container">
+												<select name="public" class="selectpicker" data-width="fit">
+													<option data-icon="glyphicon-globe" value="t">Public</option>
+													<option data-icon="glyphicon-lock" value="f">Private</option>
+												</select>
+												
 												<label class="btn btn-primary" for="my-file-selector">
 													<input id="my-file-selector" type="file" name="image" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
 													Upload photo
 												</label>
-												
 												<span class='label label-info' id="upload-file-info"></span>
 												<input type="submit" value="Post"/>
 											</span>
@@ -87,6 +93,7 @@
 							{/if}
 
 							{foreach $posts as $post}
+							{if ($id_logged == $id) || $post.public}
 							<div class="post">
 							  <div class="white_content"><a href="javascript:void(0)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
 							  <textarea>{$post.body}</textarea></div>
@@ -125,13 +132,16 @@
 								</div>
 
 								<div class="make-comment-wrap">
-									<form class="form">
+									<form class="form" action="../../actions/posts/comment.php" method="post">
 										<div class="form-group">
+											<input type="hidden" name="post-id" value="{$post.postid}">
+											<input type="hidden" name="user-id" value="{$id_logged}">
+											<input type="hidden" name="profile" value="true">
 											<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
-											<textarea id="make-comment-{$post.postid}" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+											<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
 										</div>
+										<button type="submit" class="btn btn-default btn-comment">Comment</button>
 									</form>
-									<button type="submit" class="btn btn-default btn-comment">Comment</button>
 								</div>
 							</div>
 							<div class="post_space">
@@ -163,7 +173,7 @@
 								{/if}{/if}{/foreach}
 								</div>
 							</div>
-								
+							{/if}
 							{/foreach}
 						</div>
 						<div id="about" class="tab-pane fade">
@@ -232,6 +242,8 @@
         <script src="../../lib/jquery-3.1.1.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 		<script src="../../javascript/script.js"></script>
         
 </body>

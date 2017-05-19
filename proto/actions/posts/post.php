@@ -1,6 +1,7 @@
 <?php
 	include_once('../../config/init.php');
 	include_once('../../database/users.php');
+	include_once('../../database/posts.php');
 	session_start();
 
 	if ($_POST['event-id']) {
@@ -21,27 +22,14 @@
 	} else {
 		$body = $_POST['body'];
 	}
-
-	//$date = date('m/d/Y', time());
-
+	
 	$shared = 'f';
 	$original_poster = null;
-
-	$public = 't';
-
-	$query = 'INSERT INTO "Post" ("body", "shared", "public", "user-id", "op-id", "event-id", "group-id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id';
-	$result = pg_query_params($db, $query, array($body, $shared, $public, $user_id, $original_poster, $event_id, $group_id));
-	$row = pg_fetch_array($result);
-	$post_id = $row['id'];
-
-	if (!$result) {
-		$errormessage = pg_last_error();
-		echo "Error with query: " . $errormessage;
-		exit();
-	}
+	$public = $_POST['public'];
 
 	if (!empty($_FILES['image']['name'])){
-		$name_file = $_FILES['image']['name'];
+		$string = $_FILES['image']['name'];
+		$name_file = str_replace(' ', '', $string);
 		$destination = '../../images/' . $name_file;
 		$tmp_file = $_FILES['image']['tmp_name'];
 
@@ -49,17 +37,15 @@
 
 		$user_info = getUserInfo($user_id);
 		$username = $user_info['username'];
-		$description = "Profile Picture of $username";
+		$description = "Photo of $username";
 		$usr_id = null;
 		$path = '../../images/' . $name_file;
-
-		$query = 'INSERT INTO "Image" ("url", "description", "date", "post-id", "user-id") VALUES ($1, $2, $3, $4, $5)';
-		$result = pg_query_params($db, $query, array($path, $description, $date, $post_id, $usr_id));
-
-		if (!$result) {
-			$errormessage = pg_last_error();
-			echo "Error with query: " . $errormessage;
-			exit();
+		
+		$post_id = addPost($body, $shared, $public, $user_id, $original_poster, $event_id, $group_id);
+		addPostImage($path, $description, $date, $post_id, $usr_id);
+	} else {
+		if(!is_null($body)) {
+			addPost($body, $shared, $public, $user_id, $original_poster, $event_id, $group_id);
 		}
 	}
 

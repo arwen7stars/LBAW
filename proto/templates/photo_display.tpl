@@ -82,9 +82,8 @@
 						<br><span class="post-date">{$post.date|date_format}</span>
 					</p>
 				</div>
-
-				{$post.body}
-				<img src="{$post.url}" alt="{$post.description}" class="ph_display">
+				<div class="post-content">{$post.body}
+				<img src="{$post.url}" alt="{$post.description}" class="ph_display"></div>
 			
 				<div class="opt-group">
 					<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
@@ -94,16 +93,18 @@
 			
 				<hr class="separator">
 				<div class="make-comment-wrap">
-					<form class="form">
+					<form class="form" action="../../actions/posts/comment.php" method="post">
 						<div class="form-group">
+							<input type="hidden" name="post-id" value="{$post.postid}">
+							<input type="hidden" name="user-id" value="{$id_logged}">
+							<input type="hidden" name="profile" value="false">
 							<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
-							<textarea id="make-comment-{$post.postid}" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+							<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
 						</div>
+						<button type="submit" class="btn btn-default btn-comment">Comment</button>
 					</form>
-					<button type="submit" class="btn btn-default btn-comment">Comment</button>
 				</div>
 			</div>
-			<div class="comments">
 			{foreach $comments as $comment}
 				<div class="comment">
 					{if $comment.userid == $id_logged}
@@ -125,7 +126,6 @@
 					<a href="#"><span class="glyphicon glyphicon-heart"></span> {$comment.likes}</a>
 				</div>
 			{/foreach}
-			</div>
         </div>
 
         <div class="col-xs  hidden-xs hidden-sm">
