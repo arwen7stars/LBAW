@@ -47,15 +47,15 @@
 				<h3><b>Photos</b></h3>
 				{if !empty($previousimg)}
 				<figure class="imgContainer">
-					<a href="photo_display.php?user-id={$id}&post-id={$previousimg.id}"><img class="centered-and-cropped thumb-100px" src="{$previousimg.url}" alt="{$previousimg.description}"></a>
-					<figcaption><a href="photo_display.php?user-id={$id}&post-id={$previousimg.id}">Previous</a></figcaption>
+					<a href="post_display.php?user-id={$id}&post-id={$previousimg.id}"><img class="centered-and-cropped thumb-100px" src="{$previousimg.url}" alt="{$previousimg.description}"></a>
+					<figcaption><a href="post_display.php?user-id={$id}&post-id={$previousimg.id}">Previous</a></figcaption>
 				</figure>
 				{/if}
 				
 				{if !empty($nextimg)}
 				<figure class="imgContainer">
-					<a href="photo_display.php?user-id={$id}&post-id={$nextimg.id}"><img class="centered-and-cropped thumb-100px" src="{$nextimg.url}" alt="{$nextimg.description}"></a>
-					<figcaption><a href="photo_display.php?user-id={$id}&post-id={$nextimg.id}">Next</a>
+					<a href="post_display.php?user-id={$id}&post-id={$nextimg.id}"><img class="centered-and-cropped thumb-100px" src="{$nextimg.url}" alt="{$nextimg.description}"></a>
+					<figcaption><a href="post_display.php?user-id={$id}&post-id={$nextimg.id}">Next</a>
 				</figure>
 				{/if}
             </div>
@@ -65,7 +65,7 @@
         <div class="timeline col-md-7">
 
 			<div class="photo-display">
-				<div id="edit-{$post.postid}" class="edit_post">
+				<div id="edit-{$post.postid}" class="edit_box">
 					<a href="javascript:void(0)" class="pull-right" onclick="document.getElementById('edit-{$post.postid}').style.display='none';document.getElementById('black-{$post.postid}').style.display='none'">
 					<span class="close glyphicon glyphicon-remove"></span></a>
 					
@@ -96,7 +96,7 @@
 										<option data-icon="glyphicon-lock" value="f" selected="selected">Private</option>
 									{/if}
 								</select>
-								<button class="update" type="submit">Update</button>
+								<button class="update" type="submit">Update post</button>
 							</div>
 						</div>
 					</form>
@@ -119,7 +119,9 @@
 					</p>
 				</div>
 				<div class="post-content">{$post.body}
+				{if !empty($post.url)}
 				<img src="{$post.url}" alt="{$post.description}" class="ph_display"></div>
+				{/if}
 			
 				<div class="opt-group">
 					<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
@@ -133,7 +135,6 @@
 						<div class="form-group">
 							<input type="hidden" name="post-id" value="{$post.postid}">
 							<input type="hidden" name="user-id" value="{$id_logged}">
-							<input type="hidden" name="profile" value="false">
 							<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
 							<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
 						</div>
@@ -143,12 +144,36 @@
 			</div>
 			{foreach $comments as $comment}
 				<div class="comment">
+					<div id="edit-comment-{$comment.comid}" class="edit_box">
+						<a href="javascript:void(0)" class="pull-right" onclick="document.getElementById('edit-comment-{$comment.comid}').style.display='none';document.getElementById('black-comment-{$comment.comid}').style.display='none'">
+						<span class="close glyphicon glyphicon-remove"></span></a>
+						
+						<div class="poster">
+							<p><a href="profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" alt="Profile picture of {$comment.name}" class="centered-and-cropped thumb-32px">
+								<span>{$comment.name}</span></a>
+							</p>
+						</div>
+						<br>
+						<form class="form" action="../../actions/posts/change_comment.php" method="post">
+							<div class="wrapper">
+								<input type="hidden" name="comment-id" value="{$comment.comid}">
+								<input type="hidden" name="post-id" value="{$postid}">
+								<textarea name="body" class="form-control" rows="3" required>{$comment.body}</textarea>
+								<div class="controls">
+									<button class="update" type="submit">Update comment</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="black-comment-{$comment.comid}" class="black_overlay"></div>
+				
+				
 					{if $comment.userid == $id_logged}
 					<div class="dropdown pull-right">
 						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
 						<span class="glyphicon glyphicon-chevron-down"></span></button>
 						<ul class="dropdown-menu">
-							<li><a href="#">Edit</a></li>
+							<li><a href="javascript:void(0)" onclick="document.getElementById('edit-comment-{$comment.comid}').style.display='block';document.getElementById('black-comment-{$comment.comid}').style.display='block'">Edit</a></li>
 							<li><a href="#">Delete</a></li>
 						</ul>
 					</div>

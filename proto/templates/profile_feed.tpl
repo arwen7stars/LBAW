@@ -44,7 +44,7 @@
                     </div>
 					{if !empty($images)}
                     <div class="user_photos">
-                        <h3><b>Photos</b></h3>{foreach $images as $img}<a href="photo_display.php?user-id={$id}&post-id={$img.id}"><img class="centered-and-cropped thumb-64px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
+                        <h3><b>Photos</b></h3>{foreach $images as $img}<a href="post_display.php?user-id={$id}&post-id={$img.id}"><img class="centered-and-cropped thumb-64px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
                         <br>
                         <a href="#photos" data-toggle="tab">
                             View more...
@@ -91,10 +91,9 @@
 								</form>
 							</div>
 							{/if}
-							{foreach $posts as $post}
-							{if ($id_logged == $id) || $post.public}
+							{foreach $posts as $post}{if ($id_logged == $id) || $post.public}
 							<div class="post">
-								<div id="edit-{$post.postid}" class="edit_post">
+								<div id="edit-{$post.postid}" class="edit_box">
 									<a href="javascript:void(0)" class="pull-right" onclick="document.getElementById('edit-{$post.postid}').style.display='none';document.getElementById('black-{$post.postid}').style.display='none'">
 									<span class="close glyphicon glyphicon-remove"></span></a>
 									
@@ -125,7 +124,7 @@
 														<option data-icon="glyphicon-lock" value="f" selected="selected">Private</option>
 													{/if}
 												</select>
-												<button class="update" type="submit">Update</button>
+												<button class="update" type="submit">Update post</button>
 											</div>
 										</div>
 									</form>
@@ -152,7 +151,7 @@
 									<div class="post-content">
 										{$post.body}
 										{if !empty($post.url)}
-										<a href="photo_display.php?user-id={$id}&post-id={$post.postid}"><img src="{$post.url}" alt="{$post.description}" class="ph_display"></a>
+										<a href="post_display.php?user-id={$id}&post-id={$post.postid}"><img src="{$post.url}" alt="{$post.description}" class="ph_display"></a>
 										{/if}
 									</div>
 
@@ -178,33 +177,7 @@
 								</div>
 							</div>
 							<div class="post_space">
-								
-								<div class="comments">
-								{foreach from=$comments key=k item=v}{if $k == $post.postid}{if !empty($v)}
-								<a class="read-more-show hide" href="#">Show more comments...</a><span class="read-more-content">
-								{foreach $v as $comment}
-									<div class="comment">
-											{if $comment.userid == $id_logged}
-											<div class="dropdown pull-right">
-												<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-												<span class="glyphicon glyphicon-chevron-down"></span></button>
-												<ul class="dropdown-menu">
-													<li><a href="#">Edit</a></li>
-													<li><a href="#">Delete</a></li>
-												</ul>
-											</div>
-											{/if}
-										<div class="comment-poster">
-											<a href="profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" class="centered-and-cropped thumb-32px" alt="Profile picture of {$comment.name}"><b>{$comment.name}</b></a>
-											<p>{$comment.body}</p>
-										</div>
-										
-										<a href="#"><span class="glyphicon glyphicon-heart"></span> {$comment.likes}</a>
-									</div>
-								{/foreach}
-								<a class="read-more-hide hide" href="#">Show less comments...</a></span>
-								{/if}{/if}{/foreach}
-								</div>
+							<a href="post_display.php?user-id={$id}&post-id={$post.postid}">Show more comments...</a>
 							</div>
 							{/if}
 							{/foreach}
@@ -254,7 +227,7 @@
 								<hr>
 								{if !empty($all_images)}
 								<div class="photos-body">
-								{foreach $all_images as $img}<a href="photo_display.php?user-id={$id}&post-id={$img.id}"><img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
+								{foreach $all_images as $img}<a href="post_display.php?user-id={$id}&post-id={$img.id}"><img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
 								</div>
 								{else} No photos yet...
 								{/if}

@@ -30,7 +30,7 @@
 	function getCommentsPost($post_id) {
 		global $dbh;
 		
-		$query = 'SELECT "User"."id" AS userid, "Comment"."id", "Comment"."body", "Character"."name", "Image"."url", COUNT("Likes"."id") AS "likes"
+		$query = 'SELECT "User"."id" AS userid, "Comment"."id" AS comid, "Comment"."body", "Character"."name", "Image"."url", COUNT("Likes"."id") AS "likes"
 		FROM "User", "Character", "Image", "Character-Image", "Comment" 
 		LEFT JOIN "Likes" ON "Comment"."id" = "Likes"."comment-id" AND "Likes"."post-id" IS NULL
 		WHERE "Comment"."post-id" = ?
@@ -91,5 +91,14 @@
 		WHERE "Post"."id" = ?';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($body, $public, $post_id));
+	}
+	
+	function updateComment($comment_id, $body) {
+		global $dbh;
+		$query = 'UPDATE "Comment"
+		SET ("body") = (?)
+		WHERE "Comment"."id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($body, $comment_id));
 	}
 ?>

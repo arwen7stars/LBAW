@@ -39,12 +39,8 @@ $smarty->assign('about', $user['about']);
 $smarty->assign('name', $user['name']);
 $smarty->assign('series', $series);
 $smarty->assign('age', $age);
+$smarty->assign('postid', $postid);
 
-// fetch user timeline images
-$stmt = getUserImages($id);
-$res = $stmt->fetchAll();
-$images = array_slice($res, 0, 6);
-$smarty->assign('images', $images);
 
 $post = getPost($postid);
 $smarty->assign('post', $post);
@@ -59,5 +55,5 @@ $stmt = getCommentsPost($postid);
 $comments = $stmt->fetchAll();
 $smarty->assign('comments', $comments);
 
-$smarty->display($BASE_DIR . 'templates/photo_display.tpl');
+$smarty->display($BASE_DIR . 'templates/post_display.tpl');
 ?>

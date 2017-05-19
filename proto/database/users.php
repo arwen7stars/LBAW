@@ -1,6 +1,6 @@
 <?php
 
-function userExists($username, $password) {
+	function userExists($username, $password) {
         global $dbh;
         $stmt = $dbh->prepare('SELECT * FROM "User" WHERE username = ?');
         $stmt->execute(array($username));
@@ -8,18 +8,7 @@ function userExists($username, $password) {
 		return ($user !== false && /*$password==$user['password']*/password_verify($password, $user['password']));
     }
 	
-/*function checkFriendship($user1id, $user2id)
-	{
-		global $dbh;
-		$stmt = $dbh->prepare('SELECT "user1-id","user2-id" FROM "Friendship" WHERE "user1-id" = ? AND "user2-id" = ?)';
-        //$stmt->bindParam(':user1id', $user1id);
-		//$stmt->bindParam(':user2id', $user2id);		
-		$stmt->execute(array($user1id,$user2id));
-        $exists = $stmt->fetch();
-		return($exists !== false);
-	}*/
-	
-function checkFriendship($user1id, $user2id)
+	function checkFriendship($user1id, $user2id)
 	{
 		global $dbh;
 		$stmt = $dbh->prepare('SELECT "user1-id","user2-id" FROM "Friendship" WHERE ("user1-id" = :user1id AND "user2-id" = :user2id) OR ("user1-id" = :user2id AND "user2-id" = :user1id)');

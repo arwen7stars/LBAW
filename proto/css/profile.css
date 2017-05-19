@@ -122,7 +122,7 @@ margin-bottom: 0;
 
 .poster img {
   float: left;
-  margin: 5px;
+  margin: 0.5rem;
  }
  
 .poster .post-date span {
@@ -272,7 +272,8 @@ input[type=submit] {
   opacity: .80;
   filter: alpha(opacity=80);
 }
-.edit_post {
+
+.edit_box {
 	display: none;
 	position: fixed;
 	padding: 16px;
@@ -300,11 +301,11 @@ input[type=submit] {
 	padding: 0.5rem;
 }
 
-.edit_post .controls{
+.edit_box .controls{
     text-align: right;
 	line-height: 80%;
 }
-.edit_post .update {
+.edit_box .update {
 	background: linear-gradient(to bottom, #ffffff,#e5e5e5);
     border: 1px solid #999;
     padding: 10px 25px;
@@ -314,13 +315,12 @@ input[type=submit] {
 	margin-top: -0.1rem;
 }
 
-.edit_post .bootstrap-select .btn {
+.edit_box .bootstrap-select .btn {
 	background-color: white;
-	border: 1px solid #999;
 	margin-top: -0.1rem;
 }
 
-.edit_post textarea {
+.edit_box textarea {
     background: linear-gradient(to bottom, #e5e5e5,#f2f2f2);
     border:none;
     width:100%;
@@ -330,8 +330,8 @@ input[type=submit] {
     resize: none;
 }
 
-.edit_post .wrapper {
+.edit_box .wrapper {
 	background: #eee;
     border: 1px solid #999;
-	margin: 0rem 1rem 1rem 1rem;
+	margin: 0rem 0.5rem 0.5rem 0.5rem;
 }

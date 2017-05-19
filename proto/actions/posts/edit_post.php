@@ -17,7 +17,7 @@
 	if($_POST['profile'] == "true") {
 		$referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
 	} else {
-		$referer = '../../pages/users/photo_display.php?user-id=' . $user_id . '&post-id=' . $post_id;
+		$referer = '../../pages/users/post_display.php?user-id=' . $user_id . '&post-id=' . $post_id;
 	}
 	header('Location: ' . $referer);
 ?>
