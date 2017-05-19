@@ -47,6 +47,16 @@
 		return $stmt;
 	}
 	
+	function getSinglePost($post_id) {
+		global $dbh;
+		
+		$query = 'SELECT * FROM "Post" WHERE "Post"."id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($post_id));
+		
+		return $stmt->fetch();
+	}
+	
 	function addPost($body, $shared, $public, $user_id, $original_poster, $event_id, $group_id) {
 		global $dbh;
 		

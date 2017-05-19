@@ -6,6 +6,7 @@
 	$user_id = $_POST['user-id'];
 	$post_id = $_POST['post-id'];
 	
+	
 	if (!strlen(trim($_POST['body']))){
 		$body = null;
 	} else {
@@ -15,9 +16,9 @@
 	}
 	
 	if($_POST['profile'] == "true") {
-		$referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
+		$referer = '../../pages/users/profile_feed.php?user-id=' . $post['user-id'];
 	} else {
-		$referer = '../../pages/users/photo_display.php?user-id=' . $user_id . '&post-id=' . $post_id;
+		$referer = '../../pages/users/photo_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id;
 	}
 	header('Location: ' . $referer);
 ?>

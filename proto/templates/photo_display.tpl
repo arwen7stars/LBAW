@@ -42,6 +42,7 @@
 					<b><a href="../../actions/users/friendship.php" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></a></b>
 				{/if}
 			</div>
+			{if !empty($previousimg) || !empty($nextimg)}
 			<div class="user_photos">
 				<h3><b>Photos</b></h3>
 				{if !empty($previousimg)}
@@ -58,6 +59,7 @@
 				</figure>
 				{/if}
             </div>
+			{/if}
 		</div>
         
         <div class="timeline col-md-7">
