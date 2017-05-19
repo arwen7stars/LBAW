@@ -6,6 +6,7 @@
 	$user_id = $_POST['user-id'];
 	$post_id = $_POST['post-id'];
 	
+	$post = getSinglePost($post_id);
 	
 	if (!strlen(trim($_POST['body']))){
 		$body = null;
