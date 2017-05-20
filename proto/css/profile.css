@@ -4,6 +4,41 @@
 
 .user_bar {
   	text-align: center;
+	width: 20%;
+}
+
+@media screen and (min-width: 992px) {
+	.timeline {
+		width: 80%;
+	}
+}
+
+@media (max-width: 768px) {
+	.btn-wrap input[type="submit"] {
+		padding:0.3rem 1rem !important;
+		width: 90px !important;
+	}
+	
+	.btn-wrap label {
+		width: 90px !important;
+		padding: 0.5rem;
+	}
+	
+	.thumb-150px {
+		width: 125px !important;
+		height: 125px !important;
+	}
+}
+
+@media (max-width: 475px) {
+	.friends-body figcaption {
+		display: none;
+	}
+	
+	.thumb-150px {
+		width: 64px !important;
+		height: 64px !important;
+	}
 }
 
 .user_info .list-unstyled {
@@ -66,8 +101,7 @@
 }
 
 .timeline {
-	padding: 0.5rem;
-	margin: 1.5rem;
+	padding: 1.5rem;
 }
 
 /*
@@ -105,7 +139,6 @@
 .opt-group .btn {
 	font-size: 1.5rem;
 	border-color: #fff;
-	width: 30%;
 	text-align: center;
 	color: #8a2f2f;
     font-weight: bold;
@@ -316,6 +349,15 @@
 
 .imgContainer {
 	display: inline-block;
+	position: relative;
+}
+
+.imgContainer figcaption {
+	width: 90%;
+}
+
+.friends-body figure {
+    vertical-align: top;
 }
 
 .centered-and-cropped {

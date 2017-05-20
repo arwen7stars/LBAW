@@ -49,8 +49,12 @@
 			addPost($body, $shared, $public, $user_id, $original_poster, $event_id, $group_id);
 		}
 	}
-
-    $referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
+	
+	if($_POST['profile'] == "true") {
+		$referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
+	} else {
+		$referer = '../../pages/users/feed.php';
+	}
 
 	header('Location: ' . $referer);
 ?>

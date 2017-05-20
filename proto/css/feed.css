@@ -1,3 +1,16 @@
+@media (max-width: 768px) {
+	.btn-wrap input[type="submit"] {
+		padding:0.3rem 1rem !important;
+		width: 90px !important;
+	}
+	
+	.btn-wrap label {
+		width: 90px !important;
+		padding: 0.5rem;
+	}
+	
+}
+
 html {
   height: 100%;
 }
@@ -55,7 +68,16 @@ h2 > a {
 }
 
 .content-left {
-  flex: 0 0 200px;
+  flex: 0 0 25%;
+  padding-left: 10rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.content-right {
+  flex: 0 0 25%;
+  padding-right: 10rem;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -118,65 +140,146 @@ h2 > a {
 .content-middle {
   flex: auto;
   overflow-y: auto;
-}
-
-.make-post {
-  margin: 10px 15px;
-  padding: 5px;
-}
-
-.make-post-form {
-  position: relative;
-  margin: 0 auto;
+  padding: 1.5rem;
 }
 
 .txtarea-post {
   margin: 0;
 }
 
-.form-group {
-  margin: 0;
-}
-
-.btn-post {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 1px 25px;
+.make-post {
+  margin: 0rem 1.5rem;
+  padding: 5px;
 }
 
 .post {
-	margin: 25px 20px;
+	margin: 0rem 2rem 0rem 2rem;
 	padding: 1rem;
 	background-color: white;
 	overflow:auto;
 	border-color: #ccc;
 	border-style: solid;
 	border-width: 1px;
-	text-align: justify;
+}
+
+.post .dropdown-toggle, .open>.dropdown-toggle.btn-primary:focus, .btn-primary.active:hover {
+color: #000;
+	background-color: transparent;
+	border: 0px;
+	border-radius: 0px;
+}
+
+.black_overlay {
+  display: none;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity=80);
+}
+
+.edit_box {
+	display: none;
+	position: fixed;
+	padding: 16px;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	background-color: white;
+	z-index: 1002;
+	width: 50rem;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px; /* Negative half of height. */
+	margin-left: -250px; /* Negative half of width. */
+}
+
+.edit_box .controls{
+    text-align: right;
+	line-height: 80%;
+}
+.edit_box .update {
+	background: linear-gradient(to bottom, #ffffff,#e5e5e5);
+    border: 1px solid #999;
+    padding: 10px 25px;
+    font-weight: bold;
+    color: rgb(77,77,77);
+    border-width: 1px 0 0 1px;
+	margin-top: -0.1rem;
+}
+
+.edit_box .bootstrap-select .btn {
+	background-color: white;
+	margin-top: -0.1rem;
+}
+
+.edit_box textarea {
+    background: linear-gradient(to bottom, #e5e5e5,#f2f2f2);
+    border:none;
+    width:100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 1px dotted #999;
+    resize: none;
+}
+
+.edit_box .wrapper {
+	background: #eee;
+    border: 1px solid #999;
+	margin: 0rem 0.5rem 0.5rem 0.5rem;
+}
+
+.post-content {
+	padding: 1.5rem;
 }
 
 .post-body p {
-  margin: 1.5rem;
+	margin: 0;
+	text-align: justify;
 }
 
-.poster a {
-  color: inherit;
-  text-decoration: none;
+.poster img {
+	float: left;
+	margin: 0.5rem;
+}
+ 
+.poster .post-date span {
+	padding-top: 50px;
+	vertical-align: top;
 }
 
-.like-share {
-  list-style: none;
-  padding: 0 0 0 5px;
-  margin: 5px 0 0 0;
+.ph_display {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto; 
+    width: auto; 
+    max-width: 90%; 
+    display: block;
 }
 
-.like-share li {
-  display: inline;
+.post_space {
+	margin: 0rem 3rem 5rem 3rem;
 }
 
-.like-share a {
-  text-decoration: none;
+.opt-group .btn {
+	font-size: 1.5rem;
+	border-color: #fff;
+	text-align: center;
+	color: #8a2f2f;
+    font-weight: bold;
+}
+
+.post-opt:hover {
+	background-color: transparent;
+}
+
+.post-opt:hover a {
+	color: #999;
 }
 
 .make-comment-wrap {
@@ -194,13 +297,6 @@ h2 > a {
   bottom: 0;
   top: 0;
   padding: 0 20px;
-}
-
-.content-right {
-  flex: 0 0 200px;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
 }
 
 .notifications {
@@ -248,4 +344,45 @@ footer {
   text-align: center;
   /* const size */
   flex: none;
+}
+
+/*
+	Write post personalization
+*/
+
+.btn-wrap input[type=submit] {
+	margin: 0.5rem 0rem;
+    padding:0.3rem 4rem; 
+	background: linear-gradient(to bottom, #F0ABAB,#8A2F2F);
+	color: white;
+    border-color: #ccc;
+	border-width: 0.1rem;
+    cursor:pointer;
+    border-radius: 5px;
+	font-weight:bold;
+	width: 150px;
+	height: 3.2rem;
+}
+
+.button-container input{
+	display: inline;
+}
+
+.btn-wrap {
+	text-align: right;
+}
+
+.btn-wrap .btn {
+    background: white;
+	color: #8a2f2f;
+	border-color: #ccc;
+}
+
+.thumb-32px {
+	width: 32px;
+	height: 32px;
+}
+
+.centered-and-cropped {
+	object-fit: cover;
 }

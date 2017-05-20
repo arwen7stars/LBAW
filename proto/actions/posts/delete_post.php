@@ -48,8 +48,12 @@
 		}
 	}
 	deletePost($post_id);
-
-	$referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
+	
+	if($_POST['feed'] == "true") {
+		$referer = '../../pages/users/feed.php';
+	} else {
+		$referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
+	}
 
 	header('Location: ' . $referer);
 	

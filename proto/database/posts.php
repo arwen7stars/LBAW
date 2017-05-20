@@ -27,6 +27,66 @@
 		return $stmt;
 	}
 	
+	function getFeedPosts($user_id) {
+		global $dbh;
+		
+		$query = 'SELECT "Post"."id" as postid, "Post"."body" as body, "Post"."public" as public, "Post"."date", "Post"."user-id" as user,
+		"Post-Images"."id" as imgid, "Post-Images"."url" AS url, "Post-Images"."description" AS description,
+		"Character"."name" AS name, "Image"."url" AS charurl,
+		COUNT("Likes"."id") AS "likes"
+		FROM "Character-Image", "Character", "Image", "User", "Post"
+		LEFT JOIN (
+		  SELECT "Image"."id", "Image"."url", "Image"."description", "Image"."post-id"
+		  FROM "Image"
+		  WHERE "Image"."post-id" IS NOT NULL
+		) AS "Post-Images"
+		ON "Post"."id" = "Post-Images"."post-id"
+		LEFT JOIN "Likes" ON "Post"."id" = "Likes"."post-id" AND "Likes"."comment-id" IS NULL, ( 
+		  SELECT "user1-id" AS "user-id" FROM "Friendship"
+		  WHERE "user2-id" = :id
+			AND "accepted" = TRUE
+		 
+		  UNION
+		 
+		  SELECT "user2-id" FROM "Friendship"
+		  WHERE "user1-id" = :id
+			AND "accepted" = TRUE
+		 
+		  ORDER BY "user-id"
+		) AS "Friends"
+		WHERE "Friends"."user-id" = "Post"."user-id" AND "Friends"."user-id" = "User"."id" AND "Character"."id" = "User"."character-id"
+					AND "Character-Image"."character-id" = "Character"."id"
+					AND "Character-Image"."image-id" = "Image"."id"
+		GROUP BY "Post"."id", "Post-Images"."id", "Post-Images"."url", "Post-Images"."description", "Character"."name", "Image"."url"
+		
+		UNION
+
+		SELECT "Post"."id" AS postid, "Post"."body" AS body, "Post"."public" as public, "Post"."date" AS date, "Post"."user-id" as user,
+		"Post-Images"."id" as imgid, "Post-Images"."url" AS url, "Post-Images"."description" AS description,
+		"Character"."name" AS name, "Image"."url" AS "charurl",
+		COUNT("Likes"."id") AS "likes"
+		FROM "User", "Character-Image", "Character", "Image", "Post"		
+		LEFT JOIN (
+		  SELECT "Image"."id", "Image"."url", "Image"."description", "Image"."post-id"
+		  FROM "Image"
+		  WHERE "Image"."post-id" IS NOT NULL
+		) AS "Post-Images"
+		ON "Post"."id" = "Post-Images"."post-id"
+		LEFT JOIN "Likes" ON "Post"."id" = "Likes"."post-id" AND "Likes"."comment-id" IS NULL
+		WHERE "Post"."user-id" = :id
+			AND "User".id = "Post"."user-id"
+			AND "Character"."id" = "User"."character-id"
+			AND "Character-Image"."character-id" = "Character"."id"
+			AND "Character-Image"."image-id" = "Image"."id"
+		GROUP BY "Post"."id", "Post-Images"."id", "Post-Images"."url", "Post-Images"."description", "Character"."name", "Image"."url"
+		ORDER BY date DESC, postid DESC';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':id', $user_id);
+		$stmt->execute(array($user_id));
+		
+		return $stmt;
+	}
+	
 	function getCommentsPost($post_id) {
 		global $dbh;
 		
