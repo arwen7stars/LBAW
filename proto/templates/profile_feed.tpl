@@ -91,10 +91,13 @@
 								</form>
 							</div>
 							{/if}
+							
+							<div id="black" class="black_overlay"></div>
 							{foreach $posts as $post}{if ($id_logged == $id) || $post.public}
 							<div class="post">
+							
 								<div id="edit-{$post.postid}" class="edit_box">
-									<a href="javascript:void(0)" class="pull-right" onclick="document.getElementById('edit-{$post.postid}').style.display='none';document.getElementById('black-{$post.postid}').style.display='none'">
+									<a href="javascript:void(0)" id="close-edit-{$post.postid}" class="close-edit pull-right">
 									<span class="close glyphicon glyphicon-remove"></span></a>
 									
 									<div class="poster">
@@ -129,14 +132,13 @@
 										</div>
 									</form>
 								</div>
-								<div id="black-{$post.postid}" class="black_overlay"></div>
 								
 								<div id="confirm-{$post.postid}" class="edit_box">
 									<div class="modal-body">Are you sure you want to delete this post?</div>
 										<div class="modal-footer button-container">
 											<form class="form" action="../../actions/posts/delete_post.php" method="post">
 												<input type="hidden" name="post-id" value="{$post.postid}">
-												<button type="button" data-dismiss="modal" class="btn" onclick="document.getElementById('confirm-{$post.postid}').style.display='none';document.getElementById('black-{$post.postid}').style.display='none'">Cancel</button>
+												<button type="button" id="close-delete-{$post.postid}" class="close-delete btn">Cancel</button>
 												<input type="submit" class="btn btn-primary" id="delete" value="Delete">
 											</form>
 										</div>
@@ -147,8 +149,8 @@
 										<div class="dropdown pull-right">
 											<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 											<ul class="dropdown-menu">
-												<li class="edit"><a href="javascript:void(0)" onclick="document.getElementById('edit-{$post.postid}').style.display='block';document.getElementById('black-{$post.postid}').style.display='block'">Edit</a></li>
-												<li class="delete"><a href="javascript:void(0)" onclick="document.getElementById('confirm-{$post.postid}').style.display='block';document.getElementById('black-{$post.postid}').style.display='block'">Delete</a></li>
+												<li id="edit-post-{$post.postid}" class="edit"><a href="javascript:void(0)">Edit</a></li>
+												<li id="delete-post-{$post.postid}" class="delete"><a href="javascript:void(0)">Delete</a></li>
 											</ul>
 										</div>
 										{/if}
@@ -196,7 +198,7 @@
 						<div id="about" class="tab-pane fade">
 							<div class="about">
 								<div class="about-header">
-									<a href="#" class="btn btn-default pull-right"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+									<a href="edit_profile.php" class="btn btn-default pull-right"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
 									<h2>Information about user</h2>
 								</div>
 								<hr>

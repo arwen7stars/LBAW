@@ -65,8 +65,10 @@
         <div class="timeline col-md-7">
 
 			<div class="photo-display">
+				<div id="black" class="black_overlay"></div>
+				
 				<div id="edit-{$post.postid}" class="edit_box">
-					<a href="javascript:void(0)" class="pull-right" onclick="document.getElementById('edit-{$post.postid}').style.display='none';document.getElementById('black-{$post.postid}').style.display='none'">
+					<a href="javascript:void(0)" id="close-edit-{$post.postid}" class="close-edit pull-right">
 					<span class="close glyphicon glyphicon-remove"></span></a>
 					
 					<div class="poster">
@@ -101,14 +103,13 @@
 						</div>
 					</form>
 				</div>
-				<div id="black-{$post.postid}" class="black_overlay"></div>
 				
 				<div id="confirm-{$post.postid}" class="edit_box">
 					<div class="modal-body">Are you sure you want to delete this post?</div>
 						<div class="modal-footer button-container">
 							<form class="form" action="../../actions/posts/delete_post.php" method="post">
 								<input type="hidden" name="post-id" value="{$post.postid}">
-								<button type="button" data-dismiss="modal" class="btn" onclick="document.getElementById('confirm-{$post.postid}').style.display='none';document.getElementById('black-{$post.postid}').style.display='none'">Cancel</button>
+								<button type="button" id="close-delete-{$post.postid}" class="close-delete btn">Cancel</button>
 								<input type="submit" class="btn btn-primary" id="delete" value="Delete">
 							</form>
 						</div>
@@ -119,8 +120,8 @@
 					<div class="dropdown pull-right">
 						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 						<ul class="dropdown-menu">
-							<li class="edit"><a href="javascript:void(0)" onclick="document.getElementById('edit-{$post.postid}').style.display='block';document.getElementById('black-{$post.postid}').style.display='block'">Edit</a></li>
-							<li class="delete"><a href="javascript:void(0)" onclick="document.getElementById('confirm-{$post.postid}').style.display='block';document.getElementById('black-{$post.postid}').style.display='block'">Delete</a></li>
+							<li id="edit-post-{$post.postid}" class="edit"><a href="javascript:void(0)">Edit</a></li>
+							<li id="delete-post-{$post.postid}" class="delete"><a href="javascript:void(0)">Delete</a></li>
 						</ul>
 					</div>
 					{/if}
@@ -147,6 +148,7 @@
 				</div>
 			
 				<hr class="separator">
+				
 				<div class="make-comment-wrap">
 					<form class="form" action="../../actions/posts/comment.php" method="post">
 						<div class="form-group">
@@ -159,10 +161,12 @@
 					</form>
 				</div>
 			</div>
+			
 			{foreach $comments as $comment}
 				<div class="comment">
+				
 					<div id="edit-comment-{$comment.comid}" class="edit_box">
-						<a href="javascript:void(0)" class="pull-right" onclick="document.getElementById('edit-comment-{$comment.comid}').style.display='none';document.getElementById('black-comment-{$comment.comid}').style.display='none'">
+						<a href="javascript:void(0)" id="close-comment-{$comment.comid}" class="close-comment pull-right">
 						<span class="close glyphicon glyphicon-remove"></span></a>
 						
 						<div class="poster">
@@ -182,7 +186,6 @@
 							</div>
 						</form>
 					</div>
-					<div id="black-comment-{$comment.comid}" class="black_overlay"></div>
 
 					<div id="confirm-comment-{$comment.comid}" class="edit_box">
 						<div class="modal-body">Are you sure you want to delete this comment?</div>
@@ -190,7 +193,7 @@
 								<form class="form" action="../../actions/posts/delete_comment.php" method="post">
 									<input type="hidden" name="comment-id" value="{$comment.comid}">
 									<input type="hidden" name="post-id" value="{$postid}">
-									<button type="button" data-dismiss="modal" class="btn" onclick="document.getElementById('confirm-comment-{$comment.comid}').style.display='none';document.getElementById('black-comment-{$comment.comid}').style.display='none'">Cancel</button>
+									<button type="button" id="close-delete-comment-{$comment.comid}" class="close-delete-comment btn">Cancel</button>
 									<input type="submit" class="btn btn-primary" id="delete" value="Delete">
 								</form>
 							</div>
@@ -201,8 +204,8 @@
 						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
 						<span class="glyphicon glyphicon-chevron-down"></span></button>
 						<ul class="dropdown-menu">
-							<li><a href="javascript:void(0)" onclick="document.getElementById('edit-comment-{$comment.comid}').style.display='block';document.getElementById('black-comment-{$comment.comid}').style.display='block'">Edit</a></li>
-							<li><a href="javascript:void(0)" onclick="document.getElementById('confirm-comment-{$comment.comid}').style.display='block';document.getElementById('black-comment-{$comment.comid}').style.display='block'">Delete</a></li>
+							<li id="edit-com-{$comment.comid}" class="edit-comment"><a href="javascript:void(0)">Edit</a></li>
+							<li id="delete-com-{$comment.comid}" class="delete-comment"><a href="javascript:void(0)">Delete</a></li>
 						</ul>
 					</div>
 					{/if}

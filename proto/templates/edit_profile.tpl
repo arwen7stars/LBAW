@@ -12,6 +12,7 @@
     <!-- Default stylesheet -->
     <link href="../../css/profile.css" rel="stylesheet">
     <link href="../../css/default.css" rel="stylesheet">
+    <link href="../../css/edit.css" rel="stylesheet">
 </head>
 
 <body>
