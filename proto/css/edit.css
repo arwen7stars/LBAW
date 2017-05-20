@@ -1,8 +1,6 @@
 #edit {
 	width: 80%;
-	padding: 1rem;
 	background-color: white;
-	overflow:auto;
 	border-color: #ccc;
 	border-style: solid;
 	border-width: 1px;
@@ -11,7 +9,33 @@
     margin-top:1.5rem;
 }
 
-.formfield label {
-	width: 100%;
+#edit .submit-btn {
+	margin-right: 1.5rem;
+	background: linear-gradient(to bottom, #F0ABAB,#8A2F2F);
+	font-weight: bold;
+	color: white;
+	border-color: #ccc;
+	border-width: 0.1rem;
+    border-radius: 5px;
+	padding: 1rem 3rem;
+}
 
+.separator {
+    background-color: #f6f7f9;
+    border: 1px solid #dddfe2;
+    border-radius: 3px 3px 0 0;
+    line-height: 26px;
+	padding: 0.8rem;
+	font-weight: bold;
+	font-size: 1.5rem;
+	padding-left: 8%;
+}
+
+#edit h2 {
+	padding-top: 1rem;
+	padding-left: 1rem;
+}
+
+#edit .info {
+	padding: 1rem 1.5rem 0rem 1.5rem;
 }

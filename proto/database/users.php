@@ -44,7 +44,7 @@
 	function getUserLocation($user_id) {
 		global $dbh;
 		
-		$query = 'SELECT "city", "country" FROM "User", "Location" WHERE "User"."id" = ? AND "User"."location-id" = "Location"."id"';
+		$query = 'SELECT "Location"."id" AS id, "city", "country" FROM "User", "Location" WHERE "User"."id" = ? AND "User"."location-id" = "Location"."id"';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($user_id));
 		return $stmt->fetch();
@@ -146,4 +146,25 @@
 		
 		return $stmt;
 	}
+	
+	function getLocations() {
+		global $dbh;
+		
+		$query = 'SELECT * FROM "Location"';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute();
+		
+		return $stmt;
+	}
+	
+	function updateUser($id, $name, $date, $location, $about) {
+		global $dbh;
+		
+		$query = 'UPDATE "User"
+		SET("date-of-birth", "name", "about", "location-id") = (?, ?, ?, ?)
+		WHERE "User"."id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($date, $name, $about, $location, $id));
+	}
+	
 ?>

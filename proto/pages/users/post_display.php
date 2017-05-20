@@ -13,6 +13,7 @@
 	$character = getUserCharacter($username_page);
 	$image = getUserProfileImage($character['charid']);
 	$series = getAnime($character['charid']);
+	$friendship = checkFriendship($_SESSION['id'], $id);		// check friendship between logged-in user and profile user
 
 	$smarty->assign('username_logged', $_SESSION['username']);	// logged-in username
 	$smarty->assign('username_page', $username_page);			// username of profile's user
@@ -24,6 +25,7 @@
 	
 	$smarty->assign('image', $image);
 	$smarty->assign('postid', $postid);
+	$smarty->assign('friendship', $friendship);
 
 	// get post
 	$post = getPost($postid);

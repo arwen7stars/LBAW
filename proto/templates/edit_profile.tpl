@@ -10,28 +10,69 @@
     <!-- Bootstrap -->
     <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Default stylesheet -->
-    <link href="../../css/profile.css" rel="stylesheet">
     <link href="../../css/default.css" rel="stylesheet">
     <link href="../../css/edit.css" rel="stylesheet">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
 </head>
 
 <body>
 	{include file='header_logged.tpl'}
 	<div id="edit">
-		<h2>Edit Profile</h2>
-		<hr>
-		<form><fieldset>
-			<p class="formfield"><label>Name</label>
-			<input class="form-control" type="username" id="name" value="Tear Grants" class="table-form"></p>
-			<p class="formfield"><label>Birthday</label>
-			<input class="form-control" type="date" id="dateofbirth" value="2001-05-13"></p>
-			<p class="formfield"><label for="location">Location</label>
-			<input class="form-control" type="username" id="location" value="Qliphoth"></p>
-			<p class="formfield"><label for="about">About</label>
-			<textarea class="form-control txtarea-comment" rows="3">Tear Grants, birth name Mystearica Aura Fende, is the main female protagonist in Tales of the Abyss. She is a Seventh Fonist in the military wing of the Order of Lorelei, the religion overseeing Yulia Jue's Score. She lost both parents when she was still an infant, and has been raised as a warrior ever since. Tear is staid and reserved, giving her a cold air, but when not chastising Luke, she is polite and respectful to all, particularly to those in...(line truncated)...
-			</textarea>		
-			<button type="submit" class="btn btn-primary">Submit</button>
-		</fieldset></form>
+		<form class="form-horizontal" action="../../actions/posts/edit_profile.php" method="post">
+			<input type="hidden" name="user-id" value="{$id_logged}">
+			<button type="submit" class="submit-btn pull-right">Save</button>
+				
+			<h2>Edit Profile</h2>
+			<hr>
+			<div class="info form-group">
+				<label for="name" class="col-sm-2 control-label"><span class="glyphicon glyphicon-user"></span> Name</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="username" id="name" name="name" value="{$user.name}" class="table-form" required>
+				</div>
+			</div>
+			
+			<div class="info form-group">
+				<label for="dateofbirth" class="col-sm-2 control-label"><span class="glyphicon glyphicon-gift"></span> Birthday</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="date" id="dateofbirth" name="date" value="{$date}" max="{$now}">
+				</div>
+			</div>
+			
+			<div class="separator"><span class="glyphicon glyphicon-home"></span> Location</div>
+			
+			<div class="info form-group">
+				<label for="location" class="col-sm-2 control-label">City, Country</label>
+				<div class="col-sm-10">
+					<select id="location" name="location" class="selectpicker" data-width="fit">
+						{if !empty($location)}
+							<option value="-1">Select location</option>
+							{foreach $locations as $loc}
+								{if $loc.id == $location.id}
+								<option value="{$loc.id}" selected="selected">{$loc.city}, {$loc.country}</option>
+								{else}
+								<option value="{$loc.id}">{$loc.city}, {$loc.country}</option>
+								{/if}
+							{/foreach}
+						{else}
+							<option value="-1" selected="selected">Select location</option>
+						{/if}
+					</select>
+				</div>
+			</div>
+			
+			<div class="separator"><span class="glyphicon glyphicon-pencil"></span> Additional infomation</div>
+			<div class="info form-group">
+				<label for="about" class="col-sm-2 control-label">About</label>
+				<div class="col-sm-10">
+					{if !(empty($user.about))}
+					<textarea id="about" name="about" class="form-control txtarea-comment" rows="3">{$user.about}</textarea>
+					{else}
+					<textarea id="about" name="about" class="form-control txtarea-comment" rows="3" placeholder="Insert information about you"></textarea>
+					{/if}
+				</div>
+			</div>
+		</form>
 	</div>
 
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -39,6 +80,8 @@
 	<script src="../../lib/jquery-3.1.1.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 </body>
 
 </html>

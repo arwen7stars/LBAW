@@ -38,7 +38,7 @@
 						<b> Series is</b> <a href="{$series.url}">{$series.name}</a>
 					</li>
 				</ul>
-				{if !($username_page == $username_logged)}
+				{if !($id == $id_logged) && !($friendship) && isset($username_logged)}
 					<b><a href="../../actions/users/friendship.php" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></a></b>
 				{/if}
 			</div>

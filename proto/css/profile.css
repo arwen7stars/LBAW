@@ -77,12 +77,15 @@
 .btn-wrap input[type=submit] {
 	margin: 0.5rem 0rem;
     padding:0.3rem 4rem; 
-    background: linear-gradient(to bottom, #ffffff,#e5e5e5);
-    border-color: #fff;
+	background: linear-gradient(to bottom, #F0ABAB,#8A2F2F);
+	color: white;
+    border-color: #ccc;
+	border-width: 0.1rem;
     cursor:pointer;
     border-radius: 5px;
 	font-weight:bold;
 	width: 150px;
+	height: 3.2rem;
 }
 
 .button-container input{
