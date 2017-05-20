@@ -57,6 +57,16 @@
 		return $stmt->fetch();
 	}
 	
+	function getImagePost($post_id) {
+		global $dbh;
+		
+		$query = 'SELECT * FROM "Image" WHERE "Image"."post-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($post_id));
+		
+		return $stmt;
+	}
+	
 	function addPost($body, $shared, $public, $user_id, $original_poster, $event_id, $group_id) {
 		global $dbh;
 		
@@ -100,5 +110,33 @@
 		WHERE "Comment"."id" = ?';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($body, $comment_id));
+	}
+	
+	function deleteImagePost($img_id) {
+		global $dbh;
+		$query = 'DELETE FROM "Image" WHERE "Image"."id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($img_id));
+	}
+	
+	function deletePost($post_id) {
+		global $dbh;
+		$query = 'DELETE FROM "Post" WHERE "Post"."id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($post_id));	
+	}
+	
+	function deleteComment($comment_id) {
+		global $dbh;
+		$query = 'DELETE FROM "Comment" WHERE "Comment"."id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($comment_id));	
+	}
+	
+	function deleteCommentNotification($comment_id) {
+		global $dbh;
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."comment-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($comment_id));	
 	}
 ?>

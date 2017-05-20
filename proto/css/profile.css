@@ -1,10 +1,6 @@
-.nav-justified > li {
-display: table-cell;
-width: 1%;
-}
-.nav-justified > li > a {
-margin-bottom: 0;
-}
+/*
+	User bar personalization
+*/
 
 .user_bar {
   	text-align: center;
@@ -13,10 +9,6 @@ margin-bottom: 0;
 .user_info .list-unstyled {
 	text-indent: 10px;
 	text-align: left;
-}
-
-.centered-and-cropped {
-	object-fit: cover;
 }
 
 .user_info img {
@@ -47,29 +39,12 @@ margin-bottom: 0;
 	font-size: 95%;
 }
 
-.timeline {
-	padding: 0.5rem;
-	margin: 1.5rem;
-}
+/*
+	General personalization
+*/
 
-.profile-header.btn {
-	border-radius: 3px 3px 0px 0px;
-	background-color: white;
-	border-color: #ccc;
-  	border-style: solid;
-  	border-width: 1px;
-}
-.profile-header.btn-group {
-	display:inline-block;
-}
-
-.btn:focus, .btn:active:focus, .btn.active:focus  {
-	outline: none;
-}
-
-.about-body {
-	text-indent: 10px;
-	text-align: justify;
+.about-body dd {
+	margin-bottom: 1rem;
 }
 
 .friends-body, .photos-body {
@@ -78,10 +53,6 @@ margin-bottom: 0;
 
 .friends-body figcaption {
 	text-align: center;
-}
-
-.imgContainer {
-	display: inline-block;
 }
 
 .about, .friends, .post, .photos, .photo-display {
@@ -94,6 +65,40 @@ margin-bottom: 0;
 	border-width: 1px;
 }
 
+.timeline {
+	padding: 0.5rem;
+	margin: 1.5rem;
+}
+
+/*
+	Write post personalization
+*/
+
+.btn-wrap input[type=submit] {
+	margin: 0.5rem 0rem;
+    padding:0.3rem 4rem; 
+    background: linear-gradient(to bottom, #ffffff,#e5e5e5);
+    border-color: #fff;
+    cursor:pointer;
+    border-radius: 5px;
+	font-weight:bold;
+	width: 150px;
+}
+
+.button-container input{
+	display: inline;
+}
+
+.btn-wrap {
+	text-align: right;
+}
+
+.btn-wrap .btn {
+    background: white;
+	color: #8a2f2f;
+	border-color: #ccc;
+}
+
 .opt-group .btn {
 	font-size: 1.5rem;
 	border-color: #fff;
@@ -103,6 +108,10 @@ margin-bottom: 0;
     font-weight: bold;
 }
 
+/*
+	Like-comment-share personalization
+*/
+
 .post-opt:hover {
 	background-color: transparent;
 }
@@ -111,38 +120,36 @@ margin-bottom: 0;
 	color: #999;
 }
 
+/*
+	Post content personalization
+*/
+
 .post-content {
 	padding: 1.5rem;
 }
 
 .post-body p {
-  margin: 0;
-  text-align: justify;
+	margin: 0;
+	text-align: justify;
 }
+
+/*
+	Poster personalization
+*/
 
 .poster img {
-  float: left;
-  margin: 0.5rem;
- }
+	float: left;
+	margin: 0.5rem;
+}
  
 .poster .post-date span {
-  padding-top: 50px;
-  vertical-align:top;
- }
-
-.like-share {
-  list-style: none;
-  padding: 0 0 0 5px;
-  margin: 5px 0 0 0;
+	padding-top: 50px;
+	vertical-align: top;
 }
 
-.like-share li {
-  display: inline;
-}
-
-.like-share a {
-  text-decoration: none;
-}
+/*
+	Write comment personalization
+*/
 
 .make-comment-wrap {
   position: relative;
@@ -160,6 +167,24 @@ margin-bottom: 0;
   top: 0;
   padding: 0 20px;
 }
+
+.comment {
+  box-shadow: 0 4px 2px -2px gray;
+  padding: 0.1rem 0.5rem 1rem 0.5rem;
+  margin-bottom: 0.3rem;
+  background-color: #f2f2f2;
+}
+
+.comment .dropdown-toggle, .photo-display .dropdown-toggle, .post .dropdown-toggle, .open>.dropdown-toggle.btn-primary:focus, .btn-primary.active:hover {
+	color: #000;
+	background-color: transparent;
+	border: 0px;
+	border-radius: 0px;
+}
+
+/*
+	Photo thumbnails
+*/
 
 .thumb-150px {
 	width: 150px;
@@ -184,41 +209,9 @@ margin-bottom: 0;
 	height: 32px;
 }
 
-.comment {
-  box-shadow: 0 4px 2px -2px gray;
-  padding: 0.1rem 0.5rem 1rem 0.5rem;
-  margin-bottom: 0.3rem;
-  background-color: #f2f2f2;
-}
-
-.user_options {
-	margin: 2rem;
-}
-
-input[type=submit] {
-	margin: 0.5rem 0rem;
-    padding:0.3rem 4rem; 
-    background: linear-gradient(to bottom, #ffffff,#e5e5e5);
-    border-color: #fff;
-    cursor:pointer;
-    border-radius: 5px;
-	font-weight:bold;
-	width: 150px;
-}
-
-.button-container input{
-	display: inline;
-}
-
-/*.type.form-control {
-	margin: 0.5rem 0rem; 
-	background-color: #ccc;
-    border-color: #fff;
-	color: #000;
-    border-radius: 5px;
-	font-weight: bold;
-	width: 150px;
-}*/
+/*
+	Post photo display
+*/
 
 .ph_display {
     margin-left: auto;
@@ -229,35 +222,13 @@ input[type=submit] {
     display: block;
 }
 
-.comment .dropdown-toggle, .photo-display .dropdown-toggle, .post .dropdown-toggle, .open>.dropdown-toggle.btn-primary:focus, .btn-primary.active:hover {
-	color: #000;
-	background-color: transparent;
-	border: 0px;
-	border-radius: 0px;
-}
-
-.btn-wrap {
-	text-align: right;
-}
-
-.btn-wrap .btn {
-    background: white;
-	color: #8a2f2f;
-	border-color: #ccc;
-}
-
-.hide {
-  display: none;
-}
-
 .post_space {
 	margin-bottom: 5rem;
 }
 
-.comments {
-	max-height: 30rem;
-    overflow-y: auto;
-}
+/*
+	Edit post/comment personalization
+*/
 
 .black_overlay {
   display: none;
@@ -287,18 +258,6 @@ input[type=submit] {
 	left: 50%;
 	margin-top: -100px; /* Negative half of height. */
 	margin-left: -250px; /* Negative half of width. */
-}
-
-.photo-display img {
-	text-align: center;
-}
-
-.separator {
-	margin: 1rem 0rem 2rem 0rem;
-}
-
-.comment-poster {
-	padding: 0.5rem;
 }
 
 .edit_box .controls{
@@ -334,4 +293,24 @@ input[type=submit] {
 	background: #eee;
     border: 1px solid #999;
 	margin: 0rem 0.5rem 0.5rem 0.5rem;
+}
+
+.nav-justified > li {
+	display: table-cell;
+	width: 1%;
+}
+.nav-justified > li > a {
+	margin-bottom: 0;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus  {
+	outline: none;
+}
+
+.imgContainer {
+	display: inline-block;
+}
+
+.centered-and-cropped {
+	object-fit: cover;
 }

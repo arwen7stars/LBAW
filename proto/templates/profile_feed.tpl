@@ -38,9 +38,9 @@
                                 <b> Series is</b> <a href="{$series.url}">{$series.name}</a>
                             </li>
                         </ul>
-						{if !($username_page == $username_logged)}{if !($friendship) }
+						{if !($username_page == $username_logged) && !($friendship) && isset($username_logged)}
 							<b><a href="../../actions/users/friendship.php" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></a></b>
-						{/if}{/if}
+						{/if}
                     </div>
 					{if !empty($images)}
                     <div class="user_photos">
@@ -130,6 +130,17 @@
 									</form>
 								</div>
 								<div id="black-{$post.postid}" class="black_overlay"></div>
+								
+								<div id="confirm-{$post.postid}" class="edit_box">
+									<div class="modal-body">Are you sure?</div>
+										<div class="modal-footer button-container">
+											<form class="form" action="../../actions/posts/delete_post.php" method="post">
+												<input type="hidden" name="post-id" value="{$post.postid}">
+												<button type="button" data-dismiss="modal" class="btn" onclick="document.getElementById('confirm-{$post.postid}').style.display='none';document.getElementById('black-{$post.postid}').style.display='none'">Cancel</button>
+												<input type="submit" class="btn btn-primary" id="delete" value="Delete">
+											</form>
+										</div>
+								</div>
 
 								<div class="post-body">
 										{if $post.user == $id_logged}
@@ -137,7 +148,7 @@
 											<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 											<ul class="dropdown-menu">
 												<li class="edit"><a href="javascript:void(0)" onclick="document.getElementById('edit-{$post.postid}').style.display='block';document.getElementById('black-{$post.postid}').style.display='block'">Edit</a></li>
-												<li class="delete"><a href="#">Delete</a></li>
+												<li class="delete"><a href="javascript:void(0)" onclick="document.getElementById('confirm-{$post.postid}').style.display='block';document.getElementById('black-{$post.postid}').style.display='block'">Delete</a></li>
 											</ul>
 										</div>
 										{/if}
@@ -190,17 +201,31 @@
 								</div>
 								<hr>
 								<div class="about-body">
-								<p><b>Name:</b> {$name}</p>
-								<p><b>Nickname:</b> {$username_page}</p>
-								{if !empty($age)}
-								<p><b>Age:</b> {$age}</p>
-								{/if}
-								{if !empty($location)}
-								<p><b>Location:</b> {$location.city}, {$location.country}</p>
-								{/if}
-								{if !empty($about)}
-								<p><b>Additional information:</b> {$about}</p>
-								{/if}
+									<div class="info">
+										<dt class="col-sm-4">Name</dt>
+										<dd class="col-sm-8">{$name}</dd>
+									</div>
+
+									{if !empty($age)}
+									<div class="info">
+										<dt class="col-sm-4">Age</dt>
+										<dd class="col-sm-8">{$age}</dd>
+									</div>
+									{/if}
+									
+									{if !empty($location)}
+									<div class="info">
+										<dt class="col-sm-4">Location</dt>
+										<dd class="col-sm-8">{$location.city}, {$location.country}</dd>
+									</div>
+									{/if}
+									
+									{if !empty($about)}
+									<div class="info">
+										<dt class="col-sm-4">Additional information</dt>
+										<dd class="col-sm-8">{$about}</dd>
+									</div>
+									{/if}
 								</div>
 							</div>
 						</div>

@@ -102,26 +102,43 @@
 					</form>
 				</div>
 				<div id="black-{$post.postid}" class="black_overlay"></div>
-			
-				{if $post.user == $id_logged}
-				<div class="dropdown pull-right">
-					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
-					<ul class="dropdown-menu">
-						<li class="edit"><a href="javascript:void(0)" onclick="document.getElementById('edit-{$post.postid}').style.display='block';document.getElementById('black-{$post.postid}').style.display='block'">Edit</a></li>
-						<li class="delete"><a href="#">Delete</a></li>
-					</ul>
+				
+				<div id="confirm-{$post.postid}" class="edit_box">
+					<div class="modal-body">Are you sure?</div>
+						<div class="modal-footer button-container">
+							<form class="form" action="../../actions/posts/delete_post.php" method="post">
+								<input type="hidden" name="post-id" value="{$post.postid}">
+								<button type="button" data-dismiss="modal" class="btn" onclick="document.getElementById('confirm-{$post.postid}').style.display='none';document.getElementById('black-{$post.postid}').style.display='none'">Cancel</button>
+								<input type="submit" class="btn btn-primary" id="delete" value="Delete">
+							</form>
+						</div>
 				</div>
-				{/if}
-				<div class="poster">
-					<p><a href="profile_feed.php?user-id={$id}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px"></a>
-					<a href="profile_feed.php?user-id={$id}">{$post.charname}</a>
-						<br><span class="post-date">{$post.date|date_format}</span>
-					</p>
+				
+				<div class="post-body">
+					{if $post.user == $id_logged}
+					<div class="dropdown pull-right">
+						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
+						<ul class="dropdown-menu">
+							<li class="edit"><a href="javascript:void(0)" onclick="document.getElementById('edit-{$post.postid}').style.display='block';document.getElementById('black-{$post.postid}').style.display='block'">Edit</a></li>
+							<li class="delete"><a href="javascript:void(0)" onclick="document.getElementById('confirm-{$post.postid}').style.display='block';document.getElementById('black-{$post.postid}').style.display='block'">Delete</a></li>
+						</ul>
+					</div>
+					{/if}
+					
+					<div class="poster">
+						<p><a href="profile_feed.php?user-id={$id}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px"></a>
+						<a href="profile_feed.php?user-id={$id}">{$post.charname}</a>
+							<br><span class="post-date">{$post.date|date_format}</span>
+						</p>
+					</div>
+					
+					<div class="post-content">
+						{$post.body}
+						{if !empty($post.url)}
+						<img src="{$post.url}" alt="{$post.description}" class="ph_display">
+						{/if}
+					</div>
 				</div>
-				<div class="post-content">{$post.body}
-				{if !empty($post.url)}
-				<img src="{$post.url}" alt="{$post.description}" class="ph_display"></div>
-				{/if}
 			
 				<div class="opt-group">
 					<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
@@ -165,8 +182,7 @@
 							</div>
 						</form>
 					</div>
-					<div id="black-comment-{$comment.comid}" class="black_overlay"></div>
-				
+					<div id="black-comment-{$comment.comid}" class="black_overlay"></div>				
 				
 					{if $comment.userid == $id_logged}
 					<div class="dropdown pull-right">
