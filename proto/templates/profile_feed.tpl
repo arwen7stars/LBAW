@@ -132,7 +132,7 @@
 								<div id="black-{$post.postid}" class="black_overlay"></div>
 								
 								<div id="confirm-{$post.postid}" class="edit_box">
-									<div class="modal-body">Are you sure?</div>
+									<div class="modal-body">Are you sure you want to delete this post?</div>
 										<div class="modal-footer button-container">
 											<form class="form" action="../../actions/posts/delete_post.php" method="post">
 												<input type="hidden" name="post-id" value="{$post.postid}">

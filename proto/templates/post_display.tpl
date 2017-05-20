@@ -104,7 +104,7 @@
 				<div id="black-{$post.postid}" class="black_overlay"></div>
 				
 				<div id="confirm-{$post.postid}" class="edit_box">
-					<div class="modal-body">Are you sure?</div>
+					<div class="modal-body">Are you sure you want to delete this post?</div>
 						<div class="modal-footer button-container">
 							<form class="form" action="../../actions/posts/delete_post.php" method="post">
 								<input type="hidden" name="post-id" value="{$post.postid}">
@@ -182,7 +182,19 @@
 							</div>
 						</form>
 					</div>
-					<div id="black-comment-{$comment.comid}" class="black_overlay"></div>				
+					<div id="black-comment-{$comment.comid}" class="black_overlay"></div>
+
+					<div id="confirm-comment-{$comment.comid}" class="edit_box">
+						<div class="modal-body">Are you sure you want to delete this comment?</div>
+							<div class="modal-footer button-container">
+								<form class="form" action="../../actions/posts/delete_comment.php" method="post">
+									<input type="hidden" name="comment-id" value="{$comment.comid}">
+									<input type="hidden" name="post-id" value="{$postid}">
+									<button type="button" data-dismiss="modal" class="btn" onclick="document.getElementById('confirm-comment-{$comment.comid}').style.display='none';document.getElementById('black-comment-{$comment.comid}').style.display='none'">Cancel</button>
+									<input type="submit" class="btn btn-primary" id="delete" value="Delete">
+								</form>
+							</div>
+					</div>					
 				
 					{if $comment.userid == $id_logged}
 					<div class="dropdown pull-right">
@@ -190,7 +202,7 @@
 						<span class="glyphicon glyphicon-chevron-down"></span></button>
 						<ul class="dropdown-menu">
 							<li><a href="javascript:void(0)" onclick="document.getElementById('edit-comment-{$comment.comid}').style.display='block';document.getElementById('black-comment-{$comment.comid}').style.display='block'">Edit</a></li>
-							<li><a href="#">Delete</a></li>
+							<li><a href="javascript:void(0)" onclick="document.getElementById('confirm-comment-{$comment.comid}').style.display='block';document.getElementById('black-comment-{$comment.comid}').style.display='block'">Delete</a></li>
 						</ul>
 					</div>
 					{/if}
