@@ -64,7 +64,7 @@
 	function getUserCharacter($username)
 	{
 		global $dbh;
-        $stmt = $dbh->prepare('SELECT "Character"."id" AS charid, "Character"."url", "Character"."name" FROM "Character","User" WHERE "User".username = :username AND "User".id = "Character".id');
+        $stmt = $dbh->prepare('SELECT "Character"."id" AS charid, "Character"."url", "Character"."name" AS name FROM "Character","User" WHERE "User".username = :username AND "User".id = "Character".id');
 		$stmt->bindParam(':username', $username);
         $stmt->execute(array($username));
 

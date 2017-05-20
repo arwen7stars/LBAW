@@ -4,22 +4,23 @@
 	include_once($BASE_DIR . 'database/users.php');
 	include_once($BASE_DIR . 'database/posts.php');
 
-	// global variables
-	$id = $_GET['user-id'];
-	$location = getUserLocation($id);
-	$user = getUserInfo($id);
-	$id_logged = $_SESSION['id'];
-	$username_page = $user['username'];
+	// fetch user info
+	$id = $_GET['user-id'];						// profile id
+	$id_logged = $_SESSION['id'];				// id of logged-in user
+	
+	$location = getUserLocation($id);			// location of profile user
+	$user = getUserInfo($id);					// information of profile user
+	$username_page = $user['username'];			// username of profile user
+	
+	$character = getUserCharacter($username_page);					// fetch character info of profile user
+	$image = getUserProfileImage($character['charid']);				// fetch profile picture	
+	$series = getAnime($character['charid']);						// fetch anime info of character
 
-	$character = getUserCharacter($username_page);
-	$image = getUserProfileImage($character['charid']);
-	$series = getAnime($character['charid']);
-
-	$friendship = checkFriendship($_SESSION['id'], $id);
+	$friendship = checkFriendship($_SESSION['id'], $id);			// check friendship between logged-in user and profile user
 
 	if(!empty($user['date-of-birth'])){
 	
-		$birthDate = explode("-", $user['date-of-birth']);
+		$birthDate = explode("-", $user['date-of-birth']);			// birthdate of profile user
 
 		//get age from date or birthdate (year[0] - month[1] - day[2])
 		//mktime(hour, minute, second, month, day, year)
@@ -28,36 +29,34 @@
 			: (date("Y") - $birthDate[0]));
 	}
 
-	$character_name = getUserCharacterName($_SESSION['username']);
+	$smarty->assign('username_logged', $_SESSION['username']);	// logged-in username
+	$smarty->assign('username_page', $username_page);			// username of profile's user
+	$smarty->assign('id_logged', $id_logged);					// logged-in id
+	$smarty->assign('id', $id);									// id of profile's user
 
-	$smarty->assign('username_logged', $_SESSION['username']);
-	$smarty->assign('username_page', $username_page);
-	$smarty->assign('id', $id);
-	$smarty->assign('id_logged', $id_logged);
-
-	$smarty->assign('character', $character);
-	$smarty->assign('image', $image);
-	$smarty->assign('user_id', $id);
-	$smarty->assign('location', $location);
-	$smarty->assign('about', $user['about']);
-	$smarty->assign('name', $user['name']);
-	$smarty->assign('series', $series);
-	$smarty->assign('age', $age);
+	$smarty->assign('character', $character);					// character of profile's user
+	$smarty->assign('series', $series);							// series of profile's user
+	
+	$smarty->assign('image', $image);							// profile picture of profile's user
+	$smarty->assign('location', $location);						// location of profile's user
+	$smarty->assign('about', $user['about']);					// about of profile's user
+	$smarty->assign('name', $user['name']);						// name of profile's user
+	$smarty->assign('age', $age);								// age of profile's user
 	$smarty->assign('friendship', $friendship);
 
-	// fetch user timeline imags
+	// fetch user photos
 	$stmt = getUserImages($id);
 	$res = $stmt->fetchAll();
 
 	$images = array_slice($res, 0, 6);
-	$smarty->assign('images', $images);
-	$smarty->assign('all_images', $res);
-
+	$smarty->assign('images', $images);		// six-photos preview under user bar
+	$smarty->assign('all_images', $res);	// all photos
 
 	// fetch user posts
 	$stmt = getUserPosts($id);
 	$posts = $stmt->fetchAll();
 
+	// fetch user friends
 	$stmt = getUserFriends($id);
 	$friends = $stmt->fetchAll();
 

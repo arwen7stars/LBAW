@@ -1,59 +1,46 @@
 <?php
 
-include_once('../../config/init.php');
-include_once($BASE_DIR . 'database/users.php');
-include_once($BASE_DIR . 'database/images.php');
-include_once($BASE_DIR . 'database/posts.php');
+	include_once('../../config/init.php');
+	include_once($BASE_DIR . 'database/users.php');
+	include_once($BASE_DIR . 'database/posts.php');
 
-// global variables
-$id = $_GET['user-id'];
-$postid = $_GET['post-id'];
-$location = getUserLocation($id);
-$user = getUserInfo($id);
-$username_page = $user['username'];
+	$id = $_GET['user-id'];					// profile id
+	$postid = $_GET['post-id'];				// post id
 
-$character = getUserCharacter($username_page);
-$image = getUserProfileImage($character['charid']);
-$series = getAnime($character['charid']);
+	$user = getUserInfo($id);
+	$username_page = $user['username'];
 
-if(!empty($user['date-of-birth'])){
+	$character = getUserCharacter($username_page);
+	$image = getUserProfileImage($character['charid']);
+	$series = getAnime($character['charid']);
+
+	$smarty->assign('username_logged', $_SESSION['username']);	// logged-in username
+	$smarty->assign('username_page', $username_page);			// username of profile's user
+	$smarty->assign('id_logged', $_SESSION['id']);				// logged-in id
+	$smarty->assign('id', $id);									// id of profile's user
 	
-	$birthDate = explode("-", $user['date-of-birth']);
+	$smarty->assign('character', $character);
+	$smarty->assign('series', $series);
+	
+	$smarty->assign('image', $image);
+	$smarty->assign('postid', $postid);
 
-	//get age from date or birthdate (year[0] - month[1] - day[2])
-	//mktime(hour, minute, second, month, day, year)
-	$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[1], $birthDate[2], $birthDate[0]))) > date("md")
-		? ((date("Y") - $birthDate[0]) - 1)
-		: (date("Y") - $birthDate[0]));
-}
+	// get post
+	$post = getPost($postid);
+	$smarty->assign('post', $post);
 
-$smarty->assign('username_logged', $_SESSION['username']);
-$smarty->assign('username_page', $username_page);
-$smarty->assign('id', $id);
-$smarty->assign('id_logged', $_SESSION['id']);
-$smarty->assign('character', $character);
-$smarty->assign('image', $image);
-$smarty->assign('user_id', $id);
-$smarty->assign('location', $location);
-$smarty->assign('about', $user['about']);
-$smarty->assign('name', $user['name']);
-$smarty->assign('series', $series);
-$smarty->assign('age', $age);
-$smarty->assign('postid', $postid);
+	// get next photo
+	$next_img = getNextImage($id, $post['imgid']);
+	$smarty->assign('nextimg', $next_img);
 
+	// get previous photo
+	$previous_img = getPreviousImage($id, $post['imgid']);
+	$smarty->assign('previousimg', $previous_img);
 
-$post = getPost($postid);
-$smarty->assign('post', $post);
+	// get post comments
+	$stmt = getCommentsPost($postid);
+	$comments = $stmt->fetchAll();
+	$smarty->assign('comments', $comments);
 
-$next_img = getNextImage($id, $post['imgid']);
-$smarty->assign('nextimg', $next_img);
-
-$previous_img = getPreviousImage($id, $post['imgid']);
-$smarty->assign('previousimg', $previous_img);
-
-$stmt = getCommentsPost($postid);
-$comments = $stmt->fetchAll();
-$smarty->assign('comments', $comments);
-
-$smarty->display($BASE_DIR . 'templates/post_display.tpl');
+	$smarty->display($BASE_DIR . 'templates/post_display.tpl');
 ?>
