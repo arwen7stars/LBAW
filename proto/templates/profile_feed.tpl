@@ -139,7 +139,7 @@
 											<form class="form" action="../../actions/posts/delete_post.php" method="post">
 												<input type="hidden" name="post-id" value="{$post.postid}">
 												<button type="button" id="close-delete-{$post.postid}" class="close-delete btn">Cancel</button>
-												<input type="submit" class="btn btn-primary" id="delete" value="Delete">
+												<input type="submit" class="btn btn-primary" value="Delete">
 											</form>
 										</div>
 								</div>
@@ -203,30 +203,30 @@
 								</div>
 								<hr>
 								<div class="about-body">
-									<div class="info">
+									<dl>
 										<dt class="col-sm-4">Name</dt>
 										<dd class="col-sm-8">{$name}</dd>
-									</div>
+									</dl>
 
 									{if !empty($age)}
-									<div class="info">
+									<dl>
 										<dt class="col-sm-4">Age</dt>
 										<dd class="col-sm-8">{$age}</dd>
-									</div>
+									</dl>
 									{/if}
 									
 									{if !empty($location)}
-									<div class="info">
+									<dl>
 										<dt class="col-sm-4">Location</dt>
 										<dd class="col-sm-8">{$location.city}, {$location.country}</dd>
-									</div>
+									</dl>
 									{/if}
 									
 									{if !empty($about)}
-									<div class="info">
+									<dl>
 										<dt class="col-sm-4">Additional information</dt>
 										<dd class="col-sm-8">{$about}</dd>
-									</div>
+									</dl>
 									{/if}
 								</div>
 							</div>

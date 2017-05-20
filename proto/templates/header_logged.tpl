@@ -43,7 +43,6 @@
 			<!--  Search bar -->
 			<form role="search">
 				<div class="form-group">
-					<label for="search-bar" class="sr-only">Search bar</label>
 					<div class="input-group navbar-search-bar">
 						<input type="search" class="form-control" placeholder="Search...">
 						<span class="input-group-btn">

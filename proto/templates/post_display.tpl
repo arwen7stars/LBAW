@@ -110,7 +110,7 @@
 							<form class="form" action="../../actions/posts/delete_post.php" method="post">
 								<input type="hidden" name="post-id" value="{$post.postid}">
 								<button type="button" id="close-delete-{$post.postid}" class="close-delete btn">Cancel</button>
-								<input type="submit" class="btn btn-primary" id="delete" value="Delete">
+								<input type="submit" class="btn btn-primary" value="Delete">
 							</form>
 						</div>
 				</div>
@@ -194,7 +194,7 @@
 									<input type="hidden" name="comment-id" value="{$comment.comid}">
 									<input type="hidden" name="post-id" value="{$postid}">
 									<button type="button" id="close-delete-comment-{$comment.comid}" class="close-delete-comment btn">Cancel</button>
-									<input type="submit" class="btn btn-primary" id="delete" value="Delete">
+									<input type="submit" class="btn btn-primary" value="Delete">
 								</form>
 							</div>
 					</div>					

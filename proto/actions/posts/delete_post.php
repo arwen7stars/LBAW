@@ -10,6 +10,11 @@
 	
 	if($stmt->rowCount() > 0)  {
 		$image = $stmt->fetch();
+		
+		if (file_exists($image['url'])) {
+			unlink($image['url']);
+		}
+		
 		deleteImagePost($image['id']);
 	}
 	
