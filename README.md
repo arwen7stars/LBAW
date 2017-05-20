@@ -3,7 +3,7 @@
 ## In development
 
 * fixing footer
-* edit/delete (US108 & US109) in progress
+* fixing feed (show posts, make posts, make comments, etc.)
 
 ## User Stories
 
@@ -26,7 +26,7 @@
 | US105 | Accept Invites| High | As a logged in user, I want to accept invitations from other users, so that I can join groups and events|
 | US106 | Leave | High | As a logged in user, I want to leave groups and events I'm part of, so that I don't belong to them anymore |
 | US107 | Like| Medium | As a logged in user, I want to like posts, comments and photos, so that I can rate them |
-| US108 | Edit| Medium | As a logged in user, I want to edit my profile, posts and comments, so that I can update them |
+| ~~US108~~ | Edit| Medium | As a logged in user, I want to edit my profile, posts and comments, so that I can update them |
 | US109 | Delete | Medium | As a logged in user, I want to delete my profile, posts and comments, so that no one sees them|
 | ~~US110~~ | Post Images | Medium | As a logged in user, I want to publish posts with images, so that other users can see them|
 | US111 | Reset/Change Password | Medium | As a logged in user, I want to reset or change my password anytime I want, so that I can feel safe |
