@@ -29,7 +29,7 @@
 			<input class="form-control" type="username" id="location" value="Qliphoth"></p>
 			<p class="formfield"><label for="about">About</label>
 			<textarea class="form-control txtarea-comment" rows="3">Tear Grants, birth name Mystearica Aura Fende, is the main female protagonist in Tales of the Abyss. She is a Seventh Fonist in the military wing of the Order of Lorelei, the religion overseeing Yulia Jue's Score. She lost both parents when she was still an infant, and has been raised as a warrior ever since. Tear is staid and reserved, giving her a cold air, but when not chastising Luke, she is polite and respectful to all, particularly to those in...(line truncated)...
-						
+			</textarea>		
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</fieldset></form>
 	</div>

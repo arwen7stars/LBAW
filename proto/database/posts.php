@@ -67,6 +67,26 @@
 		return $stmt;
 	}
 	
+	function getLikesPost($post_id) {
+		global $dbh;
+		
+		$query = 'SELECT * FROM "Likes" WHERE "Likes"."post-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($post_id));
+		
+		return $stmt;
+	}
+
+	function getLikesComment($comment_id) {
+		global $dbh;
+		
+		$query = 'SELECT * FROM "Likes" WHERE "Likes"."comment-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($comment_id));
+		
+		return $stmt;		
+	}
+	
 	function addPost($body, $shared, $public, $user_id, $original_poster, $event_id, $group_id) {
 		global $dbh;
 		
@@ -138,5 +158,19 @@
 		$query = 'DELETE FROM "Notification" WHERE "Notification"."comment-id" = ?';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($comment_id));	
+	}
+	
+	function deleteLikeNotification($like_id) {
+		global $dbh;
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."like-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($like_id));
+	}
+	
+	function deleteLike($like_id) {
+		global $dbh;
+		$query = 'DELETE FROM "Likes" WHERE "Likes"."id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($like_id));			
 	}
 ?>
