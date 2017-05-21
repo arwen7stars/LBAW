@@ -82,6 +82,10 @@
 	margin-bottom: 1rem;
 }
 
+.about-body {
+	text-align: justify;
+}
+
 .friends-body, .photos-body {
 	font-weight: bold;
 }
@@ -164,7 +168,7 @@
 	padding: 1.5rem;
 }
 
-.post-body p {
+.post-body {
 	margin: 0;
 	text-align: justify;
 }

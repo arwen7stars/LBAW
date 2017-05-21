@@ -56,6 +56,9 @@
 							{/foreach}
 						{else}
 							<option value="-1" selected="selected">Select location</option>
+							{foreach $locations as $loc}
+								<option value="{$loc.id}">{$loc.city}, {$loc.country}</option>
+							{/foreach}
 						{/if}
 					</select>
 				</div>

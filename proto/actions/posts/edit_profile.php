@@ -12,10 +12,10 @@
 		$date = $_POST['date'];
 	}
 	
-	if( $location != -1 ){
-		$location = $_POST['location'];
-	} else {
+	if( $_POST['location'] == -1 ){
 		$location = null;
+	} else {
+		$location = $_POST['location'];
 	}
 	
 	if (!strlen(trim($_POST['about']))){
