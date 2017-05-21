@@ -77,6 +77,8 @@
 			</div>
 		</form>
 	</div>
+	
+	{include file='footer.tpl'}
 
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

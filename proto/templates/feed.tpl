@@ -208,7 +208,7 @@
 						<input type="hidden" name="post-id" value="{$post.postid}">
 						<input type="hidden" name="user-id" value="{$id_logged}">
 						<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
-						<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+						<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something..."></textarea>
 					</div>
 					<button type="submit" class="btn btn-default btn-comment">Comment</button>
 				</form>

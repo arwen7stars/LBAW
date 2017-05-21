@@ -3,7 +3,7 @@
 ## In development
 
 * fixing footer
-* fixing feed (show posts, make posts, make comments, etc.)
+* implementing sign in (US201)
 
 ## User Stories
 

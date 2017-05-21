@@ -24,8 +24,9 @@ div.inner-box {
   width: 900px;
 }
 
-footer {
+.footer {
    text-shadow: 0 0 10px #ffffff;
+   text-align: center;
 }
 
 .navbar-search-bar {

@@ -30,7 +30,7 @@
 	}
 }
 
-@media (max-width: 475px) {
+@media (max-width: 495px) {
 	.friends-body figcaption {
 		display: none;
 	}
@@ -170,7 +170,6 @@
 
 .post-body {
 	margin: 0;
-	text-align: justify;
 }
 
 /*

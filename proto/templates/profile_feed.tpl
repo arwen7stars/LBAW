@@ -192,7 +192,7 @@
 												<input type="hidden" name="post-id" value="{$post.postid}">
 												<input type="hidden" name="user-id" value="{$id_logged}">
 												<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
-												<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+												<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something..."></textarea>
 											</div>
 											<button type="submit" class="btn btn-default btn-comment">Comment</button>
 										</form>
@@ -277,11 +277,8 @@
 			
             </div>
 		</div>
-        <!-- FOOTER -->
-        <footer class="footer">
-            <p class="text-muted" align="center">Anibook.com is a property of Anibook, LLC. ©2017 All Rights Reserved.
-            </p>
-        </footer>
+		
+        {include file='footer.tpl'}
         <!-- Placed at the end of the document so the pages load faster -->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="../../lib/jquery-3.1.1.min.js"></script>
