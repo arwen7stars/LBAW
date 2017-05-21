@@ -18,7 +18,6 @@
 
 <body>
 	
-	 <div class="body-flex">
 	 
 	 {include file='header_logged.tpl'}
 
@@ -213,7 +212,6 @@
 
    {include file='footer.tpl'}
 
-  </div>
   
 </body>
 

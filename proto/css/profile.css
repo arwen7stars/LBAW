@@ -4,8 +4,8 @@
 
 .user_bar {
   	text-align: center;
-	width: 20%;
 }
+
 
 @media screen and (min-width: 992px) {
 	.timeline {
@@ -95,7 +95,6 @@
 }
 
 .about, .friends, .post, .photos, .photo-display {
-	margin: 0rem 0rem;
 	padding: 1rem;
 	background-color: white;
 	overflow:auto;

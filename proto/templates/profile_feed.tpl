@@ -24,34 +24,40 @@
 		<div class="container">
             <div class="row">
 				<div class="col-md-3 pull-md-9 hidden-xs hidden-sm">
-					<div class="user_bar affix">
-						<div class="user_info">
-							<a href="profile_feed.php?user-id={$id}"><img class="centered-and-cropped" src="{$image.url}" alt="{$image.description}"></a>
-							<h2>{$character.name}</h2>
-							<ul class="list-unstyled">
-								<li>
-									<span class="glyphicon glyphicon-user"></span>
-									<b>Character is</b> <a href="{$character.url}">{$character.name}</a>
-								</li>
-								<li>
-									<span class="glyphicon glyphicon-book"></span>
-									<b> Series is</b> <a href="{$series.url}">{$series.name}</a>
-								</li>
-							</ul>
-							{if !($id == $id_logged) && !($friendship) && isset($username_logged)}
-								<b><a href="../../actions/users/friendship.php" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></a></b>
+						<div class="user_bar affix">
+							<div class="user_info">
+								<a href="profile_feed.php?user-id={$id}"><img class="centered-and-cropped" src="{$image.url}" alt="{$image.description}"></a>
+								<h2>{$character.name}</h2>
+								<ul class="list-unstyled">
+									<li>
+										<span class="glyphicon glyphicon-user"></span>
+										<b>Character is</b> <a href="{$character.url}">{$character.name}</a>
+									</li>
+									<li>
+										<span class="glyphicon glyphicon-book"></span>
+										<b> Series is</b> <a href="{$series.url}">{$series.name}</a>
+									</li>
+								</ul>
+								{if !($id == $id_logged) && !($friendship) && isset($username_logged)}
+									<b><a href="../../actions/users/friendship.php" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></a></b>
+								{/if}
+							</div>
+							{if !empty($images)}
+							<div class="user_photos">
+								<h3><b>Photos</b></h3>							
+								{foreach $images key=k item=img}
+									<a href="post_display.php?user-id={$id}&post-id={$img.id}"><img class="centered-and-cropped thumb-64px" src="{$img.url}" alt="{$img.description}"></a>
+									{if $k == 2}
+										<br>
+									{/if}
+								{/foreach}
+								<br>
+								<a href="#photos" data-toggle="tab">
+									View more...
+								</a>
+							</div>
 							{/if}
 						</div>
-						{if !empty($images)}
-						<div class="user_photos">
-							<h3><b>Photos</b></h3>{foreach $images as $img}<a href="post_display.php?user-id={$id}&post-id={$img.id}"><img class="centered-and-cropped thumb-64px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
-							<br>
-							<a href="#photos" data-toggle="tab">
-								View more...
-							</a>
-						</div>
-						{/if}
-					</div>
                 </div>
 				
                 <div class="col-md-9 push-md-3">
