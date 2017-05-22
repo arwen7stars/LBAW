@@ -35,6 +35,7 @@
             <li><a href="#">Etiam vel</a></li>
             <li><a href="#">Phasellus aliquet sapien</a></li>
             <li><a href="#">Donec laoreet dui</a></li>
+			<li><a href="../../pages/events/create_event.php">+  Create a new Event</li>
           </ul>
         </div>
 

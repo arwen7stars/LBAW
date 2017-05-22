@@ -13,7 +13,11 @@
 				<span class="icon-bar"></span>
 			</button>
 			<!-- Website logo -->
+			{if isset($username_logged)}
 			<a class="navbar-brand" href="../../pages/users/feed.php"><img alt="Brand" src="../../images/logo.png"></a>
+			{else}
+			<a class="navbar-brand" href="../../pages/users/homepage.php"><img alt="Brand" src="../../images/logo.png"></a>
+			{/if}
         </div>
 
         <!-- Navbar content (collapsed in mobile view) -->
