@@ -16,7 +16,7 @@
 
 <body>
 
-{include file='../header.tpl'}
+{include file='../header_logged.tpl'}
 
 <div class="container">
 	<div class="row">
