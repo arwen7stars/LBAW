@@ -11,7 +11,7 @@
 	<link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
  	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-	<link href="../../css/feed.css" rel="stylesheet">
+	<link href="../../css/default.css" rel="stylesheet">
 	<link href="../../css/forms.css" rel="stylesheet">
 
 </head>
