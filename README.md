@@ -6,7 +6,7 @@
 
 ## In development
 
-* fixing css flex box for every page
+* fixing css and validation for every page
 * implementing sign in (US201)
 * implementing create events
 
