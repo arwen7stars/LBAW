@@ -9,7 +9,6 @@ h2{
  }
 
 .forms {
-    margin-top:1.5rem;
     padding: 2rem;
     width: 50%;
     float: none;
@@ -21,6 +20,12 @@ h2{
     border-color: #7E472D;
     border-width: 0.15rem;
     box-shadow: 0.5rem 0.5rem 0.25rem #888888;
+}
+
+.errors {
+	width: 50%;
+    float: none;
+    margin: 0 auto;
 }
 
 

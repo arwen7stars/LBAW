@@ -8,6 +8,22 @@
 		return ($user !== false && /*$password==$user['password']*/password_verify($password, $user['password']));
     }
 	
+	function usernameExists($username) {
+		global $dbh;
+		$stmt = $dbh->prepare('SELECT * FROM "User" WHERE username = ?');
+        $stmt->execute(array($username));
+		$user = $stmt->fetch();
+		return ($user !== false);
+	}
+	
+	function emailExists($email) {
+		global $dbh;
+		$stmt = $dbh->prepare('SELECT * FROM "User" WHERE email = ?');
+        $stmt->execute(array($email));
+		$user = $stmt->fetch();
+		return ($user !== false);	
+	}
+	
 	function checkFriendship($user1id, $user2id)
 	{
 		global $dbh;
@@ -166,5 +182,26 @@
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($date, $name, $about, $location, $id));
 	}
+
+	function getCharacters() {
+		global $dbh;
+		
+		$query = 'SELECT "Character".id AS id, "Character".name AS name, "Character".url AS info, "Image".url as image
+		FROM "Character", "Character-Image", "Image"
+		WHERE "Character-Image"."character-id" = "Character"."id" AND "Character-Image"."image-id" = "Image".id
+		ORDER BY name';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute();
+		
+		return $stmt;
+	}
 	
+	function addUser($name, $username, $password, $email, $date, $character, $location) {
+		global $dbh;
+		
+		$query = 'INSERT INTO "User" ("name", "username", "password", "email", "date-of-birth", "character-id", "location-id") VALUES (?, ?, ?, ?, ?, ?, ?)';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($name, $username, $password, $email, $date, $character, $location));
+
+	}
 ?>

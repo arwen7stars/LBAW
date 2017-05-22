@@ -114,6 +114,7 @@
 
 		<div id="black" class="black_overlay"></div>
 		{foreach $posts as $post}{if ($id_logged == $post.user) || $post.public}
+		<div class="post_space">
         <div class="post">
 			<div id="edit-{$post.postid}" class="edit_box">
 				<a href="javascript:void(0)" id="close-edit-{$post.postid}" class="close-edit pull-right">
@@ -215,7 +216,6 @@
 			</div>
         </div>
 
-		<div class="post_space">
 			<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}">Show more comments...</a>
 		</div>
 		{/if}{/foreach}

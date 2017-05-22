@@ -14,6 +14,8 @@
   <!-- Default stylesheet -->
   <link href="../../css/default.css" rel="stylesheet">
   <link href="../../css/forms.css" rel="stylesheet">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
   
 </head>
 
@@ -23,29 +25,70 @@
 
 <div class="container">
 	<div class="row">
+	
+	<div class="errors">
+		{if isset({$password_error}) && !empty({$password_error})}
+		<div class="alert alert-danger alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+			<strong>Error!</strong> {$password_error}
+		</div>
+		{/if}
+		
+		{if isset({$username_error}) && !empty({$username_error})}
+		<div class="alert alert-danger alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+			<strong>Error!</strong> {$username_error}
+		</div>
+		{/if}
+		
+		{if isset({$email_error}) && !empty({$email_error})}
+		<div class="alert alert-danger alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+			<strong>Error!</strong> {$email_error}
+		</div>
+		{/if}
+	</div>
+	
 	<div class="forms col-lg-1 col-centered">
 		<h2>Register</h2>
 
-		<form>
+		<form action="../../actions/users/register.php" method="post">
 			<fieldset>
 				<p><label for="username">Username (only letters and numbers)</label>
-				<input type="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Type username"></p>
+				<input type="username" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Type username" required></p>
 
 
 				<p><label for="name">Name (only letters and spaces)</label>
-				<input type="password" class="form-control" id="name" placeholder="Type your name"></p>
+				<input type="username" class="form-control" id="name" name="name" placeholder="Type your name" required></p>
 
 				<p><label for="email">E-mail address</label>
-				<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Type your e-mail address"></p>
+				<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Type your e-mail address" required></p>
 
 				<p><label for="password">Password</label>
-				<input type="password" class="form-control" id="password" placeholder="Type password"></p>							
+				<input type="password" class="form-control" id="password" name="password" placeholder="Type password" required></p>							
 
 				<p><label for="repeat_password">Repeat password</label>
-				<input type="password" class="form-control" id="repeat_password" placeholder="Repeat password"></p>					
+				<input type="password" class="form-control" id="repeat_password" name="rep_password" placeholder="Repeat password" required></p>
+
+				<p><label for="character">Choose character</label>
+				<select title="Select your character" class="selectpicker form-control" name="character" required>
+					{foreach $characters as $character}
+					<option value="{$character.id}" data-thumbnail="{$character.image}">{$character.name}</option>
+					{/foreach}
+					</select>
+				</p>
+				
+				<p><label for="character">Choose location</label>
+				<select class="selectpicker form-control" name="location">
+					<option value="-1" selected="selected">Select your location</option>
+					{foreach $locations as $location}
+					<option value="{$location.id}">{$location.city}, {$location.country}</option>
+					{/foreach}
+					</select>
+				</p>
 
 				<p><label for="dateofbirth">Birthday</label>
-				<input type="date" class="form-control" id="dateofbirth" placeholder="Date of Birth"></p>
+				<input type="date" class="form-control" id="dateofbirth" name="date" max="{$now}" placeholder="Date of Birth"></p>
 
 				<p><button type="submit" class="submit btn btn-primary">Register</button></p>
 			</fieldset>
@@ -61,5 +104,7 @@
   <script src="../../lib/jquery-3.1.1.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 
 </html>
