@@ -1,0 +1,23 @@
+.outter-box {
+  display: table;
+  position: absolute;
+  height: 80%;
+  width: 100%;
+}
+
+.middle-box {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner-box {
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

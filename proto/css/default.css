@@ -6,24 +6,6 @@ body {
   background-size: cover;
 }
 
-div.outter-box {
-  display: table;
-  position: absolute;
-  height: 80%;
-  width: 100%;
-}
-
-div.middle-box {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-div.inner-box {
-  margin-left: auto;
-  margin-right: auto;
-  width: 900px;
-}
-
 .footer {
    text-shadow: 0 0 10px #ffffff;
    text-align: center;
@@ -48,11 +30,10 @@ div.inner-box {
 a:link, a:active, a:visited {
 	color: #8a2f2f;
 	text-decoration:none;
-    font-weight: bold;
+  font-weight: bold;
 }
 
 a:hover {
 	color: #7d7c7c;
 	text-decoration: none;
 }
-

@@ -11,7 +11,8 @@
 	<!-- Bootstrap -->
 	<link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Default stylesheet -->
-	<link href="../../css/profile.css" rel="stylesheet">
+	<link href="../../css/default.css" rel="stylesheet">
+	<link href="../../css/settings.css" rel="stylesheet">
 </head>
 
 <body>
