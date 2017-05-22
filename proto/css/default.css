@@ -1,3 +1,9 @@
+/* necessary for footer */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
 	/* necessary because of navbar fixed to top */
   padding-top: 51px;
