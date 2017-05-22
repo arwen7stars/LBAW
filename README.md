@@ -4,6 +4,7 @@
 
 * fixing footer
 * implementing sign in (US201)
+* befriends (us 103)
 
 ## User Stories
 
