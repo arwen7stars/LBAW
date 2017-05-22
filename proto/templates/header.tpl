@@ -35,14 +35,7 @@
 					</ul>
 				</li>
 			</ul>
-			{else}
-			<!-- Float right -->
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="../../pages/users/signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				<li><a href="../../pages/users/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-			</ul>
-			{/if}
-
+			
 			<!--  Search bar -->
 			<form role="search">
 				<div class="form-group">
@@ -54,7 +47,14 @@
 					</div>
 				</div>
 			</form>
-
+			{else}
+			<!-- Float right -->
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="../../pages/users/signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="../../pages/users/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+			{/if}
+			
         </div>
     </div>
 </nav>

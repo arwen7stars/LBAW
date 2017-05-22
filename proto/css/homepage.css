@@ -10,10 +10,6 @@ h1 {
 }
 
 
-.navbar-search-bar {
-	display: none;
-}
-
 h2 {
   /* original bootstrap value is too much */
   margin-top: 5px;
