@@ -4,7 +4,6 @@
 
 * fixing footer
 * implementing sign in (US201)
-* befriends (us 103)
 
 ## User Stories
 
@@ -22,7 +21,7 @@
 | --- | --- | --- | --- |
 | ~~US101~~ | Post Text | High | As a logged in user, I want to publish text posts, so that other users can see them |
 | ~~US102~~ | Comment | High | As a logged in user, I want to comment on posts, so that other users can see them |
-| US103 | Befriend | High | As a logged in user, I want to accept and send friend requests to other users, so that we become friends|
+| ~~US103~~ | Befriend | High | As a logged in user, I want to accept and send friend requests to other users, so that we become friends|
 | US104 | Create Events | High | As a logged in user, I want to create events and manage them, so that I can invite other users to them |
 | US105 | Accept Invites| High | As a logged in user, I want to accept invitations from other users, so that I can join groups and events|
 | US106 | Leave | High | As a logged in user, I want to leave groups and events I'm part of, so that I don't belong to them anymore |
