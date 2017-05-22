@@ -1,5 +1,9 @@
 # LBAW
 
+## To be fixed
+
+* fix settings page (mobile)
+
 ## In development
 
 * fixing footer
