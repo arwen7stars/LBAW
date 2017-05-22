@@ -24,22 +24,24 @@
 			<form>
 				<fieldset>
 					<div class="form-group">
-						<label for="exampleInput">Change username</label>
-						<input type="username" class="form-control" id="newUsername" aria-describedby="emailHelp" placeholder="New username">
+						<label for="newUsername">Change username</label>
+						<input type="text" class="form-control" id="newUsername" placeholder="New username">
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label>
+						<label for="oldPassword">Password</label>
 						<input type="password" class="form-control" id="oldPassword" placeholder="Old Password">
 						<br>
+						<label for="newPassword" class="sr-only">New Password</label>
 						<input type="password" class="form-control" id="newPassword" placeholder="New Password">
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Change e-mail address</label>
-						<input type="email" class="form-control" id="oldemail" aria-describedby="emailHelp" placeholder="Old e-mail address">
+						<label for="oldemail">Change e-mail address</label>
+						<input type="email" class="form-control" id="oldemail" placeholder="Old e-mail address">
 						<br>
-						<input type="email" class="form-control" id="newemail" aria-describedby="emailHelp" placeholder="New e-mail address">
+						<label for="newemail" class="sr-only">New e-mail address</label>
+						<input type="email" class="form-control" id="newemail" placeholder="New e-mail address">
 					</div>
-						<label for="exampleInputEmail1">Notifications</label>
+						<label for="exampleSelect1">Notifications</label>
 						<div class="form-group">
 							<select class="form-control" id="exampleSelect1">
 								<option>I want to receive notifications</option>
@@ -50,12 +52,11 @@
 						<br>
 						<br>
 						<button type="submit" class="btn btn-danger">Delete account</button>
-					</div>
-				</fieldset>
-			</form>
+					</fieldset>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
 
 {include file='footer.tpl'}
 
