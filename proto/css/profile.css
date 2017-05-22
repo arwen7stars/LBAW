@@ -4,8 +4,8 @@
 
 .user_bar {
   	text-align: center;
+	width: 27rem;
 }
-
 
 @media screen and (min-width: 992px) {
 	.timeline {
