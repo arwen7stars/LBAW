@@ -45,7 +45,24 @@
 							<option id="event_public" name="event_public" value="true">Public</option>
 							<option id="event_public" name="event_private" value="false">Private</option>
 					</select>
-
+					
+					<select id="location" name="location" class="selectpicker" data-width="fit">
+						{if !empty($location)}
+								<option value="-1">Select location</option>
+								{foreach $locations as $loc}
+									{if $loc.id == $location.id}
+									<option value="{$loc.id}" selected="selected">{$loc.city}, {$loc.country}</option>
+									{else}
+									<option value="{$loc.id}">{$loc.city}, {$loc.country}</option>
+									{/if}
+								{/foreach}
+						{else}
+								<option value="-1" selected="selected">Select location</option>
+								{foreach $locations as $loc}
+									<option value="{$loc.id}">{$loc.city}, {$loc.country}</option>
+								{/foreach}
+						{/if}
+					</select>
 					<p><button type="submit" class="submit btn btn-primary">Create Event</button></p>
 				</fieldset>
 			</form>
