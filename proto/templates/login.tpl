@@ -25,7 +25,7 @@
 			<form id="login" method="post" action="../../actions/users/login.php">
 				<fieldset>
 					<p><label for="username">Username</label>
-					<input type="username" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username"></p>
+					<input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username"></p>
 
 					<p><label for="password">Password</label>
 					<input type="password" class="form-control" id="password" name="password" placeholder="Password"></p>
@@ -39,12 +39,12 @@
 
 {include file='footer.tpl'}
 
-</body>
-
-<!-- Placed at the end of the document so the pages load faster -->
+  <!-- Placed at the end of the document so the pages load faster -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="../../lib/jquery-3.1.1.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
+</body>
 
 </html>
