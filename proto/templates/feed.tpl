@@ -51,7 +51,7 @@
         <div class="chat">
           <h2><a href="#">Online Friends</a></h2>
           <ul class="contact-list list-unstyled">
-            <li><a href="#" align=""><span class="glyphicon glyphicon-user"></span> Hikari</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hikari</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Himari</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Masamune</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Naruto</a></li>
@@ -69,11 +69,11 @@
           <!-- Search bar -->
           <form role="search">
             <div class="form-group chat-search-bar">
-              <label for="search-bar" class="sr-only">Search bar</label>
+              <label for="search-bar-btn" class="sr-only">Search bar</label>
               <div class="input-group">
                 <input type="search" class="form-control" placeholder="Search...">
                 <span class="input-group-btn">
-                  <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                  <button id="search-bar-btn" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
               </div>
             </div>
@@ -99,33 +99,33 @@
 								<option data-icon="glyphicon-globe" value="t">Public</option>
 								<option data-icon="glyphicon-lock" value="f">Private</option>
 							</select>
-							
+
 							<label class="btn btn-primary" for="my-file-selector">
 								<input id="my-file-selector" type="file" name="image" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
 								<span class="glyphicon glyphicon-picture"></span> Upload
 							</label>
-							<span class='label label-info' id="upload-file-info"></span>
+							<span class="label label-info" id="upload-file-info"></span>
 							<input type="submit" value="Post"/>
 						</span>
 					</div>
 				</div>
 			</form>
 		</div>
-		
+
 		<div id="black" class="black_overlay"></div>
 		{foreach $posts as $post}{if ($id_logged == $post.user) || $post.public}
         <div class="post">
 			<div id="edit-{$post.postid}" class="edit_box">
 				<a href="javascript:void(0)" id="close-edit-{$post.postid}" class="close-edit pull-right">
 				<span class="close glyphicon glyphicon-remove"></span></a>
-				
+
 				<div class="poster">
 					<p><a href="profile_feed.php?user-id={$id_logged}"><img src="{$post.charurl}" alt="Profile picture of {$post.name}" class="centered-and-cropped thumb-32px">
 						<span>{$post.name}</span></a>
 						<br><span class="post-date">{$post.date|date_format}</span>
 					</p>
 				</div>
-				
+
 				<form class="form" action="../../actions/posts/edit_post.php" method="post">
 					<div class="wrapper">
 						<input type="hidden" name="user-id" value="{$id_logged}">
@@ -152,7 +152,7 @@
 					</div>
 				</form>
 			</div>
-			
+
 			<div id="confirm-{$post.postid}" class="edit_box">
 				<div class="modal-body">Are you sure you want to delete this post?</div>
 					<div class="modal-footer button-container">
@@ -164,7 +164,7 @@
 						</form>
 					</div>
 			</div>
-			
+
 			<div class="post-body">
 				{if $post.user == $id_logged}
 				<div class="dropdown pull-right">
@@ -189,19 +189,19 @@
 					{/if}
 				</div>
 			</div>
-		
+
 			<div class="opt-group btn-group-justified hidden-sm hidden-xs">
 				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
 				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
 				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
 			</div>
-			
+
 			<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
 				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
-				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span></span> 99</a>
-				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span></span> 99</a>
+				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
+				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 			</div>
-		
+
 			<div class="make-comment-wrap">
 				<form class="form" action="../../actions/posts/comment.php" method="post">
 					<div class="form-group">
@@ -214,13 +214,13 @@
 				</form>
 			</div>
         </div>
-		
+
 		<div class="post_space">
 			<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}">Show more comments...</a>
 		</div>
 		{/if}{/foreach}
 
-		
+
       </div>
 
       <!--  Right -->
@@ -251,8 +251,6 @@
 
 </div>
 
-</body>
-
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="../../lib/jquery-3.1.1.min.js"></script>
@@ -261,4 +259,5 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/script.js"></script>
+</body>
 </html>
