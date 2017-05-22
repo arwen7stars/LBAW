@@ -18,9 +18,8 @@
 
 <body>
 
-
-
   {include file='header_logged.tpl'}
+  
 		<div class="container">
             <div class="row">
 				<div class="col-md-3 pull-md-9 hidden-xs hidden-sm">
@@ -39,7 +38,9 @@
 									</li>
 								</ul>
 								{if !($id == $id_logged) && !($friendship) && isset($username_logged)}
-									<b><a href="../../actions/users/friendship.php" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></a></b>
+									<form action="../../actions/users/friendship.php" method="post">
+										<button name="user2-id" value="{$id}" type="submit" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></button>
+									</form>
 								{/if}
 							</div>
 							{if !empty($images)}

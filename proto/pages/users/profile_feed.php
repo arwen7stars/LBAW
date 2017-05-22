@@ -8,10 +8,12 @@
 	$id = $_GET['user-id'];						// profile id
 	$id_logged = $_SESSION['id'];				// id of logged-in user
 	
+	
 	$location = getUserLocation($id);			// location of profile user
 	$user = getUserInfo($id);					// information of profile user
 	$username_page = $user['username'];			// username of profile user
 	
+	$character_name = getUserCharacterName($_SESSION['username']);
 	$character = getUserCharacter($username_page);					// fetch character info of profile user
 	$image = getUserProfileImage($character['charid']);				// fetch profile picture	
 	$series = getAnime($character['charid']);						// fetch anime info of character
@@ -28,7 +30,8 @@
 			? ((date("Y") - $birthDate[0]) - 1)
 			: (date("Y") - $birthDate[0]));
 	}
-
+	
+	$smarty->assign('character_name', $character_name);
 	$smarty->assign('username_logged', $_SESSION['username']);	// logged-in username
 	$smarty->assign('username_page', $username_page);			// username of profile's user
 	$smarty->assign('id_logged', $id_logged);					// logged-in id
