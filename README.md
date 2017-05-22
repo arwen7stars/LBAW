@@ -2,7 +2,6 @@
 
 ## To be fixed
 
-* fix settings page (mobile) - outer middle e inner box css
 
 ## In development
 
