@@ -2,11 +2,11 @@
 
 ## To be fixed
 
-* fix settings page (mobile) - outer midle e inner box css
+* fix settings page (mobile) - outer middle e inner box css
 
 ## In development
 
-* fixing footer
+* fixing css flex box for every page
 * implementing sign in (US201)
 * implementing create events
 
