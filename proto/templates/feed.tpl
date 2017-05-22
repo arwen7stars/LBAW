@@ -19,7 +19,7 @@
 
 <div class="body-flex">
 
-{include file='header_logged.tpl'}
+{include file='header.tpl'}
 
 
 

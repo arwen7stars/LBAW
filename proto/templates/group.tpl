@@ -19,7 +19,7 @@
 <body>
 	
 	 
-	 {include file='header_logged.tpl'}
+	 {include file='header.tpl'}
 
 	
 	<!--Group Stuff-->  	

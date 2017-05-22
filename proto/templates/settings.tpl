@@ -17,7 +17,7 @@
 
 <body>
 
-{include file='header_logged.tpl'}
+{include file='header.tpl'}
 
 <div class="outter-box">
 	<div class="middle-box">

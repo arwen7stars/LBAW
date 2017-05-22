@@ -16,7 +16,7 @@
 
 <body>
 
-{include file='header_logged.tpl'}
+{include file='header.tpl'}
 
   <!-- SEARCH BAR -->
   <div class="container-fluid search-bar-wrap">
