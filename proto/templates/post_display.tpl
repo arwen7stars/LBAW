@@ -154,8 +154,8 @@
 					
 					<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
 						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span></span> 99</a>
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span></span> 99</a>
+						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
+						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 					</div>
 
 				
