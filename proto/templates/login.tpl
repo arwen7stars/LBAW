@@ -16,7 +16,7 @@
 
 <body>
 
-{include file='../header.tpl'}
+{include file='header.tpl'}
 
 <div class="container">
 	<div class="row">
@@ -26,9 +26,9 @@
 				<fieldset>
 					<p><label for="username">Username</label>
 					<input type="username" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username"></p>
-					
+
 					<p><label for="password">Password</label>
-					<input type="password" class="form-control" id="password" name="password" placeholder="Password"></p>							
+					<input type="password" class="form-control" id="password" name="password" placeholder="Password"></p>
 
 					<p><button type="submit" class="submit btn btn-primary">Login</button></p>
 				</fieldset>
@@ -37,7 +37,7 @@
 	</div>
 </div>
 
-{include file='../footer.tpl'}
+{include file='footer.tpl'}
 
 </body>
 
