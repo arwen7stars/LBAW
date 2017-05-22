@@ -2,12 +2,13 @@
 
 ## To be fixed
 
-* fix settings page (mobile)
+* fix settings page (mobile) - outer midle e inner box css
 
 ## In development
 
 * fixing footer
 * implementing sign in (US201)
+* implementing create events
 
 ## User Stories
 
