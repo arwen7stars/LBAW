@@ -59,4 +59,14 @@ $(document).ready(function () {
 		$('#confirm-comment-' + id).css('display', 'none');
 		$('#black').css('display', 'none');	
 	})
+	
+	$( ".error-input").focus(function() {
+		$(this).css('border-color','red');
+		$(this).next().hide();
+	});
+	
+	$( ".error-input").blur(function() {
+		$(this).css('border-color','red');
+		$(this).next().show();
+	});
 });

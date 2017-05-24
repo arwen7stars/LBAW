@@ -24,15 +24,23 @@
 		return ($user !== false);	
 	}
 	
+	function characterExists($character) {
+		global $dbh;
+		$stmt = $dbh->prepare('SELECT * FROM "User" WHERE "character-id" = ?');
+        $stmt->execute(array($character));
+		$user = $stmt->fetch();
+		return ($user !== false);	
+	}
+	
 	function checkFriendship($user1id, $user2id)
 	{
 		global $dbh;
-		$stmt = $dbh->prepare('SELECT "user1-id","user2-id" FROM "Friendship" WHERE ("user1-id" = :user1id AND "user2-id" = :user2id) OR ("user1-id" = :user2id AND "user2-id" = :user1id)');
+		$stmt = $dbh->prepare('SELECT "accepted", "user1-id","user2-id" FROM "Friendship" WHERE ("user1-id" = :user1id AND "user2-id" = :user2id) OR ("user1-id" = :user2id AND "user2-id" = :user1id)');
         $stmt->bindParam(':user1id', $user1id);
 		$stmt->bindParam(':user2id', $user2id);		
 		$stmt->execute();
         $exists = $stmt->fetch();
-		return($exists !== false);
+		return $exists;
 	}
 	
 	function getLoginID($username) {
@@ -80,7 +88,7 @@
 	function getUserCharacter($username)
 	{
 		global $dbh;
-        $stmt = $dbh->prepare('SELECT "Character"."id" AS charid, "Character"."url", "Character"."name" AS name FROM "Character","User" WHERE "User".username = :username AND "User".id = "Character".id');
+        $stmt = $dbh->prepare('SELECT "Character"."id" AS charid, "Character"."url", "Character"."name" AS name FROM "Character","User" WHERE "User".username = :username AND "User"."character-id" = "Character".id');
 		$stmt->bindParam(':username', $username);
         $stmt->execute(array($username));
 
@@ -128,7 +136,7 @@
 	function getUserCharacterName($username)
 	{
 		global $dbh;
-        $stmt = $dbh->prepare('SELECT "Character"."name" FROM "Character","User" WHERE "User".username = :username AND "User".id = "Character".id');
+        $stmt = $dbh->prepare('SELECT "Character"."name" FROM "Character","User" WHERE "User".username = :username AND "User"."character-id" = "Character".id');
 		$stmt->bindParam(':username', $username);
         $stmt->execute(array($username));
         $name = $stmt->fetch();
@@ -186,9 +194,11 @@
 	function getCharacters() {
 		global $dbh;
 		
-		$query = 'SELECT "Character".id AS id, "Character".name AS name, "Character".url AS info, "Image".url as image
-		FROM "Character", "Character-Image", "Image"
-		WHERE "Character-Image"."character-id" = "Character"."id" AND "Character-Image"."image-id" = "Image".id
+		$query = 'SELECT "Character".id AS id, "Character".name AS charname, "Character".url AS info, "Image".url as image, "Anime".name AS name
+		FROM "Character", "Character-Image", "Image", "Anime", "Character-Anime"
+		WHERE "Character-Image"."character-id" = "Character"."id" AND "Character-Image"."image-id" = "Image".id AND "Character-Anime"."character-id" = "Character"."id" AND "Character-Anime"."anime-id" = "Anime"."id" AND "Character".id NOT IN (
+    SELECT "User"."character-id" FROM "User", "Character" WHERE "User"."character-id" = "Character".id
+)
 		ORDER BY name';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute();
@@ -198,7 +208,7 @@
 	
 	function addUser($name, $username, $password, $email, $date, $character, $location) {
 		global $dbh;
-		
+
 		$query = 'INSERT INTO "User" ("name", "username", "password", "email", "date-of-birth", "character-id", "location-id") VALUES (?, ?, ?, ?, ?, ?, ?)';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($name, $username, $password, $email, $date, $character, $location));

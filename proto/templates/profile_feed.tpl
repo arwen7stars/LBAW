@@ -37,10 +37,18 @@
 										<b> Series is</b> <a href="{$series.url}">{$series.name}</a>
 									</li>
 								</ul>
-								{if !($id == $id_logged) && !($friendship) && isset($username_logged)}
+								{if !($id == $id_logged) && isset($username_logged)}
+									{if !($friendship)}
 									<form action="../../actions/users/friendship.php" method="post">
 										<button name="user2-id" value="{$id}" type="submit" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></button>
 									</form>
+									{else}
+										{if ({$accepted})}
+											<p class="friend-status">We are friends!</p>
+										{else}
+											<p class="friend-status">Friend request was sent...</p>
+										{/if}
+									{/if}
 								{/if}
 							</div>
 							{if !empty($images)}

@@ -22,7 +22,6 @@
 <body>
 
 {include file='header.tpl'}
-
 <div class="container">
 	<div class="row">
 	
@@ -33,62 +32,84 @@
 			<strong>Error!</strong> {$password_error}
 		</div>
 		{/if}
-		
-		{if isset({$username_error}) && !empty({$username_error})}
-		<div class="alert alert-danger alert-dismissable">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-			<strong>Error!</strong> {$username_error}
-		</div>
-		{/if}
-		
-		{if isset({$email_error}) && !empty({$email_error})}
-		<div class="alert alert-danger alert-dismissable">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-			<strong>Error!</strong> {$email_error}
-		</div>
-		{/if}
+	
 	</div>
+	
 	
 	<div class="forms col-lg-1 col-centered">
 		<h2>Register</h2>
-
+		<hr>
 		<form action="../../actions/users/register.php" method="post">
 			<fieldset>
-				<p><label for="username">Username (only letters and numbers)</label>
-				<input type="username" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Type username" required></p>
-
-
-				<p><label for="name">Name (only letters and spaces)</label>
-				<input type="username" class="form-control" id="name" name="name" placeholder="Type your name" required></p>
-
-				<p><label for="email">E-mail address</label>
-				<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Type your e-mail address" required></p>
-
-				<p><label for="password">Password</label>
-				<input type="password" class="form-control" id="password" name="password" placeholder="Type password" required></p>							
-
-				<p><label for="repeat_password">Repeat password</label>
-				<input type="password" class="form-control" id="repeat_password" name="rep_password" placeholder="Repeat password" required></p>
-
-				<p><label for="character">Choose character</label>
-				<select title="Select your character" class="selectpicker form-control" name="character" required>
-					{foreach $characters as $character}
-					<option value="{$character.id}" data-thumbnail="{$character.image}">{$character.name}</option>
-					{/foreach}
-					</select>
-				</p>
+				<legend><span class="number">1</span>User credentials</legend>
+			
+				<div class="form-group">
+					<label for="username" class="required">Username (only letters and numbers)</label>
+					
+					{if isset({$username_error}) && !empty({$username_error})}
+					<input type="text" class="form-control error-input" id="username" name="username" aria-describedby="emailHelp" placeholder="Type username" required>
+					<div class="error-in">Sorry, that username's taken. Try another?</div>
+					{else}
+					<input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Type username" required>
+					{/if}
+					
+					
+				</div>
 				
-				<p><label for="character">Choose location</label>
-				<select class="selectpicker form-control" name="location">
-					<option value="-1" selected="selected">Select your location</option>
-					{foreach $locations as $location}
-					<option value="{$location.id}">{$location.city}, {$location.country}</option>
-					{/foreach}
-					</select>
-				</p>
+				<div class="form-group">
+					<label for="email" class="required">E-mail address</label>
+					{if isset({$email_error}) && !empty({$email_error})}
+					<input type="email" class="form-control error-input" id="email" name="email" aria-describedby="emailHelp" placeholder="Type your e-mail address" required>
+					<div class="error-in">Sorry, that e-mail's taken. Try another?</div>
+					{else}
+					<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Type your e-mail address" required>
+					{/if}
+				</div>				
+				
+				<div class="form-group">
+					<label for="password" class="required">Password</label>
+					<input type="password" class="form-control" id="password" name="password" placeholder="Type password" required>
+				</div>
 
-				<p><label for="dateofbirth">Birthday</label>
-				<input type="date" class="form-control" id="dateofbirth" name="date" max="{$now}" placeholder="Date of Birth"></p>
+				<div class="form-group">
+					<label for="repeat_password" class="required">Repeat password</label>
+					<input type="password" class="form-control" id="repeat_password" name="rep_password" placeholder="Repeat password" required>
+				</div>
+				<hr>
+				<legend><span class="number">2</span>User information</legend>
+				
+				<div class="form-group">
+					<label for="name" class="required">Name (only letters and spaces)</label>
+					<input type="text" class="form-control" id="name" name="name" placeholder="Type your name" required>
+				</div>
+				
+				<div class="form-group">
+					<label for="location">Choose location</label>
+					<select class="selectpicker form-control" id="location" name="location">
+						<option value="-1" selected="selected">Select your location</option>
+						{foreach $locations as $location}
+						<option value="{$location.id}">{$location.city}, {$location.country}</option>
+						{/foreach}
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="dateofbirth">Birthday</label>
+					<input type="date" class="form-control" id="dateofbirth" name="date" max="{$now}">
+				</div>
+				
+				<hr>
+				<legend><span class="number">3</span>Selecting character</legend>
+
+				<div class="form-group">
+					<label for="character" class="required">Choose character</label>
+					<select title="Select your character" class="selectpicker form-control" id="character" name="character" required>
+						{foreach $characters as $character}
+						<option value="{$character.id}" data-thumbnail="{$character.image}">{$character.name} - {$character.charname}</option>
+						{/foreach}
+					</select>
+					
+				</div>
 
 				<p><button type="submit" class="submit btn btn-primary">Register</button></p>
 			</fieldset>
@@ -97,14 +118,15 @@
 	
 {include file='footer.tpl'}
 
-</body>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="../../lib/jquery-3.1.1.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script src="../../javascript/script.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 
-<!-- Placed at the end of the document so the pages load faster -->
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="../../lib/jquery-3.1.1.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+</body>
 
 </html>

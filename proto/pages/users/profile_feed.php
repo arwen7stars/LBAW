@@ -18,7 +18,9 @@
 	$image = getUserProfileImage($character['charid']);				// fetch profile picture	
 	$series = getAnime($character['charid']);						// fetch anime info of character
 
-	$friendship = checkFriendship($_SESSION['id'], $id);			// check friendship between logged-in user and profile user
+	$res = checkFriendship($_SESSION['id'], $id);					// check friendship between logged-in user and profile user
+	$friendship = ($res !== false);
+	$accepted = $res['accepted'];
 
 	if(!empty($user['date-of-birth'])){
 	
@@ -46,6 +48,7 @@
 	$smarty->assign('name', $user['name']);						// name of profile's user
 	$smarty->assign('age', $age);								// age of profile's user
 	$smarty->assign('friendship', $friendship);
+	$smarty->assign('accepted', $accepted);
 
 	// fetch user photos
 	$stmt = getUserImages($id);
