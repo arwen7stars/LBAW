@@ -6,8 +6,8 @@
 ## In development
 
 * fixing css and validation for every page
-* implementing sign in (US201)
 * implementing create events
+* checking login errors
 
 ## User Stories
 
@@ -49,7 +49,7 @@
 
 | Identifier | Name | Priority | Description |
 | --- | --- | --- | --- |
-| US201 | Sign in | High | As a visitor, I want to use register a new account, so that I can login |
+| ~~US201~~ | Sign in | High | As a visitor, I want to use register a new account, so that I can login |
 | ~~US202~~ | Login | High | As a visitor, I want to login so that I can fully enjoy the web app |
 | US203 | Sign in using external API | Low | As a visitor, I want to use register a new account linked to my Google+ account, so that I can login |
 | US204 | Login using external API | Low | As a visitor, I want to login through my Google+ account, so that I can fully enjoy the web app |
