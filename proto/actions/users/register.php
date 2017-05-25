@@ -33,7 +33,7 @@
 	}
 
 	if(usernameExists($username)) {
-		$_SESSION['user_exists'] = true;
+		$_SESSION['user_exists'] = 'User already exists';
 	}
 	
 	if(emailExists($email)) {

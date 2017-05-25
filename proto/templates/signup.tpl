@@ -41,16 +41,16 @@
 		<hr>
 		<form action="../../actions/users/register.php" method="post">
 			<fieldset>
-				<legend><span class="number">1</span>User credentials</legend>
+				<h4><span class="number">1</span>User credentials</h4>
 			
 				<div class="form-group">
 					<label for="username" class="required">Username (only letters and numbers)</label>
 					
 					{if isset({$username_error}) && !empty({$username_error})}
-					<input type="text" class="form-control error-input" id="username" name="username" aria-describedby="emailHelp" placeholder="Type username" required>
+					<input type="text" class="form-control error-input" id="username" name="username" placeholder="Type username" required>
 					<div class="error-in">Sorry, that username's taken. Try another?</div>
 					{else}
-					<input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Type username" required>
+					<input type="text" class="form-control" id="username" name="username" placeholder="Type username" required>
 					{/if}
 					
 					
@@ -59,10 +59,10 @@
 				<div class="form-group">
 					<label for="email" class="required">E-mail address</label>
 					{if isset({$email_error}) && !empty({$email_error})}
-					<input type="email" class="form-control error-input" id="email" name="email" aria-describedby="emailHelp" placeholder="Type your e-mail address" required>
+					<input type="email" class="form-control error-input" id="email" name="email" placeholder="Type your e-mail address" required>
 					<div class="error-in">Sorry, that e-mail's taken. Try another?</div>
 					{else}
-					<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Type your e-mail address" required>
+					<input type="email" class="form-control" id="email" name="email" placeholder="Type your e-mail address" required>
 					{/if}
 				</div>				
 				
@@ -76,7 +76,7 @@
 					<input type="password" class="form-control" id="repeat_password" name="rep_password" placeholder="Repeat password" required>
 				</div>
 				<hr>
-				<legend><span class="number">2</span>User information</legend>
+				<h4><span class="number">2</span>User information</h4>
 				
 				<div class="form-group">
 					<label for="name" class="required">Name (only letters and spaces)</label>
@@ -99,11 +99,12 @@
 				</div>
 				
 				<hr>
-				<legend><span class="number">3</span>Selecting character</legend>
+				<h4><span class="number">3</span>Selecting character</h4>
 
 				<div class="form-group">
 					<label for="character" class="required">Choose character</label>
 					<select title="Select your character" class="selectpicker form-control" id="character" name="character" required>
+						<option value="">Choose character</option>
 						{foreach $characters as $character}
 						<option value="{$character.id}" data-thumbnail="{$character.image}">{$character.name} - {$character.charname}</option>
 						{/foreach}

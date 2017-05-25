@@ -1,6 +1,6 @@
 <?php
 
-	function userExists($username, $password) {
+	function checkPassword($username, $password) {
         global $dbh;
         $stmt = $dbh->prepare('SELECT * FROM "User" WHERE username = ?');
         $stmt->execute(array($username));

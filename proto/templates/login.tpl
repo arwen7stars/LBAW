@@ -24,13 +24,31 @@
 			<h2>Login</h2>
 			<form id="login" method="post" action="../../actions/users/login.php">
 				<fieldset>
-					<p><label for="username">Username</label>
-					<input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username"></p>
+					<div class="form-group">
+						<label for="username">Username</label>
+						
+						{if isset({$username_error}) && !empty({$username_error})}
+							<input type="text" class="form-control error-input" id="username" name="username" placeholder="Username" required>
+							<div class="error-in">Username doesn't not exist! Try again...</div>
+						{else}
+							<input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+						{/if}
+					</div>
 
-					<p><label for="password">Password</label>
-					<input type="password" class="form-control" id="password" name="password" placeholder="Password"></p>
+					<div class="form-group">
+						<label for="password">Password</label>
+						
+					{if isset({$wrong_password}) && !empty({$wrong_password})}
+						<input type="password" class="form-control error-input" id="password" name="password" placeholder="Password" required>
+						<div class="error-in">Wrong password! Try again...</div>
+					{else}
+						<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+					{/if}
+					</div>
 
-					<p><button type="submit" class="submit btn btn-primary">Login</button></p>
+					<div class="form-group">
+						<button type="submit" class="submit btn btn-primary">Login</button>
+					</div>
 				</fieldset>
 			</form>
 		</div>
