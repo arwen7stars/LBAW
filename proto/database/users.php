@@ -259,6 +259,15 @@
 		$stmt->execute(array($eventName, $startDate, $endDate, $eventPrivacy, $eventLocation, $description));
 	}
 	
+	function listEvents($userId)
+	{
+		global $dbh;
+		$query = 'SELECT name FROM "Event","User-Event" Where "User-Event"."user-id" = :userid AND "Event".id = "User-Event"."event-id" limit 3';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':userid', $userId);
+		$stmt->execute(array($userId));
+		return $stmt->fetchAll();
+	}
 	
 	
 	

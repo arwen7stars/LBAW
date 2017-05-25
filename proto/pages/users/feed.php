@@ -5,10 +5,13 @@
 	
 	$id_logged = $_SESSION['id'];
 	
+	$event = listEvents($_SESSION['id']);
+	
 	$stmt = getFeedPosts($id_logged);
 	$posts = $stmt->fetchAll();
 	$character_name = getUserCharacterName($_SESSION['username']);
 	
+	$smarty->assign('events', $event);
 	$smarty->assign('character_name', $character_name);
 	$smarty->assign('username_logged', $_SESSION['username']);
 	$smarty->assign('id_logged', $_SESSION['id']);

@@ -32,10 +32,10 @@
           <h2><a href="event.html">Events</a></h2>
           <ul class="event-list list-unstyled">
             <!-- Max 3 list-items at once -->
-            <li><a href="#">Etiam vel</a></li>
-            <li><a href="#">Phasellus aliquet sapien</a></li>
-            <li><a href="#">Donec laoreet dui</a></li>
-			<li><a href="../../pages/events/create_event.php">+  Create a new Event</li>
+			{foreach $events as $event}
+			<li><a href="#"> {$event.name} </a></li>
+			{/foreach}
+			<li><a href="../../pages/events/create_event.php">+ Create a new Event</li>
           </ul>
         </div>
 
