@@ -26,27 +26,28 @@
 	<div class="row">
 		<div class="forms col-lg-1 col-centered">
 			<h2>Create New Event</h2>
-			<form id="login" method="post" action="../../actions/events/create_event.php">
+			<form required id="create_event" method="post" action="../../actions/events/create_event.php">
 				<fieldset>
 					<p><label for="name">Event Name</label>
-					<input type="text" class="form-control" id="event_name" name="event_name" aria-describedby="emailHelp" placeholder="Event Name"></p>
+					<input type="text" class="form-control" id="event_name" name="event_name" aria-describedby="emailHelp" placeholder="Event Name" required></p>
 					
 					<p><label for="start_date">Start Date</label>
-					<input type="date" class="form-control" id="event_start" name="event_start"></p>
+					<input type="date" class="form-control" id="event_start" name="event_start" required></p>
 
 					<p><label for="end_date">End Date</label>
-					<input type="date" class="form-control" id="event_end" name="event_end"></p>
-
-					<p><label for="name">Event Name</label>
-					<input type="text" class="form-control" id="event_name" name="event_name" aria-describedby="emailHelp" placeholder="Event Name"></p>
+					<input type="date" class="form-control" id="event_end" name="event_end" required></p>
 					
 					<p><label for="name">Event Privacy</label>
-					<select class="form-control" id="exampleSelect1">
+					<select name="event_privacy" class="form-control" id="event_privacy" required>
 							<option id="event_public" name="event_public" value="true">Public</option>
-							<option id="event_public" name="event_private" value="false">Private</option>
+							<option id="event_private" name="event_private" value="false">Private</option>
 					</select>
 					
-					<select id="location" name="location" class="selectpicker" data-width="fit">
+					<p><label for="name">Event Description</label>
+					<input type="text" class="form-control" id="event_description" name="event_description" aria-describedby="emailHelp" placeholder="Small description of the event"></p>
+					
+					<p><label for="location">Event Location</label>
+					<select id="location" name="location" class="selectpicker" data-width="fit" required>
 						{if !empty($location)}
 								<option value="-1">Select location</option>
 								{foreach $locations as $loc}
@@ -63,6 +64,7 @@
 								{/foreach}
 						{/if}
 					</select>
+					
 					<p><button type="submit" class="submit btn btn-primary">Create Event</button></p>
 				</fieldset>
 			</form>

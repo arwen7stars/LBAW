@@ -243,6 +243,25 @@
 		$query = 'INSERT INTO "User" ("name", "username", "password", "email", "date-of-birth", "character-id", "location-id") VALUES (?, ?, ?, ?, ?, ?, ?)';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($name, $username, $password, $email, $date, $character, $location));
-
 	}
+	
+	function addEvent($userId, $eventName, $startDate, $endDate, $eventPrivacy, $description, $eventLocation)
+	{
+		global $dbh;
+		$query = 'INSERT INTO "Event" ("name","start","finish","public","location-id","about") VAlUES ( :eventName , :startDate, :endDate, :eventPrivacy, :locationId, :description)';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':eventName', $eventName);
+		$stmt->bindParam(':startDate', $startDate);
+		$stmt->bindParam(':endDate', $endDate);
+		$stmt->bindParam(':eventPrivacy', $eventPrivacy);
+		$stmt->bindParam(':locationId', $eventLocation);
+		$stmt->bindParam(':description', $description);
+		$stmt->execute(array($eventName, $startDate, $endDate, $eventPrivacy, $eventLocation, $description));
+	}
+	
+	
+	
+	
+	
+	
 ?>
