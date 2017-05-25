@@ -21,8 +21,6 @@
 
 {include file='header.tpl'}
 
-
-
 <div class="content">
 
       <!--  Left -->
@@ -31,9 +29,8 @@
         <div class="events">
           <h2><a href="event.html">Events</a></h2>
           <ul class="event-list list-unstyled">
-            <!-- Max 3 list-items at once -->
 			{foreach $events as $event}
-			<li><a href="#"> {$event.name} </a></li>
+			<li><a href="../../pages/events/show_event.php?event-id={$event.id}"> {$event.name} </a></li>
 			{/foreach}
 			<li><a href="../../pages/events/create_event.php">+ Create a new Event</li>
           </ul>
