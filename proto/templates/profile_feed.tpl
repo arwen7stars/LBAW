@@ -45,17 +45,31 @@
 									{else}
 										{if ($friend.accepted)}
 											{if ($friend.user1 == $id)}
-												<form action="../../actions/users/delete_friendship.php" method="post">
-													<input type="hidden" name="cancel" value="false">
-													<input type="hidden" name="user1-id" value="{$id}">
-													<button type="submit" class="btn btn-default"> Unfriend :(</button>
-												</form>
+												<div class="dropdown">
+													<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-ok"></span> Friends</button>
+													<ul class="dropdown-menu">
+														<li>
+															<form id="unfriend-form" action="../../actions/users/delete_friendship.php" method="post">
+																<input type="hidden" name="cancel" value="false">
+																<input type="hidden" name="user1-id" value="{$id}">
+																<a href="javascript:void(0)" onclick="document.getElementById('unfriend-form').submit(); return false;">Unfriend</a>
+															</form>
+														</li>
+													</ul>
+												</div>
 											{else}
-												<form action="../../actions/users/delete_friendship.php" method="post">
-													<input type="hidden" name="cancel" value="true">
-													<input type="hidden" name="user2-id" value="{$id}">
-													<button type="submit" class="btn btn-default">Unfriend :(</button>
-												</form>
+												<div class="dropdown">
+													<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-ok"></span> Friends</button>
+													<ul class="dropdown-menu">
+														<li>
+															<form id="unfriend-form" action="../../actions/users/delete_friendship.php" method="post">
+																<input type="hidden" name="cancel" value="true">
+																<input type="hidden" name="user2-id" value="{$id}">
+																<a href="javascript:void(0)" onclick="document.getElementById('unfriend-form').submit(); return false;">Unfriend</a>
+															</form>
+														</li>
+													</ul>
+												</div>
 											{/if}
 										{else}
 											{if ($friend.user1 == $id)}

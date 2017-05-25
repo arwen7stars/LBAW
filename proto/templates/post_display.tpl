@@ -45,10 +45,61 @@
 							<button name="user2-id" value="{$id}" type="submit" class="btn btn-default">Add friend <span class="glyphicon glyphicon-plus"></span></button>
 						</form>
 						{else}
-							{if ({$accepted})}
-								<p class="friend-status">We are friends!</p>
+							{if ($friend.accepted)}
+								{if ($friend.user1 == $id)}
+									<div class="dropdown">
+										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-ok"></span> Friends</button>
+										<ul class="dropdown-menu">
+											<li>
+												<form id="unfriend-form" action="../../actions/users/delete_friendship.php" method="post">
+													<input type="hidden" name="cancel" value="false">
+													<input type="hidden" name="user1-id" value="{$id}">
+													<a href="javascript:void(0)" onclick="document.getElementById('unfriend-form').submit(); return false;">Unfriend</a>
+												</form>
+											</li>
+										</ul>
+									</div>
+								{else}
+									<div class="dropdown">
+										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-ok"></span> Friends</button>
+										<ul class="dropdown-menu">
+											<li>
+												<form id="unfriend-form" action="../../actions/users/delete_friendship.php" method="post">
+													<input type="hidden" name="cancel" value="true">
+													<input type="hidden" name="user2-id" value="{$id}">
+													<a href="javascript:void(0)" onclick="document.getElementById('unfriend-form').submit(); return false;">Unfriend</a>
+												</form>
+											</li>
+										</ul>
+									</div>
+								{/if}
 							{else}
-								<p class="friend-status">Friend request was sent...</p>
+								{if ($friend.user1 == $id)}
+									<div class="dropdown">
+										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon glyphicon-user"></span> Accept request</button>
+										<ul class="dropdown-menu">
+											<li>
+												<form id="confirm-form" action="../../actions/users/accept_friendship.php" method="post">
+													<input type="hidden" name="user1-id" value="{$id}">
+													<a href="javascript:void(0)" onclick="document.getElementById('confirm-form').submit(); return false;">Confirm</a>
+												</form>
+											</li>
+											<li>
+												<form id="delete-form" action="../../actions/users/delete_friendship.php" method="post">
+													<input type="hidden" name="cancel" value="false">
+													<input type="hidden" name="user1-id" value="{$id}">
+													<a href="javascript:void(0)" onclick="document.getElementById('delete-form').submit(); return false;">Delete</a>
+												</form>
+											</li>
+										</ul>
+									</div>
+								{else}
+									<form action="../../actions/users/delete_friendship.php" method="post">
+										<input type="hidden" name="cancel" value="true">
+										<input type="hidden" name="user2-id" value="{$id}">
+										<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Cancel request</button>
+									</form>
+								{/if}
 							{/if}
 						{/if}
 					{/if}
