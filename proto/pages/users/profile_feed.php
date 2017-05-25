@@ -20,7 +20,6 @@
 
 	$res = checkFriendship($_SESSION['id'], $id);					// check friendship between logged-in user and profile user
 	$friendship = ($res !== false);
-	$accepted = $res['accepted'];
 
 	if(!empty($user['date-of-birth'])){
 	
@@ -48,7 +47,7 @@
 	$smarty->assign('name', $user['name']);						// name of profile's user
 	$smarty->assign('age', $age);								// age of profile's user
 	$smarty->assign('friendship', $friendship);
-	$smarty->assign('accepted', $accepted);
+	$smarty->assign('friend', $res);
 
 	// fetch user photos
 	$stmt = getUserImages($id);

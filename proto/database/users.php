@@ -35,7 +35,7 @@
 	function checkFriendship($user1id, $user2id)
 	{
 		global $dbh;
-		$stmt = $dbh->prepare('SELECT "accepted", "user1-id","user2-id" FROM "Friendship" WHERE ("user1-id" = :user1id AND "user2-id" = :user2id) OR ("user1-id" = :user2id AND "user2-id" = :user1id)');
+		$stmt = $dbh->prepare('SELECT "accepted", "user1-id" AS user1, "user2-id" AS user2 FROM "Friendship" WHERE ("user1-id" = :user1id AND "user2-id" = :user2id) OR ("user1-id" = :user2id AND "user2-id" = :user1id)');
         $stmt->bindParam(':user1id', $user1id);
 		$stmt->bindParam(':user2id', $user2id);		
 		$stmt->execute();
@@ -189,6 +189,37 @@
 		WHERE "User"."id" = ?';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($date, $name, $about, $location, $id));
+	}
+	
+	function acceptFriendship($id1, $id2) {
+		global $dbh;
+		
+		$accepted = "TRUE";
+		$query = 'UPDATE "Friendship"
+		SET("accepted") = (?)
+		WHERE "Friendship"."user1-id" = ? AND "Friendship"."user2-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($accepted, $id1, $id2));
+	}
+	
+	function deleteFriendship($id1, $id2) {
+		global $dbh;
+		
+		$accepted = "TRUE";
+		$query = 'DELETE FROM "Friendship"
+		WHERE "Friendship"."user1-id" = ? AND "Friendship"."user2-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id1, $id2));
+	}
+	
+	function deleteFriendshipNotification($id1, $id2) {
+		global $dbh;
+		
+		$accepted = "TRUE";
+		$query = 'DELETE FROM "Notification"
+		WHERE "Notification"."friendship-user1-id" = ? AND "Notification"."friendship-user2-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id1, $id2));
 	}
 
 	function getCharacters() {

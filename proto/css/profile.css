@@ -7,6 +7,12 @@
 	width: 27rem;
 }
 
+.user_bar .btn {
+	color: white;
+	background: linear-gradient(to bottom, #F0ABAB,#8A2F2F);
+	font-weight: bold;
+}
+
 @media screen and (min-width: 992px) {
 	.timeline {
 		width: 80%;
@@ -72,6 +78,20 @@
 	padding: 0.5rem 1rem;
 	background: url('http://i41.tinypic.com/28h3fwh.png');
 	font-size: 95%;
+}
+
+.user_bar .dropdown-menu>li>form {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    white-space: nowrap;
+}
+
+.user_bar .dropdown-menu>li>form>a {
+	color: #333;
+	font-weight: normal;
 }
 
 /*
@@ -213,7 +233,7 @@
   background-color: #f2f2f2;
 }
 
-.comment .dropdown-toggle, .photo-display .dropdown-toggle, .post .dropdown-toggle, .open>.dropdown-toggle.btn-primary:focus, .btn-primary.active:hover {
+.comment .dropdown-toggle, .photo-display .dropdown-toggle, .post .dropdown-toggle, .timeline .open>.dropdown-toggle.btn-primary:focus, .btn-primary.active:hover {
 	color: #000;
 	background-color: transparent;
 	border: 0px;

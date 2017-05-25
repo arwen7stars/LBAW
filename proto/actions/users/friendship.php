@@ -1,6 +1,5 @@
 <?php
-include_once('../../config/init.php');
-
+	include_once('../../config/init.php');
 
     global $dbh;
 	$id1 = $_SESSION['id'];
