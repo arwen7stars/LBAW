@@ -7,7 +7,6 @@
 
 * fixing css and validation for every page
 * implementing create events
-* checking login errors
 
 ## User Stories
 

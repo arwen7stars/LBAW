@@ -168,7 +168,7 @@
 						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 					</div>
 
-				
+					{if ((isset($username_logged) && $friendship) || ($id == $id_logged))}
 					<hr class="separator">
 					
 					<div class="make-comment-wrap">
@@ -182,6 +182,7 @@
 							<button type="submit" class="btn btn-default btn-comment">Comment</button>
 						</form>
 					</div>
+					{/if}
 				</div>
 				
 				{foreach $comments as $comment}

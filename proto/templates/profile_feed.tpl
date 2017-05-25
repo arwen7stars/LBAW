@@ -111,7 +111,7 @@
 								
 								<div id="black" class="black_overlay"></div>
 								{foreach $posts as $post}{if ($id_logged == $post.user) || $post.public}
-								<div class="post">
+								<div class="post_space"><div class="post">
 								
 									<div id="edit-{$post.postid}" class="edit_box">
 										<a href="javascript:void(0)" id="close-edit-{$post.postid}" class="close-edit pull-right">
@@ -191,16 +191,16 @@
 									
 									<div class="opt-group btn-group-justified hidden-sm hidden-xs">
 										<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
-										<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
+										<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
 										<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
 									</div>
 									
 									<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
 										<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
-										<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
+										<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
 										<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 									</div>
-
+									
 									<div class="make-comment-wrap">
 										<form class="form" action="../../actions/posts/comment.php" method="post">
 											<div class="form-group">
@@ -212,10 +212,8 @@
 											<button type="submit" class="btn btn-default btn-comment">Comment</button>
 										</form>
 									</div>
-								</div>
-								<div class="post_space">
-								<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}">Show more comments...</a>
-								</div>
+									{/if}
+								</div></div>
 								{/if}
 								{/foreach}
 							</div>
