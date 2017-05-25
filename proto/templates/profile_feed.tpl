@@ -201,7 +201,7 @@
 										<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 									</div>
 									
-									{if ((isset($username_logged) && $friendship) || ($id == $id_logged))}
+									{if ((isset($username_logged) && $friendship && $accepted) || ($id == $id_logged))}
 									<div class="make-comment-wrap">
 										<form class="form" action="../../actions/posts/comment.php" method="post">
 											<div class="form-group">

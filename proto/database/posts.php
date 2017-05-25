@@ -18,7 +18,7 @@
 			AND "User".id = "Post"."user-id"
 			AND "Character"."id" = "User"."character-id"
 			AND "Character-Image"."character-id" = "Character"."id"
-			AND "Character-Image"."image-id" = "Image"."id"
+			AND "Character-Image"."image-id" = "Image"."id" AND "Post"."event-id" IS NULL AND "Post"."group-id" IS NULL
 		GROUP BY "Post"."id", "Post-Images"."id", "Post-Images"."url", "Post-Images"."description", "Character"."name", "Image"."url"
 		ORDER BY date DESC, "Post"."id" DESC;';
 		$stmt = $dbh->prepare($query);
@@ -56,7 +56,7 @@
 		) AS "Friends"
 		WHERE "Friends"."user-id" = "Post"."user-id" AND "Friends"."user-id" = "User"."id" AND "Character"."id" = "User"."character-id"
 					AND "Character-Image"."character-id" = "Character"."id"
-					AND "Character-Image"."image-id" = "Image"."id"
+					AND "Character-Image"."image-id" = "Image"."id" AND "Post"."event-id" IS NULL AND "Post"."group-id" IS NULL
 		GROUP BY "Post"."id", "Post-Images"."id", "Post-Images"."url", "Post-Images"."description", "Character"."name", "Image"."url"
 		
 		UNION
@@ -77,7 +77,7 @@
 			AND "User".id = "Post"."user-id"
 			AND "Character"."id" = "User"."character-id"
 			AND "Character-Image"."character-id" = "Character"."id"
-			AND "Character-Image"."image-id" = "Image"."id"
+			AND "Character-Image"."image-id" = "Image"."id" AND "Post"."event-id" IS NULL AND "Post"."group-id" IS NULL
 		GROUP BY "Post"."id", "Post-Images"."id", "Post-Images"."url", "Post-Images"."description", "Character"."name", "Image"."url"
 		ORDER BY date DESC, postid DESC';
 		$stmt = $dbh->prepare($query);

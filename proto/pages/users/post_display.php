@@ -9,6 +9,7 @@
 
 	$user = getUserInfo($id);
 	$username_page = $user['username'];
+	$character_name = getUserCharacterName($_SESSION['username']);
 
 	$character = getUserCharacter($username_page);
 	$image = getUserProfileImage($character['charid']);
@@ -21,6 +22,7 @@
 	$smarty->assign('id', $id);									// id of profile's user
 	
 	$smarty->assign('character', $character);
+	$smarty->assign('character_name', $character_name);
 	$smarty->assign('series', $series);
 	
 	$smarty->assign('image', $image);
