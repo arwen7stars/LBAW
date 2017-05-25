@@ -7,6 +7,7 @@
 
 * fixing css and validation for every page
 * implementing create events
+* interface for accepting friend requests
 
 ## User Stories
 
