@@ -40,7 +40,7 @@
 		$description = "Photo of $username";
 		$usr_id = null;
 		$path = '../../images/' . $name_file;
-		$date = date('m/d/Y', time());
+		$date = date('Y-m-d', time());
 		
 		$post_id = addPost($body, $shared, $public, $user_id, $original_poster, $event_id, $group_id);
 		addPostImage($path, $description, $date, $post_id, $usr_id);

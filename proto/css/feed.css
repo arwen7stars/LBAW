@@ -78,7 +78,7 @@ h2 > a {
 .content-middle {
   flex: auto;
   overflow-y: auto;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .content-right {
@@ -235,6 +235,14 @@ color: #000;
 	background: #eee;
     border: 1px solid #999;
 	margin: 0rem 0.5rem 0.5rem 0.5rem;
+}
+
+
+@media (max-width: 768px) {
+	.edit_box {
+		width: 30rem;
+		margin-left: -15rem;
+	}
 }
 
 .post-content {

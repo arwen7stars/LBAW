@@ -47,6 +47,16 @@
 	$stmt = getCommentsPost($postid);
 	$comments = $stmt->fetchAll();
 	$smarty->assign('comments', $comments);
+	
+	if (isset($_SESSION['previous'])) {
+		if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous']) {
+			unset($_SESSION['passwords']);
+			unset($_SESSION['old-password']);
+			unset($_SESSION['user_exists']);
+			unset($_SESSION['email_exists']);
+			unset($_SESSION['password-success']);
+	   }
+	}
 
 	$smarty->display($BASE_DIR . 'templates/post_display.tpl');
 ?>

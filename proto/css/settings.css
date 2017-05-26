@@ -1,23 +1,133 @@
-.outter-box {
-  display: table;
-  position: absolute;
-  height: 80%;
+.settings {
+	width: 80%;
+	background-color: white;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+    float: none;
+    margin: 0 auto;
+    margin-top:1.5rem;
+}
+
+.success {
+	padding-top: 2rem;
+	width: 80%;
+    float: none;
+    margin: 0 auto;
+}
+
+.settings h2 {
+	padding-top: 1rem;
+	padding-left: 1rem;
+}
+
+.settings .info {
+	padding: 1rem 1.5rem 0rem 1.5rem;
+}
+
+.settings .submit-btn {
+	margin-right: 1.5rem;
+	background: linear-gradient(to bottom, #F0ABAB,#8A2F2F);
+	font-weight: bold;
+	color: white;
+	border-color: #ccc;
+	border-width: 0.1rem;
+    border-radius: 5px;
+	padding: 1rem 3rem;
+}
+
+.settings .delete-wrap {
+	padding-left: 1.5rem;
+	padding-bottom: 1.5rem;
+}
+
+.separator {
+    background-color: #f6f7f9;
+    border: 1px solid #dddfe2;
+    border-radius: 3px 3px 0 0;
+    line-height: 26px;
+	padding: 0.8rem;
+	font-weight: bold;
+	font-size: 1.5rem;
+	padding-left: 8%;
+}
+
+.error-input {
+	border-color: red;
+}
+
+.error-in {
+	color: #ff0000;
+}
+
+.black_overlay {
+  display: none;
+  position: fixed;
+  top: 0%;
+  left: 0%;
   width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity=80);
 }
 
-.middle-box {
-  display: table-cell;
-  vertical-align: middle;
+.edit_box {
+	display: none;
+	position: fixed;
+	padding: 16px;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	background-color: white;
+	z-index: 1002;
+	width: 50rem;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px; /* Negative half of height. */
+	margin-left: -250px; /* Negative half of width. */
 }
 
-.inner-box {
-  margin-left: auto;
-  margin-right: auto;
-  width: 900px;
+.edit_box .controls{
+    text-align: right;
+	line-height: 80%;
+}
+.edit_box .update {
+	background: linear-gradient(to bottom, #ffffff,#e5e5e5);
+    border: 1px solid #999;
+    padding: 10px 25px;
+    font-weight: bold;
+    color: rgb(77,77,77);
+    border-width: 1px 0 0 1px;
+	margin-top: -0.1rem;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+.edit_box .bootstrap-select .btn {
+	background-color: white;
+	margin-top: -0.1rem;
+}
+
+.edit_box textarea {
+    background: linear-gradient(to bottom, #e5e5e5,#f2f2f2);
+    border:none;
+    width:100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 1px dotted #999;
+    resize: none;
+}
+
+.edit_box .wrapper {
+	background: #eee;
+    border: 1px solid #999;
+	margin: 0rem 0.5rem 0.5rem 0.5rem;
+}
+
+@media (max-width: 768px) {
+	.edit_box {
+		width: 30rem;
+		margin-left: -15rem;
+	}
 }

@@ -357,6 +357,13 @@
 	margin: 0rem 0.5rem 0.5rem 0.5rem;
 }
 
+@media (max-width: 768px) {
+	.edit_box {
+		width: 30rem;
+		margin-left: -15rem;
+	}
+}
+
 .nav-justified > li {
 	display: table-cell;
 	width: 1%;
