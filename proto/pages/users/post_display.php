@@ -21,11 +21,12 @@
 	$smarty->assign('username_page', $username_page);			// username of profile's user
 	$smarty->assign('id_logged', $_SESSION['id']);				// logged-in id
 	$smarty->assign('id', $id);									// id of profile's user
+	$smarty->assign('public', $user['public']);					// privacy of profile's user
 	
 	$smarty->assign('character', $character);
 	$smarty->assign('character_name', $character_name);
 	$smarty->assign('series', $series);
-	
+
 	$smarty->assign('image', $image);
 	$smarty->assign('postid', $postid);
 	$smarty->assign('friendship', $friendship);

@@ -17,6 +17,7 @@
 	$smarty->assign('email_error', $_SESSION['email_exists']);
 	$smarty->assign('old_password', $_SESSION['old-password']);
 	$smarty->assign('password_success', $_SESSION['password-success']);
+	$smarty->assign('notifications', $_SESSION['notifications']);
 
 	$smarty->display($BASE_DIR . 'templates/settings.tpl');
 ?>

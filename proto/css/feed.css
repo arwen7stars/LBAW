@@ -11,6 +11,15 @@
 	
 }
 
+#welcome-message {
+	text-shadow: 2px 2px #ccc;
+	text-align: center;
+}
+
+#welcome-message h3 {
+	color: #3d3d5c;
+}
+
 html {
   height: 100%;
 }

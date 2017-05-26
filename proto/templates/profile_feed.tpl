@@ -102,6 +102,7 @@
 									{/if}
 								{/if}
 							</div>
+							{if ($id == $id_logged) || $public}
 							{if !empty($images)}
 							<div class="user_photos">
 								<h3><b>Photos</b></h3>							
@@ -116,11 +117,12 @@
 									View more...
 								</a>
 							</div>
-							{/if}
+							{/if}{/if}
 						</div>
                 </div>
 				
                 <div class="col-md-9 push-md-3">
+					{if ($id == $id_logged) || $public}
 					<div class="timeline">
 						<ul class="nav nav-tabs nav-justified">
 							<li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
@@ -161,6 +163,13 @@
 								{/if}
 								
 								<div id="black" class="black_overlay"></div>
+								
+								{if empty($posts)}
+								<div id="welcome-message">
+									<p><h1>No posts to show yet...</h1></p>
+									<p><h3>Make a post!</h3></p>
+								</div>
+								{else}
 								{foreach $posts as $post}{if ($id_logged == $post.user) || $post.public}
 								<div class="post_space"><div class="post">
 								
@@ -267,7 +276,7 @@
 									{/if}
 								</div></div>
 								{/if}
-								{/foreach}
+								{/foreach}{/if}
 							</div>
 							<div id="about" class="tab-pane fade">
 								<div class="about">
@@ -301,7 +310,7 @@
 										{if !empty($about)}
 										<dl>
 											<dt class="col-sm-4">Additional information</dt>
-											<dd class="col-sm-8">{$about}</dd>
+											<dd id="about_txt" class="col-sm-8">{$about}</dd>
 										</dl>
 										{/if}
 									</div>
@@ -338,6 +347,12 @@
 							</div>
 						</div>
 					</div>
+					{else}
+					<div id="private-profile">
+						<h2>This profile is private.</h2>
+						<h4>Become friends with this user to see their posts!</h4>
+					</div>
+					{/if}
                 </div>
 			
             </div>

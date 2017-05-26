@@ -104,6 +104,8 @@
 						{/if}
 					{/if}
 				</div>
+				
+				{if ($id == $id_logged) || $public}
 				{if !empty($previousimg) || !empty($nextimg)}
 				<div class="user_photos">
 					<h3><b>Photos</b></h3>
@@ -121,10 +123,11 @@
 					</figure>
 					{/if}
 				</div>
-				{/if}
+				{/if}{/if}
 			</div>
 		</div>
         <div class="col-md-9 push-md-3">
+			{if ($id == $id_logged) || $public}
 			<div class="timeline">
 				
 				{if !empty($post)}
@@ -296,6 +299,12 @@
 					<h3>Post not found!</h3>
 				{/if}
 			</div>
+			{else}
+			<div id="private-profile">
+				<h2>This profile is private.</h2>
+				<h4>Become friends with this user to see their posts!</h4>
+			</div>
+			{/if}
 		</div>
 
         <div class="col-xs  hidden-xs hidden-sm">

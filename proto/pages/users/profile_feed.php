@@ -45,6 +45,7 @@
 	$smarty->assign('location', $location);						// location of profile's user
 	$smarty->assign('about', $user['about']);					// about of profile's user
 	$smarty->assign('name', $user['name']);						// name of profile's user
+	$smarty->assign('public', $user['public']);					// privacy of profile's user
 	$smarty->assign('age', $age);								// age of profile's user
 	$smarty->assign('friendship', $friendship);
 	$smarty->assign('friend', $res);

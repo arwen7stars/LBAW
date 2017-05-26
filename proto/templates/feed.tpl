@@ -111,6 +111,12 @@
 		</div>
 
 		<div id="black" class="black_overlay"></div>
+		{if empty($posts)}
+		<div id="welcome-message">
+			<p><h1>Welcome to Anibook!</h1></p>
+			<p><h3>Start by making some friends or a post!</h3></p>
+		</div>
+		{else}
 		{foreach $posts as $post}{if ($id_logged == $post.user) || $post.public}
 		<div class="post_space">
         <div class="post">
@@ -215,7 +221,7 @@
         </div>
 		</div>
 		{/if}{/foreach}
-
+		{/if}
 
       </div>
 
