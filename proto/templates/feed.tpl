@@ -117,7 +117,7 @@
 			<p><h3>Start by making some friends or a post!</h3></p>
 		</div>
 		{else}
-		{foreach $posts as $post}{if ($id_logged == $post.user) || $post.public}
+		{foreach $posts as $post}
 		<div class="post_space">
         <div class="post">
 			<div id="edit-{$post.postid}" class="edit_box">
@@ -220,7 +220,7 @@
 			</div>
         </div>
 		</div>
-		{/if}{/foreach}
+		{/foreach}
 		{/if}
 
       </div>

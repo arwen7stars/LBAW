@@ -102,7 +102,7 @@
 									{/if}
 								{/if}
 							</div>
-							{if ($id == $id_logged) || $public}
+							{if ($id == $id_logged) || $public || $friend.accepted}
 							{if !empty($images)}
 							<div class="user_photos">
 								<h3><b>Photos</b></h3>							
@@ -122,7 +122,7 @@
                 </div>
 				
                 <div class="col-md-9 push-md-3">
-					{if ($id == $id_logged) || $public}
+					{if ($id == $id_logged) || $public || $friend.accepted}
 					<div class="timeline">
 						<ul class="nav nav-tabs nav-justified">
 							<li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
@@ -170,7 +170,7 @@
 									<p><h3>Make a post!</h3></p>
 								</div>
 								{else}
-								{foreach $posts as $post}{if ($id_logged == $post.user) || $post.public}
+								{foreach $posts as $post}{if ($id_logged == $post.user) || $post.public || $friend.accepted}
 								<div class="post_space"><div class="post">
 								
 									<div id="edit-{$post.postid}" class="edit_box">

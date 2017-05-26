@@ -105,7 +105,7 @@
 					{/if}
 				</div>
 				
-				{if ($id == $id_logged) || $public}
+				{if ($id == $id_logged) || $public  || $friend.accepted}
 				{if !empty($previousimg) || !empty($nextimg)}
 				<div class="user_photos">
 					<h3><b>Photos</b></h3>
@@ -123,11 +123,16 @@
 					</figure>
 					{/if}
 				</div>
+				{else}
+				<div class="user_photos">
+					<h3><b>Photos</b></h3>
+					No other photos to show...
+				</div>
 				{/if}{/if}
 			</div>
 		</div>
         <div class="col-md-9 push-md-3">
-			{if ($id == $id_logged) || $public}
+			{if ($id == $id_logged) || $public || $friend.accepted}
 			<div class="timeline">
 				
 				{if !empty($post)}
