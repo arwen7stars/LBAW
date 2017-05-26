@@ -438,12 +438,13 @@
 		$stmt->execute(array($userId));
 		return $stmt->fetchAll();
 	}
+	
 	function getEventInfo($event_id)
 	{
 		global $dbh;
-		$query = 'SELECT * FROM "Event" WHERE "Event".id = :event-id';
+		$query = 'SELECT * FROM "Event" WHERE "Event".id = :event_id';
 		$stmt = $dbh->prepare($query);
-		$stmt->bindParam(':event-id', $event_id);
+		$stmt->bindParam(':event_id', $event_id);
 		$stmt->execute(array($event_id));
 		return $stmt->fetchAll();
 	}
