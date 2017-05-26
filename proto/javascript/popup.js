@@ -6,7 +6,7 @@ $(document).ready(function () {
 	})
 	
 	// close div pop-up for deleting comments
-	$('.close').on('click', function(e) {
+	$('.close-popup').on('click', function(e) {
 		$('#popup').css('display', 'none');
 		$('#black').css('display', 'none');	
 	})

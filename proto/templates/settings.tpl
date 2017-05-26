@@ -130,11 +130,11 @@
 	<div id="black" class="black_overlay"></div>
 	
 	<div id="popup" class="edit_box">
-		<div class="modal-body">Are you sure you want to delete this post?</div>
+		<div class="modal-body">Are you sure you want to delete your profile? This action cannot be undone.</div>
 			<div class="modal-footer button-container">
 				<form class="form" action="../../actions/users/delete_profile.php" method="post">
 					<input type="hidden" name="user-id" value="{$id_logged}">
-					<button type="button" id="close" class="close-delete btn">Cancel</button>
+					<button type="button" id="close" class="close-popup btn">Cancel</button>
 					<input type="submit" class="btn btn-primary" value="Delete">
 				</form>
 			</div>
