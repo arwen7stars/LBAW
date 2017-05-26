@@ -1,7 +1,6 @@
 <?php
 	include_once('../../config/init.php');
 	include_once('../../database/posts.php');
-	session_start();
 	
 	$user_id = $_POST['user-id'];
 	$post_id = $_POST['post-id'];

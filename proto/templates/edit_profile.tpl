@@ -19,7 +19,7 @@
 <body>
 	{include file='header.tpl'}
 	<div id="edit">
-		<form class="form-horizontal" action="../../actions/posts/edit_profile.php" method="post">
+		<form class="form-horizontal" action="../../actions/users/edit_profile.php" method="post">
 			<input type="hidden" name="user-id" value="{$id_logged}">
 			<button type="submit" class="submit-btn pull-right">Save</button>
 				

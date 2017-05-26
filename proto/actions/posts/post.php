@@ -2,8 +2,7 @@
 	include_once('../../config/init.php');
 	include_once('../../database/users.php');
 	include_once('../../database/posts.php');
-	session_start();
-
+	
 	if ($_POST['event-id']) {
 		$event_id = $_POST['event-id'];
 		$group_id = null;
