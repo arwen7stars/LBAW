@@ -7,7 +7,11 @@
 
 * fixing css and validation for every page
 * implementing create events
-* interface for accepting friend requests
+
+## Important things to delevop if we have time
+
+* interface for accepting friend requests on feed or user bar
+* custom permissions for users/posts
 
 ## User Stories
 
@@ -34,7 +38,7 @@
 | ~~US109~~ | Delete | Medium | As a logged in user, I want to delete my profile, posts and comments, so that no one sees them|
 | ~~US110~~ | Post Images | Medium | As a logged in user, I want to publish posts with images, so that other users can see them|
 | US111 | Reset/Change Password | Medium | As a logged in user, I want to reset or change my password anytime I want, so that I can feel safe |
-| US112 | Permissions | Medium | As a logged in user, I want to set custom permissions for my profile and posts |
+| ~~US112~~ | Permissions | Medium | As a logged in user, I want to set custom permissions for my profile and posts |
 | US113 | Invite | Low | As a logged in user, I want to invite non-registered users to create accounts, so that they'll join the web app |
 | US114 | PMs | Low | As a logged in user, I want to send private messages to other users, so that I can talk to them in private |
 | US115 | Online Friends | Low | As a logged in user, I want to see my online friends |
