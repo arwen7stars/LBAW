@@ -181,6 +181,114 @@
 		return $stmt;
 	}
 	
+	function getUserLikes($user_id) {
+		global $dbh;
+		
+		$query = 'SELECT * FROM "Likes" WHERE "Likes"."user-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($user_id));
+		
+		return $stmt;		
+	}
+	
+	function getEventInvites($user_id) {
+		global $dbh;
+		
+		$query = 'SELECT * FROM "Event-Invite" WHERE "Event-Invite"."user-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($user_id));
+		
+		return $stmt;
+	}
+
+	function getGroupInvites($user_id) {
+		global $dbh;
+		
+		$query = 'SELECT * FROM "Group-Invite" WHERE "Group-Invite"."user-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($user_id));
+		
+		return $stmt;
+	}
+	
+	function deleteEventInvite($id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."event-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+		
+		$query = 'DELETE FROM "Event-Invite" WHERE "Event-Invite"."event-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));		
+	}
+	
+	function deleteGroupInvite($id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."group-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+		
+		$query = 'DELETE FROM "Event-Invite" WHERE "Group-Invite"."group-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));		
+	}
+	
+	function deleteUserNotifications($id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."user-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+	}
+	
+	/*
+	function deleteUserGroups($id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "User-Group" WHERE "User-Group"."user-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));	
+	}
+	
+	function deleteUserEvents($id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "User-Event" WHERE "User-Event"."user-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));	
+	}
+	*/
+	
+	function deleteUserFriendshipNotifications($id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."friendship-user1-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));	
+
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."friendship-user2-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));	
+	}
+	
+	function deleteUserLikes($id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Likes" WHERE "Likes"."user-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));			
+	}
+	
+	function deleteUser($id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "User" WHERE "User"."id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+	}
+	
 	function updateUser($id, $name, $date, $location, $about) {
 		global $dbh;
 		
@@ -189,6 +297,16 @@
 		WHERE "User"."id" = ?';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($date, $name, $about, $location, $id));
+	}
+	
+	function updateUserSettings($id, $username, $password, $email, $public) {
+		global $dbh;
+		
+		$query = 'UPDATE "User"
+		SET("username", "password", "email", "public") = (?, ?, ?, ?)
+		WHERE "User"."id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($username, $password, $email, $public, $id));
 	}
 	
 	function acceptFriendship($id1, $id2) {
@@ -205,21 +323,72 @@
 	function deleteFriendship($id1, $id2) {
 		global $dbh;
 		
-		$accepted = "TRUE";
 		$query = 'DELETE FROM "Friendship"
 		WHERE "Friendship"."user1-id" = ? AND "Friendship"."user2-id" = ?';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($id1, $id2));
 	}
 	
-	function deleteFriendshipNotification($id1, $id2) {
+	function deleteFriendships($id) {
 		global $dbh;
 		
-		$accepted = "TRUE";
 		$query = 'DELETE FROM "Notification"
-		WHERE "Notification"."friendship-user1-id" = ? AND "Notification"."friendship-user2-id" = ?';
+		WHERE "Notification"."friendship-user1-id" = ?';
 		$stmt = $dbh->prepare($query);
-		$stmt->execute(array($id1, $id2));
+		$stmt->execute(array($id));
+		
+		$query = 'DELETE FROM "Notification"
+		WHERE "Notification"."friendship-user2-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+		
+		$query = 'DELETE FROM "Friendship"
+		WHERE "Friendship"."user1-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+		
+		$query = 'DELETE FROM "Friendship"
+		WHERE "Friendship"."user2-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+	}
+	
+	function deletePrivateMessages($id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Notification"
+		WHERE "Notification"."pm-user1-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+		
+		$query = 'DELETE FROM "Notification"
+		WHERE "Notification"."pm-user2-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+		
+		$query = 'DELETE FROM "Private-Message"
+		WHERE "Private-Message"."user1-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+		
+		$query = 'DELETE FROM "Private-Message"
+		WHERE "Private-Message"."user2-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));		
+	}
+	
+	function deleteUserReports($id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Report"
+		WHERE "Report"."user-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));
+		
+		$query = 'DELETE FROM "Report"
+		WHERE "Report"."admin" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id));				
 	}
 
 	function getCharacters() {
@@ -243,6 +412,7 @@
 		$query = 'INSERT INTO "User" ("name", "username", "password", "email", "date-of-birth", "character-id", "location-id") VALUES (?, ?, ?, ?, ?, ?, ?)';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($name, $username, $password, $email, $date, $character, $location));
+
 	}
 	
 	function addEvent($userId, $eventName, $startDate, $endDate, $eventPrivacy, $description, $eventLocation)
@@ -268,9 +438,4 @@
 		$stmt->execute(array($userId));
 		return $stmt->fetchAll();
 	}
-	
-	
-	
-	
-	
 ?>
