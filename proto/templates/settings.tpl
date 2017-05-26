@@ -41,10 +41,10 @@
 				<label class="col-sm-3" for="newUsername">Change username</label>
 				<div class="col-sm-9">
 					{if isset({$username_error}) && !empty({$username_error})}
-					<input type="text" class="form-control error-input" id="newUsername" name="username" value="{$user.username}">
+					<input type="text" class="form-control error-input" id="newUsername" maxlength="20" name="username" value="{$user.username}">
 					<div class="error-in">Sorry, that username's taken. Try another?</div>
 					{else}
-					<input type="text" class="form-control" id="newUsername" name="username" value="{$user.username}">
+					<input type="text" class="form-control" id="newUsername" maxlength="20" name="username" value="{$user.username}">
 					{/if}
 				</div>
 			</div>

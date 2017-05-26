@@ -2,10 +2,13 @@
 	include_once('../../config/init.php');
 	include_once('../../database/users.php');
 	include_once('../../database/posts.php');
+	include_once('../../database/groups.php');
 	
 	$id_logged = $_SESSION['id'];
 	
 	$event = listEvents($_SESSION['id']);
+	$res = listGroups($id_logged);
+	$groups = array_slice($res, 0, 3);
 	
 	$stmt = getFeedPosts($id_logged);
 	$posts = $stmt->fetchAll();
@@ -16,6 +19,7 @@
 	$smarty->assign('username_logged', $_SESSION['username']);
 	$smarty->assign('id_logged', $_SESSION['id']);
 	$smarty->assign('posts', $posts);
+	$smarty->assign('groups', $groups);
 	
 	if (isset($_SESSION['previous'])) {
 		if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous']) {

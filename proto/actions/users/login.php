@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	include_once('../../config/init.php');
 	include_once('../../database/users.php');
 
@@ -11,7 +13,7 @@
 	if(usernameExists($username)){
 		if (checkPassword($username, $password)) {
 			$_SESSION['username'] = $username;
-			$_SESSION['id'] = getLoginID($username);		
+			$_SESSION['id'] = getLoginID($username);			
 		} else{
 			$_SESSION['wrong_password'] = 'Wrong password';
 		

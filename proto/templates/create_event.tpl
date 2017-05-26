@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<title>Feed</title>
+	<title>Create New Event</title>
 	<!-- Bootstrap -->
 	<link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
  	<!-- Latest compiled and minified CSS -->
@@ -20,64 +20,60 @@
 
 <div class="body-flex">
 
-{include file='header.tpl'}
+	{include file='header.tpl'}
 
-<div class="container">
-	<div class="row">
-		<div class="forms col-lg-1 col-centered">
-			<h2>Create New Event</h2>
-			<form required id="create_event" method="post" action="../../actions/events/create_event.php">
-				<fieldset>
-					<p><label for="name">Event Name</label>
-					<input type="text" class="form-control" id="event_name" name="event_name" aria-describedby="emailHelp" placeholder="Event Name" required></p>
-					
-					<p><label for="start_date">Start Date</label>
-					<input type="date" class="form-control" id="event_start" name="event_start" required></p>
+	<div class="container">
+		<div class="row">
+			<div class="forms col-lg-1 col-centered">
+				<h2>Create New Event</h2>
+				<form id="create_event" method="post" action="../../actions/events/create_event.php">
+					<fieldset>
+						<p><label for="name">Event Name</label>
+						<input type="text" class="form-control" id="name" name="event_name" placeholder="Event Name" required></p>
+						
+						<p><label for="event_start">Start Date</label>
+						<input type="date" class="form-control" id="event_start" name="event_start" required></p>
 
-					<p><label for="end_date">End Date</label>
-					<input type="date" class="form-control" id="event_end" name="event_end" required></p>
-					
-					<p><label for="name">Event Privacy</label>
-					<select name="event_privacy" class="form-control" id="event_privacy" required>
-							<option id="event_public" name="event_public" value="true">Public</option>
-							<option id="event_private" name="event_private" value="false">Private</option>
-					</select>
-					
-					<p><label for="name">Event Description</label>
-					<input type="text" class="form-control" id="event_description" name="event_description" aria-describedby="emailHelp" placeholder="Small description of the event"></p>
-					
-					<p><label for="location">Event Location</label>
-					<select id="location" name="location" class="selectpicker" data-width="fit" required>
-						{if !empty($location)}
-								<option value="-1">Select location</option>
-								{foreach $locations as $loc}
-									{if $loc.id == $location.id}
-									<option value="{$loc.id}" selected="selected">{$loc.city}, {$loc.country}</option>
-									{else}
-									<option value="{$loc.id}">{$loc.city}, {$loc.country}</option>
-									{/if}
-								{/foreach}
-						{else}
-								<option value="-1" selected="selected">Select location</option>
-								{foreach $locations as $loc}
-									<option value="{$loc.id}">{$loc.city}, {$loc.country}</option>
-								{/foreach}
-						{/if}
-					</select>
-					
-					<p><button type="submit" class="submit btn btn-primary">Create Event</button></p>
-				</fieldset>
-			</form>
+						<p><label for="event_end">End Date</label>
+						<input type="date" class="form-control" id="event_end" name="event_end" required></p>
+						
+						<p><label for="event_description">Event Description</label>
+						<input type="text" class="form-control" id="event_description" name="event_description" placeholder="Small description of the event"></p>
+						
+						<p><label for="location">Event Location</label>
+						<select id="location" name="location" class="form-control">
+							{if !empty($location)}
+									{foreach $locations as $loc}
+										{if $loc.id == $location.id}
+										<option value="{$loc.id}" selected="selected">{$loc.city}, {$loc.country}</option>
+										{else}
+										<option value="{$loc.id}">{$loc.city}, {$loc.country}</option>
+										{/if}
+									{/foreach}
+							{else}
+									<option value="-1" selected="selected">Select location</option>
+									{foreach $locations as $loc}
+										<option value="{$loc.id}">{$loc.city}, {$loc.country}</option>
+									{/foreach}
+							{/if}
+						</select></p>
+						
+						<p><label for="event_privacy">Event Privacy</label>
+						<select name="event_privacy" class="form-control" id="event_privacy">
+								<option id="event_public" value="true">Public</option>
+								<option id="event_private" value="false">Private</option>
+						</select></p>
+						
+						<p><button type="submit" class="submit btn btn-primary">Create Event</button></p>
+					</fieldset>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
 
-{include file='footer.tpl'}
+	{include file='footer.tpl'}
 
-</div>
-
-</body>
-
+	</div>
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="../../lib/jquery-3.1.1.min.js"></script>
@@ -86,4 +82,5 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/script.js"></script>
+</body>
 </html>

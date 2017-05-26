@@ -31,47 +31,34 @@
         </div>
         <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
       </form>
-	<div class="btn-group btn-group-justified" role="group" aria-label="...">
-	  <div class="btn-group" role="group">
-  <button type="button" class="btn btn-default">Posts</button>
-  </div>
-  <div class="btn-group" role="group">
-  <button type="button" class="btn btn-default">Members</button>
-  </div>
-  <div class="btn-group" role="group">
-  <button type="button" class="btn btn-default">Photos</button>
-  </div>
-  <div class="btn-group" role="group">
-  <button type="button" class="btn btn-default">About</button>
-  </div>
-	</div>
+	
 </div>
 
 
-    <!-- Main Content -->
-    <div class="content">
+	<!-- Main Content -->
+	<div class="content">
 
-      <!--  Left -->
-      <div class="content-left hidden-xs">
+		<!--  Left -->
+		<div class="content-left hidden-xs">
 
         <div class="events">
-          <h2><a href="event.html">Events</a></h2>
-          <ul class="event-list list-unstyled">
-            <!-- Max 3 list-items at once -->
-            <li><a href="#">Etiam vel</a></li>
-            <li><a href="#">Phasellus aliquet sapien</a></li>
-            <li><a href="#">Donec laoreet dui</a></li>
-          </ul>
+			<h2><a href="event.html">Events</a></h2>
+			<ul class="event-list list-unstyled">
+				<!-- Max 3 list-items at once -->
+				<li><a href="#">Etiam vel</a></li>
+				<li><a href="#">Phasellus aliquet sapien</a></li>
+				<li><a href="#">Donec laoreet dui</a></li>
+			</ul>
         </div>
 
         <div class="groups">
-          <h2><a href="group.html">Groups</a></h2>
-          <ul class="group-list list-unstyled">
-            <!-- Max 3 list-items at once -->
-            <li><a href="#">Duis in vehicula</a></li>
-            <li><a href="#">Fermentum eget</a></li>
-            <li><a href="#">Maecenas sit</a></li>
-          </ul>
+			<h2><a href="group.html">Groups</a></h2>
+			<ul class="group-list list-unstyled">
+				<!-- Max 3 list-items at once -->
+				<li><a href="#">Duis in vehicula</a></li>
+				<li><a href="#">Fermentum eget</a></li>
+				<li><a href="#">Maecenas sit</a></li>
+			</ul>
         </div>
 
         <div class="chat">
@@ -109,39 +96,65 @@
       </div>
 
       <!--  Middle -->
-      <div class="content-middle">
+		<div class="content-middle">
+		<ul class="nav nav-tabs nav-justified">
+			<li class="active"><a data-toggle="tab" href="#home">Feed</a></li>
+			<li><a data-toggle="tab" href="#about">About</a></li>
+			<li><a data-toggle="tab" href="#friends">Members</a></li>
+			<li><a data-toggle="tab" href="#photos">Photos</a></li>
+		</ul>
+	
+		<!-- MAKE-POST -->
+		<div class="make-post">
+			<form class="form" action="../../actions/posts/post.php" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<br>
+					<div class="btn-wrap">
+						<input type="hidden" name="id" value="{$id_logged}">
+						<input type="hidden" name="profile" value="false">
+						<textarea id="make-post" name="body" class="form-control txtarea-post" rows="3" placeholder="Write something to post..."></textarea>
+						<span class="button-container">
+							<label class="btn btn-primary" for="my-file-selector">
+								<input id="my-file-selector" type="file" name="image" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
+								<span class="glyphicon glyphicon-picture"></span> Upload
+							</label>
+							<span class="label label-info" id="upload-file-info"></span>
+							<input type="submit" value="Post"/>
+						</span>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<div class="post_space">
+			<div class="post">
+				<div class="post-body">
+					<h2 class="poster"><a href="#"><span class="glyphicon glyphicon-user"></span> Hikari</a></h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu enim augue. Quisque mollis nisi eget urna rutrum laoreet. Nunc vehicula arcu diam, vel elementum nisi pretium nec. Suspendisse sollicitudin neque sed lacus condimentum maximus. Sed id lacus eget velit luctus consequat. Etiam efficitur dui eget ante ornare, quis dapibus ipsum elementum. Ut sit amet iaculis turpis. Sed convallis mi sed libero vestibulum cursus. Sed ut neque urna. Duis sodales urna pellentesque tellus scelerisque lacinia. Quisque vitae enim condimentum, feugiat lectus id, eleifend sapien.</p>
+				</div>
+			  
+				<div class="opt-group btn-group-justified hidden-sm hidden-xs">
+					<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
+					<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
+					<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
+				</div>
 
-        <!-- MAKE-POST -->
-        <div class="make-post">
-          <form class="make-post-form">
-            <div class="form-group">
-              <label for="make-post" class="sr-only">Write a post</label>
-              <textarea id="make-post" class="form-control txtarea-post" rows="2" placeholder="Write something to post..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-default btn-post">Post</button>
-          </form>
-        </div>
-
-        <div class="post">
-          <div class="post-body">
-            <h2 class="poster"><a href="#"><span class="glyphicon glyphicon-user"></span> Hikari</a></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu enim augue. Quisque mollis nisi eget urna rutrum laoreet. Nunc vehicula arcu diam, vel elementum nisi pretium nec. Suspendisse sollicitudin neque sed lacus condimentum maximus. Sed id lacus eget velit luctus consequat. Etiam efficitur dui eget ante ornare, quis dapibus ipsum elementum. Ut sit amet iaculis turpis. Sed convallis mi sed libero vestibulum cursus. Sed ut neque urna. Duis sodales urna pellentesque tellus scelerisque lacinia. Quisque vitae enim condimentum, feugiat lectus id, eleifend sapien.</p>
-          </div>
-          <div class="like-share-wrap">
-            <ul class="like-share">
-              <li><a href="#">Like</a></li>
-              <li><a href="#">Share</a></li>
-            </ul>
-          </div>
-          <div class="make-comment-wrap">
-            <form class="form">
-              <div class="form-group">
-                <textarea class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
-              </div>
-            </form>
-            <button type="submit" class="btn btn-default btn-comment">Comment</button>
-          </div>
-        </div>
+				<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
+					<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
+					<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
+					<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
+				</div>
+				
+				<div class="make-comment-wrap">
+					<form class="form">
+						<div class="form-group">
+							<textarea class="form-control txtarea-comment" rows="1" placeholder="Write something to comment..."></textarea>
+						</div>
+					</form>
+					<button type="submit" class="btn btn-default btn-comment">Comment</button>
+				</div>
+			</div>
+		</div>
 
         <div class="post">
           <div class="post-body">

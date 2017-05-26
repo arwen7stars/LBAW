@@ -154,8 +154,6 @@
 							<div class="wrapper">
 								<input type="hidden" name="user-id" value="{$id_logged}">
 								<input type="hidden" name="post-id" value="{$post.postid}">
-								<input type="hidden" name="feed" value="false">
-								<input type="hidden" name="profile" value="false">
 								{if !empty($post.url)}
 								<textarea name="body" class="form-control" rows="5">{$post.body}</textarea>
 								{else}

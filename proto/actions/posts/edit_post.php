@@ -13,14 +13,5 @@
 	}
 	updatePost($post_id, $body, $public);
 	
-	if($_POST['profile'] == "true") {
-		$referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
-	} else {
-		if($_POST['feed'] == "true") {
-			$referer = '../../pages/users/feed.php';
-		} else {
-			$referer = '../../pages/users/post_display.php?user-id=' . $user_id . '&post-id=' . $post_id;
-		}
-	}
-	header('Location: ' . $referer);
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

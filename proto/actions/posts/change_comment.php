@@ -12,5 +12,5 @@
 	
 	$referer = '../../pages/users/post_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id;
 	
-	header('Location: ' . $referer);
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

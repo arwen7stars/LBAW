@@ -44,13 +44,13 @@
 				<h4><span class="number">1</span>User credentials</h4>
 			
 				<div class="form-group">
-					<label for="username" class="required">Username (only letters and numbers)</label>
+					<label for="username" class="required">Username</label>
 					
 					{if isset({$username_error}) && !empty({$username_error})}
-					<input type="text" class="form-control error-input" id="username" name="username" placeholder="Type username" required>
+					<input type="text" class="form-control error-input" id="username" name="username" maxlength="20" placeholder="Type username" required>
 					<div class="error-in">Sorry, that username's taken. Try another?</div>
 					{else}
-					<input type="text" class="form-control" id="username" name="username" placeholder="Type username" required>
+					<input type="text" class="form-control" id="username" name="username" maxlength="20" placeholder="Type username" required>
 					{/if}
 					
 					

@@ -39,10 +39,10 @@
         <div class="groups">
           <h2><a href="group.html">Groups</a></h2>
           <ul class="group-list list-unstyled">
-            <!-- Max 3 list-items at once -->
-            <li><a href="#">Duis in vehicula</a></li>
-            <li><a href="#">Fermentum eget</a></li>
-            <li><a href="#">Maecenas sit</a></li>
+			{foreach $groups as $group}
+			<li><a href="../../pages/groups/feed.php?group-id={$group.id}"> {$group.name} </a></li>
+			{/foreach}
+            <li><a href="../../pages/groups/create_group.php">+ Create a new Group</li>
           </ul>
         </div>
 
@@ -82,7 +82,6 @@
 
       <!--  Middle -->
       <div class="content-middle">
-
 		<!-- MAKE-POST -->
 		<div class="make-post">
 			<form class="form" action="../../actions/posts/post.php" method="post" enctype="multipart/form-data">
@@ -135,8 +134,6 @@
 					<div class="wrapper">
 						<input type="hidden" name="user-id" value="{$id_logged}">
 						<input type="hidden" name="post-id" value="{$post.postid}">
-						<input type="hidden" name="feed" value="true">
-						<input type="hidden" name="profile" value="false">
 						{if !empty($post.url)}
 						<textarea name="body" class="form-control" rows="5">{$post.body}</textarea>
 						{else}
