@@ -6,8 +6,7 @@
 ## In development
 
 * fixing css and validation for every page
-* implementing create events
-* taking care of sending invites to other users so that they join groups
+* managing groups/events
 
 ## Important things to delevop if we have time
 
