@@ -53,9 +53,13 @@
 		$referer = '../../pages/users/feed.php';
 	} else {
 		if($_POST['group-id']){
-			$referer = '../../pages/groups/feed.php?group-id=' . $user_id;
+			$group_id = $_POST['group-id'];
+			$referer = '../../pages/groups/feed.php?group-id=' . $group_id;
 		} else{
-			$referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
+			if($_POST['event-id']) {
+				$event_id = $_POST['event-id'];
+				$referer = '../../pages/events/event_feed.php?event-id=' . $event_id;
+			} else $referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
 		}
 	}
 

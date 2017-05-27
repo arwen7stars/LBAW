@@ -19,7 +19,10 @@
 		$group_id = $_POST['group-id'];
 		$referer = '../../pages/groups/post_group_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id . '&group-id=' . $group_id;
 	}
-	else{
+	else if($_POST['event-id']){
+		$event_id = $_POST['event-id'];
+		$referer = '../../pages/events/post_event_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id . '&event-id=' . $event_id;
+	} else {
 		$referer = '../../pages/users/post_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id;
 	}
 	

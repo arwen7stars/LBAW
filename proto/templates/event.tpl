@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <title>Event - {$event.name}</title>
+  <title>Event</title>
 
 	<!-- Bootstrap -->
 	<link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -146,28 +146,7 @@
 					</div>
 				
 				</div>
-		<!-- MAKE-POST -->
-		<div class="make-post">
-			<form class="form" action="../../actions/posts/post.php" method="post" enctype="multipart/form-data">
-				<div class="form-group">
-					<br>
-					<div class="btn-wrap">
-						<input type="hidden" name="id" value="{$id_logged}">
-						<input type="hidden" name="event-id" value="{$event_id}">
-						<textarea id="make-post" name="body" class="form-control txtarea-post" rows="3" placeholder="Write something to post..."></textarea>
-						<span class="button-container">
-							<label class="btn btn-primary" for="my-file-selector">
-								<input id="my-file-selector" type="file" name="image" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
-								<span class="glyphicon glyphicon-picture"></span> Upload
-							</label>
-							<span class="label label-info" id="upload-file-info"></span>
-							<input type="submit" value="Post"/>
-						</span>
-					</div>
-				</div>
-			</form>
-		</div>
-		
+		<!-- MAKE-POST -->		
 		<ul class="event_bar nav nav-tabs nav-justified">
 			<li class="active"><a data-toggle="tab" href="#home">Discussion</a></li>
 			<li><a data-toggle="tab" href="#about">About</a></li>
@@ -176,6 +155,27 @@
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
+				<div class="make-post">
+					<form class="form" action="../../actions/posts/post.php" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<br>
+							<div class="btn-wrap">
+								<input type="hidden" name="id" value="{$id_logged}">
+								<input type="hidden" name="event-id" value="{$event_id}">
+								<textarea id="make-post" name="body" class="form-control txtarea-post" rows="3" placeholder="Write something to post..."></textarea>
+								<span class="button-container">
+									<label class="btn btn-primary" for="my-file-selector">
+										<input id="my-file-selector" type="file" name="image" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
+										<span class="glyphicon glyphicon-picture"></span> Upload
+									</label>
+									<span class="label label-info" id="upload-file-info"></span>
+									<input type="submit" value="Post"/>
+								</span>
+							</div>
+						</div>
+					</form>
+				</div>
+				
 				<div id="black" class="black_overlay"></div>
 				{foreach $posts as $post}
 				<div class="post_space">
@@ -213,7 +213,8 @@
 							<div class="modal-footer button-container">
 								<form class="form" action="../../actions/posts/delete_post.php" method="post">
 									<input type="hidden" name="post-id" value="{$post.postid}">
-									<input type="hidden" name="feed" value="true">
+									<input type="hidden" name="feed" value="false">
+									<input type="hidden" name="event-id" value="{$event_id}">
 									<button type="button" id="close-delete-{$post.postid}" class="close-delete btn">Cancel</button>
 									<input type="submit" class="btn btn-primary" value="Delete">
 								</form>
@@ -240,20 +241,20 @@
 						<div class="post-content">
 							{$post.body}
 							{if !empty($post.url)}
-							<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}"><img src="{$post.url}" alt="{$post.description}" class="ph_display"></a>
+							<a href="../events/post_event_display.php?user-id={$post.user}&post-id={$post.postid}&event-id={$event_id}"><img src="{$post.url}" alt="{$post.description}" class="ph_display"></a>
 							{/if}
 						</div>
 					</div>
 
 					<div class="opt-group btn-group-justified hidden-sm hidden-xs">
 						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
-						<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
+						<a href="../events/post_event_display.php?user-id={$post.user}&post-id={$post.postid}&event-id={$event_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
 						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
 					</div>
 
 					<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
 						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
-						<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
+						<a href="../events/post_event_display.php?user-id={$post.user}&post-id={$post.postid}&event-id={$event_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
 						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 					</div>
 
@@ -262,6 +263,7 @@
 							<div class="form-group">
 								<input type="hidden" name="post-id" value="{$post.postid}">
 								<input type="hidden" name="user-id" value="{$id_logged}">
+								<input type="hidden" name="event-id" value="{$event_id}">
 								<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
 								<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something..."></textarea>
 							</div>
@@ -300,7 +302,16 @@
 				</div>
 			</div>
 			<div id="photos" class="tab-pane fade">
-
+				<div class="photos">
+					<h2>Photos</h2>
+					<hr>
+					{if !empty($all_images)}
+					<div class="photos-body">
+					{foreach $all_images as $img}<a href="../events/post_event_display.php?user-id={$img.user}&post-id={$img.id}&event-id={$event_id}"><img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
+					</div>
+					{else} No photos yet...
+					{/if}
+				</div>
 			</div>
 		</div>
       </div>

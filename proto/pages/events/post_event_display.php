@@ -2,7 +2,7 @@
 	include_once('../../config/init.php');
 	include_once($BASE_DIR . 'database/users.php');
 	include_once($BASE_DIR . 'database/posts.php');
-	include_once($BASE_DIR . 'database/groups.php');
+	include_once($BASE_DIR . 'database/events.php');
 
 	$id = $_GET['user-id'];					// profile id
 	$postid = $_GET['post-id'];				// post id
@@ -28,21 +28,21 @@
 	$comments = $stmt->fetchAll();
 	$smarty->assign('comments', $comments);
 	
-	$group = getGroup($_GET['group-id']);
+	$event = getEvent($_GET['event-id']);
 	
 	if(isPostFromUser($postid, $id)){
-		if(isPostFromGroup($postid, $_GET['group-id'])){
-			$belongs = isUserFromGroup($_SESSION['id'], $_GET['group-id']);
-			$next_img = getNextImageGroup($_GET['group-id'], $post['imgid']);
+		if(isPostFromEvent($postid, $_GET['event-id'])){
+			$belongs = isUserFromEvent($_SESSION['id'], $_GET['event-id']);
+			$next_img = getNextImageEvent($_GET['event-id'], $post['imgid']);
 			$smarty->assign('nextimg', $next_img);
 			
-			$previous_img = getPreviousImageGroup($_GET['group-id'], $post['imgid']);
+			$previous_img = getPreviousImageEvent($_GET['event-id'], $post['imgid']);
 			$smarty->assign('previousimg', $previous_img);
 			
-			$group_page = 't';
-			$smarty->assign('group_page', $group_page);
-			$smarty->assign('group_id', $_GET['group-id']);
-			$smarty->assign('group', $group);
+			$event_page = 't';
+			$smarty->assign('event_page', $event_page);
+			$smarty->assign('event_id', $_GET['event-id']);
+			$smarty->assign('event', $event);
 			$smarty->assign('belongs', $belongs);
 		} else {
 			$page_not_found = '404 Error. Page not found.';
@@ -63,5 +63,5 @@
 		$smarty->assign('page_not_found', $page_not_found);
 	}
 	
-	$smarty->display($BASE_DIR . 'templates/post_group_display.tpl');
+	$smarty->display($BASE_DIR . 'templates/post_event_display.tpl');
 ?>

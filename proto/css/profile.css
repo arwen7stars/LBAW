@@ -18,14 +18,8 @@
 	padding: 2rem;
 }
 
-#group-thumb {
+#group-thumb, #event-thumb {
 	font-size:14.5rem;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  margin: 0 auto;
 }
 
 /*

@@ -50,3 +50,40 @@
 	padding-right: 2rem;
 	padding-left: 2rem;
 }
+
+.about, .photos, .members {
+	padding: 1rem;
+	background-color: white;
+	overflow:auto;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	margin-left: 2rem;
+	margin-right: 2rem;
+}
+
+.about-body dd {
+	margin-bottom: 1rem;
+}
+
+.about-body {
+	text-align: justify;
+}
+
+.centered-and-cropped {
+	object-fit: cover;
+}
+
+.thumb-150px {
+	width: 150px;
+	height: 150px;
+	margin: 0.2rem 0.1rem;
+}
+
+.nav-justified > li {
+	display: table-cell;
+	width: 1%;
+}
+.nav-justified > li > a {
+	margin-bottom: 0;
+}

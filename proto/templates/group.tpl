@@ -137,19 +137,19 @@
 
       <!--  Middle -->
 		<div class="content-middle">
+			{if $admin}
+			<p class="user-options">
+				<button class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
+				<button class="group-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
+			</p>
+			{else}
+			{if $belongs}
+			<p class="user-options">
+				<button class="group-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
+			</p>
+			{/if}
+			{/if}
 			<div class="group-header">
-				{if $admin}
-				<p class="user-options">
-					<button class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
-					<button class="group-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
-				</p>
-				{else}
-				{if $belongs}
-				<p class="user-options">
-					<button class="group-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
-				</p>
-				{/if}
-				{/if}
 				<div class="group-header-img">
 					<i class="fa fa-group" id="group-image"></i>
 					<h2>{$groupinfo.name}</h2>
@@ -355,7 +355,9 @@
 						<hr>
 						{if !empty($all_images)}
 						<div class="photos-body">
-						{foreach $all_images as $img}<a href="../groups/post_group_display.php?user-id={$img.user}&post-id={$img.id}&group-id={$group_id}"><img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
+						{foreach $all_images as $img}
+						<a href="../groups/post_group_display.php?user-id={$img.user}&post-id={$img.id}&group-id={$group_id}">
+						<img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
 						</div>
 						{else} No photos yet...
 						{/if}

@@ -7,7 +7,7 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  	<title>Group Post</title>
+  	<title>Event Post</title>
 
     <!-- Bootstrap -->
     <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -29,13 +29,13 @@
 		<div class="col-md-3 pull-md-9 hidden-xs hidden-sm">
 			<div class="user_bar affix">
 				<div class="user_info">
-					<a href="../groups/feed.php?group-id={$group_id}">
-					<i class="fa fa-group" id="group-thumb"></i></a>
-					<h2>Group</h2>
+					<a href="../events/event_feed.php?event-id={$event_id}">
+					<i class="fa fa-calendar" id="event-thumb"></i></a>
+					<h2>Event</h2>
 					<ul class="list-unstyled">
 						<li>
-							<i class="fa fa-group"></i>
-							<b> Group is <a href="../groups/feed.php?group-id={$group_id}">{$group.name}</a></b>
+							<i class="fa fa-calendar"></i>
+							<b>Event is <a href="../events/event_feed.php?event-id={$event_id}">{$event.name}</a></b>
 						</li>
 					</ul>
 				</div>
@@ -45,15 +45,15 @@
 					<h3><b>Photos</b></h3>
 					{if !empty($previousimg)}
 					<figure class="imgContainer">
-						<a href="post_group_display.php?user-id={$id}&post-id={$previousimg.id}&group-id={$group_id}"><img class="centered-and-cropped thumb-100px" src="{$previousimg.url}" alt="{$previousimg.description}"></a>
-						<figcaption><a href="post_group_display.php?user-id={$id}&post-id={$previousimg.id}&group-id={$group_id}">Previous</a></figcaption>
+						<a href="post_event_display.php?user-id={$id}&post-id={$previousimg.id}&event-id={$event_id}"><img class="centered-and-cropped thumb-100px" src="{$previousimg.url}" alt="{$previousimg.description}"></a>
+						<figcaption><a href="post_event_display.php?user-id={$id}&post-id={$previousimg.id}&event-id={$event_id}">Previous</a></figcaption>
 					</figure>
 					{/if}
 					
 					{if !empty($nextimg)}
 					<figure class="imgContainer">
-						<a href="post_group_display.php?user-id={$id}&post-id={$nextimg.id}&group-id={$group_id}"><img class="centered-and-cropped thumb-100px" src="{$nextimg.url}" alt="{$nextimg.description}"></a>
-						<figcaption><a href="post_group_display.php?user-id={$id}&post-id={$nextimg.id}&group-id={$group_id}">Next</a>
+						<a href="post_event_display.php?user-id={$id}&post-id={$nextimg.id}&event-id={$event_id}"><img class="centered-and-cropped thumb-100px" src="{$nextimg.url}" alt="{$nextimg.description}"></a>
+						<figcaption><a href="post_event_display.php?user-id={$id}&post-id={$nextimg.id}&event-id={$event_id}">Next</a>
 					</figure>
 					{/if}
 				</div>
@@ -100,7 +100,7 @@
 								<form class="form" action="../../actions/posts/delete_post.php" method="post">
 									<input type="hidden" name="post-id" value="{$post.postid}">
 									<input type="hidden" name="feed" value="false">
-									<input type="hidden" name="group-id" value="{$group_id}">
+									<input type="hidden" name="event-id" value="{$event_id}">
 									<button type="button" id="close-delete-{$post.postid}" class="close-delete btn">Cancel</button>
 									<input type="submit" class="btn btn-primary" value="Delete">
 								</form>
@@ -153,7 +153,7 @@
 							<div class="form-group">
 								<input type="hidden" name="post-id" value="{$post.postid}">
 								<input type="hidden" name="user-id" value="{$id_logged}">
-								<input type="hidden" name="group-id" value="{$group_id}">
+								<input type="hidden" name="event-id" value="{$event_id}">
 								<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
 								<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something..."></textarea>
 							</div>

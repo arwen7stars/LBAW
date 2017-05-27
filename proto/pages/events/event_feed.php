@@ -19,6 +19,7 @@
 
 	$posts = getEventPosts($event_id);
 	$eventinfo = getEventInfo($event_id);
+	$all_images = getEventImages($event_id);
 	
 	if($eventinfo['public']){
 		$public = 'public';
@@ -34,6 +35,7 @@
 	$smarty->assign('eventinfo', $eventinfo);
 	$smarty->assign('event_id', $event_id);
 	$smarty->assign('privacy', $public);
+	$smarty->assign('all_images', $all_images);
 	
 	$smarty->assign('groups', $groups);
 	$smarty->assign('events', $events);

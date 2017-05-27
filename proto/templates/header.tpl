@@ -30,8 +30,8 @@
 					<ul class="dropdown-menu">
 						<li><a href="../../pages/users/feed.php">Home</a></li>
 						<li><a href="../../pages/users/profile_feed.php?user-id={$id_logged}">Profile</a></li>
-						<li><a href="../../pages/events/list_events.php">Events</a></li>
-						<li><a href="../../pages/groups/list_groups.php">Groups</a></li>
+						<li><a href="../../pages/events/list_events.php" class="visible-xs">Events</a></li>
+						<li><a href="../../pages/groups/list_groups.php" class="visible-xs">Groups</a></li>
 						<li><a href="../../pages/users/settings.php">Settings</a></li>
 						<li><a href="../../actions/users/logout.php">Logout</a></li>
 					</ul>
