@@ -43,43 +43,16 @@
 
       <div class="news-section col-md-10 col-md-offset-1">
         <h1>News</h1>
-
+		{foreach $news as $recentNews}
         <div class="news">
-
           <div class="news-body">
-            <h2>Mauris a magna ante</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu enim augue. Quisque mollis nisi eget urna rutrum laoreet. Nunc vehicula arcu diam, vel elementum nisi pretium nec. Suspendisse sollicitudin neque sed lacus condimentum maximus. Sed id lacus eget velit luctus consequat. Etiam efficitur dui eget ante ornare, quis dapibus ipsum elementum. Ut sit amet iaculis turpis. Sed convallis mi sed libero vestibulum cursus. Sed ut neque urna. Duis sodales urna pellentesque tellus scelerisque lacinia. Quisque vitae enim condimentum, feugiat lectus id, eleifend sapien.</p>
+            <h2>{$recentNews.title}</h2>
+            <p>{$recentNews.body}</p>
           </div>
-
-          <div class="read-more"><a href="#">Read more...</a></div>
-
+          <div class="read-more"><a href="{$recentNews.moreInfo}">Read more...</a></div>
         </div>
+		{/foreach}
 
-        <div class="news">
-
-          <div class="news-body">
-            <h2>Maecenas volutpat accumsan ornare</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id blandit lacus. Nunc blandit tellus ut est tempor, vitae tristique tellus blandit. In lectus urna, euismod ac tristique non, vehicula id ipsum. Curabitur ultrices, urna vitae imperdiet imperdiet, nisi ligula vehicula ligula, vitae mattis dolor ante at elit. Fusce at elit ante. Aliquam porttitor maximus leo, quis rutrum quam ultrices vitae. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-          </div>
-
-          <div class="read-more">
-			<a href="#">Read more...</a>
-		  </div>
-
-        </div>
-
-        <div class="news">
-
-          <div class="news-body">
-            <h2>Aliquam erat volutpat</h2>
-            <p>Ut aliquam lorem id ultricies porta. Aliquam iaculis pulvinar venenatis. Donec vel ex vitae diam accumsan maximus vitae nec risus. Fusce et ex elit. Etiam laoreet magna et dui porta, id semper elit varius. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sit amet interdum enim.</p>
-          </div>
-
-          <div class="read-more">
-			<a href="#">Read more...</a>
-		  </div>
-
-        </div>
       </div>
     </div>
 </div>

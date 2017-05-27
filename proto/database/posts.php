@@ -208,6 +208,15 @@
 		return $img;	
 	}
 	
+	function getRecentNews()
+	{
+		global $dbh;
+		$stmt = $dbh->prepare('SELECT * FROM "News"');
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+	
+	
 	function getPreviousImage($user_id, $image_id) {
 		global $dbh;
         $stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id"
