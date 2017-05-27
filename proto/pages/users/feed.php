@@ -8,6 +8,7 @@
 	
 	$event = listEvents($_SESSION['id']);
 	$res = listGroups($id_logged);
+	$group_length = count($res);
 	$groups = array_slice($res, 0, 3);
 	
 	$stmt = getFeedPosts($id_logged);
@@ -21,6 +22,7 @@
 	$smarty->assign('posts', $posts);
 	$smarty->assign('groups', $groups);
 	$smarty->assign('all_groups', $res);
+	$smarty->assign('length_group', $group_length);
 	
 	if (isset($_SESSION['previous'])) {
 		if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous']) {

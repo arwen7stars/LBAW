@@ -10,12 +10,13 @@
 	<title>Group</title>
 
 	<!-- Bootstrap -->
-	<link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-	<!-- Default stylesheet -->
+    <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Default stylesheet -->
+	<link rel="stylesheet" href="../../lib/bootstrap-3.3.7/css/bootstrap-select.min.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link href="../../css/feed.css" rel="stylesheet">
 	<link href="../../css/group.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -28,15 +29,20 @@
 
 		<!--  Left -->
 		<div class="content-left hidden-xs">
-
+		
+		
         <div class="events">
 			<div class="add-instance pull-right"><a class="border-create" href="../../pages/events/create_event.php"><span class="glyphicon glyphicon-plus"></span></a></a></div>
 			<h3>Events</h3>
+			{if empty($events)}
+			No events yet...
+			{else}
 			<ul class="event-list list-unstyled">
 				{foreach $events as $event}
 				<li><a href="../../pages/events/event_feed.php?event-id={$event.id}"><i class="fa fa-calendar"></i> {$event.name}</a></li>
 				{/foreach}
 			</ul>
+			{/if}
         </div>
 		
 		<div id="all-groups" class="edit_box">
@@ -55,12 +61,18 @@
         <div class="groups">
 			<div class="add-instance pull-right"><a class="border-create" href="../../pages/groups/create_group.php"><span class="glyphicon glyphicon-plus"></span></a></div>
 			<h3>Groups</h3>
+			{if empty($groups)}
+			No groups yet...
+			{else}
 			<ul class="group-list list-unstyled">
 				{foreach $groups as $group}
 				<li><a href="../../pages/groups/feed.php?group-id={$group.id}"><i class="fa fa-group"></i> {$group.name}</a></li>
 				{/foreach}
 			</ul>
+			{if ($length_group > 3)}
 			<a id="see-groups" href="javascript:void(0)">See more...</a>
+			{/if}
+			{/if}
         </div>
 
         <div class="chat">
@@ -99,7 +111,6 @@
 
       <!--  Middle -->
 		<div class="content-middle">
-		
 			<!--Group Stuff-->  	
 			<ul class="nav nav-tabs nav-justified">
 				<li class="active"><a data-toggle="tab" href="#home">Feed</a></li>
@@ -325,7 +336,7 @@
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 
 </body>
 

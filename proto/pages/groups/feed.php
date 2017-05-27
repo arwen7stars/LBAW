@@ -24,6 +24,8 @@
 	
 	$event = listEvents($_SESSION['id']);
 	$res = listGroups($id_logged);
+	
+	$group_length = count($res);
 	$groups = array_slice($res, 0, 3);
 	
 	$stmt = getGroupMembers($_GET['group-id']);
@@ -41,6 +43,7 @@
 	$smarty->assign('groups', $groups);
 	$smarty->assign('group_id', $_GET['group-id']);
 	$smarty->assign('all_groups', $res);
+	$smarty->assign('length_group', $group_length);
 	$smarty->assign('members', $members);
 
 	$smarty->display($BASE_DIR . 'templates/group.tpl');

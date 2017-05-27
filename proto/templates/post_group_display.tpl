@@ -11,12 +11,12 @@
 
     <!-- Bootstrap -->
     <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
     <!-- Default stylesheet -->
+	<link rel="stylesheet" href="../../lib/bootstrap-3.3.7/css/bootstrap-select.min.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="../../css/profile.css" rel="stylesheet">
     <link href="../../css/default.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -34,8 +34,8 @@
 					<h2>Group</h2>
 					<ul class="list-unstyled">
 						<li>
-							<span class="glyphicon glyphicon-user"></span>
-							<b> Name is <a href="../groups/feed.php?group-id={$group_id}">{$group.name}</a></b>
+							<i class="fa fa-group"></i>
+							<b> Group is <a href="../groups/feed.php?group-id={$group_id}">{$group.name}</a></b>
 						</li>
 					</ul>
 				</div>
@@ -249,7 +249,7 @@
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/script.js"></script>
 	
 </body>

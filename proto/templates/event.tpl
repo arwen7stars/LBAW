@@ -272,13 +272,13 @@
 
 </body>
 
- <!-- Placed at the end of the document so the pages load faster -->
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="../../lib/jquery-3.1.1.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-  
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="../../lib/jquery-3.1.1.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/script.js"></script>
 
 </html>

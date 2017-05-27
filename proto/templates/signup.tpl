@@ -15,7 +15,7 @@
   <link href="../../css/default.css" rel="stylesheet">
   <link href="../../css/forms.css" rel="stylesheet">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="../../lib/bootstrap-3.3.7/css/bootstrap-select.min.css">
   
 </head>
 
@@ -126,7 +126,7 @@
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 	<script src="../../javascript/script.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 
 </body>
 
