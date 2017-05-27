@@ -197,7 +197,7 @@
 							<div class="post-content">
 								{$post.body}
 								{if !empty($post.url)}
-								<a href="../users/post_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}"><img src="{$post.url}" alt="{$post.description}" class="ph_display"></a>
+								<a href="../groups/post_group_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}"><img src="{$post.url}" alt="{$post.description}" class="ph_display"></a>
 								{/if}
 							</div>
 
@@ -205,13 +205,13 @@
 						
 						<div class="opt-group btn-group-justified hidden-sm hidden-xs">
 							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
-							<a href="../users/post_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
+							<a href="../groups/post_group_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
 							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
 						</div>
 						
 						<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
 							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
-							<a href="../users/post_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
+							<a href="../groups/post_group_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
 							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 						</div>
 						
@@ -221,6 +221,7 @@
 								<div class="form-group">
 									<input type="hidden" name="post-id" value="{$post.postid}">
 									<input type="hidden" name="user-id" value="{$id_logged}">
+									<input type="hidden" name="group-id" value="{$group_id}">
 									<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
 									<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something..."></textarea>
 								</div>
@@ -282,7 +283,7 @@
 						<hr>
 						{if !empty($all_images)}
 						<div class="photos-body">
-						{foreach $all_images as $img}<a href="../users/post_display.php?user-id={$img.user}&post-id={$img.id}&group-id={$group_id}"><img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
+						{foreach $all_images as $img}<a href="../groups/post_group_display.php?user-id={$img.user}&post-id={$img.id}&group-id={$group_id}"><img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
 						</div>
 						{else} No photos yet...
 						{/if}

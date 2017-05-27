@@ -17,7 +17,7 @@
 	
 	if($_POST['group-id']){
 		$group_id = $_POST['group-id'];
-		$referer = '../../pages/users/post_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id . '&group-id=' . $group_id;
+		$referer = '../../pages/groups/post_group_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id . '&group-id=' . $group_id;
 	}
 	else{
 		$referer = '../../pages/users/post_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id;

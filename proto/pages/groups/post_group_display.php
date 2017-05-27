@@ -1,5 +1,4 @@
 <?php
-
 	include_once('../../config/init.php');
 	include_once($BASE_DIR . 'database/users.php');
 	include_once($BASE_DIR . 'database/posts.php');
@@ -29,27 +28,20 @@
 	$comments = $stmt->fetchAll();
 	$smarty->assign('comments', $comments);
 	
-	$character = getUserCharacter($username_page);
-	$image = getUserProfileImage($character['charid']);
-	$series = getAnime($character['charid']);
-	$res = checkFriendship($_SESSION['id'], $id);				// check friendship between logged-in user and profile user
-	$friendship = ($res !== false);
+	$group = getGroup($_GET['group-id']);
 	
-	$smarty->assign('character', $character);
-	$smarty->assign('series', $series);
-	$smarty->assign('image', $image);
-	$smarty->assign('friendship', $friendship);
-	$smarty->assign('friend', $res);
-
 	if(isPostFromUser($postid, $id)){
-		if(isProfilePost($postid, $id)) {
-			// get next photo
-			$next_img = getNextImage($id, $post['imgid']);
+		if(isPostFromGroup($postid, $_GET['group-id'])){
+			$next_img = getNextImageGroup($id, $post['imgid']);
 			$smarty->assign('nextimg', $next_img);
-
-			// get previous photo
-			$previous_img = getPreviousImage($id, $post['imgid']);
+			
+			$previous_img = getPreviousImageGroup($id, $post['imgid']);
 			$smarty->assign('previousimg', $previous_img);
+			
+			$group_page = 't';
+			$smarty->assign('group_page', $group_page);
+			$smarty->assign('group_id', $_GET['group-id']);
+			$smarty->assign('group', $group);
 		} else {
 			$page_not_found = '404 Error. Page not found.';
 			$smarty->assign('page_not_found', $page_not_found);
@@ -68,6 +60,6 @@
 		$page_not_found = '404 Error. Page not found.';
 		$smarty->assign('page_not_found', $page_not_found);
 	}
-
-	$smarty->display($BASE_DIR . 'templates/post_display.tpl');
+	
+	$smarty->display($BASE_DIR . 'templates/post_group_display.tpl');
 ?>
