@@ -6,13 +6,15 @@
 ## In development
 
 * fixing css and validation for every page
-* implementing create events
-* taking care of sending invites to other users so that they join groups
+* making page for events
+* taking care of sending invites to other users so that they join groups/events
+* full-text search for US001
 
 ## Important things to delevop if we have time
 
 * interface for accepting friend requests on feed or user bar
 * custom permissions for users/posts
+* simple mobile page for listing events/groups
 
 ## User Stories
 
@@ -20,7 +22,7 @@
 
 | Identifier | Name | Priority | Description |
 | --- | --- | --- | --- |
-| ~~US001~~ | Search | High | As an user, I want to use the search bar to look for public profiles, groups and events, so that I can find them |
+| US001 | Search | High | As an user, I want to use the search bar to look for public profiles, groups and events, so that I can find them |
 | ~~US002~~ | See Profiles | High | As an user, I want to see public information (posts, comments, photos) on a public profile, so that I can see them |
 
 
