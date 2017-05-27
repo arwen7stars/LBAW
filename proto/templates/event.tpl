@@ -9,102 +9,143 @@
 
   <title>Event - {$event.name}</title>
 
-  <!-- Bootstrap -->
-  <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Default stylesheet -->
-  <link href="../../css/feed.css" rel="stylesheet">
-  <link href="../../css/event.css" rel="stylesheet">
+	<!-- Bootstrap -->
+	<link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Default stylesheet -->
+	<link href="../../css/feed.css" rel="stylesheet">
+	<link href="../../css/event.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
-	  
+	<div class="body-flex">	
 	{include file='header.tpl'}
 
-  
-  <!--Event Stuff-->  	
-	<div class="container text-center event">
-		<img src="../../images/group.png" class="img-responsive" alt="Group Image">
-		<div class="btn-group-lg info" role="group" aria-label="...">
-			<div class="btn-group" role="group">
-				<button type="button" class="btn btn-lg">Interested</button>
+		<!-- Main Content -->
+		<div class="content">
+
+			<!--  Left -->
+			<div class="content-left hidden-xs">
+				<div id="all-events" class="edit_box">
+					<a href="javascript:void(0)" id="close-events" class="close-edit pull-right">
+					<span class="close glyphicon glyphicon-remove"></span></a>
+					<h2>Event</h2>
+					<hr>
+					<ul class="list-group row">
+					{foreach $all_events as $event}
+						<li class="list-group-item col-xs-6"><a href="../../pages/events/event_feed.php?event-id={$event.id}"><i class="fa fa-calendar"></i> {$event.name}</a>
+						<p>{$event.start|date_format}</p></li>
+					{/foreach}
+					</ul>
+				</div>
+				
+				<div class="events">
+					<div class="add-instance pull-right"><a class="border-create" href="../../pages/events/create_event.php"><span class="glyphicon glyphicon-plus"></span></a></a></div>
+					<h3>Events</h3>
+					<hr>
+					{if empty($events)}
+					No events yet...
+					{else}
+					<ul class="event-list list-unstyled">
+						{foreach $events as $event}
+						<li><a href="../../pages/events/event_feed.php?event-id={$event.id}"><i class="fa fa-calendar"></i> {$event.name}</a></li>
+						{/foreach}
+					</ul>
+					{if ($length_event > 3)}
+					<a id="see-events" href="javascript:void(0)">See more...</a>
+					{/if}
+					{/if}
+				</div>
+				
+				<div id="all-groups" class="edit_box">
+					<a href="javascript:void(0)" id="close-groups" class="close-edit pull-right">
+					<span class="close glyphicon glyphicon-remove"></span></a>
+					<h2>Groups</h2>
+					<hr>
+					<ul class="list-group row">
+					{foreach $all_groups as $group}
+						<li class="list-group-item col-xs-6"><a href="../../pages/groups/feed.php?group-id={$group.id}"><i class="fa fa-group"></i> {$group.name}</a></li>
+					{/foreach}
+					</ul>
+				</div>
+				
+				<div class="groups">
+					<div class="add-instance pull-right"><a class="border-create" href="../../pages/groups/create_group.php"><span class="glyphicon glyphicon-plus"></span></a></div>
+					<h3>Groups</h3>
+					<hr>
+					{if empty($groups)}
+					No groups yet...
+					{else}
+					<ul class="group-list list-unstyled">
+						{foreach $groups as $group}
+						<li><a href="../../pages/groups/feed.php?group-id={$group.id}"><i class="fa fa-group"></i> {$group.name}</a></li>
+						{/foreach}
+					</ul>
+					{if ($length_group > 3)}
+					<a id="see-groups" href="javascript:void(0)">See more...</a>
+					{/if}
+					{/if}
+				</div>
+				
+				
+				<!-- <div class="chat">
+				  <h3><a href="#">Online Friends</a></h3>
+				  <ul class="contact-list list-unstyled">
+					<li><a href="#" align=""><span class="glyphicon glyphicon-user"></span> Hikari</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Himari</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Masamune</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Naruto</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Son Goku</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Vegeta</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Kasuma</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Aqua</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Eris</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Megumin</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Mauve</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Ecchan</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Bulma</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sakura</a></li>
+				  </ul>
+				  Search bar
+				  <form role="search">
+					<div class="form-group chat-search-bar">
+					  <label for="search-bar" class="sr-only">Search bar</label>
+					  <div class="input-group">
+						<input type="search" class="form-control" placeholder="Search...">
+						<span class="input-group-btn">
+						  <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+						</span>
+					  </div>
+					</div>
+				  </form>
+				</div> -->
+
 			</div>
-			<div class="btn-group" role="group">
-				<button type="button" class="btn btn-lg">Going</button>
-			</div>
-			<div class="btn-group" role="group">
-				<button type="button" class="btn btn-lg">Ignore</button>
-			</div>
-		</div>
-	<div class="container details">
-	
-	<!--<h2 align="left">About</h2>!-->
-	<p>{$event.start} - {$event.finish} </p>
-	<p>{$event.about}</p>
-	</div>
-</div>
 
- <!-- Main Content -->
-    <div class="content">
-
-      <!--  Left -->
-      <div class="content-left hidden-xs">
-
-        <div class="events">
-          <h2><a href="event.html">Events</a></h2>
-          <ul class="event-list list-unstyled">
-			{foreach $eventList as $event}
-			<li><a href="../../pages/events/event_feed.php?event-id={$event.id}"> {$event.name} </a></li>
-			{/foreach}
-			<li><a href="../../pages/events/create_event.php">+ Create a new Event</li>
-          </ul>
-        </div>
-
-        <div class="groups">
-          <h2><a href="group.html">Groups</a></h2>
-          <ul class="group-list list-unstyled">
-            <!-- Max 3 list-items at once -->
-            <li><a href="#">Duis in vehicula</a></li>
-            <li><a href="#">Fermentum eget</a></li>
-            <li><a href="#">Maecenas sit</a></li>
-          </ul>
-        </div>
-
-        <div class="chat">
-          <h2><a href="#">Online Friends</a></h2>
-          <ul class="contact-list list-unstyled">
-            <li><a href="#" align=""><span class="glyphicon glyphicon-user"></span> Hikari</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Himari</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Masamune</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Naruto</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Son Goku</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Vegeta</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Kasuma</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Aqua</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Eris</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Megumin</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mauve</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Ecchan</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Bulma</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sakura</a></li>
-          </ul>
-          <!-- Search bar -->
-          <form role="search">
-            <div class="form-group chat-search-bar">
-              <label for="search-bar" class="sr-only">Search bar</label>
-              <div class="input-group">
-                <input type="search" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-              </div>
-            </div>
-          </form>
-        </div>
-
-      </div>
-
-      <!--  Middle -->
-      <div class="content-middle">
+			<!--  Middle -->
+			<div class="content-middle">
+				<!--Event Stuff-->  	
+				<div class="text-center event">
+					<div class="event-header">
+						<div class="event-header-img">
+							<i class="fa fa-calendar" id="event-image"></i>
+							<h2>{$eventinfo.name}</h2>
+						</div>
+					</div>
+					<div class="btn-group-lg info" role="group" aria-label="...">
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-lg">Interested</button>
+						</div>
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-lg">Going</button>
+						</div>
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-lg">Ignore</button>
+						</div>
+					</div>
+				
+				</div>
 		<!-- MAKE-POST -->
 		<div class="make-post">
 			<form class="form" action="../../actions/posts/post.php" method="post" enctype="multipart/form-data">
@@ -112,14 +153,9 @@
 					<br>
 					<div class="btn-wrap">
 						<input type="hidden" name="id" value="{$id_logged}">
-						<input type="hidden" name="profile" value="false">
+						<input type="hidden" name="event-id" value="{$event_id}">
 						<textarea id="make-post" name="body" class="form-control txtarea-post" rows="3" placeholder="Write something to post..."></textarea>
 						<span class="button-container">
-							<select name="public" class="selectpicker" data-width="fit">
-								<option data-icon="glyphicon-globe" value="t">Public</option>
-								<option data-icon="glyphicon-lock" value="f">Private</option>
-							</select>
-
 							<label class="btn btn-primary" for="my-file-selector">
 								<input id="my-file-selector" type="file" name="image" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
 								<span class="glyphicon glyphicon-picture"></span> Upload
@@ -131,118 +167,142 @@
 				</div>
 			</form>
 		</div>
+		
+		<ul class="event_bar nav nav-tabs nav-justified">
+			<li class="active"><a data-toggle="tab" href="#home">Discussion</a></li>
+			<li><a data-toggle="tab" href="#about">About</a></li>
+			<li><a data-toggle="tab" href="#photos">Photos</a></li>
+		</ul>
 
-		<div id="black" class="black_overlay"></div>
-		{if empty($event_posts)}
-		<div id="welcome-message">
-			<p><h1>Welcome to Anibook!</h1></p>
-			<p><h3>Start by making some friends or a post!</h3></p>
-		</div>
-		{else}
-		{foreach $event_posts as $eventPosts}
-		<div class="post_space">
-        <div class="post">
-			<div id="edit-{$event_posts.postid}" class="edit_box">
-				<a href="javascript:void(0)" id="close-edit-{$event_posts.postid}" class="close-edit pull-right">
-				<span class="close glyphicon glyphicon-remove"></span></a>
+		<div class="tab-content">
+			<div id="home" class="tab-pane fade in active">
+				<div id="black" class="black_overlay"></div>
+				{foreach $posts as $post}
+				<div class="post_space">
+				<div class="post">
+				
+					<div id="edit-{$post.postid}" class="edit_box">
+						<a href="javascript:void(0)" id="close-edit-{$post.postid}" class="close-edit pull-right">
+						<span class="close glyphicon glyphicon-remove"></span></a>
 
-				<div class="poster">
-					<p><a href="users/profile_feed.php?user-id={$id_logged}"><img src="{$event_posts.charurl}" alt="Profile picture of {$event_posts.name}" class="centered-and-cropped thumb-32px">
-						<span>{$event_posts.name}</span></a>
-						<br><span class="post-date">{$event_posts.date|date_format}</span>
-					</p>
-				</div>
-
-				<form class="form" action="../../actions/posts/edit_post.php" method="post">
-					<div class="wrapper">
-						<input type="hidden" name="user-id" value="{$id_logged}">
-						<input type="hidden" name="post-id" value="{$event_posts.postid}">
-						{if !empty($event_posts.url)}
-						<textarea name="body" class="form-control" rows="5">{$event_posts.body}</textarea>
-						{else}
-						<textarea name="body" class="form-control" rows="5" required>{$event_posts.body}</textarea>
-						{/if}
-						<div class="controls">
-							<select name="public" class="selectpicker" data-width="fit">
-								{if $event_posts.public}
-									<option data-icon="glyphicon-globe" value="t" selected="selected">Public</option>
-									<option data-icon="glyphicon-lock" value="f" >Private</option>
-								{else}
-									<option data-icon="glyphicon-globe" value="t">Public</option>
-									<option data-icon="glyphicon-lock" value="f" selected="selected">Private</option>
-								{/if}
-							</select>
-							<button class="update" type="submit">Update post</button>
+						<div class="poster">
+							<p><a href="../users/profile_feed.php?user-id={$id_logged}"><img src="{$post.charurl}" alt="Profile picture of {$post.name}" class="centered-and-cropped thumb-32px">
+								<span>{$post.charname}</span></a>
+								<br><span class="post-date">{$post.date|date_format}</span>
+							</p>
 						</div>
-					</div>
-				</form>
-			</div>
 
-			<div id="confirm-{$event_posts.postid}" class="edit_box">
-				<div class="modal-body">Are you sure you want to delete this post?</div>
-					<div class="modal-footer button-container">
-						<form class="form" action="../../actions/posts/delete_post.php" method="post">
-							<input type="hidden" name="post-id" value="{$event_posts.postid}">
-							<input type="hidden" name="feed" value="true">
-							<button type="button" id="close-delete-{$event_posts.postid}" class="close-delete btn">Cancel</button>
-							<input type="submit" class="btn btn-primary" value="Delete">
+						<form class="form" action="../../actions/posts/edit_post.php" method="post">
+							<div class="wrapper">
+								<input type="hidden" name="user-id" value="{$id_logged}">
+								<input type="hidden" name="post-id" value="{$post.postid}">
+								{if !empty($post.url)}
+								<textarea name="body" class="form-control" rows="5">{$post.body}</textarea>
+								{else}
+								<textarea name="body" class="form-control" rows="5" required>{$post.body}</textarea>
+								{/if}
+								<div class="controls">
+									<button class="update" type="submit">Update post</button>
+								</div>
+							</div>
 						</form>
 					</div>
-			</div>
 
-			<div class="post-body">
-				{if $event_posts.user == $id_logged}
-				<div class="dropdown pull-right">
-					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
-					<ul class="dropdown-menu">
-						<li id="edit-post-{$event_posts.postid}" class="edit"><a href="javascript:void(0)">Edit</a></li>
-						<li id="delete-post-{$event_posts.postid}" class="delete"><a href="javascript:void(0)">Delete</a></li>
-					</ul>
-				</div>
-				{/if}
-
-				<div class="poster">
-					<p><a href="profile_feed.php?user-id={$event_posts.user-id}"><img src="{$event_posts.charurl}" alt="Profile picture of {$event_posts.name}" class="centered-and-cropped thumb-32px">
-						<span>{$event_posts.name}</span></a>
-						<br><span class="post-date">{$event_posts.date|date_format}</span>
-					</p>
-				</div>
-				<div class="post-content">
-					{$event_posts.body}
-					{if !empty($event_posts.url)}
-					<a href="post_display.php?user-id={$event_posts.user}&post-id={$event_posts.postid}"><img src="{$event_posts.url}" alt="{$event_posts.description}" class="ph_display"></a>
-					{/if}
-				</div>
-			</div>
-
-			<div class="opt-group btn-group-justified hidden-sm hidden-xs">
-				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$event_posts.likes}</a>
-				<a href="post_display.php?user-id={$event_posts.user}&post-id={$event_posts.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
-				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
-			</div>
-
-			<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
-				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$event_posts.likes}</a>
-				<a href="post_display.php?user-id={$event_posts.user}&post-id={$event_posts.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
-				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
-			</div>
-
-			<div class="make-comment-wrap">
-				<form class="form" action="../../actions/posts/comment.php" method="post">
-					<div class="form-group">
-						<input type="hidden" name="post-id" value="{$event_posts.postid}">
-						<input type="hidden" name="user-id" value="{$id_logged}">
-						<label for="make-comment-{$event_posts.postid}" class="sr-only">Write a comment</label>
-						<textarea id="make-comment-{$event_posts.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something..."></textarea>
+					<div id="confirm-{$post.postid}" class="edit_box">
+						<div class="modal-body">Are you sure you want to delete this post?</div>
+							<div class="modal-footer button-container">
+								<form class="form" action="../../actions/posts/delete_post.php" method="post">
+									<input type="hidden" name="post-id" value="{$post.postid}">
+									<input type="hidden" name="feed" value="true">
+									<button type="button" id="close-delete-{$post.postid}" class="close-delete btn">Cancel</button>
+									<input type="submit" class="btn btn-primary" value="Delete">
+								</form>
+							</div>
 					</div>
-					<button type="submit" class="btn btn-default btn-comment">Comment</button>
-				</form>
-			</div>
-        </div>
-		</div>
-		{/foreach}
-		{/if}
 
+					<div class="post-body">
+						{if $post.user == $id_logged}
+						<div class="dropdown pull-right">
+							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
+							<ul class="dropdown-menu">
+								<li id="edit-post-{$post.postid}" class="edit"><a href="javascript:void(0)">Edit</a></li>
+								<li id="delete-post-{$post.postid}" class="delete"><a href="javascript:void(0)">Delete</a></li>
+							</ul>
+						</div>
+						{/if}
+
+						<div class="poster">
+							<p><a href="../users/profile_feed.php?user-id={$post.user}"><img src="{$post.charurl}" alt="Profile picture of {$event_posts.name}" class="centered-and-cropped thumb-32px">
+								<span>{$post.charname}</span></a>
+								<br><span class="post-date">{$post.date|date_format}</span>
+							</p>
+						</div>
+						<div class="post-content">
+							{$post.body}
+							{if !empty($post.url)}
+							<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}"><img src="{$post.url}" alt="{$post.description}" class="ph_display"></a>
+							{/if}
+						</div>
+					</div>
+
+					<div class="opt-group btn-group-justified hidden-sm hidden-xs">
+						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
+						<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
+						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
+					</div>
+
+					<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
+						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
+						<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
+						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
+					</div>
+
+					<div class="make-comment-wrap">
+						<form class="form" action="../../actions/posts/comment.php" method="post">
+							<div class="form-group">
+								<input type="hidden" name="post-id" value="{$post.postid}">
+								<input type="hidden" name="user-id" value="{$id_logged}">
+								<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
+								<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something..."></textarea>
+							</div>
+							<button type="submit" class="btn btn-default btn-comment">Comment</button>
+						</form>
+					</div>
+				</div>
+				</div>
+				{/foreach}
+			</div>
+		
+			<div id="about" class="tab-pane fade">
+				<div class="about">
+					<div class="about-header">
+						<h2>Event information</h2>
+					</div>
+					<hr>
+					<div class="about-body">
+						<dl>
+							<dt class="col-sm-4">Name</dt>
+							<dd class="col-sm-8">{$eventinfo.name}</dd>
+						</dl>
+						
+						<dl>
+							<dt class="col-sm-4">Privacy</dt>
+							<dd class="col-sm-8">{$privacy}</dd>
+						</dl>
+						
+						{if !empty($eventinfo.about)}
+						<dl>
+							<dt class="col-sm-4">Additional information</dt>
+							<dd id="about_txt" class="col-sm-8">{$eventinfo.about}</dd>
+						</dl>
+						{/if}
+					</div>
+				</div>
+			</div>
+			<div id="photos" class="tab-pane fade">
+
+			</div>
+		</div>
       </div>
 
       <!--  Right -->
@@ -268,8 +328,8 @@
 
     </div>
 
-   {include file='footer.tpl'}
-
+	{include file='footer.tpl'}
+	</div>
 </body>
 
 	<!-- Placed at the end of the document so the pages load faster -->
