@@ -4,7 +4,11 @@
 	
 	$user_id = $_POST['user-id'];
 	$post_id = $_POST['post-id'];
-	$public = $_POST['public'];
+	if($_POST['public']){
+		$public = $_POST['public'];
+	} else {
+		$public = 't';
+	}
 	
 	if (!strlen(trim($_POST['body']))){
 		$body = null;

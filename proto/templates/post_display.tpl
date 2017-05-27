@@ -16,16 +16,19 @@
     <!-- Default stylesheet -->
     <link href="../../css/profile.css" rel="stylesheet">
     <link href="../../css/default.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
 
 {include file='header.tpl'}
 
+{if empty($page_not_found)}
 <div class="container">
     <div class="row">
 		<div class="col-md-3 pull-md-9 hidden-xs hidden-sm">
 			<div class="user_bar affix">
+				{if empty($group_page)}
 				<div class="user_info">
 					<a href="profile_feed.php?user-id={$id}"><img class="centered-and-cropped" src="{$image.url}" alt="{$image.description}"></a>
 					<h2>{$character.name}</h2>
@@ -104,6 +107,19 @@
 						{/if}
 					{/if}
 				</div>
+				{else}
+				<div class="user_info">
+					<a href="../groups/feed.php?group-id={$group_id}">
+					<i class="fa fa-group" id="group-thumb"></i></a>
+					<h2>Group</h2>
+					<ul class="list-unstyled">
+						<li>
+							<span class="glyphicon glyphicon-user"></span>
+							<b> Name is <a href="../groups/feed.php?group-id={$group_id}">{$group.name}</a></b>
+						</li>
+					</ul>
+				</div>
+				{/if}
 				
 				{if ($id == $id_logged) || $public  || $friend.accepted}
 				{if !empty($previousimg) || !empty($nextimg)}
@@ -314,6 +330,9 @@
         </div>
     </div>
 </div>
+{else}
+<div id="not-found"><h1>{$page_not_found}</h1></div>
+{/if}
 
 	{include file='footer.tpl'}
 

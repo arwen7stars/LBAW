@@ -1,4 +1,15 @@
 <?php
+	function isPostFromUser($post_id, $user_id) {
+		global $dbh;
+		$query = 'SELECT FROM "Post" WHERE "Post"."user-id" = :user AND "Post"."id" = :post';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':post', $post_id);
+		$stmt->execute(array($user_id, $post_id));
+		$res = $stmt->fetch();
+		return ($res !== false);
+	}
+	
 	function getUserPosts($user_id) {
 		global $dbh;
 

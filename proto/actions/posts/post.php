@@ -25,6 +25,10 @@
 	$shared = 'f';
 	$original_poster = null;
 	$public = $_POST['public'];
+	
+	if ($_POST['event-id'] || $_POST['group-id']){
+		$public = 't';
+	}
 
 	if (!empty($_FILES['image']['name'])){
 		$string = $_FILES['image']['name'];
@@ -49,11 +53,5 @@
 		}
 	}
 	
-	if($_POST['profile'] == "true") {
-		$referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
-	} else {
-		$referer = '../../pages/users/feed.php';
-	}
-
-	header('Location: ' . $referer);
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

@@ -78,7 +78,7 @@
 	function getUserImages($user_id) {
 		global $dbh;
 		
-		$query = 'SELECT "Post"."id" AS id, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id" FROM "Post", "Image" WHERE "Post"."user-id" = ? AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC';
+		$query = 'SELECT "Post"."id" AS id, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id" FROM "Post", "Image" WHERE "Post"."user-id" = ? AND "post-id" = "Post".id AND "Post"."event-id" IS NULL AND "Post"."group-id" IS NULL ORDER BY "Post".date DESC, "Post".id DESC';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($user_id));
 		

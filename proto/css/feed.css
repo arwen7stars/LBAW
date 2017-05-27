@@ -40,18 +40,6 @@ body {
   background-size: cover;
 }
 
-h2 {
-  /* bootstrap margin is huge */
-  margin: 0;
-  font-size: 2.2rem;
-}
-
-h2 > a {
-  /* !important is required because of bootstrap */
-  text-decoration: none !important;
-  color: inherit !important;
-}
-
 .body-flex {
   height: 100%;
   display: flex;
@@ -400,4 +388,16 @@ footer {
 
 .centered-and-cropped {
 	object-fit: cover;
+}
+
+.content-left h2, .content-right h2 {
+  /* bootstrap margin is huge */
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.content-left h2, .content-right h2 {
+  /* !important is required because of bootstrap */
+  text-decoration: none !important;
+  color: inherit !important;
 }
