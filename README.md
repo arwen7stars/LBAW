@@ -7,6 +7,7 @@
 
 * fixing css and validation for every page
 * implementing create events
+* taking care of sending invites to other users so that they join groups
 
 ## Important things to delevop if we have time
 
