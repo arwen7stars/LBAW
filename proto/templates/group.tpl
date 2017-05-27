@@ -42,6 +42,9 @@
 				<li><a href="../../pages/events/event_feed.php?event-id={$event.id}"><i class="fa fa-calendar"></i> {$event.name}</a></li>
 				{/foreach}
 			</ul>
+			{if ($length_event > 3)}
+			<a id="see-events" href="javascript:void(0)">See more...</a>
+			{/if}
 			{/if}
         </div>
 		
@@ -55,9 +58,8 @@
 				<li class="list-group-item col-xs-6"><a href="../../pages/groups/feed.php?group-id={$group.id}"><i class="fa fa-group"></i> {$group.name}</a></li>
 			{/foreach}
 			</ul>
-
 		</div>
-
+		
         <div class="groups">
 			<div class="add-instance pull-right"><a class="border-create" href="../../pages/groups/create_group.php"><span class="glyphicon glyphicon-plus"></span></a></div>
 			<h3>Groups</h3>
@@ -112,21 +114,35 @@
       <!--  Middle -->
 		<div class="content-middle">
 			<div class="group-header">
-				<i class="fa fa-group" id="group-image"></i>
-				<h2>{$groupinfo.name}</h2>
+				{if $admin}
+				<p class="user-options">
+					<button class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
+					<button class="group-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
+				</p>
+				{else}
+				{if $belongs}
+				<p class="user-options">
+					<button class="group-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
+				</p>
+				{/if}
+				{/if}
+				<div class="group-header-img">
+					<i class="fa fa-group" id="group-image"></i>
+					<h2>{$groupinfo.name}</h2>
+				</div>
 			</div>
 			<!--Group Stuff-->  	
 			<ul class="group_bar nav nav-tabs nav-justified">
 				<li class="active"><a data-toggle="tab" href="#home">Feed</a></li>
 				<li><a data-toggle="tab" href="#about">About</a></li>
 				<li><a data-toggle="tab" href="#members">Members</a></li>
-				{if $public}
+				{if $public || $belongs}
 				<li><a data-toggle="tab" href="#photos">Photos</a></li>
 				{/if}
 			</ul>
 		
 			<div class="tab-content">
-				{if $public}
+				{if $public || $belongs}
 				<div id="home" class="tab-pane fade in active">
 					{if $belongs}
 					<!-- MAKE-POST -->
@@ -235,7 +251,7 @@
 							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 						</div>
 						
-						{if (isset($username_logged))}
+						{if (isset($username_logged) && $belongs)}
 						<div class="make-comment-wrap">
 							<form class="form" action="../../actions/posts/comment.php" method="post">
 								<div class="form-group">
@@ -298,13 +314,17 @@
 							{foreach $members as $member}
 							<figure class="imgContainer">
 								<a href="../users/profile_feed.php?user-id={$member.id}"><img src="{$member.url}" alt="{$member.alt}" class="thumb-150px centered-and-cropped"></a>
-								<figcaption><a href="../users/profile_feed.php?user-id={$member.id}">{$member.name}</a></figcaption>
+								{if $member.admin}
+								<figcaption><a href="../users/profile_feed.php?user-id={$member.id}">Admin</a></figcaption>
+								{else}
+								<figcaption><a href="../users/profile_feed.php?user-id={$member.id}">Normal member</a></figcaption>
+								{/if}
 							</figure>
 							{/foreach}
 						</div>
 					</div>
 				</div>
-				{if $public}
+				{if $public || $belongs}
 				<div id="photos" class="tab-pane fade">
 					<div class="photos">
 						<h2>Photos</h2>

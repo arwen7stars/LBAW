@@ -1,7 +1,8 @@
 <?php
 include_once('../../config/init.php');
-include_once('../../database/users.php');
+include_once('../../database/events.php');
 include_once('../../database/posts.php');
+include_once('../../database/users.php');
 
 $event_list = listEvents($_SESSION['id']);
 $events = getEventInfo($_GET['event-id']);

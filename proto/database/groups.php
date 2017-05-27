@@ -127,15 +127,27 @@
 		
 		return ($res !== false);		
 	}
+	
+	function isUserAdmin($user_id, $group_id) {
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT * FROM "User-Group", "Group"
+		WHERE "User-Group"."group-id" = "Group"."id" AND "Group"."id" = :group AND "User-Group"."user-id" = :user AND "User-Group"."admin" IS TRUE');
+		$stmt->bindParam(':group', $group_id);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->execute(array($group_id, $user_id));
+		$res = $stmt->fetch();
+		
+		return ($res !== false);		
+	}
 
 	function getGroupMembers($group_id) {
 		global $dbh;
-        $stmt = $dbh->prepare('SELECT "Character"."name" AS name, "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id
+        $stmt = $dbh->prepare('SELECT "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id, "User-Group"."admin"
 		FROM "Group", "User-Group", "Character-Image", "Character", "Image", "User"
 		WHERE "Group"."id" = :group AND "Group"."id" = "User-Group"."group-id" AND "User"."id" = "User-Group"."user-id" AND
 		"Character"."id" = "User"."character-id" AND "Character-Image"."character-id" = "Character"."id"
 		AND "Character-Image"."image-id" = "Image"."id"
-		ORDER BY "User"."id"');
+		ORDER BY "User-Group"."admin" DESC');
 		$stmt->bindParam(':group', $group_id);
 		$stmt->execute(array($group_id));
 		
