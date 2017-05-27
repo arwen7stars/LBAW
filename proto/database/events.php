@@ -146,4 +146,39 @@
 		
 		return ($res !== false);		
 	}
+	
+	function getEventLocation($event_id) {
+		global $dbh;
+		
+		$query = 'SELECT "Location"."id" AS id, "city", "country" FROM "Event", "Location" WHERE "Event"."id" = ? AND "Event"."location-id" = "Location"."id"';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($event_id));
+		return $stmt->fetch();
+	}
+	
+	function isUserEventAdmin($id, $event_id) {
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT * FROM "User-Event", "Event"
+		WHERE "User-Event"."event-id" = "Event"."id" AND "Event"."id" = :event AND "User-Event"."user-id" = :user AND "User-Event"."admin" IS TRUE');
+		$stmt->bindParam(':event', $event_id);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->execute(array($event_id, $user_id));
+		$res = $stmt->fetch();
+		
+		return ($res !== false);
+	}
+	
+	function getEventGuests($event_id) {
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id, "User-Event"."admin", "User-Event"."type"
+		FROM "Event", "User-Event", "Character-Image", "Character", "Image", "User"
+		WHERE "Event"."id" = :event AND "Event"."id" = "User-Event"."event-id" AND "User"."id" = "User-Event"."user-id" AND
+		"Character"."id" = "User"."character-id" AND "Character-Image"."character-id" = "Character"."id"
+		AND "Character-Image"."image-id" = "Image"."id"
+		ORDER BY "User-Event"."type"');
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($event_id));
+		
+		return $stmt->fetchAll();	
+	}
 ?>

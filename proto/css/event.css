@@ -1,5 +1,13 @@
 .info{
-	margin-top: 10px;
+	margin: 1rem;
+}
+
+.info .btn {
+	width: 10rem;
+	font-size: 1.5rem;
+	background-color: #8A2F2F;
+	border-color: #ccc;
+	font-weight: bold;
 }
 
 .img-responsive{
@@ -28,7 +36,9 @@
 	radial-gradient(#fff 10%, transparent 10%);
 	background-size: 30px 30px;
 	background-position: 0 0, 15px 15px;
-	box-shadow: 0 0 10px black;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
 }
 
 .user-options {
@@ -51,7 +61,7 @@
 	padding-left: 2rem;
 }
 
-.about, .photos, .members {
+.about, .photos, .guests {
 	padding: 1rem;
 	background-color: white;
 	overflow:auto;
@@ -86,4 +96,25 @@
 }
 .nav-justified > li > a {
 	margin-bottom: 0;
+}
+
+.guests-body {
+	font-weight: bold;
+}
+
+.guests-body figcaption {
+	text-align: center;
+}
+
+.imgContainer {
+	display: inline-block;
+	position: relative;
+}
+
+.imgContainer figcaption {
+	width: 90%;
+}
+
+.guests-body figure {
+    vertical-align: top;
 }

@@ -1,8 +1,6 @@
 .group-header {
-	background-color: #fff;
 	margin-right: 2rem;
 	margin-left: 2rem;
-	margin-bottom: 0.5rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	background-color:#DEE7E4;
@@ -10,12 +8,20 @@
 	radial-gradient(#fff 10%, transparent 10%);
 	background-size: 30px 30px;
 	background-position: 0 0, 15px 15px;
-	box-shadow: 0 0 10px black;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
 }
 
 .user-options {
 	text-align: right;
 	margin-right: 2rem;
+	margin-left: 2rem;
+	padding: 1rem;
+	background-color: #fff;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
 }
 
 .group-header-img {

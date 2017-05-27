@@ -157,7 +157,7 @@ body {
 	margin: 0rem 2rem 5rem 2rem;
 }
 
-.post .dropdown-toggle, .open>.dropdown-toggle.btn-primary:focus, .btn-primary.active:hover {
+.post .dropdown-toggle, .post .open>.dropdown-toggle.btn-primary:focus, .btn-primary.active:hover {
 color: #000;
 	background-color: transparent;
 	border: 0px;

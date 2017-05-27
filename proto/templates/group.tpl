@@ -29,114 +29,17 @@
 
 		<!--  Left -->
 		<div class="content-left hidden-xs">
-			<div id="all-events" class="edit_box">
-				<a href="javascript:void(0)" id="close-events" class="close-edit pull-right">
-				<span class="close glyphicon glyphicon-remove"></span></a>
-				<h2>Event</h2>
-				<hr>
-				<ul class="list-group row">
-				{foreach $all_events as $event}
-					<li class="list-group-item col-xs-6"><a href="../../pages/events/event_feed.php?event-id={$event.id}"><i class="fa fa-calendar"></i> {$event.name}</a>
-					<p>{$event.start|date_format}</p></li>
-				{/foreach}
-				</ul>
-			</div>
-		
-			<div id="all-events" class="edit_box">
-				<a href="javascript:void(0)" id="close-events" class="close-edit pull-right">
-				<span class="close glyphicon glyphicon-remove"></span></a>
-				<h2>Event</h2>
-				<hr>
-				<ul class="list-group row">
-				{foreach $all_events as $event}
-					<li class="list-group-item col-xs-6"><a href="../../pages/events/event_feed.php?event-id={$event.id}"><i class="fa fa-calendar"></i> {$event.name}</a>
-					<p>{$event.start|date_format}</p></li>
-				{/foreach}
-				</ul>
-			</div>
-			
-			<div class="events">
-				<div class="add-instance pull-right"><a class="border-create" href="../../pages/events/create_event.php"><span class="glyphicon glyphicon-plus"></span></a></a></div>
-				<h3>Events</h3>
-				{if empty($events)}
-				No events yet...
-				{else}
-				<ul class="event-list list-unstyled">
-					{foreach $events as $event}
-					<li><a href="../../pages/events/event_feed.php?event-id={$event.id}"><i class="fa fa-calendar"></i> {$event.name}</a></li>
-					{/foreach}
-				</ul>
-				{if ($length_event > 3)}
-				<a id="see-events" href="javascript:void(0)">See more...</a>
-				{/if}
-				{/if}
-			</div>
-			
-			<div id="all-groups" class="edit_box">
-				<a href="javascript:void(0)" id="close-groups" class="close-edit pull-right">
-				<span class="close glyphicon glyphicon-remove"></span></a>
-				<h2>Groups</h2>
-				<hr>
-				<ul class="list-group row">
-				{foreach $all_groups as $group}
-					<li class="list-group-item col-xs-6"><a href="../../pages/groups/feed.php?group-id={$group.id}"><i class="fa fa-group"></i> {$group.name}</a></li>
-				{/foreach}
-				</ul>
-			</div>
-			
-			<div class="groups">
-				<div class="add-instance pull-right"><a class="border-create" href="../../pages/groups/create_group.php"><span class="glyphicon glyphicon-plus"></span></a></div>
-				<h3>Groups</h3>
-				{if empty($groups)}
-				No groups yet...
-				{else}
-				<ul class="group-list list-unstyled">
-					{foreach $groups as $group}
-					<li><a href="../../pages/groups/feed.php?group-id={$group.id}"><i class="fa fa-group"></i> {$group.name}</a></li>
-					{/foreach}
-				</ul>
-				{if ($length_group > 3)}
-				<a id="see-groups" href="javascript:void(0)">See more...</a>
-				{/if}
-				{/if}
-			</div>
-
-			<div class="chat">
-			  <h3><a href="#">Online Friends</a></h3>
-			  <ul class="contact-list list-unstyled">
-				<li><a href="#" align=""><span class="glyphicon glyphicon-user"></span> Hikari</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Himari</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Masamune</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Naruto</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Son Goku</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Vegeta</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Kasuma</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Aqua</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Eris</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Megumin</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Mauve</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Ecchan</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Bulma</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sakura</a></li>
-			  </ul>
-			  <!-- Search bar -->
-			  <form role="search">
-				<div class="form-group chat-search-bar">
-				  <label for="search-bar" class="sr-only">Search bar</label>
-				  <div class="input-group">
-					<input type="search" class="form-control" placeholder="Search...">
-					<span class="input-group-btn">
-					  <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-					</span>
-				  </div>
-				</div>
-			  </form>
-			</div>
-
-      </div>
+			{include file='content_left_feed.tpl'}
+		</div>
 
       <!--  Middle -->
 		<div class="content-middle">
+			<div class="group-header">
+				<div class="group-header-img">
+					<i class="fa fa-group" id="group-image"></i>
+					<h2>{$groupinfo.name}</h2>
+				</div>
+			</div>
 			{if $admin}
 			<p class="user-options">
 				<button class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
@@ -149,12 +52,6 @@
 			</p>
 			{/if}
 			{/if}
-			<div class="group-header">
-				<div class="group-header-img">
-					<i class="fa fa-group" id="group-image"></i>
-					<h2>{$groupinfo.name}</h2>
-				</div>
-			</div>
 			<!--Group Stuff-->  	
 			<ul class="group_bar nav nav-tabs nav-justified">
 				<li class="active"><a data-toggle="tab" href="#home">Feed</a></li>
@@ -168,7 +65,7 @@
 			<div class="tab-content">
 				{if $public || $belongs}
 				<div id="home" class="tab-pane fade in active">
-					{if $belongs}
+					{if $belongs && isset($username_logged)}
 					<!-- MAKE-POST -->
 					<div class="make-post">
 						<form class="form" action="../../actions/posts/post.php" method="post" enctype="multipart/form-data">
@@ -202,7 +99,7 @@
 							<span class="close glyphicon glyphicon-remove"></span></a>
 							
 							<div class="poster">
-								<p><a href="profile_feed.php?user-id={$id_logged}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px">
+								<p><a href="../users/profile_feed.php?user-id={$id_logged}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px">
 									<span>{$post.charname}</span></a>
 									<br><span class="post-date">{$post.date|date_format}</span>
 								</p>
@@ -367,26 +264,10 @@
 			</div>
 		</div>
 
-      <!--  Right -->
-      <div class="content-right hidden-xs">
-
-        <div class="notifications">
-          <h2><a href="#">Notifications</a></h2>
-          <ul class="notification-list list-unstyled">
-            <li><a href="#">Maecenas aliquet eleifend nisl nec tincidunt.</a></li>
-            <li><a href="#">Praesent tempor ac eros id iaculis. Suspendisse potenti.</a></li>
-            <li><a href="#">Donec laoreet dui nec massa mollis, vel posuere metus sodales. Suspendisse dictum, ligula id scelerisque laoreet.</a></li>
-            <li><a href="#">Sed non commodo urna. Ut vehicula ornare ipsum a malesuada.</a></li>
-          </ul>
-        </div>
-
-        <div class="recent-news">
-          <h2><a href="#">Recent News </a></h2>
-          <p>Urabitur et tincidunt dolor. Mauris in vulputate ante. Praesent vel arcu ac felis iaculis efficitur a ornare sapien. Nam tellus massa.</p>
-          <div class="read-more"><a href="#">Read more...</a></div>
-        </div>
-
-      </div>
+		<!--  Right -->
+		<div class="content-right hidden-xs">
+			{include file='content_right_feed.tpl'}
+		</div>
 
     </div>
 

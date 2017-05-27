@@ -20,6 +20,11 @@
 	$posts = getEventPosts($event_id);
 	$eventinfo = getEventInfo($event_id);
 	$all_images = getEventImages($event_id);
+	$location = getEventLocation($event_id);
+	$belongs = isUserFromEvent($id_logged, $event_id);
+	$admin = isUserEventAdmin($id_logged, $event_id);
+	
+	$guests = getEventGuests($event_id);
 	
 	if($eventinfo['public']){
 		$public = 'public';
@@ -28,14 +33,20 @@
 	}
 
 	$smarty->assign('posts', $posts);
+	
+	$smarty->assign('belongs', $belongs);
+	$smarty->assign('admin', $admin);
 
 	$smarty->assign('username_logged', $_SESSION['username']);
 	$smarty->assign('id_logged', $_SESSION['id']);
 	$smarty->assign('character_name', $character_name);
+	
 	$smarty->assign('eventinfo', $eventinfo);
 	$smarty->assign('event_id', $event_id);
 	$smarty->assign('privacy', $public);
 	$smarty->assign('all_images', $all_images);
+	$smarty->assign('location', $location);
+	$smarty->assign('guests', $guests);
 	
 	$smarty->assign('groups', $groups);
 	$smarty->assign('events', $events);
