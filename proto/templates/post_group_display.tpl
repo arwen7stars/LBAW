@@ -72,7 +72,7 @@
 						<span class="close glyphicon glyphicon-remove"></span></a>
 						
 						<div class="poster">
-							<p><a href="profile_feed.php?user-id={$id_logged}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px">
+							<p><a href="../users/profile_feed.php?user-id={$id_logged}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px">
 								<span>{$post.charname}</span></a>
 								<br><span class="post-date">{$post.date|date_format}</span>
 							</p>
@@ -119,8 +119,8 @@
 						{/if}
 						
 						<div class="poster">
-							<p><a href="profile_feed.php?user-id={$post.user}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px"></a>
-							<a href="profile_feed.php?user-id={$post.user}">{$post.charname}</a>
+							<p><a href="../users/profile_feed.php?user-id={$post.user}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px"></a>
+							<a href="../users/profile_feed.php?user-id={$post.user}">{$post.charname}</a>
 								<br><span class="post-date">{$post.date|date_format}</span>
 							</p>
 						</div>
@@ -145,7 +145,7 @@
 						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 					</div>
 
-					{if (isset($username_logged) || ($id == $id_logged))}
+					{if ( (isset($username_logged) && $belongs) || ($id == $id_logged))}
 					<hr class="separator">
 					
 					<div class="make-comment-wrap">
@@ -171,7 +171,7 @@
 							<span class="close glyphicon glyphicon-remove"></span></a>
 							
 							<div class="poster">
-								<p><a href="profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" alt="Profile picture of {$comment.name}" class="centered-and-cropped thumb-32px">
+								<p><a href="../users/profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" alt="Profile picture of {$comment.name}" class="centered-and-cropped thumb-32px">
 									<span>{$comment.name}</span></a>
 								</p>
 							</div>
@@ -211,7 +211,7 @@
 						</div>
 						{/if}
 						<div class="comment-poster">
-							<a href="profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" class="centered-and-cropped thumb-32px" alt="Profile picture of {$comment.name}"><b>{$comment.name}</b></a>
+							<a href="../users/profile_feed.php?user-id={$comment.userid}"><img src="{$comment.url}" class="centered-and-cropped thumb-32px" alt="Profile picture of {$comment.name}"><b>{$comment.name}</b></a>
 						</div>
 						
 						<p>{$comment.body}</p>

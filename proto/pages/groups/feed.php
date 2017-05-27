@@ -2,11 +2,13 @@
 	include_once('../../config/init.php');
 	include_once('../../database/users.php');
 	include_once('../../database/groups.php');
+	include_once('../../database/events.php');
 
 	$id_logged = $_SESSION['id'];
 	$group = $_GET['group-id'];
 	
 	$belongs = isUserFromGroup($id_logged, $group);
+	$admin = isUserAdmin($id_logged, $group);
 	$username_logged = $_SESSION['username'];
 	$character_name = getUserCharacterName($_SESSION['username']);
 	$stmt = getGroupPosts($group);
@@ -23,11 +25,13 @@
 		$public = 'private';
 	}
 	
-	$event = listEvents($_SESSION['id']);
-	$res = listGroups($id_logged);
+	$all_events = listEvents($_SESSION['id']);
+	$events = array_slice($all_events, 0, 3);
+	$event_length = count($all_events);
 	
-	$group_length = count($res);
-	$groups = array_slice($res, 0, 3);
+	$all_groups = listGroups($id_logged);
+	$group_length = count($all_groups);
+	$groups = array_slice($all_groups, 0, 3);
 	
 	$stmt = getGroupMembers($_GET['group-id']);
 	$members = $stmt->fetchAll();
@@ -37,18 +41,23 @@
 	$smarty->assign('id_logged', $id_logged);
 	
 	$smarty->assign('belongs', $belongs);
-	$smarty->assign('posts', $posts);
-	$smarty->assign('all_images', $images);
-	$smarty->assign('group', $group);
+	$smarty->assign('admin', $admin);
+	
 	$smarty->assign('groupinfo', $group_info);
 	$smarty->assign('privacy', $public);
-	$smarty->assign('public', $group_info['public']);
-	$smarty->assign('events', $event);
-	$smarty->assign('groups', $groups);
-	$smarty->assign('group_id', $_GET['group-id']);
-	$smarty->assign('all_groups', $res);
-	$smarty->assign('length_group', $group_length);
+	$smarty->assign('posts', $posts);
 	$smarty->assign('members', $members);
+	$smarty->assign('all_images', $images);
+
+	$smarty->assign('public', $group_info['public']);
+	$smarty->assign('group_id', $group);
+	
+	$smarty->assign('groups', $groups);
+	$smarty->assign('events', $events);
+	$smarty->assign('all_groups', $all_groups);
+	$smarty->assign('all_events', $all_events);
+	$smarty->assign('length_group', $group_length);
+	$smarty->assign('length_event', $event_length);
 
 	$smarty->display($BASE_DIR . 'templates/group.tpl');
 ?>

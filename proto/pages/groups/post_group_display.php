@@ -32,6 +32,7 @@
 	
 	if(isPostFromUser($postid, $id)){
 		if(isPostFromGroup($postid, $_GET['group-id'])){
+			$belongs = isUserFromGroup($_SESSION['id'], $_GET['group-id']);
 			$next_img = getNextImageGroup($id, $post['imgid']);
 			$smarty->assign('nextimg', $next_img);
 			
@@ -42,6 +43,7 @@
 			$smarty->assign('group_page', $group_page);
 			$smarty->assign('group_id', $_GET['group-id']);
 			$smarty->assign('group', $group);
+			$smarty->assign('belongs', $belongs);
 		} else {
 			$page_not_found = '404 Error. Page not found.';
 			$smarty->assign('page_not_found', $page_not_found);

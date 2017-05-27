@@ -83,4 +83,14 @@ $(document).ready(function () {
 		$('#all-groups').css('display', 'none');
 		$('#black').css('display', 'none');	
 	})
+	
+	$("#see-events").on('click', function(e) {
+		$('#all-events').css('display', 'block');
+		$('#black').css('display', 'block');	
+	})
+	
+	$("#close-events").on('click', function(e) {
+		$('#all-events').css('display', 'none');
+		$('#black').css('display', 'none');	
+	})
 });
