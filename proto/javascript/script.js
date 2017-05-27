@@ -73,4 +73,14 @@ $(document).ready(function () {
 		$(this).css('border-color','red');
 		$(this).next().show();
 	});
+	
+	$("#see-groups").on('click', function(e) {
+		$('#all-groups').css('display', 'block');
+		$('#black').css('display', 'block');	
+	})
+	
+	$("#close-groups").on('click', function(e) {
+		$('#all-groups').css('display', 'none');
+		$('#black').css('display', 'none');	
+	})
 });

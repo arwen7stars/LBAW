@@ -8,26 +8,40 @@
 	$id = $_GET['user-id'];					// profile id
 	$postid = $_GET['post-id'];				// post id
 	
+	$user = getUserInfo($id);
+	$username_page = $user['username'];
+	$character_name = getUserCharacterName($_SESSION['username']);
+
+	$smarty->assign('username_logged', $_SESSION['username']);	// logged-in username
+	$smarty->assign('username_page', $username_page);			// username of profile's user
+	$smarty->assign('id_logged', $_SESSION['id']);				// logged-in id
+	$smarty->assign('id', $id);									// id of profile's user
+	$smarty->assign('character_name', $character_name);
+	$smarty->assign('public', $user['public']);					// privacy of profile's user
+	$smarty->assign('postid', $postid);
+
+	// get post
+	$post = getPost($postid);
+	$smarty->assign('post', $post);
+	
+	// get post comments
+	$stmt = getCommentsPost($postid);
+	$comments = $stmt->fetchAll();
+	$smarty->assign('comments', $comments);
+	
+	$character = getUserCharacter($username_page);
+	$image = getUserProfileImage($character['charid']);
+	$series = getAnime($character['charid']);
+	$res = checkFriendship($_SESSION['id'], $id);				// check friendship between logged-in user and profile user
+	$friendship = ($res !== false);
+	
+	$smarty->assign('character', $character);
+	$smarty->assign('series', $series);
+	$smarty->assign('image', $image);
+	$smarty->assign('friendship', $friendship);
+	$smarty->assign('friend', $res);
+
 	if(isPostFromUser($postid, $id)){
-		$user = getUserInfo($id);
-		$username_page = $user['username'];
-		$character_name = getUserCharacterName($_SESSION['username']);
-
-		$smarty->assign('username_logged', $_SESSION['username']);	// logged-in username
-		$smarty->assign('username_page', $username_page);			// username of profile's user
-		$smarty->assign('id_logged', $_SESSION['id']);				// logged-in id
-		$smarty->assign('id', $id);									// id of profile's user
-		$smarty->assign('public', $user['public']);					// privacy of profile's user
-		$smarty->assign('postid', $postid);
-
-		// get post
-		$post = getPost($postid);
-		$smarty->assign('post', $post);
-		
-		// get post comments
-		$stmt = getCommentsPost($postid);
-		$comments = $stmt->fetchAll();
-		$smarty->assign('comments', $comments);
 		
 		if($_GET['group-id']) {
 			$group = getGroup($_GET['group-id']);
@@ -48,26 +62,19 @@
 				$smarty->assign('page_not_found', $page_not_found);
 			}
 		} else{
-			// get next photo
-			$next_img = getNextImage($id, $post['imgid']);
-			$smarty->assign('nextimg', $next_img);
+			
+			if(isProfilePost($postid, $id)) {
+				// get next photo
+				$next_img = getNextImage($id, $post['imgid']);
+				$smarty->assign('nextimg', $next_img);
 
-			// get previous photo
-			$previous_img = getPreviousImage($id, $post['imgid']);
-			$smarty->assign('previousimg', $previous_img);
-			
-			$character = getUserCharacter($username_page);
-			$image = getUserProfileImage($character['charid']);
-			$series = getAnime($character['charid']);
-			$res = checkFriendship($_SESSION['id'], $id);				// check friendship between logged-in user and profile user
-			$friendship = ($res !== false);
-			
-			$smarty->assign('character', $character);
-			$smarty->assign('character_name', $character_name);
-			$smarty->assign('series', $series);
-			$smarty->assign('image', $image);
-			$smarty->assign('friendship', $friendship);
-			$smarty->assign('friend', $res);
+				// get previous photo
+				$previous_img = getPreviousImage($id, $post['imgid']);
+				$smarty->assign('previousimg', $previous_img);
+			} else {
+				$page_not_found = '404 Error. Page not found.';
+				$smarty->assign('page_not_found', $page_not_found);
+			}
 		}
 		
 		if (isset($_SESSION['previous'])) {

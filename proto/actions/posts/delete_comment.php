@@ -20,7 +20,5 @@
 	deleteCommentNotification($comment_id);
 	deleteComment($comment_id);
 	
-	$referer = '../../pages/users/post_display.php?user-id=' . $user_id . '&post-id=' . $post_id;
-	
-	header('Location: ' . $referer);
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

@@ -15,7 +15,13 @@
 		addCommentPost($body, $user_id, $post_id);
 	}
 	
-	$referer = '../../pages/users/post_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id;
+	if($_POST['group-id']){
+		$group_id = $_POST['group-id'];
+		$referer = '../../pages/users/post_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id . '&group-id=' . $group_id;
+	}
+	else{
+		$referer = '../../pages/users/post_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id;
+	}
 	
 	header('Location: ' . $referer);
 ?>

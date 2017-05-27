@@ -127,22 +127,27 @@
 					<h3><b>Photos</b></h3>
 					{if !empty($previousimg)}
 					<figure class="imgContainer">
+						{if empty($group_page)}
 						<a href="post_display.php?user-id={$id}&post-id={$previousimg.id}"><img class="centered-and-cropped thumb-100px" src="{$previousimg.url}" alt="{$previousimg.description}"></a>
 						<figcaption><a href="post_display.php?user-id={$id}&post-id={$previousimg.id}">Previous</a></figcaption>
+						{else}
+						<a href="post_display.php?user-id={$id}&post-id={$previousimg.id}&group-id={$group_id}"><img class="centered-and-cropped thumb-100px" src="{$previousimg.url}" alt="{$previousimg.description}"></a>
+						<figcaption><a href="post_display.php?user-id={$id}&post-id={$previousimg.id}&group-id={$group_id}">Previous</a></figcaption>
+						{/if}
 					</figure>
 					{/if}
 					
 					{if !empty($nextimg)}
 					<figure class="imgContainer">
+						{if empty($group_page)}
 						<a href="post_display.php?user-id={$id}&post-id={$nextimg.id}"><img class="centered-and-cropped thumb-100px" src="{$nextimg.url}" alt="{$nextimg.description}"></a>
 						<figcaption><a href="post_display.php?user-id={$id}&post-id={$nextimg.id}">Next</a>
+						{else}
+						<a href="post_display.php?user-id={$id}&post-id={$nextimg.id}&group-id={$group_id}"><img class="centered-and-cropped thumb-100px" src="{$nextimg.url}" alt="{$nextimg.description}"></a>
+						<figcaption><a href="post_display.php?user-id={$id}&post-id={$nextimg.id}&group-id={$group_id}">Next</a>
+						{/if}
 					</figure>
 					{/if}
-				</div>
-				{else}
-				<div class="user_photos">
-					<h3><b>Photos</b></h3>
-					No other photos to show...
 				</div>
 				{/if}{/if}
 			</div>
@@ -176,6 +181,7 @@
 								<textarea name="body" class="form-control" rows="5" required>{$post.body}</textarea>
 								{/if}
 								<div class="controls">
+									{if empty($group_page)}
 									<select name="public" class="selectpicker" data-width="fit">
 										{if $post.public}
 											<option data-icon="glyphicon-globe" value="t" selected="selected">Public</option>
@@ -185,6 +191,7 @@
 											<option data-icon="glyphicon-lock" value="f" selected="selected">Private</option>
 										{/if}
 									</select>
+									{/if}
 									<button class="update" type="submit">Update post</button>
 								</div>
 							</div>
@@ -197,6 +204,7 @@
 								<form class="form" action="../../actions/posts/delete_post.php" method="post">
 									<input type="hidden" name="post-id" value="{$post.postid}">
 									<input type="hidden" name="feed" value="false">
+									<input type="hidden" name="group-id" value="{$group_id}">
 									<button type="button" id="close-delete-{$post.postid}" class="close-delete btn">Cancel</button>
 									<input type="submit" class="btn btn-primary" value="Delete">
 								</form>
@@ -249,6 +257,7 @@
 							<div class="form-group">
 								<input type="hidden" name="post-id" value="{$post.postid}">
 								<input type="hidden" name="user-id" value="{$id_logged}">
+								<input type="hidden" name="group-id" value="{$group_id}">
 								<label for="make-comment-{$post.postid}" class="sr-only">Write a comment</label>
 								<textarea id="make-comment-{$post.postid}" name="body" class="form-control txtarea-comment" rows="1" placeholder="Write something..."></textarea>
 							</div>

@@ -46,12 +46,17 @@
 			deleteComment($comment['comid']);
 		}
 	}
+	deleteNotificationsPost($post_id);
 	deletePost($post_id);
 	
 	if($_POST['feed'] == "true") {
 		$referer = '../../pages/users/feed.php';
 	} else {
-		$referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
+		if($_POST['group-id']){
+			$referer = '../../pages/groups/feed.php?group-id=' . $user_id;
+		} else{
+			$referer = '../../pages/users/profile_feed.php?user-id=' . $user_id;
+		}
 	}
 
 	header('Location: ' . $referer);

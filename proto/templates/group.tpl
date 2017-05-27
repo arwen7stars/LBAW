@@ -15,6 +15,7 @@
 	<!-- Default stylesheet -->
 	<link href="../../css/feed.css" rel="stylesheet">
 	<link href="../../css/group.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -29,27 +30,41 @@
 		<div class="content-left hidden-xs">
 
         <div class="events">
-			<h2><a href="event.html">Events</a></h2>
+			<div class="add-instance pull-right"><a class="border-create" href="../../pages/events/create_event.php"><span class="glyphicon glyphicon-plus"></span></a></a></div>
+			<h3>Events</h3>
 			<ul class="event-list list-unstyled">
-				<!-- Max 3 list-items at once -->
-				<li><a href="#">Etiam vel</a></li>
-				<li><a href="#">Phasellus aliquet sapien</a></li>
-				<li><a href="#">Donec laoreet dui</a></li>
+				{foreach $events as $event}
+				<li><a href="../../pages/events/event_feed.php?event-id={$event.id}"><i class="fa fa-calendar"></i> {$event.name}</a></li>
+				{/foreach}
 			</ul>
         </div>
+		
+		<div id="all-groups" class="edit_box">
+			<a href="javascript:void(0)" id="close-groups" class="close-edit pull-right">
+			<span class="close glyphicon glyphicon-remove"></span></a>
+			<h2>Groups</h2>
+			<hr>
+			<ul class="list-group row">
+			{foreach $all_groups as $group}
+				<li class="list-group-item col-xs-6"><a href="../../pages/groups/feed.php?group-id={$group.id}"><i class="fa fa-group"></i> {$group.name}</a></li>
+			{/foreach}
+			</ul>
+
+		</div>
 
         <div class="groups">
-			<h2><a href="group.html">Groups</a></h2>
+			<div class="add-instance pull-right"><a class="border-create" href="../../pages/groups/create_group.php"><span class="glyphicon glyphicon-plus"></span></a></div>
+			<h3>Groups</h3>
 			<ul class="group-list list-unstyled">
-				<!-- Max 3 list-items at once -->
-				<li><a href="#">Duis in vehicula</a></li>
-				<li><a href="#">Fermentum eget</a></li>
-				<li><a href="#">Maecenas sit</a></li>
+				{foreach $groups as $group}
+				<li><a href="../../pages/groups/feed.php?group-id={$group.id}"><i class="fa fa-group"></i> {$group.name}</a></li>
+				{/foreach}
 			</ul>
+			<a id="see-groups" href="javascript:void(0)">See more...</a>
         </div>
 
         <div class="chat">
-          <h2><a href="#">Online Friends</a></h2>
+          <h3><a href="#">Online Friends</a></h3>
           <ul class="contact-list list-unstyled">
             <li><a href="#" align=""><span class="glyphicon glyphicon-user"></span> Hikari</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Himari</a></li>
@@ -102,7 +117,7 @@
 								<br>
 								<div class="btn-wrap">
 									<input type="hidden" name="id" value="{$id_logged}">
-									<input type="hidden" name="group-id" value="{$group}">
+									<input type="hidden" name="group-id" value="{$group_id}">
 									<textarea id="make-post" name="body" class="form-control txtarea-post" rows="3" placeholder="Write something to post..."></textarea>
 									<span class="button-container">
 										<label class="btn btn-primary" for="my-file-selector">
@@ -155,6 +170,7 @@
 									<form class="form" action="../../actions/posts/delete_post.php" method="post">
 										<input type="hidden" name="post-id" value="{$post.postid}">
 										<input type="hidden" name="feed" value="false">
+										<input type="hidden" name="group-id" value="{$group_id}">
 										<button type="button" id="close-delete-{$post.postid}" class="close-delete btn">Cancel</button>
 										<input type="submit" class="btn btn-primary" value="Delete">
 									</form>
@@ -181,7 +197,7 @@
 							<div class="post-content">
 								{$post.body}
 								{if !empty($post.url)}
-								<a href="../users/post_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group}"><img src="{$post.url}" alt="{$post.description}" class="ph_display"></a>
+								<a href="../users/post_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}"><img src="{$post.url}" alt="{$post.description}" class="ph_display"></a>
 								{/if}
 							</div>
 
@@ -189,13 +205,13 @@
 						
 						<div class="opt-group btn-group-justified hidden-sm hidden-xs">
 							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
-							<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
+							<a href="../users/post_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
 							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
 						</div>
 						
 						<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
 							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
-							<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
+							<a href="../users/post_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
 							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 						</div>
 						
@@ -250,17 +266,14 @@
 					<div class="members">
 						<h2>Members</h2>
 						<hr>
-						{if !empty($friends)}
-						<div class="friends-body">
-							{foreach $friends as $friend}
+						<div class="members-body">
+							{foreach $members as $member}
 							<figure class="imgContainer">
-								<a href="../users/profile_feed.php?user-id={$friend.id}"><img src="{$friend.url}" alt="{$friend.alt}" class="thumb-150px centered-and-cropped"></a>
-								<figcaption><a href="profile_feed.php?user-id={$friend.id}">{$friend.name}</a></figcaption>
+								<a href="../users/profile_feed.php?user-id={$member.id}"><img src="{$member.url}" alt="{$member.alt}" class="thumb-150px centered-and-cropped"></a>
+								<figcaption><a href="../users/profile_feed.php?user-id={$member.id}">{$member.name}</a></figcaption>
 							</figure>
 							{/foreach}
 						</div>
-						{else}No friends yet...
-						{/if}
 					</div>
 				</div>
 				<div id="photos" class="tab-pane fade">
@@ -269,7 +282,7 @@
 						<hr>
 						{if !empty($all_images)}
 						<div class="photos-body">
-						{foreach $all_images as $img}<a href="post_display.php?user-id={$id}&post-id={$img.id}"><img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
+						{foreach $all_images as $img}<a href="../users/post_display.php?user-id={$img.user}&post-id={$img.id}&group-id={$group_id}"><img class="centered-and-cropped thumb-150px" src="{$img.url}" alt="{$img.description}"></a> {/foreach}
 						</div>
 						{else} No photos yet...
 						{/if}

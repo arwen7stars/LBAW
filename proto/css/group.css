@@ -40,3 +40,32 @@
 	height: 150px;
 	margin: 0.2rem 0.1rem;
 }
+
+.nav-justified > li {
+	display: table-cell;
+	width: 1%;
+}
+.nav-justified > li > a {
+	margin-bottom: 0;
+}
+
+.members-body, .photos-body {
+	font-weight: bold;
+}
+
+.members-body figcaption {
+	text-align: center;
+}
+
+.imgContainer {
+	display: inline-block;
+	position: relative;
+}
+
+.imgContainer figcaption {
+	width: 90%;
+}
+
+.members-body figure {
+    vertical-align: top;
+}

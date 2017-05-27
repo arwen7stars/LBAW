@@ -24,16 +24,6 @@ html {
   height: 100%;
 }
 
-a {
-	color: #8a2f2f;
-	text-decoration:none;
-}
-
-a:hover {
-	color: #7d7c7c;
-	text-decoration: none;
-}
-
 body {
   height: 100%;
   background: url("../images/backg.jpg") no-repeat center center fixed;
@@ -87,21 +77,30 @@ body {
 }
 
 .events, .groups {
-  border: 1px solid black;
-  max-height: 115px;
-  flex: 0 0 auto;
-  margin: 10px 15px;
-  padding: 5px;
-  overflow-y: hidden;
+	flex: 0 0 auto;
+	margin: 10px 15px;
+	padding: 5px;
+	overflow-y: hidden;
+	background-color: white;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	text-indent: 0.5rem;
+	line-height: 160%;
+}
+
+.border-create {
+	padding: 0.5rem;
+	border-radius: 2rem;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	font-size: 2rem;
 }
 
 .event-list, .group-list {
   /* remove bootstrap margin */
   margin: 0;
-}
-
-.event-list li > a, .group-list li > a {
-  text-decoration: none;
 }
 
 .chat {
@@ -129,10 +128,6 @@ body {
   margin: 10px auto;
 }
 
-.contact-list li > a {
-  display: block;
-  text-decoration: none;
-}
 
 .chat-search-bar {
   margin: 0;
@@ -390,14 +385,13 @@ footer {
 	object-fit: cover;
 }
 
-.content-left h2, .content-right h2 {
+.content-left h3, .content-right h3 {
   /* bootstrap margin is huge */
-  margin: 0;
+  margin: 1rem;
   font-size: 2.2rem;
 }
 
-.content-left h2, .content-right h2 {
-  /* !important is required because of bootstrap */
-  text-decoration: none !important;
-  color: inherit !important;
+.add-instance li > a {
+	text-shadow: 2px 2px #ccc;
+	color: #000;
 }

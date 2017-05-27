@@ -20,6 +20,7 @@
 	$smarty->assign('id_logged', $_SESSION['id']);
 	$smarty->assign('posts', $posts);
 	$smarty->assign('groups', $groups);
+	$smarty->assign('all_groups', $res);
 	
 	if (isset($_SESSION['previous'])) {
 		if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous']) {

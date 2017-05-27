@@ -56,7 +56,7 @@
 	function getGroupImages($group_id) {
 		global $dbh;
 		
-		$query = 'SELECT "Post"."id" AS id, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id" FROM "Post", "Image" WHERE "Post"."group-id" = ? AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC';
+		$query = 'SELECT "Post"."id" AS id, "Post"."user-id" AS "user", "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id" FROM "Post", "Image" WHERE "Post"."group-id" = ? AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($group_id));
 		
@@ -114,5 +114,19 @@
 		$res = $stmt->fetch();
 		
 		return ($res !== false);
+	}
+
+	function getGroupMembers($group_id) {
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT "Character"."name" AS name, "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id
+		FROM "Group", "User-Group", "Character-Image", "Character", "Image", "User"
+		WHERE "Group"."id" = :group AND "Group"."id" = "User-Group"."group-id" AND "User"."id" = "User-Group"."user-id" AND
+		"Character"."id" = "User"."character-id" AND "Character-Image"."character-id" = "Character"."id"
+		AND "Character-Image"."image-id" = "Image"."id"
+		ORDER BY "User"."id"');
+		$stmt->bindParam(':group', $group_id);
+		$stmt->execute(array($group_id));
+		
+		return $stmt;		
 	}
 ?>

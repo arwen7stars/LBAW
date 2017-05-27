@@ -1,4 +1,15 @@
 <?php
+	function isProfilePost($post_id, $user_id) {
+		global $dbh;
+		$query = 'SELECT FROM "Post" WHERE "Post"."user-id" = :user AND "Post"."id" = :post AND "Post"."event-id" IS NULL AND "Post"."group-id" IS NULL';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':post', $post_id);
+		$stmt->execute(array($user_id, $post_id));
+		$res = $stmt->fetch();
+		return ($res !== false);
+	}
+	
 	function isPostFromUser($post_id, $user_id) {
 		global $dbh;
 		$query = 'SELECT FROM "Post" WHERE "Post"."user-id" = :user AND "Post"."id" = :post';
@@ -185,7 +196,7 @@
 		global $dbh;
         $stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id"
 				FROM "Post", "Image"
-				WHERE "Post"."user-id" = :user AND "post-id" = "Post".id AND "Image"."id" > :img
+				WHERE "Post"."user-id" = :user AND "Post"."event-id" IS NULL AND "Post"."group-id" IS NULL AND "post-id" = "Post".id AND "Image"."id" > :img
 				ORDER BY "Image"."id"
 				LIMIT 1');
 		$stmt->bindParam(':user', $user_id);
@@ -201,7 +212,7 @@
 		global $dbh;
         $stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id"
 				FROM "Post", "Image"
-				WHERE "Post"."user-id" = :user AND "post-id" = "Post".id AND :img > "Image"."id"
+				WHERE "Post"."user-id" = :user AND "Post"."event-id" IS NULL AND "Post"."group-id" IS NULL AND "post-id" = "Post".id AND :img > "Image"."id"
 				ORDER BY "Image"."id" DESC LIMIT 1');
 		$stmt->bindParam(':user', $user_id);
 		$stmt->bindParam(':img', $image_id);
@@ -327,5 +338,12 @@
 		$query = 'DELETE FROM "Likes" WHERE "Likes"."id" = ?';
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($like_id));			
+	}
+	
+	function deleteNotificationsPost($post_id) {
+		global $dbh;
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."post-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($post_id));	
 	}
 ?>

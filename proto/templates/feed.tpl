@@ -13,7 +13,9 @@
 	<link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
  	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+	<link href="../../css/default.css" rel="stylesheet">
 	<link href="../../css/feed.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -29,27 +31,41 @@
       <div class="content-left hidden-xs">
 
         <div class="events">
-          <h2><a href="event.html">Events</a></h2>
-          <ul class="event-list list-unstyled">
-			{foreach $events as $event}
-			<li><a href="../../pages/events/event_feed.php?event-id={$event.id}"> {$event.name} </a></li>
-			{/foreach}
-			<li><a href="../../pages/events/create_event.php">+ Create a new Event</li>
-          </ul>
+			<div class="add-instance pull-right"><a class="border-create" href="../../pages/events/create_event.php"><span class="glyphicon glyphicon-plus"></span></a></a></div>
+			<h3>Events</h3>
+			<ul class="event-list list-unstyled">
+				{foreach $events as $event}
+				<li><a href="../../pages/events/event_feed.php?event-id={$event.id}"><i class="fa fa-calendar"></i> {$event.name}</a></li>
+				{/foreach}
+			</ul>
         </div>
+		
+		<div id="all-groups" class="edit_box">
+			<a href="javascript:void(0)" id="close-groups" class="close-edit pull-right">
+			<span class="close glyphicon glyphicon-remove"></span></a>
+			<h2>Groups</h2>
+			<hr>
+			<ul class="list-group row">
+			{foreach $all_groups as $group}
+				<li class="list-group-item col-xs-6"><a href="../../pages/groups/feed.php?group-id={$group.id}"><i class="fa fa-group"></i> {$group.name}</a></li>
+			{/foreach}
+			</ul>
+
+		</div>
 
         <div class="groups">
-          <h2><a href="group.html">Groups</a></h2>
-          <ul class="group-list list-unstyled">
-			{foreach $groups as $group}
-			<li><a href="../../pages/groups/feed.php?group-id={$group.id}"> {$group.name} </a></li>
-			{/foreach}
-            <li><a href="../../pages/groups/create_group.php">+ Create a new Group</li>
-          </ul>
+			<div class="add-instance pull-right"><a class="border-create" href="../../pages/groups/create_group.php"><span class="glyphicon glyphicon-plus"></span></a></div>
+			<h3>Groups</h3>
+			<ul class="group-list list-unstyled">
+				{foreach $groups as $group}
+				<li><a href="../../pages/groups/feed.php?group-id={$group.id}"><i class="fa fa-group"></i> {$group.name}</a></li>
+				{/foreach}
+			</ul>
+			<a id="see-groups" href="javascript:void(0)">See more...</a>
         </div>
 
         <div class="chat">
-          <h2><a href="#">Online Friends</a></h2>
+          <h3><a href="#">Online Friends</a></h3>
           <ul class="contact-list list-unstyled">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hikari</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Himari</a></li>

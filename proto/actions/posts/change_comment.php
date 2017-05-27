@@ -10,7 +10,5 @@
 	$body = $_POST['body'];
 	updateComment($comment_id, $body);
 	
-	$referer = '../../pages/users/post_display.php?user-id=' . $post['user-id'] . '&post-id=' . $post_id;
-	
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
