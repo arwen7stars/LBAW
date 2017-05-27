@@ -1,3 +1,7 @@
+.event {
+  margin-top: 55px;
+}
+
 .info{
 	margin-top: 10px;
 }
@@ -14,39 +18,4 @@
 	margin-top:10px;
 	position: relative;
 	border: 1px solid black;
-}
-
-.event-header {
-	background-color: #fff;
-	margin-right: 2rem;
-	margin-left: 2rem;
-	margin-bottom: 0.5rem;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-	background-color:#DEE7E4;
-	background-image: radial-gradient(#fff 10%, transparent 10%),
-	radial-gradient(#fff 10%, transparent 10%);
-	background-size: 30px 30px;
-	background-position: 0 0, 15px 15px;
-	box-shadow: 0 0 10px black;
-}
-
-.user-options {
-	text-align: right;
-	margin-right: 2rem;
-}
-
-.event-header-img {
-	color: #8A2F2F;
-	text-align: center;
-	text-shadow: 2px 2px #ccc;
-}
-
-#event-image {
-	font-size: 15rem;
-}
-
-.event_bar {
-	padding-right: 2rem;
-	padding-left: 2rem;
 }
