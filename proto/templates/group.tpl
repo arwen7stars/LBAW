@@ -111,16 +111,24 @@
 
       <!--  Middle -->
 		<div class="content-middle">
+			<div class="group-header">
+				<i class="fa fa-group" id="group-image"></i>
+				<h2>{$groupinfo.name}</h2>
+			</div>
 			<!--Group Stuff-->  	
-			<ul class="nav nav-tabs nav-justified">
+			<ul class="group_bar nav nav-tabs nav-justified">
 				<li class="active"><a data-toggle="tab" href="#home">Feed</a></li>
 				<li><a data-toggle="tab" href="#about">About</a></li>
 				<li><a data-toggle="tab" href="#members">Members</a></li>
+				{if $public}
 				<li><a data-toggle="tab" href="#photos">Photos</a></li>
+				{/if}
 			</ul>
 		
 			<div class="tab-content">
+				{if $public}
 				<div id="home" class="tab-pane fade in active">
+					{if $belongs}
 					<!-- MAKE-POST -->
 					<div class="make-post">
 						<form class="form" action="../../actions/posts/post.php" method="post" enctype="multipart/form-data">
@@ -142,6 +150,7 @@
 							</div>
 						</form>
 					</div>
+					{/if}
 					
 					<div id="black" class="black_overlay"></div>
 
@@ -243,6 +252,13 @@
 					</div></div>
 					{/foreach}
 				</div>
+				{else}
+				<div id="home" class="tab-pane fade in active">
+				<div id="welcome-message"><h2>This group is private.</h2>
+				<h3>You need to be a member of this group to see its posts.</h3></div>
+				</div>
+				
+				{/if}
 			  
 				<div id="about" class="tab-pane fade">
 					<div class="about">
@@ -288,6 +304,7 @@
 						</div>
 					</div>
 				</div>
+				{if $public}
 				<div id="photos" class="tab-pane fade">
 					<div class="photos">
 						<h2>Photos</h2>
@@ -300,6 +317,7 @@
 						{/if}
 					</div>
 				</div>
+				{/if}
 			</div>
 		</div>
 

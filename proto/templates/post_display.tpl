@@ -30,7 +30,7 @@
 			<div class="user_bar affix">
 				<div class="user_info">
 					<a href="profile_feed.php?user-id={$id}"><img class="centered-and-cropped" src="{$image.url}" alt="{$image.description}"></a>
-					<h2>{$character.name}</h2>
+					<h3>{$character.name}</h3>
 					<ul class="list-unstyled">
 						<li>
 							<span class="glyphicon glyphicon-user"></span>

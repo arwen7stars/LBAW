@@ -115,6 +115,18 @@
 		
 		return ($res !== false);
 	}
+	
+	function isUserFromGroup($user_id, $group_id) {
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT * FROM "User-Group", "Group"
+		WHERE "User-Group"."group-id" = "Group"."id" AND "Group"."id" = :group AND "User-Group"."user-id" = :user');
+		$stmt->bindParam(':group', $group_id);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->execute(array($group_id, $user_id));
+		$res = $stmt->fetch();
+		
+		return ($res !== false);		
+	}
 
 	function getGroupMembers($group_id) {
 		global $dbh;

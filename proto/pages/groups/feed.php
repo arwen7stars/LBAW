@@ -6,6 +6,7 @@
 	$id_logged = $_SESSION['id'];
 	$group = $_GET['group-id'];
 	
+	$belongs = isUserFromGroup($id_logged, $group);
 	$username_logged = $_SESSION['username'];
 	$character_name = getUserCharacterName($_SESSION['username']);
 	$stmt = getGroupPosts($group);
@@ -34,11 +35,14 @@
 	$smarty->assign('character_name', $character_name);
 	$smarty->assign('username_logged', $username_logged);
 	$smarty->assign('id_logged', $id_logged);
+	
+	$smarty->assign('belongs', $belongs);
 	$smarty->assign('posts', $posts);
 	$smarty->assign('all_images', $images);
 	$smarty->assign('group', $group);
 	$smarty->assign('groupinfo', $group_info);
 	$smarty->assign('privacy', $public);
+	$smarty->assign('public', $group_info['public']);
 	$smarty->assign('events', $event);
 	$smarty->assign('groups', $groups);
 	$smarty->assign('group_id', $_GET['group-id']);

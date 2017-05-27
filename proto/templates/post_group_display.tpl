@@ -40,7 +40,6 @@
 					</ul>
 				</div>
 				
-				{if ($id == $id_logged) || $public  || $friend.accepted}
 				{if !empty($previousimg) || !empty($nextimg)}
 				<div class="user_photos">
 					<h3><b>Photos</b></h3>
@@ -58,11 +57,10 @@
 					</figure>
 					{/if}
 				</div>
-				{/if}{/if}
+				{/if}
 			</div>
 		</div>
         <div class="col-md-9 push-md-3">
-			{if ($id == $id_logged) || $public || $friend.accepted}
 			<div class="timeline">
 				
 				{if !empty($post)}
@@ -147,7 +145,7 @@
 						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 					</div>
 
-					{if ((isset($username_logged) && $friendship) || ($id == $id_logged))}
+					{if (isset($username_logged) || ($id == $id_logged))}
 					<hr class="separator">
 					
 					<div class="make-comment-wrap">
@@ -225,12 +223,6 @@
 					<h3>Post not found!</h3>
 				{/if}
 			</div>
-			{else}
-			<div id="private-profile">
-				<h2>This profile is private.</h2>
-				<h4>Become friends with this user to see their posts!</h4>
-			</div>
-			{/if}
 		</div>
 
         <div class="col-xs  hidden-xs hidden-sm">
