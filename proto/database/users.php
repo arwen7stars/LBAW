@@ -329,6 +329,15 @@
 		$stmt->execute(array($id1, $id2));
 	}
 	
+	function deleteFriendshipNotification($id1, $id2) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Notification"
+		WHERE "Notification"."friendship-user1-id" = ? AND "Notification"."friendship-user2-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($id1, $id2));		
+	}
+	
 	function deleteFriendships($id) {
 		global $dbh;
 		
@@ -414,49 +423,4 @@
 		$stmt->execute(array($name, $username, $password, $email, $date, $character, $location));
 
 	}
-	
-	function addEvent($userId, $eventName, $startDate, $endDate, $eventPrivacy, $description, $eventLocation)
-	{
-		global $dbh;
-		$query = 'INSERT INTO "Event" ("name","start","finish","public","location-id","about") VAlUES ( :eventName , :startDate, :endDate, :eventPrivacy, :locationId, :description)';
-		$stmt = $dbh->prepare($query);
-		$stmt->bindParam(':eventName', $eventName);
-		$stmt->bindParam(':startDate', $startDate);
-		$stmt->bindParam(':endDate', $endDate);
-		$stmt->bindParam(':eventPrivacy', $eventPrivacy);
-		$stmt->bindParam(':locationId', $eventLocation);
-		$stmt->bindParam(':description', $description);
-		$stmt->execute(array($eventName, $startDate, $endDate, $eventPrivacy, $eventLocation, $description));
-	}
-	
-	function listEvents($userId)
-	{
-		global $dbh;
-		$query = 'SELECT * FROM "Event","User-Event" Where "User-Event"."user-id" = :userid AND "Event".id = "User-Event"."event-id" limit 3';
-		$stmt = $dbh->prepare($query);
-		$stmt->bindParam(':userid', $userId);
-		$stmt->execute(array($userId));
-		return $stmt->fetchAll();
-	}
-	
-	function getEventInfo($event_id)
-	{
-		global $dbh;
-		$query = 'SELECT * FROM "Event" WHERE "Event".id = :event_id';
-		$stmt = $dbh->prepare($query);
-		$stmt->bindParam(':event_id', $event_id);
-		$stmt->execute(array($event_id));
-		return $stmt->fetchAll();
-	}
-	
-	function GetUserNotifications($user_id)
-	{
-		global $dbh;
-		$query = 'SELECT * FROM "Notification" WHERE "Notification".seen = false AND "Notification"."user-id" = :user-id';
-		$stmt = $dbh->prepare($query);
-		$stmt->bindParam(':user-id', $user-id);
-		$stmt->execute(array($user-id));
-		return $stmt->fetchAll();
-	}
-	
 ?>
