@@ -265,10 +265,10 @@
         </div>
 
         <div class="recent-news">
-          <h2><a href="#">Recent News </a></h2>
-          <p>Urabitur et tincidunt dolor. Mauris in vulputate ante. Praesent vel arcu ac felis iaculis efficitur a ornare sapien. Nam tellus massa.</p>
+          <h2><a href="#">Recent News</a></h2>
+          <p>{$news.body}</p>
           <div class="read-more">
-			<a href="#">Read more...</a>
+			<a href="{$news.moreInfo}" target="_blank">Read more...</a>
 		  </div>
         </div>
 

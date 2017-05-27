@@ -1,10 +1,16 @@
 <?php
 	include_once('../../config/init.php');
+	
+	
 	include_once('../../database/users.php');
 	include_once('../../database/posts.php');
 	include_once('../../database/groups.php');
 	
 	$id_logged = $_SESSION['id'];
+	
+	$recentNews = getRecentNewsByLimit(1);
+	
+	//var_dump($recentNews);die();
 	
 	$event = listEvents($_SESSION['id']);
 	$res = listGroups($id_logged);
@@ -15,6 +21,7 @@
 	$posts = $stmt->fetchAll();
 	$character_name = getUserCharacterName($_SESSION['username']);
 	
+	$smarty->assign('news',$recentNews[0]);
 	$smarty->assign('events', $event);
 	$smarty->assign('character_name', $character_name);
 	$smarty->assign('username_logged', $_SESSION['username']);

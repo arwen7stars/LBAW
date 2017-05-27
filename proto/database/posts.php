@@ -216,6 +216,15 @@
 		return $stmt->fetchAll();
 	}
 	
+	function getRecentNewsByLimit($limit)
+	{
+		global $dbh;
+		$stmt = $dbh->prepare('SELECT * FROM "News" limit :limit');
+		$stmt->bindParam(':limit', $limit);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+	
 	
 	function getPreviousImage($user_id, $image_id) {
 		global $dbh;

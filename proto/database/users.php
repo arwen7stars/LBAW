@@ -448,4 +448,15 @@
 		$stmt->execute(array($event_id));
 		return $stmt->fetchAll();
 	}
+	
+	function GetUserNotifications($user_id)
+	{
+		global $dbh;
+		$query = 'SELECT * FROM "Notification" WHERE "Notification".seen = false AND "Notification"."user-id" = :user-id';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':user-id', $user-id);
+		$stmt->execute(array($user-id));
+		return $stmt->fetchAll();
+	}
+	
 ?>
