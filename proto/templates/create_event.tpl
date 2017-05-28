@@ -77,6 +77,13 @@
 								<option id="event_private" value="false">Private</option>
 						</select></p>
 						
+						<p><label for="participation">Participation</label>
+						<select name="participation" class="form-control" id="participation">
+								<option value="going" selected="selected">Going</option>
+								<option value="maybe">Maybe</option>
+								<option value="ignore">Ignore</option>
+						</select></p>
+						
 						<p><button type="submit" class="submit btn btn-primary">Create Event</button></p>
 					</fieldset>
 				</form>

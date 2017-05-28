@@ -328,7 +328,7 @@ color: #000;
 	margin: 0;
 }
 
-.notification-list .friendship, .notification-list .event, .notification-list .group {
+.notification-list .friendship, .notification-list .event-invitation, .notification-list .group-invitation {
 	color: #8a2f2f;
 	width: 15rem;
 }

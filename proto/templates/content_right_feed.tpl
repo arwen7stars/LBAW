@@ -7,8 +7,8 @@
 		<div id="confirm-friendship-{$notification.id}" class="edit_box">
 		
 			<div class="modal-body">
-				<a href="javascript:void(0)" id="close-friendship-{$notification.id}" class="close-friendship pull-right">
-				<span class="close glyphicon glyphicon-remove"></span></a>
+				<p><a href="javascript:void(0)" id="close-friendship-{$notification.id}" class="close-friendship pull-right">
+				<span class="close glyphicon glyphicon-remove"></span></a></p>
 				
 				<div class="poster">					
 					<p><a href="profile_feed.php?user-id={$notification.userid}"><img src="{$notification.charurl}" alt="Profile picture of {$notification.charname}" class="centered-and-cropped thumb-32px"></a>
@@ -31,6 +31,30 @@
 			</div>
 		</div>
 		
+		<div id="confirm-event-{$notification.id}" class="edit_box">
+		
+			<div class="modal-body">
+				<p><a href="javascript:void(0)" id="close-event-{$notification.id}" class="close-event pull-right">
+				<span class="close glyphicon glyphicon-remove"></span></a></p>
+				
+				<div class="poster">					
+					<p><a href="profile_feed.php?user-id={$notification.eventuser}"><img src="{$notification.eventurl}" alt="Profile picture of {$notification.eventuser}" class="centered-and-cropped thumb-32px"></a>
+						<span><a href="profile_feed.php?user-id={$notification.eventuser}">{$notification.eventcharname}</a> asked you to participate in <a href="../events/event_feed.php?event-id={$notification.eventid}">{$notification.eventname}!</a></span>
+					</p>
+				</div>
+				
+			</div>
+			<div class="modal-footer button-container">
+				<form class="form" action="../../actions/events/accept_invite.php" method="post">
+						<input type="hidden" name="event-id" value="{$notification.eventid}">
+						<input type="hidden" name="admin-id" value="{$notification.eventuser}">
+						<button type="submit" class="btn btn-primary" name="type" value="going">Going</button>
+						<button type="submit" class="btn btn-primary" name="type" value="maybe">Maybe</button>
+						<button type="submit" class="btn btn-primary" name="type" value="ignore">Ignore</button>
+				</form>
+			</div>
+		</div>
+		
 		{if ($id_logged == $notification.usertwo)}
 		<hr>
 		<li>
@@ -42,7 +66,7 @@
 		{if !empty($notification.eventid)}
 		<hr>
 		<li>
-		<button id="click-event-invitation-{$notification.id}" class="event btn btn-default event-invitation">
+		<button id="click-event-invitation-{$notification.id}" class="event-invitation btn btn-default">
 		<i class="fa fa-calendar"></i> Event invitation</button>
 		<div class="small-txt">{$notification.date|date_format}</div>
 		</li>
@@ -50,7 +74,7 @@
 		{if !empty($notification.groupid)}
 		<hr>
 		<li>
-		<button id="click-group-invitation-{$notification.id}" class="group btn btn-default group-invitation">
+		<button id="click-group-invitation-{$notification.id}" class="group-invitation btn btn-default">
 		<i class="fa fa-users"></i> Group invitation</button>
 		<div class="small-txt">{$notification.date|date_format}</div>
 		</li>
