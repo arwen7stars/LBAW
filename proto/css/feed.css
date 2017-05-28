@@ -422,12 +422,19 @@ footer {
   margin: 10px 15px;
   padding: 5px;
   position: relative;
-  height:100px;
+  height:125px;
 }
 
-input.invite-text {
+.invite-text {
 	width: 325px;
 	padding-left: 3px;
 	margin-left:8px;
 }
+
+#result {
+	color: red;
+	margin-left:8px;
+}
+
+
 

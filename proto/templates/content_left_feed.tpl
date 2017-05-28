@@ -62,8 +62,9 @@
 		
 		<div class="friend-invite">
 			<h3><a href="#">Invite Friends to Anibook </a></h3>
-				<form id="invite" action="../../actions/users/invite.php" method="post">
+				<form id="invite_friend" action="../../actions/users/invite.php" method="post">
 					<input class="invite-text" type="email" name="email" placeholder=" + Insert your friend's e-mail address...">
+					<h5 id="result"></h5>
 				</form>
         </div>
 

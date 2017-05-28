@@ -14,5 +14,4 @@ Feel free to join our amazing Anime platform at any time in the following link: 
 			'X-Mailer: PHP/' . phpversion();
 			mail($email, $subject, $message, $headers);
 	}
-	header('Location: ../../pages/users/feed.php');
 ?>
