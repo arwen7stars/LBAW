@@ -415,3 +415,19 @@ footer {
 	max-height: 150px;
 	overflow: auto;
 }
+
+.friend-invite {
+	border: 1px solid black;
+  flex: none;
+  margin: 10px 15px;
+  padding: 5px;
+  position: relative;
+  height:100px;
+}
+
+input.invite-text {
+	width: 325px;
+	padding-left: 3px;
+	margin-left:8px;
+}
+

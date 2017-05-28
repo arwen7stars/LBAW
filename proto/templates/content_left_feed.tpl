@@ -59,6 +59,13 @@
 			{/if}
 			{/if}
         </div>
+		
+		<div class="friend-invite">
+			<h3><a href="#">Invite Friends to Anibook </a></h3>
+				<form id="invite" action="../../actions/users/invite.php" method="post">
+					<input class="invite-text" type="email" name="email" placeholder=" + Insert your friend's e-mail address...">
+				</form>
+        </div>
 
         <!-- <div class="chat">
           <h3><a href="#">Online Friends</a></h3>
