@@ -6,8 +6,8 @@
 ## In development
 
 * Search-bar with Ajax (US001)
-* managing groups/events
 * recovering password
+* accepting event invites
 
 ## Important things to delevop if we have time
 
