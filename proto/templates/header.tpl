@@ -37,18 +37,26 @@
 					</ul>
 				</li>
 			</ul>
-			
+
 			<!--  Search bar -->
-			<form role="search">
-				<div class="form-group">
-					<div class="input-group navbar-search-bar">
-						<input type="search" class="form-control" placeholder="Search...">
-						<span class="input-group-btn">
-							<button class="search-btn btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-						</span>
+			<div class="search-bar-wrap">
+				<form role="search">
+					<div class="form-group">
+						<div class="input-group navbar-search-bar">
+							<input type="search" id="search-bar" class="form-control" placeholder="Search...">
+							<span class="input-group-btn">
+								<button class="search-btn btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+							</span>
+						</div>
 					</div>
+				</form>
+
+				<div class="search-results-wrap">
+					<ul>
+					</ul>
 				</div>
-			</form>
+			</div>
+
 			{else}
 			<!-- Float right -->
 			<ul class="nav navbar-nav navbar-right">
@@ -56,7 +64,7 @@
 				<li><a href="../../pages/users/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
 			{/if}
-			
+
         </div>
     </div>
 </nav>

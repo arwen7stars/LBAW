@@ -33,6 +33,10 @@
             </div>
           </div>
         </form>
+				<div class="search-results-wrap">
+					<ul>
+					</ul>
+				</div>
       </div>
     </div>
   </div>
@@ -65,6 +69,7 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../../javascript/search-bar.js"></script>
 </body>
 
 </html>
