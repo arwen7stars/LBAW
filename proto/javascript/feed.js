@@ -74,4 +74,16 @@ $(document).ready(function () {
 		});
 
 	});
+
+	$('.group-invitation').on('click', function(e) {
+		var id = $(this).attr('id').split("-")[3];
+		$('#confirm-group-' + id).css('display', 'block');
+		$('#black').css('display', 'block');	
+	})
+	
+	$('.close-group').on('click', function(e) {
+		var id = $(this).attr('id').split("-")[2];
+		$('#confirm-group-' + id).css('display', 'none');
+		$('#black').css('display', 'none');	
+	})
 });

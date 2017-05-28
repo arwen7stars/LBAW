@@ -223,4 +223,28 @@
 		$stmt->bindParam(':group', $group_id);
 		$stmt->execute(array($id, $group_id));
 	}
+	
+	function deleteGroupNotification($user_id, $group_id) {
+		global $dbh;
+		
+		$stmt = $dbh->prepare('DELETE FROM "Notification" WHERE "Notification"."user-id" = :user AND "Notification"."group-id" = :group');
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':group', $group_id);
+		$stmt->execute(array($user_id, $group_id));
+	}
+	
+	function updateGroupInvite($user_id, $ignored, $accepted, $group_id) {
+		global $dbh;
+		
+		$query = 'UPDATE "Group-Invite"
+		SET("ignored", "accepted") = (:ignored, :accepted)
+		WHERE "Group-Invite"."user-id" = :user AND "Group-Invite"."group-id" = :group';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':ignored', $ignored);
+		$stmt->bindParam(':accepted', $accepted);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':group', $group_id);
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($ignored, $accepted, $user_id, $group_id));
+	}
 ?>

@@ -324,7 +324,7 @@ color: #000;
   text-decoration: none;
 }
 
-.notification-list hr {
+.notifications hr {
 	margin: 0;
 }
 
@@ -416,6 +416,12 @@ footer {
 	overflow: auto;
 }
 
+.event-info dl {
+	border: 1px solid #ccc;
+	padding: 0.5rem;
+	margin: 0rem;
+}
+
 .friend-invite {
 	border: 1px solid black;
   flex: none;
@@ -435,6 +441,3 @@ footer {
 	color: red;
 	margin-left:8px;
 }
-
-
-
