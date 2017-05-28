@@ -2,8 +2,11 @@
 	include_once('../../config/init.php');
 	include_once('../../database/events.php');
 
+	unset($_SESSION['wrong_dates']);
+	
 	if ($_POST['event_start'] > $_POST['event_end'])
 	{
+		$_SESSION['wrong_dates'] = true;
 		header('Location: ../../pages/events/create_event.php');
 	}
 	else

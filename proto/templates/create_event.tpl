@@ -31,11 +31,23 @@
 						<p><label for="name">Event Name</label>
 						<input type="text" class="form-control" id="name" name="event_name" placeholder="Event Name" required></p>
 						
+						{if isset({$wrong_dates}) && !empty({$wrong_dates})}
 						<p><label for="event_start">Start Date</label>
-						<input type="date" class="form-control" id="event_start" name="event_start" required></p>
-
+						<input type="date" class="form-control error-input" id="event_start" name="event_start" min="{$now}" required>
+						<div class="error-in">The start date shouldn't be after the end date!</div></p>
+						{else}
+						<p><label for="event_start">Start Date</label>
+						<input type="date" class="form-control" id="event_start" name="event_start" min="{$now}" required></p>
+						{/if}
+						
+						{if isset({$wrong_dates}) && !empty({$wrong_dates})}
 						<p><label for="event_end">End Date</label>
-						<input type="date" class="form-control" id="event_end" name="event_end" required></p>
+						<input type="date" class="form-control error-input" id="event_end" name="event_end" min="{$now}" required>
+						<div class="error-in">The end date shouldn't be before the start date!</div></p>
+						{else}
+						<p><label for="event_end">End Date</label>
+						<input type="date" class="form-control" id="event_end" name="event_end" min="{$now}" required></p>
+						{/if}
 						
 						<p><label for="event_description">Event Description</label>
 						<input type="text" class="form-control" id="event_description" name="event_description" placeholder="Small description of the event"></p>

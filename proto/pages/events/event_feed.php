@@ -26,6 +26,7 @@
 	$location = getEventLocation($event_id);
 	$belongs = isUserFromEvent($id_logged, $event_id);
 	$admin = isUserEventAdmin($id_logged, $event_id);
+	$now = date('Y-m-d', time());
 	
 	$guests = getEventGuests($event_id);
 	
@@ -51,6 +52,7 @@
 	$smarty->assign('location', $location);
 	$smarty->assign('guests', $guests);
 	$smarty->assign('locations', $locations);
+	$smarty->assign('now', $now);
 	
 	$smarty->assign('groups', $groups);
 	$smarty->assign('events', $events);

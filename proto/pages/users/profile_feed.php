@@ -78,6 +78,12 @@
 			unset($_SESSION['password-success']);
 	   }
 	}
+	
+	if (isset($_SESSION['previous_dates'])) {
+		if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous']) {
+			unset($_SESSION['wrong_dates']);
+	   }
+	}
 
 	$smarty->display($BASE_DIR . 'templates/profile_feed.tpl');
 ?>

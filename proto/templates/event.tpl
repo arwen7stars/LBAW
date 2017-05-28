@@ -63,12 +63,12 @@
 						
 						<div class="form-group">
 							<label for="event_start">Start Date</label>
-							<input type="date" class="form-control" id="event_start" name="event_start" value="{$eventinfo.start}" required>
+							<input type="date" class="form-control" id="event_start" name="event_start" value="{$eventinfo.start}" min="{$now}" required>
 						</div>
 						
 						<div class="form-group">
 							<label for="event_end">End Date</label>
-							<input type="date" class="form-control" id="event_end" name="event_end" value="{$eventinfo.finish}" required>
+							<input type="date" class="form-control" id="event_end" name="event_end" value="{$eventinfo.finish}" min="{$now}" required>
 						</div>
 						
 						<div class="form-group">
