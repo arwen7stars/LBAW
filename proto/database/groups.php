@@ -214,4 +214,13 @@
 		
 		return ($res !== false);
 	}
+	
+	function leaveGroup($id, $group_id) {
+		global $dbh;
+		
+		$stmt = $dbh->prepare('DELETE FROM "User-Group" WHERE "User-Group"."user-id" = :user AND "User-Group"."group-id" = :group');
+		$stmt->bindParam(':user', $id);
+		$stmt->bindParam(':group', $group_id);
+		$stmt->execute(array($id, $group_id));
+	}
 ?>

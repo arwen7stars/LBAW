@@ -80,6 +80,17 @@
 					</div>
 			</div>
 			
+			<div id="confirm-leave-group" class="edit_box">
+				<div class="modal-body">Are you sure you want to leave this group?</div>
+					<div class="modal-footer button-container">
+						<form class="form" action="../../actions/groups/leave.php" method="post">
+							<input type="hidden" name="group-id" value="{$group_id}">
+							<button type="button" id="close-leave-group" class="close-delete btn">Cancel</button>
+							<input type="submit" class="btn btn-primary" value="Leave">
+						</form>
+					</div>
+			</div>
+			
 			
 			<div class="group-header">
 				<div class="group-header-img">
@@ -95,7 +106,7 @@
 			{else}
 			{if $belongs}
 			<p class="user-options">
-				<button class="group-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
+				<button id="click-leave-group" class="group-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
 			</p>
 			{/if}
 			{/if}

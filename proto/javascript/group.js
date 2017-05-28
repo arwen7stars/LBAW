@@ -19,4 +19,13 @@ $(document).ready(function () {
 		$('#black').css('display', 'none');	
 	})
 	
+	$("#click-leave-group").on('click', function(e) {
+		$('#confirm-leave-group').css('display', 'block');
+		$('#black').css('display', 'block');	
+	})
+	
+	$("#close-leave-group").on('click', function(e) {
+		$('#confirm-leave-group').css('display', 'none');
+		$('#black').css('display', 'none');	
+	})
 });
