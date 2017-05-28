@@ -5,7 +5,7 @@
 
 ## In development
 
-* fixing css and validation for every page
+* Search-bar with Ajax (US001)
 * managing groups/events
 * recovering password
 
