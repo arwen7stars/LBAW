@@ -6,7 +6,7 @@
 ## In development
 
 * Search-bar with Ajax (US001)
-* accepting event invites
+* accepting group invites
 
 ## Important things to delevop if we have time
 
