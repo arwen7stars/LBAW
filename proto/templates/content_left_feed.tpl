@@ -14,6 +14,7 @@
         <div class="events">
 			<div class="add-instance pull-right"><a class="border-create" href="../../pages/events/create_event.php"><span class="glyphicon glyphicon-plus"></span></a></div>
 			<h3>Events</h3>
+			<hr>
 			{if empty($events)}
 			No events yet...
 			{else}
@@ -43,6 +44,7 @@
         <div class="groups">
 			<div class="add-instance pull-right"><a class="border-create" href="../../pages/groups/create_group.php"><span class="glyphicon glyphicon-plus"></span></a></div>
 			<h3>Groups</h3>
+			<hr>
 			{if empty($groups)}
 			No groups yet...
 			{else}
@@ -57,7 +59,7 @@
 			{/if}
         </div>
 
-        <div class="chat">
+        <!-- <div class="chat">
           <h3><a href="#">Online Friends</a></h3>
           <ul class="contact-list list-unstyled">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hikari</a></li>
@@ -75,7 +77,7 @@
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Bulma</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sakura</a></li>
           </ul>
-          <!-- Search bar -->
+          
           <form role="search">
             <div class="form-group chat-search-bar">
               <label for="search-bar-btn" class="sr-only">Search bar</label>
@@ -87,4 +89,4 @@
               </div>
             </div>
           </form>
-        </div>
+        </div>-->
