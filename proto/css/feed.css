@@ -298,29 +298,44 @@ color: #000;
 }
 
 .notifications {
-  border: 1px solid black;
-  flex: 1 1 content;
-  margin: 10px 15px;
-  padding: 5px;
-  overflow-y: auto;
-  min-height: 100px;
-}
-
-.notification-list {
-  /* remove bootstrap margin */
-  margin: 0;
+	flex: 1 1 content;
+	margin: 10px 15px;
+	padding: 5px;
+	overflow-y: hidden;
+	background-color: white;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	text-indent: 0.5rem;
+	line-height: 160%;
+	margin: 10px 15px;
+	padding: 5px;
+	overflow-y: auto;
+	min-height: 100px;
 }
 
 .notification-list li {
-  background-color: #e8e8e8;
-  border: 1px solid black;
-  border-radius: 2px;
   margin: 10px auto;
+  text-align: center;
 }
 
 .notification-list li > a {
   display: block;
   text-decoration: none;
+}
+
+.notification-list hr {
+	margin: 0;
+}
+
+.notification-list .friendship, .notification-list .event, .notification-list .group {
+	color: #8a2f2f;
+	width: 15rem;
+}
+
+.notification-list .small-txt {
+	font-size: 1rem;
+	text-align: right;
 }
 
 .recent-news {
@@ -329,12 +344,12 @@ color: #000;
   margin: 10px 15px;
   padding: 5px;
   position: relative;
+  height: 20rem;
+  overflow: auto;
 }
 
 .read-more {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  text-align: right;
 }
 
 footer {
@@ -362,8 +377,8 @@ footer {
 	height: 3.2rem;
 }
 
-.button-container input{
-	display: inline;
+.button-container form {
+	display: inline-block;
 }
 
 .btn-wrap {

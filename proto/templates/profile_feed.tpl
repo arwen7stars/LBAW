@@ -368,8 +368,7 @@
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
-	<script src="../../javascript/script.js"></script>
-        
+	<script src="../../javascript/script.js"></script>      
 </body>
 
 </html>

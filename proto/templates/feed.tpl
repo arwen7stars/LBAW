@@ -195,5 +195,6 @@
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/script.js"></script>
 	<script src="../../javascript/search-bar.js"></script>
+	<script src="../../javascript/feed.js"></script>
 </body>
 </html>

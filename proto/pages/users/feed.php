@@ -22,12 +22,16 @@
 	$posts = $stmt->fetchAll();
 	$character_name = getUserCharacterName($_SESSION['username']);
 	
+	$stmt = getNotifications($id_logged);
+	$notifications = $stmt->fetchAll();
+	
 	$smarty->assign('news',$recentNews[0]);
 	
 	$smarty->assign('character_name', $character_name);
 	$smarty->assign('username_logged', $_SESSION['username']);
 	$smarty->assign('id_logged', $_SESSION['id']);
 	$smarty->assign('posts', $posts);
+	$smarty->assign('notifications', $notifications);
 	
 	$smarty->assign('groups', $groups);
 	$smarty->assign('events', $events);
