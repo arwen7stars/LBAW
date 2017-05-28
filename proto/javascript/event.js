@@ -18,4 +18,14 @@ $(document).ready(function () {
 		$('#confirm-delete-event').css('display', 'none');
 		$('#black').css('display', 'none');	
 	})
+	
+	$("#click-leave-event").on('click', function(e) {
+		$('#confirm-leave-event').css('display', 'block');
+		$('#black').css('display', 'block');	
+	})
+	
+	$('#close-leave-event').on('click', function(e) {
+		$('#confirm-leave-event').css('display', 'none');
+		$('#black').css('display', 'none');	
+	})
 });

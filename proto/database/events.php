@@ -235,4 +235,13 @@
 		$stmt->bindParam(':event', $event_id);
 		$stmt->execute(array($event_id));		
 	}
+	
+	function leaveEvent($id, $event_id) {
+		global $dbh;
+		
+		$stmt = $dbh->prepare('DELETE FROM "User-Event" WHERE "User-Event"."user-id" = :user AND "User-Event"."event-id" = :event');
+		$stmt->bindParam(':user', $id);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($id, $event_id));
+	}
 ?>

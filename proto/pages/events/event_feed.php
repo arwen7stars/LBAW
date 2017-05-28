@@ -48,6 +48,7 @@
 	$smarty->assign('eventinfo', $eventinfo);
 	$smarty->assign('event_id', $event_id);
 	$smarty->assign('privacy', $public);
+	$smarty->assign('public', $eventinfo['public']);
 	$smarty->assign('all_images', $all_images);
 	$smarty->assign('location', $location);
 	$smarty->assign('guests', $guests);

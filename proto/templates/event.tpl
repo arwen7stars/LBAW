@@ -94,14 +94,26 @@
 				
 				<div id="confirm-delete-event" class="edit_box">
 					<div class="modal-body">Are you sure you want to delete this event?</div>
-						<div class="modal-footer button-container">
-							<form class="form" action="../../actions/events/delete.php" method="post">
-								<input type="hidden" name="event-id" value="{$event_id}">
-								<button type="button" id="close-delete-event" class="close-delete btn">Cancel</button>
-								<input type="submit" class="btn btn-primary" value="Delete">
-							</form>
-						</div>
+					<div class="modal-footer button-container">
+						<form class="form" action="../../actions/events/delete.php" method="post">
+							<input type="hidden" name="event-id" value="{$event_id}">
+							<button type="button" id="close-delete-event" class="close-delete btn">Cancel</button>
+							<input type="submit" class="btn btn-primary" value="Delete">
+						</form>
+					</div>
 				</div>
+				
+				<div id="confirm-leave-event" class="edit_box">
+					<div class="modal-body">Are you sure you want to leave this event?</div>
+					<div class="modal-footer button-container">
+						<form class="form" action="../../actions/events/leave.php" method="post">
+							<input type="hidden" name="event-id" value="{$event_id}">
+							<button type="button" id="close-leave-event" class="close-delete btn">Cancel</button>
+							<input type="submit" class="btn btn-primary" value="Leave">
+						</form>
+					</div>
+				</div>
+				
 				<!--Event Stuff-->  	
 				<div class="text-center event">
 					<div class="event-header">
@@ -118,7 +130,7 @@
 					{else}
 					{if $belongs}
 					<p class="user-options">
-						<button class="event-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
+						<button id="click-leave-event" class="event-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
 					</p>
 					{/if}
 					{/if}
@@ -129,6 +141,8 @@
 					</div>
 				
 				</div>
+			
+			{if $public || $belongs}
 			<ul class="event_bar nav nav-tabs nav-justified">
 				<li class="active"><a data-toggle="tab" href="#home">Discussion</a></li>
 				<li><a data-toggle="tab" href="#about">About</a></li>
@@ -137,6 +151,7 @@
 				<li><a data-toggle="tab" href="#photos">Photos</a></li>
 				{/if}
 			</ul>
+			{/if}
 
 		<div class="tab-content">
 			{if $public || $belongs}
