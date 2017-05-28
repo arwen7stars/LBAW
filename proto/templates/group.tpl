@@ -41,6 +41,8 @@
 			<div id="edit-group-box" class="edit_group_box">
 				<a href="javascript:void(0)" id="close-edit-group" class="close-edit pull-right">
 				<span class="close glyphicon glyphicon-remove"></span></a>
+				<h3>Edit group</h3>
+				<hr>
 				<form class="form" action="../../actions/groups/edit.php" method="post">
 					<input type="hidden" name="group-id" value="{$group_id}">
 						
@@ -50,7 +52,7 @@
 					</div>
 					<div class="form-group">			
 						<label for="privacy">Privacy</label>
-						<select class="selectpicker form-control" id="location" name="privacy">
+						<select class="selectpicker form-control" id="privacy" name="privacy">
 							{if $groupinfo.public}
 							<option value="t" selected="selected">Public</option>
 							<option value="f">Private</option>

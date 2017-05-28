@@ -161,8 +161,8 @@
         $stmt = $dbh->prepare('SELECT * FROM "User-Event", "Event"
 		WHERE "User-Event"."event-id" = "Event"."id" AND "Event"."id" = :event AND "User-Event"."user-id" = :user AND "User-Event"."admin" IS TRUE');
 		$stmt->bindParam(':event', $event_id);
-		$stmt->bindParam(':user', $user_id);
-		$stmt->execute(array($event_id, $user_id));
+		$stmt->bindParam(':user', $id);
+		$stmt->execute(array($event_id, $id));
 		$res = $stmt->fetch();
 		
 		return ($res !== false);
@@ -180,5 +180,23 @@
 		$stmt->execute(array($event_id));
 		
 		return $stmt->fetchAll();	
+	}
+	
+	function updateEvent($event_id, $name, $public, $event_start, $event_end, $location_id, $about) {
+		global $dbh;
+		
+		$query = 'UPDATE "Event"
+		SET("name", "public", "start", "finish", "location-id", "about") = (:name, :public, :start, :finish, :location, :about)
+		WHERE "Event"."id" = :event';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':name', $name);
+		$stmt->bindParam(':public', $public);
+		$stmt->bindParam(':start', $event_start);
+		$stmt->bindParam(':finish', $event_end);
+		$stmt->bindParam(':location', $location_id);
+		$stmt->bindParam(':about', $about);
+		$stmt->bindParam(':event', $event_id);
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($name, $public, $event_start, $event_end, $location_id, $about, $event_id));
 	}
 ?>

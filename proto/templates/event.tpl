@@ -15,6 +15,8 @@
 	<link href="../../css/feed.css" rel="stylesheet">
 	<link href="../../css/event.css" rel="stylesheet">
 	<link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- Default stylesheet -->
+	<link rel="stylesheet" href="../../lib/bootstrap-3.3.7/css/bootstrap-select.min.css">
 
 </head>
 
@@ -32,6 +34,63 @@
 
 			<!--  Middle -->
 			<div class="content-middle">
+				<div id="black" class="black_overlay"></div>
+				<div id="edit-event-box" class="edit_event_box">
+					<a href="javascript:void(0)" id="close-edit-event" class="close-edit pull-right">
+					<span class="close glyphicon glyphicon-remove"></span></a>
+					<h3>Edit event</h3>
+					<hr>
+					
+					<form class="form" action="../../actions/events/edit.php" method="post">
+						<input type="hidden" name="event-id" value="{$event_id}">
+							
+						<div class="form-group">
+							<label for="name">Name</label>
+							<input type="text" class="form-control" id="name" name="name" maxlength="20" value="{$eventinfo.name}" required>
+						</div>
+						<div class="form-group">			
+							<label for="privacy">Privacy</label>
+							<select class="selectpicker form-control" id="privacy" name="privacy">
+								{if $eventinfo.public}
+								<option value="t" selected="selected">Public</option>
+								<option value="f">Private</option>
+								{else}
+								<option value="t">Public</option>
+								<option value="f" selected="selected">Private</option>
+								{/if}
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="event_start">Start Date</label>
+							<input type="date" class="form-control" id="event_start" name="event_start" value="{$eventinfo.start}" required>
+						</div>
+						
+						<div class="form-group">
+							<label for="event_end">End Date</label>
+							<input type="date" class="form-control" id="event_end" name="event_end" value="{$eventinfo.finish}" required>
+						</div>
+						
+						<div class="form-group">
+							<label for="location">Choose location</label>
+							<select class="selectpicker form-control" id="location" name="location">
+								{foreach $locations as $location_actual}
+								{if $location.id == $location_actual.id}
+								<option value="{$location_actual.id}" selected="selected">{$location_actual.city}, {$location_actual.country}</option>
+								{else}
+								<option value="{$location_actual.id}">{$location_actual.city}, {$location_actual.country}</option>
+								{/if}
+								{/foreach}
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="about-txt">About</label>
+							<textarea name="about" id="about-txt" class="form-control" rows="3">{$eventinfo.about}</textarea>
+						</div>
+						<button class="edit-event-opt pull-right" type="submit">Update event</button>
+					</form>
+				</div>
 				<!--Event Stuff-->  	
 				<div class="text-center event">
 					<div class="event-header">
@@ -42,13 +101,13 @@
 					</div>
 					{if $admin}
 					<p class="user-options">
-						<button class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
-						<button class="group-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
+						<button id="click-edit-event" class="event-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
+						<button id="click-delete-event" class="event-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
 					</p>
 					{else}
 					{if $belongs}
 					<p class="user-options">
-						<button class="group-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
+						<button class="event-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
 					</p>
 					{/if}
 					{/if}
@@ -94,7 +153,6 @@
 				</div>
 				{/if}
 				
-				<div id="black" class="black_overlay"></div>
 				{foreach $posts as $post}
 				<div class="post_space">
 				<div class="post">
@@ -224,7 +282,7 @@
 						</dl>
 						
 						<dl>
-							<dt class="col-sm-4">Location:</dt>
+							<dt class="col-sm-4">Location</dt>
 							<dd class="col-sm-8">{$location.city}, {$location.country}</dd>
 						</dl>						
 						
@@ -287,8 +345,7 @@
 
 	{include file='footer.tpl'}
 	</div>
-</body>
-
+	
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="../../lib/jquery-3.1.1.min.js"></script>
@@ -297,5 +354,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/script.js"></script>
+	<script src="../../javascript/event.js"></script>
+</body>
 
 </html>

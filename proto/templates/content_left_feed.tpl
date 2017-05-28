@@ -12,7 +12,7 @@
 		</div>
 
         <div class="events">
-			<div class="add-instance pull-right"><a class="border-create" href="../../pages/events/create_event.php"><span class="glyphicon glyphicon-plus"></span></a></a></div>
+			<div class="add-instance pull-right"><a class="border-create" href="../../pages/events/create_event.php"><span class="glyphicon glyphicon-plus"></span></a></div>
 			<h3>Events</h3>
 			{if empty($events)}
 			No events yet...

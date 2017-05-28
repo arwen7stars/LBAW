@@ -130,7 +130,7 @@
 	width: 50rem;
 	top: 50%;
 	left: 50%;
-	margin-top: -150px; /* Negative half of height. */
+	margin-top: -200px; /* Negative half of height. */
 	margin-left: -250px; /* Negative half of width. */
 }
 

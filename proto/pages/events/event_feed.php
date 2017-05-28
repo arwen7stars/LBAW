@@ -16,6 +16,9 @@
 	$group_length = count($all_groups);
 	$groups = array_slice($all_groups, 0, 3);
 	$character_name = getUserCharacterName($_SESSION['username']);
+	
+	$stmt = getLocations();
+	$locations = $stmt->fetchAll();
 
 	$posts = getEventPosts($event_id);
 	$eventinfo = getEventInfo($event_id);
@@ -27,9 +30,9 @@
 	$guests = getEventGuests($event_id);
 	
 	if($eventinfo['public']){
-		$public = 'public';
+		$public = 'Public';
 	} else {
-		$public = 'private';
+		$public = 'Private';
 	}
 
 	$smarty->assign('posts', $posts);
@@ -47,6 +50,7 @@
 	$smarty->assign('all_images', $all_images);
 	$smarty->assign('location', $location);
 	$smarty->assign('guests', $guests);
+	$smarty->assign('locations', $locations);
 	
 	$smarty->assign('groups', $groups);
 	$smarty->assign('events', $events);
