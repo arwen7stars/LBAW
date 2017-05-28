@@ -8,6 +8,8 @@
 	
 	$id_logged = $_SESSION['id'];
 	
+	$recentNews = getRecentNews();
+	
 	$all_events = listEvents($_SESSION['id']);
 	$events = array_slice($all_events, 0, 3);
 	$event_length = count($all_events);
@@ -19,6 +21,8 @@
 	$stmt = getFeedPosts($id_logged);
 	$posts = $stmt->fetchAll();
 	$character_name = getUserCharacterName($_SESSION['username']);
+	
+	$smarty->assign('news',$recentNews[0]);
 	
 	$smarty->assign('character_name', $character_name);
 	$smarty->assign('username_logged', $_SESSION['username']);
