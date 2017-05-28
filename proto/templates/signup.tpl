@@ -16,7 +16,7 @@
   <link href="../../css/forms.css" rel="stylesheet">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="../../lib/bootstrap-3.3.7/css/bootstrap-select.min.css">
-  
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 </head>
 
 <body>

@@ -1,4 +1,5 @@
-        <div class="notifications">
+        {if isset($id_logged)}
+		<div class="notifications">
           <h3><a href="#">Notifications</a></h3>
           <ul class="notification-list list-unstyled">
             <li><a href="#">Maecenas aliquet eleifend nisl nec tincidunt.</a></li>
@@ -13,3 +14,4 @@
           <p>Urabitur et tincidunt dolor. Mauris in vulputate ante. Praesent vel arcu ac felis iaculis efficitur a ornare sapien. Nam tellus massa.</p>
           <div class="read-more"><a href="#">Read more...</a></div>
         </div>
+		{/if}

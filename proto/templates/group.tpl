@@ -18,6 +18,7 @@
 	<link href="../../css/feed.css" rel="stylesheet">
 	<link href="../../css/group.css" rel="stylesheet">
 	<link href="../../css/default.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 </head>
 
 <body>
@@ -258,9 +259,6 @@
 				<div id="about" class="tab-pane fade">
 					<div class="about">
 						<div class="about-header">
-							{if $id == $id_logged}
-							<a href="edit_group.php" class="btn btn-default pull-right"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-							{/if}
 							<h2>Group information</h2>
 						</div>
 						<hr>

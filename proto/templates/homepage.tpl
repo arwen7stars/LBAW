@@ -2,16 +2,16 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Homepage</title>
-  <!-- Bootstrap -->
-  <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../css/default.css" rel="stylesheet">
-  <link href="../../css/homepage.css" rel="stylesheet">
-
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Homepage</title>
+	<!-- Bootstrap -->
+	<link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/default.css" rel="stylesheet">
+	<link href="../../css/homepage.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 </head>
 
 <body>
@@ -42,14 +42,14 @@
     <div class="row">
 
       <div class="news-section col-md-10 col-md-offset-1">
-        <h1>News</h1>
+        <h1 id="news-title">News</h1>
 		{foreach $news as $recentNews}
         <div class="news">
           <div class="news-body">
-            <h2>{$recentNews.title}</h2>
+            <a href="{$recentNews.moreInfo}"><h2>{$recentNews.title}</h2></a>
             <p>{$recentNews.body}</p>
           </div>
-          <div class="read-more"><a href="{$recentNews.moreInfo}">Read more...</a></div>
+          <h4><div class="read-more"><a href="{$recentNews.moreInfo}">Read more...</a></div></h4>
         </div>
 		{/foreach}
 

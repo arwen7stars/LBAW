@@ -1,7 +1,7 @@
 /* necessary for footer */
 html {
-  position: relative;
-  min-height: 100%;
+	position: relative;
+	min-height: 100%;
 }
 
 body {
@@ -10,6 +10,7 @@ body {
   /* background */
   background: url("../images/backg.jpg") no-repeat center center fixed;
   background-size: cover;
+  font-family: "Open Sans";
 }
 
 .footer {

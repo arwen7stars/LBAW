@@ -1,3 +1,4 @@
+		{if isset($id_logged)}
 		<div id="all-events" class="edit_box">
 			<a href="javascript:void(0)" id="close-events" class="close-edit pull-right">
 			<span class="close glyphicon glyphicon-remove"></span></a>
@@ -6,7 +7,7 @@
 			<ul class="events-content list-group row">
 			{foreach $all_events as $event}
 				<li class="list-group-item col-xs-6"><a href="../../pages/events/event_feed.php?event-id={$event.id}"><i class="fa fa-calendar"></i> {$event.name}</a>
-				<p>{$event.start|date_format}</p></li>
+				<p>{$event.start|date_format} - {$event.finish|date_format}</p></li>
 			{/foreach}
 			</ul>
 		</div>
@@ -90,3 +91,4 @@
             </div>
           </form>
         </div>-->
+		{/if}
