@@ -1,6 +1,5 @@
 <?php
 	session_start();
-
 	include_once('../../config/init.php');
 	include_once('../../database/users.php');
 

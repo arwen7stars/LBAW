@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	
 	include_once('../../config/init.php');
 	include_once('../../database/events.php');
 	include_once('../../database/posts.php');

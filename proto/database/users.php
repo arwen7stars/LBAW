@@ -308,12 +308,12 @@
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($username, $password, $email, $public, $id));
 	}
-	
-	function UpdateEmailPassword($email, $password)
-	{
+		
+	function updateEmailPassword($email, $password) {
 		global $dbh;
-		$query = 'UPDATE "User" SET "password" = :password WHERE "User"."email" = :email';
-		$stmt = dbh->prepare($query);
+		
+		$query = 'UPDATE "User" SET ("password") = :password WHERE "User"."email" = :email';
+		$stmt = $dbh->prepare($query);
 		$stmt->bindParam(':password', password_hash($password));
 		$stmt->bindParam(':email', $email);
 		$stmt->execute(array($email,$password));
@@ -455,5 +455,4 @@
 		}
 		return $randomString;
 	}
-	
 ?>

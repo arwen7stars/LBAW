@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include_once('../../config/init.php');
 
     global $dbh;
@@ -9,5 +10,5 @@
 	$stmt->bindParam(':id2', $id2);
 	$stmt->execute();
 
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

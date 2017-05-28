@@ -1,6 +1,5 @@
 <?php
 	session_set_cookie_params(3600, "/~lbaw1624/");
-	session_start();
 	error_reporting(E_ERROR | E_WARNING); // E_NOTICE by default
 	$BASE_DIR = dirname(__FILE__) . '/../'; //FIXME
 	$BASE_URL = '/~lbaw1624/proto/'; //FIXME

@@ -20,32 +20,34 @@
 
 <div class="container">
 	<div class="row">
+		<div class="errors">
+		{if (isset({$username_error}) && !empty({$username_error})) || (isset({$wrong_password}) && !empty({$wrong_password}))}
+		<div class="alert alert-danger alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+			<strong>Error!</strong> Username and password combination incorrect
+		</div>
+		{/if}
+	
+	</div>
 		<div class="forms col-lg-1 col-centered">
 			<h2>Login</h2>
 			<form id="login" method="post" action="../../actions/users/login.php">
 				<fieldset>
-				
-					{if (isset({$username_error}) && !empty({$username_error})) || (isset({$wrong_password}) && !empty({$wrong_password}))}
-						<p><a>Username and password combination incorrect</a></p>
-					{/if}
-				
 					<div class="form-group">
 						<label for="username">Username</label>
-							<input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+						<input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
 					</div>
 
 					<div class="form-group">
 						<label for="password">Password</label>
 						<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+						<p><a href="../../pages/users/forgot_password.php">Forgot your password?</a></p>
 					</div>
-
+					
 					<div class="form-group">
 						<button type="submit" class="submit btn btn-primary">Login</button>
 					</div>
 				</fieldset>
-				
-				<p><a href="../../pages/users/forgot_password.php">Forgot your password?</a></p>
-				
 			</form>
 		</div>
 	</div>
