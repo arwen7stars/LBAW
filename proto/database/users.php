@@ -309,6 +309,16 @@
 		$stmt->execute(array($username, $password, $email, $public, $id));
 	}
 	
+	function UpdateEmailPassword($email, $password)
+	{
+		global $dbh;
+		$query = 'UPDATE "User" SET "password" = :password WHERE "User"."email" = :email';
+		$stmt = dbh->prepare($query);
+		$stmt->bindParam(':password', password_hash($password));
+		$stmt->bindParam(':email', $email);
+		$stmt->execute(array($email,$password));
+	}
+	
 	function acceptFriendship($id1, $id2) {
 		global $dbh;
 		
@@ -433,4 +443,17 @@
 		
 		return ($res !== false);
 	}
+	
+	function generateRandomString($length) 
+	{
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) 
+		{
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return $randomString;
+	}
+	
 ?>
