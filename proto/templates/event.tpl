@@ -91,6 +91,17 @@
 						<button class="edit-event-opt pull-right" type="submit">Update event</button>
 					</form>
 				</div>
+				
+				<div id="confirm-delete-event" class="edit_box">
+					<div class="modal-body">Are you sure you want to delete this event?</div>
+						<div class="modal-footer button-container">
+							<form class="form" action="../../actions/events/delete.php" method="post">
+								<input type="hidden" name="event-id" value="{$event_id}">
+								<button type="button" id="close-delete-event" class="close-delete btn">Cancel</button>
+								<input type="submit" class="btn btn-primary" value="Delete">
+							</form>
+						</div>
+				</div>
 				<!--Event Stuff-->  	
 				<div class="text-center event">
 					<div class="event-header">

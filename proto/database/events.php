@@ -199,4 +199,40 @@
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($name, $public, $event_start, $event_end, $location_id, $about, $event_id));
 	}
+
+	function deleteEvent($event_id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Event" WHERE "Event"."id" = :event';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($event_id));
+	}
+	
+	function deleteUsersEvent($event_id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "User-Event" WHERE "User-Event"."event-id" = :event';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($event_id));	
+	}
+	
+	function deleteEventInvites($event_id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Event-Invite" WHERE "Event-Invite"."event-id" = :event';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($event_id));		
+	}
+	
+	function deleteEventNotifications($event_id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."event-id" = :event';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($event_id));		
+	}
 ?>
