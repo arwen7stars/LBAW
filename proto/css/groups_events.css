@@ -1,0 +1,21 @@
+#group-event-box {
+	background-color: white;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	padding: 2rem;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 5rem;
+}
+.groups-content {
+	padding: 1rem;
+}
+
+.events-content {
+	padding: 1rem;
+}
+
+#event-title {
+	height: 10rem;
+}

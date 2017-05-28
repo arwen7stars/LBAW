@@ -4,54 +4,58 @@ html {
   min-height: 100%;
 }
 
-h1 {
-  /* original bootstrap value is too much */
-  margin-top: 10px;
-}
-
-
-h2 {
-  /* original bootstrap value is too much */
-  margin-top: 5px;
-}
-
-
 .search-bar-wrap {
   margin-top: 55px;
 }
 
 .news-section-wrap {
-  margin-top: 30px;
-  margin-bottom: 50px;
+    margin:3rem;
 }
 
 .news-section {
-  border: 1px solid black;
-  max-height: 400px;
-  overflow-y: scroll;
+    float: none;
+    margin: 0 auto;
+	max-height: 400px;
+	overflow-y: scroll;
+	padding: 2rem;
 }
 
 .news {
   /* necessary for .read-more */
-  position: relative;
-  border: 1px solid black;
-  margin: 10px;
+	position: relative;
+	border-style: solid;
+	border-color: #7E472D;
+	border-width: 0.15rem;
+	box-shadow: 0.5rem 0.5rem 0.25rem #888888;
+	margin: 1rem;
+	margin-bottom: 2rem;
+	background-color: white;
 }
 
 .news-body {
-  margin-bottom: 15px;
-  margin-left: 5px;
-  margin-right: 5px;
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	padding-right: 2rem;
+	padding-left: 2rem;
+	text-align: justify;
 }
 
 .read-more {
   position: absolute;
   right: 0;
   bottom: 0;
+  margin: 1rem;
 }
 
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+#news-title {
+	font-weight: bold;
+	text-align: center;
+	color: #7E472D;
+	text-shadow: 2px 2px #ccc;
 }

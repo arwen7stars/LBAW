@@ -41,6 +41,11 @@ h2{
     font-weight: bold;
 }
 
+.submit:hover {
+	background-color: #797979;
+	border-color: #797979;
+}
+
 .footer {
   position: absolute;
   bottom: 0;

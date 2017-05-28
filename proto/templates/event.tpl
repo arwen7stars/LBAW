@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
     <!-- Default stylesheet -->
 	<link rel="stylesheet" href="../../lib/bootstrap-3.3.7/css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 
 </head>
 
@@ -135,15 +136,18 @@
 					</p>
 					{/if}
 					{/if}
+					
+					{if ($public && isset($username_logged)) || $belongs}
 					<div class="btn-group-lg info" role="group" aria-label="...">
 						<button type="button" class="btn btn-primary">Going</button>
 						<button type="button" class="btn btn-primary">Maybe</button>
 						<button type="button" class="btn btn-primary">Ignore</button>
 					</div>
+					{/if}
 				
 				</div>
 			
-			{if $public || $belongs}
+			
 			<ul class="event_bar nav nav-tabs nav-justified">
 				<li class="active"><a data-toggle="tab" href="#home">Discussion</a></li>
 				<li><a data-toggle="tab" href="#about">About</a></li>
@@ -152,7 +156,7 @@
 				<li><a data-toggle="tab" href="#photos">Photos</a></li>
 				{/if}
 			</ul>
-			{/if}
+			
 
 		<div class="tab-content">
 			{if $public || $belongs}
