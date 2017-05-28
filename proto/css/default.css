@@ -60,3 +60,9 @@ a:hover {
 		text-align: center;
 	}
 }
+
+#not-found {
+	text-shadow: 2px 2px #ccc;
+	text-align: center;
+	padding: 2rem;
+}

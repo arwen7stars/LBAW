@@ -40,9 +40,21 @@
 							<h2>{$eventinfo.name}</h2>
 						</div>
 					</div>
+					{if $admin}
+					<p class="user-options">
+						<button class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
+						<button class="group-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
+					</p>
+					{else}
+					{if $belongs}
+					<p class="user-options">
+						<button class="group-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
+					</p>
+					{/if}
+					{/if}
 					<div class="btn-group-lg info" role="group" aria-label="...">
-						<button type="button" class="btn btn-primary">Interested</button>
 						<button type="button" class="btn btn-primary">Going</button>
+						<button type="button" class="btn btn-primary">Maybe</button>
 						<button type="button" class="btn btn-primary">Ignore</button>
 					</div>
 				

@@ -17,13 +17,17 @@
 	<link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link href="../../css/feed.css" rel="stylesheet">
 	<link href="../../css/group.css" rel="stylesheet">
+	<link href="../../css/default.css" rel="stylesheet">
 </head>
 
 <body>
 	
 <div class="body-flex">	 
 	 {include file='header.tpl'}
-
+	
+	{if empty($page_not_found)}
+	<div id="black" class="black_overlay"></div>
+	
 	<!-- Main Content -->
 	<div class="content">
 
@@ -34,6 +38,49 @@
 
       <!--  Middle -->
 		<div class="content-middle">
+			<div id="edit-group-box" class="edit_group_box">
+				<a href="javascript:void(0)" id="close-edit-group" class="close-edit pull-right">
+				<span class="close glyphicon glyphicon-remove"></span></a>
+				<form class="form" action="../../actions/groups/edit.php" method="post">
+					<input type="hidden" name="group-id" value="{$group_id}">
+						
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input type="text" class="form-control" id="name" name="name" maxlength="20" value="{$groupinfo.name}" required>
+					</div>
+					<div class="form-group">			
+						<label for="privacy">Privacy</label>
+						<select class="selectpicker form-control" id="location" name="privacy">
+							{if $groupinfo.public}
+							<option value="t" selected="selected">Public</option>
+							<option value="f">Private</option>
+							{else}
+							<option value="t">Public</option>
+							<option value="f" selected="selected">Private</option>
+							{/if}
+						</select>
+					</div>
+					
+					<div class="form-group">
+						<label for="about-txt">About</label>
+						<textarea name="about" id="about-txt" class="form-control" rows="3">{$groupinfo.about}</textarea>
+					</div>
+					<button class="edit-group-opt pull-right" type="submit">Update group</button>
+				</form>
+			</div>
+			
+			<div id="confirm-delete-group" class="edit_box">
+				<div class="modal-body">Are you sure you want to delete this group?</div>
+					<div class="modal-footer button-container">
+						<form class="form" action="../../actions/groups/delete.php" method="post">
+							<input type="hidden" name="group-id" value="{$group_id}">
+							<button type="button" id="close-delete-group" class="close-delete btn">Cancel</button>
+							<input type="submit" class="btn btn-primary" value="Delete">
+						</form>
+					</div>
+			</div>
+			
+			
 			<div class="group-header">
 				<div class="group-header-img">
 					<i class="fa fa-group" id="group-image"></i>
@@ -42,8 +89,8 @@
 			</div>
 			{if $admin}
 			<p class="user-options">
-				<button class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
-				<button class="group-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
+				<button id="click-edit-group" class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
+				<button id="click-delete-group" class="group-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
 			</p>
 			{else}
 			{if $belongs}
@@ -88,8 +135,6 @@
 						</form>
 					</div>
 					{/if}
-					
-					<div id="black" class="black_overlay"></div>
 
 					{foreach $posts as $post}
 					<div class="post_space"><div class="post">
@@ -270,7 +315,9 @@
 		</div>
 
     </div>
-
+	{else}
+	<div id="not-found"><h1>{$page_not_found}</h1></div>
+	{/if}
 	{include file='footer.tpl'}
 	</div>
 	
@@ -278,6 +325,7 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="../../lib/jquery-3.1.1.min.js"></script>
 	<script src="../../javascript/script.js"></script>
+	<script src="../../javascript/group.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->

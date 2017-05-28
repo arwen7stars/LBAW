@@ -153,4 +153,65 @@
 		
 		return $stmt;		
 	}
+	
+	function updateGroup($group_id, $name, $public, $about) {
+		global $dbh;
+		
+		$query = 'UPDATE "Group"
+		SET("name", "public", "about") = (:name, :public, :about)
+		WHERE "Group"."id" = :group';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':name', $name);
+		$stmt->bindParam(':public', $public);
+		$stmt->bindParam(':about', $about);
+		$stmt->bindParam(':group', $group_id);
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($name, $public, $about, $group_id));
+	}
+	
+	function deleteGroup($group_id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Group" WHERE "Group"."id" = :group';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':group', $group_id);
+		$stmt->execute(array($group_id));
+	}
+	
+	function deleteUsersGroup($group_id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "User-Group" WHERE "User-Group"."group-id" = :group';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':group', $group_id);
+		$stmt->execute(array($group_id));	
+	}
+	
+	function deleteGroupInvites($group_id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Group-Invite" WHERE "Group-Invite"."group-id" = :group';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':group', $group_id);
+		$stmt->execute(array($group_id));		
+	}
+	
+	function deleteGroupNotifications($group_id) {
+		global $dbh;
+		
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."group-id" = :group';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':group', $group_id);
+		$stmt->execute(array($group_id));		
+	}
+	
+	function isGroupValid($group_id) {
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT * FROM "Group" WHERE "Group"."id" = :group');
+		$stmt->bindParam(':group', $group_id);
+		$stmt->execute(array($group_id));
+		$res = $stmt->fetch();
+		
+		return ($res !== false);
+	}
 ?>

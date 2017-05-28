@@ -13,6 +13,12 @@
 	$character_name = getUserCharacterName($_SESSION['username']);
 	$stmt = getGroupPosts($group);
 	$posts = $stmt->fetchAll();
+	$valid = isGroupValid($group);
+	
+	if(!$valid) {
+		$page_not_found = '404 Error. Page not found.';
+		$smarty->assign('page_not_found', $page_not_found);
+	}
 	
 	$stmt = getGroupImages($group);
 	$images = $stmt->fetchAll();

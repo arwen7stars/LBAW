@@ -395,3 +395,8 @@ footer {
 	text-shadow: 2px 2px #ccc;
 	color: #000;
 }
+
+.events-content, .groups-content {
+	max-height: 150px;
+	overflow: auto;
+}

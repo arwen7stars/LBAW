@@ -3,7 +3,7 @@
 			<span class="close glyphicon glyphicon-remove"></span></a>
 			<h2>Event</h2>
 			<hr>
-			<ul class="list-group row">
+			<ul class="events-content list-group row">
 			{foreach $all_events as $event}
 				<li class="list-group-item col-xs-6"><a href="../../pages/events/event_feed.php?event-id={$event.id}"><i class="fa fa-calendar"></i> {$event.name}</a>
 				<p>{$event.start|date_format}</p></li>
@@ -33,7 +33,7 @@
 			<span class="close glyphicon glyphicon-remove"></span></a>
 			<h2>Groups</h2>
 			<hr>
-			<ul class="list-group row">
+			<ul class="groups-content list-group row">
 			{foreach $all_groups as $group}
 				<li class="list-group-item col-xs-6"><a href="../../pages/groups/feed.php?group-id={$group.id}"><i class="fa fa-group"></i> {$group.name}</a></li>
 			{/foreach}

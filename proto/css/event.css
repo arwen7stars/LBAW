@@ -25,10 +25,8 @@
 }
 
 .event-header {
-	background-color: #fff;
 	margin-right: 2rem;
 	margin-left: 2rem;
-	margin-bottom: 0.5rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	background-color:#DEE7E4;
@@ -90,14 +88,6 @@
 	margin: 0.2rem 0.1rem;
 }
 
-.nav-justified > li {
-	display: table-cell;
-	width: 1%;
-}
-.nav-justified > li > a {
-	margin-bottom: 0;
-}
-
 .guests-body {
 	font-weight: bold;
 }
@@ -117,4 +107,26 @@
 
 .guests-body figure {
     vertical-align: top;
+}
+
+.user-options {
+	text-align: right;
+	margin-right: 2rem;
+	margin-left: 2rem;
+	padding: 1rem;
+	background-color: #fff;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.group-opt {
+	background: linear-gradient(to bottom, #F0ABAB,#8A2F2F);
+	color: white;
+    border-color: #ccc;
+	border-width: 0.1rem;
+    cursor:pointer;
+    border-radius: 5px;
+	font-weight:bold;
+	width: 8rem;
 }
