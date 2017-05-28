@@ -19,7 +19,7 @@
 <body>
 
   {include file='header.tpl'}
-  
+		{if empty($page_not_found)}
 		<div class="container">
             <div class="row">
 				<div class="col-md-3 pull-md-9 hidden-xs hidden-sm">
@@ -355,6 +355,9 @@
 			
             </div>
 		</div>
+		{else}
+		<div id="not-found"><h1>{$page_not_found}</h1></div>
+		{/if}
 		
     {include file='footer.tpl'}
 	<!-- Placed at the end of the document so the pages load faster -->

@@ -23,7 +23,8 @@
 <body>
 	<div class="body-flex">	
 	{include file='header.tpl'}
-
+	
+		{if empty($page_not_found)}
 		<!-- Main Content -->
 		<div class="content">
 
@@ -368,6 +369,9 @@
 	</div>
 
     </div>
+	{else}
+	<div id="not-found"><h1>{$page_not_found}</h1></div>
+	{/if}
 
 	{include file='footer.tpl'}
 	</div>

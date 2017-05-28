@@ -244,4 +244,14 @@
 		$stmt->bindParam(':event', $event_id);
 		$stmt->execute(array($id, $event_id));
 	}
+	
+	function isEventValid($event_id) {
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT * FROM "Event" WHERE "Event"."id" = :event');
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($event_id));
+		$res = $stmt->fetch();
+		
+		return ($res !== false);
+	}
 ?>

@@ -423,4 +423,14 @@
 		$stmt->execute(array($name, $username, $password, $email, $date, $character, $location));
 
 	}
+	
+	function isUserValid($user_id) {
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT * FROM "User" WHERE "User"."id" = :user');
+		$stmt->bindParam(':user', $user_id);
+		$stmt->execute(array($user_id));
+		$res = $stmt->fetch();
+		
+		return ($res !== false);
+	}
 ?>
