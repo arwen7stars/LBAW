@@ -45,7 +45,7 @@
 | US116 | Tags| Low | As a logged in user, I want to tag other users on my posts, so that they get notifications|
 | US117 | Notifications | Low | As a logged in user, I want to receive notifications (replies and posts involving me), so that I'm kept updated |
 | US118 | Report | Low | As a logged in user, I want to report profiles, posts and comments, so that I can help the community|
-| US119 | Create Groups | Low | As a logged in user, I want to create groups and manage them, so that I can invite other users to them |
+| ~~US119~~ | Create Groups | Low | As a logged in user, I want to create groups and manage them, so that I can invite other users to them |
 | US120 | Reply | Low | As a logged in user, I want to reply to comments, so that I can answer them |
 | US121 | Post Videos | Low | As a logged in user, I want to publish posts with videos, so that other users can see them |
 
