@@ -485,7 +485,7 @@
 		WHERE "Notification"."user-id" = :user AND 
 		"Notification"."post-id" IS NULL
 		AND "Notification"."pm-user1-id" IS NULL AND "Notification"."pm-user2-id" IS NULL
-		AND "Notification"."comment-id" IS NULL AND "Notification"."like-id" IS NULL AND "Notification"."friendship-user2-id" = :user
+		AND "Notification"."comment-id" IS NULL AND "Notification"."like-id" IS NULL
 		ORDER BY date DESC, id DESC');
 		$stmt->bindParam(':user', $user_id);
 		$stmt->execute(array($user_id));
