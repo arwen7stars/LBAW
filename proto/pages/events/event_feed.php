@@ -7,6 +7,8 @@
 	include_once('../../database/posts.php');
 	include_once('../../database/users.php');
 	
+	$recentNews = getRecentNews();
+	
 	$id_logged = $_SESSION['id'];
 	$event_id = $_GET['event-id'];
 	
@@ -28,6 +30,7 @@
 		$valid = false;
 	}
 	
+	$smarty->assign('news',$recentNews[0]);
 	$smarty->assign('username_logged', $_SESSION['username']);
 	$smarty->assign('id_logged', $_SESSION['id']);
 	$smarty->assign('character_name', $character_name);
