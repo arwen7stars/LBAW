@@ -1,4 +1,4 @@
-h2{
+.forms h2 {
     text-align:center;
     text-shadow: 0.5px 0.5px 0.5px #000000;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -16,6 +16,7 @@ h2{
     border-color: #7E472D;
     border-width: 0.15rem;
     box-shadow: 0.5rem 0.5rem 0.25rem #888888;
+	font-family: "Open Sans";
 }
 
 .errors {

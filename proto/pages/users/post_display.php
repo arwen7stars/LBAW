@@ -56,8 +56,8 @@
 			$smarty->assign('page_not_found', $page_not_found);
 		}
 		
-		if (isset($_SESSION['previous'])) {
-			if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous']) {
+		if (isset($_SESSION['settings'])) {
+			if (basename($_SERVER['PHP_SELF']) != $_SESSION['settings']) {
 				unset($_SESSION['passwords']);
 				unset($_SESSION['old-password']);
 				unset($_SESSION['user_exists']);
@@ -65,6 +65,15 @@
 				unset($_SESSION['password-success']);
 		   }
 		}
+		unset($_SESSION['settings']);
+		
+		if (isset($_SESSION['previous_dates'])) {
+			if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous_dates']) {
+				unset($_SESSION['wrong_dates']);
+		   }
+		}
+		unset($_SESSION['previous_dates']);
+		
 	} else {
 		$page_not_found = '404 Error. Page not found.';
 		$smarty->assign('page_not_found', $page_not_found);

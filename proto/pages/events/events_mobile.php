@@ -15,5 +15,23 @@
 	$smarty->assign('username_logged', $username_logged);
 	$smarty->assign('id_logged', $id_logged);
 	
+	if (isset($_SESSION['settings'])) {
+		if (basename($_SERVER['PHP_SELF']) != $_SESSION['settings']) {
+			unset($_SESSION['passwords']);
+			unset($_SESSION['old-password']);
+			unset($_SESSION['user_exists']);
+			unset($_SESSION['email_exists']);
+			unset($_SESSION['password-success']);
+	   }
+	}
+	unset($_SESSION['settings']);
+	
+	if (isset($_SESSION['previous_dates'])) {
+		if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous_dates']) {
+			unset($_SESSION['wrong_dates']);
+	   }
+	}
+	unset($_SESSION['previous_dates']);
+	
 	$smarty->display($BASE_DIR . 'templates/events_mobile.tpl');
 ?>

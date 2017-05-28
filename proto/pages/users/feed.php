@@ -8,6 +8,8 @@
 	
 	$id_logged = $_SESSION['id'];
 	
+	$recentNews = getRecentNews();
+	
 	$all_events = listEvents($_SESSION['id']);
 	$events = array_slice($all_events, 0, 3);
 	$event_length = count($all_events);
@@ -19,6 +21,8 @@
 	$stmt = getFeedPosts($id_logged);
 	$posts = $stmt->fetchAll();
 	$character_name = getUserCharacterName($_SESSION['username']);
+	
+	$smarty->assign('news',$recentNews[0]);
 	
 	$smarty->assign('character_name', $character_name);
 	$smarty->assign('username_logged', $_SESSION['username']);
@@ -33,8 +37,8 @@
 	$smarty->assign('length_event', $event_length);
 
 	
-	if (isset($_SESSION['previous'])) {
-		if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous']) {
+	if (isset($_SESSION['settings'])) {
+		if (basename($_SERVER['PHP_SELF']) != $_SESSION['settings']) {
 			unset($_SESSION['passwords']);
 			unset($_SESSION['old-password']);
 			unset($_SESSION['user_exists']);
@@ -42,12 +46,14 @@
 			unset($_SESSION['password-success']);
 	   }
 	}
+	unset($_SESSION['settings']);
 	
 	if (isset($_SESSION['previous_dates'])) {
-		if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous']) {
+		if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous_dates']) {
 			unset($_SESSION['wrong_dates']);
 	   }
 	}
+	unset($_SESSION['previous_dates']);
 	
 	$smarty->display($BASE_DIR . 'templates/feed.tpl');
 ?>

@@ -312,11 +312,11 @@
 	function updateEmailPassword($email, $password) {
 		global $dbh;
 		
-		$query = 'UPDATE "User" SET ("password") = :password WHERE "User"."email" = :email';
+		$query = 'UPDATE "User" SET "password" = :password WHERE "User"."email" = :email';
 		$stmt = $dbh->prepare($query);
-		$stmt->bindParam(':password', password_hash($password));
+		$stmt->bindParam(':password', password_hash($password, PASSWORD_DEFAULT));
 		$stmt->bindParam(':email', $email);
-		$stmt->execute(array($email,$password));
+		$stmt->execute();	
 	}
 	
 	function acceptFriendship($id1, $id2) {

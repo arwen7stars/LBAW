@@ -5,7 +5,10 @@
 	include_once('../../database/users.php');
 	include_once('../../database/groups.php');
 	include_once('../../database/events.php');
-
+	include_once('../../database/posts.php');
+	
+	$recentNews = getRecentNews();
+	
 	$id_logged = $_SESSION['id'];
 	$group = $_GET['group-id'];
 	
@@ -18,6 +21,7 @@
 		$valid = false;
 	}
 	
+	$smarty->assign('news',$recentNews[0]);
 	$smarty->assign('character_name', $character_name);
 	$smarty->assign('username_logged', $username_logged);
 	$smarty->assign('id_logged', $id_logged);

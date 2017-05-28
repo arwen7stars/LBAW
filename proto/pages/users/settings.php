@@ -4,7 +4,7 @@
 	include_once('../../config/init.php');
 	include_once('../../database/users.php');
 	
-	$_SESSION['previous'] = basename($_SERVER['PHP_SELF']);
+	$_SESSION['settings'] = basename($_SERVER['PHP_SELF']);
 	$id_logged = $_SESSION['id'];
 	$character_name = getUserCharacterName($_SESSION['username']);
 
@@ -22,10 +22,11 @@
 	$smarty->assign('notifications', $_SESSION['notifications']);
 	
 	if (isset($_SESSION['previous_dates'])) {
-		if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous']) {
+		if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous_dates']) {
 			unset($_SESSION['wrong_dates']);
 	   }
 	}
+	unset($_SESSION['previous_dates']);
 
 	$smarty->display($BASE_DIR . 'templates/settings.tpl');
 ?>

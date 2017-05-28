@@ -11,7 +11,7 @@
 
         <div class="recent-news">
           <h3><a href="#">Recent News </a></h3>
-          <p>Urabitur et tincidunt dolor. Mauris in vulputate ante. Praesent vel arcu ac felis iaculis efficitur a ornare sapien. Nam tellus massa.</p>
-          <div class="read-more"><a href="#">Read more...</a></div>
+          <p>{$news.body}</p>
+          <div class="read-more"><a href="{$news.moreInfo}" target="_blank">Read more...</a></div>
         </div>
 		{/if}
