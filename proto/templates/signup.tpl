@@ -25,16 +25,6 @@
 <div class="container">
 	<div class="row">
 	
-	<div class="errors">
-		{if isset({$password_error}) && !empty({$password_error})}
-		<div class="alert alert-danger alert-dismissable">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-			<strong>Error!</strong> {$password_error}
-		</div>
-		{/if}
-	
-	</div>
-	
 	
 	<div class="forms col-lg-1 col-centered">
 		<h2>Register</h2>
@@ -68,12 +58,22 @@
 				
 				<div class="form-group">
 					<label for="password" class="required">Password</label>
+					{if isset({$password_error}) && !empty({$password_error})}
+					<input type="password" class="form-control error-input" id="password" name="password" placeholder="Type password" required>
+					<div class="error-in">{$password_error}</div>
+					{else}
 					<input type="password" class="form-control" id="password" name="password" placeholder="Type password" required>
+					{/if}
 				</div>
 
 				<div class="form-group">
 					<label for="repeat_password" class="required">Repeat password</label>
+					{if isset({$password_error}) && !empty({$password_error})}
+					<input type="password" class="form-control error-input" id="repeat_password" name="rep_password" placeholder="Repeat password" required>
+					<div class="error-in">{$password_error}</div>
+					{else}
 					<input type="password" class="form-control" id="repeat_password" name="rep_password" placeholder="Repeat password" required>
+					{/if}
 				</div>
 				<hr>
 				<h4><span class="number">2</span>User information</h4>

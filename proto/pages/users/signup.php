@@ -14,6 +14,16 @@
 	$smarty->assign('email_error', $_SESSION['email_exists']);
 	$smarty->assign('characters', $characters);
 	$smarty->assign('locations', $locations);
+	
+	$_SESSION['register'] = basename($_SERVER['PHP_SELF']);
+	
+	if (isset($_SESSION['login'])) {
+		if (basename($_SERVER['PHP_SELF']) != $_SESSION['login']) {
+			unset($_SESSION['user_not_exists']);
+			unset($_SESSION['wrong_password']);
+	   }
+	}
+	unset($_SESSION['login']);
 
 	$smarty->display($BASE_DIR . 'templates/signup.tpl');
 ?>

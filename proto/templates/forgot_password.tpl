@@ -9,9 +9,9 @@
   <title>Homepage</title>
   <!-- Bootstrap -->
   <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../css/default.css" rel="stylesheet">
   <link href="../../css/forms.css" rel="stylesheet">
-
+  <link href="../../css/default.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 </head>
 
 <body>
@@ -26,7 +26,7 @@
 				<fieldset>
 					<div class="form-group">
 						<label for="email">E-mail</label>
-							<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+						<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
 					</div>
 					
 					<div class="form-group">
