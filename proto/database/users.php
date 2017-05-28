@@ -462,8 +462,8 @@
 		$stmt = $dbh->prepare('SELECT "Notification"."id", "Notification"."date", "Notification"."seen", "Notification"."user-id",
 		"Notification"."friendship-user1-id" AS userone, "Notification"."friendship-user2-id" AS usertwo, "Notification"."event-id", "Notification"."group-id",
 		"Friend-Requests"."charname", "Friend-Requests".charurl, "Friend-Requests"."charalt", "Friend-Requests"."userid",
-		"Event-Invite"."eventid", "Event-Invite"."eventcharname", "Event-Invite"."eventname", "Event-Invite"."eventuser", "Event-Invite"."eventurl",
-		"Group-Invite"."groupid", "Group-Invite"."groupname"
+		"Event-Invites"."eventid", "Event-Invites"."eventname", "Event-Invites"."start", "Event-Invites"."finish", "Event-Invites"."city", "Event-Invites"."country",
+		"Group-Invites"."groupid", "Group-Invites"."groupname"
 		FROM "Notification"
 		LEFT JOIN (
 			SELECT "Character"."name" AS charname, "Image"."url" AS charurl, "Image"."description" AS charalt, "User"."id" AS userid
@@ -472,22 +472,20 @@
 		) AS "Friend-Requests"
 		ON "Friend-Requests"."userid" = "Notification"."friendship-user1-id" AND "Friend-Requests"."userid" != :user
 		LEFT JOIN (
-			SELECT "Event"."id" AS eventid, "Event"."name" AS eventname, "Character"."name" AS eventcharname, "Image"."url" AS eventurl, "User"."id" AS eventuser
-			FROM "Event","Event-Invite", "User", "Character-Image", "Character", "Image"
-			WHERE "Event"."id" = "Event-Invite"."event-id" AND "Character"."id" = "User"."character-id" 
-			AND "Character-Image"."character-id" = "Character"."id" AND "Character-Image"."image-id" = "Image"."id" 
-			AND "User"."id" = "Event-Invite"."event-admin-id"
-		) AS "Event-Invite"
-		ON "Event-Invite"."eventid" = "Notification"."event-id"
+			SELECT "Event"."id" AS eventid, "Event"."name" AS eventname, "Event"."start", "Event"."finish", "Location"."city", "Location"."country"
+			FROM "Event", "Location"
+			WHERE "Location"."id" = "Event"."location-id"
+		) AS "Event-Invites"
+		ON "Event-Invites"."eventid" = "Notification"."event-id"
 		LEFT JOIN (
 			SELECT "Group"."id" AS groupid, "Group"."name" AS groupname
 			FROM "Group"
-		) AS "Group-Invite"
-		ON "Group-Invite"."groupid" = "Notification"."group-id"
+		) AS "Group-Invites"
+		ON "Group-Invites"."groupid" = "Notification"."group-id"
 		WHERE "Notification"."user-id" = :user AND 
 		"Notification"."post-id" IS NULL
 		AND "Notification"."pm-user1-id" IS NULL AND "Notification"."pm-user2-id" IS NULL
-		AND "Notification"."comment-id" IS NULL AND "Notification"."like-id" IS NULL
+		AND "Notification"."comment-id" IS NULL AND "Notification"."like-id" IS NULL AND "Notification"."friendship-user2-id" = :user
 		ORDER BY date DESC, id DESC');
 		$stmt->bindParam(':user', $user_id);
 		$stmt->execute(array($user_id));

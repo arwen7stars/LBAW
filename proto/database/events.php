@@ -254,7 +254,8 @@
 		
 		return ($res !== false);
 	}
-		function deleteEventNotification($user_id, $event_id) {
+	
+	function deleteEventNotification($user_id, $event_id) {
 		global $dbh;
 		
 		$stmt = $dbh->prepare('DELETE FROM "Notification" WHERE "Notification"."user-id" = :user AND "Notification"."event-id" = :event');
