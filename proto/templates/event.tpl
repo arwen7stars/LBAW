@@ -121,6 +121,17 @@
 					<h3>Select a person to invite</h3>
 					<hr>
 					{foreach $invites as $invite}
+						<figure class="imgContainer">
+							<a href="../users/profile_feed.php?user-id={$invite.id}"><img src="{$invite.url}" alt="{$guest.alt}" class="thumb-100px centered-and-cropped"></a>
+							<figcaption>
+								<a class="invite-name" id="invite-name-{$invite.id}" href="../users/profile_feed.php?user-id={$invite.id}">{$invite.name}</a>
+								<form class="form" action="../../actions/events/invite_people.php" method="post">
+									<input type="hidden" name="event-id" value="{$event_id}">
+									<input type="hidden" name="user-id" value="{$invite.id}">
+									<p><button type="submit" class="btn btn-default"><i class="fa fa-sign-in"></i> Invite</button></p>
+								</form>
+							</figcaption>
+						</figure>
 					{/foreach}
 				</div>
 				
