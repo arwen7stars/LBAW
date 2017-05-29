@@ -99,13 +99,13 @@
 		return $stmt->fetchAll();
 	}
 	
-	function getEventImages($event_id) {
+		function getEventImages($event_id) {
 		global $dbh;
 		
-		$query = 'SELECT "Post"."id" AS id, "Post"."user-id" AS "user", "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id" FROM "Post", "Image" WHERE "Post"."event-id" = ? AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC';
+		$query = 'SELECT "Post"."id" AS id, "Post"."user-id" AS "user", "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id" FROM "Post", "Image" WHERE "Post"."event-id" = :eventid AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':eventid', $event_id);
 		$stmt->execute(array($event_id));
-		
 		return $stmt->fetchAll();
 	}
 	
@@ -177,8 +177,9 @@
 	function getEventLocation($event_id) {
 		global $dbh;
 		
-		$query = 'SELECT "Location"."id" AS id, "city", "country" FROM "Event", "Location" WHERE "Event"."id" = ? AND "Event"."location-id" = "Location"."id"';
+		$query = 'SELECT "Location"."id" AS id, "city", "country" FROM "Event", "Location" WHERE "Event"."id" = :eventid AND "Event"."location-id" = "Location"."id"';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':eventid', $event_id);
 		$stmt->execute(array($event_id));
 		return $stmt->fetch();
 	}

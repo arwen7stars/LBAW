@@ -1,8 +1,11 @@
 <?php
 	function addGroup($name, $public, $about) {
         global $dbh;
-		$query = 'INSERT INTO "Group" ("name","public","about") VAlUES (? , ?, ?) RETURNING id';
+		$query = 'INSERT INTO "Group" ("name","public","about") VAlUES (:name , :public, :about) RETURNING id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':name', $name);
+		$stmt->bindParam(':public', $public);
+		$stmt->bindParam(':about', $about);
 		$stmt->execute(array($name, $public, $about));
 		$res = $stmt->fetch();
 		
@@ -11,16 +14,20 @@
 	
 	function addUserGroup($user_id, $group_id, $admin) {
         global $dbh;
-		$query = 'INSERT INTO "User-Group" ("user-id", "group-id","admin") VAlUES (? , ?, ?)';
+		$query = 'INSERT INTO "User-Group" ("user-id", "group-id","admin") VAlUES (:userid , :groupid, :admin)';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':userid', $user_id);
+		$stmt->bindParam(':groupid', $group_id);
+		$stmt->bindParam(':admin', $admin);
 		$stmt->execute(array($user_id, $group_id, $admin));
 	}
 	
 	function listGroups($userId)
 	{
 		global $dbh;
-		$query = 'SELECT * FROM "Group","User-Group" WHERE "User-Group"."user-id" = ? AND "Group"."id" = "User-Group"."group-id" ORDER BY "Group"."id" DESC';
+		$query = 'SELECT * FROM "Group","User-Group" WHERE "User-Group"."user-id" = :userid AND "Group"."id" = "User-Group"."group-id" ORDER BY "Group"."id" DESC';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':userid', $userId);
 		$stmt->execute(array($userId));
 		return $stmt->fetchAll();
 	}
@@ -63,7 +70,7 @@
 			GROUP BY "Comment"."post-id", "NoLikes"."likes", "NoLikes"."postid"
 		) AS "Comments-Likes"
 		ON "Post"."id" = "Comments-Likes"."post-id"
-		WHERE "Post"."group-id" = ?
+		WHERE "Post"."group-id" = :groupid
 			AND "User".id = "Post"."user-id"
 			AND "Character"."id" = "User"."character-id"
 			AND "Character-Image"."character-id" = "Character"."id"
@@ -71,6 +78,7 @@
 		GROUP BY "Post"."id", "Post-Images"."id", "Post-Images"."url", "Post-Images"."description", "Character"."name", "Image"."url", "Likes-Comments"."likes", "Comments-Likes"."comments"
 		ORDER BY date DESC, "Post"."id" DESC;';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':groupid', $group_id);
 		$stmt->execute(array($group_id));
 		
 		return $stmt;
@@ -79,8 +87,9 @@
 	function getGroupImages($group_id) {
 		global $dbh;
 		
-		$query = 'SELECT "Post"."id" AS id, "Post"."user-id" AS "user", "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id" FROM "Post", "Image" WHERE "Post"."group-id" = ? AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC';
+		$query = 'SELECT "Post"."id" AS id, "Post"."user-id" AS "user", "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id" FROM "Post", "Image" WHERE "Post"."group-id" = :groupid AND "post-id" = "Post".id ORDER BY "Post".date DESC, "Post".id DESC';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':groupid', $group_id);
 		$stmt->execute(array($group_id));
 		
 		return $stmt;
@@ -97,7 +106,7 @@
 		return $stmt->fetch();
 	}
 	
-	function getNextImageGroup($group_id, $image_id) {
+		function getNextImageGroup($group_id, $image_id) {
 		global $dbh;
 		$stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id", "Post"."user-id" AS "user"
 				FROM "Post", "Image"
@@ -112,8 +121,7 @@
 		
 		return $img;	
 	}
-	
-	function getPreviousImageGroup($group_id, $image_id) {
+		function getPreviousImageGroup($group_id, $image_id) {
 		global $dbh;
         $stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id", "Post"."user-id" AS "user"
 				FROM "Post", "Image"
