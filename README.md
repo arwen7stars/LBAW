@@ -6,11 +6,10 @@
 ## In development
 
 * Search-bar with Ajax (US001)
-* Removing people from groups/events
+* Invite people to join groups/events
 
 ## Important things to delevop if we have time
 
-* interface for accepting friend requests on feed or user bar
 * custom permissions for users/posts
 
 ## User Stories
