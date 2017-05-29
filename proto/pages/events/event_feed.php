@@ -38,7 +38,7 @@
 		$valid = false;
 	}
 	
-	$smarty->assign('news',$recentNews[0]);
+	$smarty->assign('news',$recentNews);
 	$smarty->assign('username_logged', $_SESSION['username']);
 	$smarty->assign('id_logged', $_SESSION['id']);
 	$smarty->assign('character_name', $character_name);

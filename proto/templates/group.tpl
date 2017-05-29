@@ -103,16 +103,26 @@
 			</div>
 			{if ($admin || $isWebPageAdmin === '1')}
 			<p class="user-options">
+				{if $admin}
+				<span class="pull-left"><b>Status:</b> Admin</span>
+				{else}
+				<span class="pull-left"><b>Status:</b> Normal user</span>
+				{/if}
 				<button id="click-edit-group" class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
 				<button id="click-delete-group" class="group-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
 			</p>
 			{else}
 			{if $belongs}
 			<p class="user-options">
+				{if $admin}
+				<span class="pull-left"><b>Status:</b> Admin</span>
+				{else}
+				<span class="pull-left"><b>Status:</b> Normal user</span>
+				{/if}
 				<button id="click-leave-group" class="group-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
 			</p>
 			{else}
-			{if $public}
+			{if $public && isset($id_logged)}
 			<div class="user-options">
 				<form class="form" action="../../actions/groups/join_group.php" method="post">
 					<input type="hidden" name="group-id" value="{$group_id}">

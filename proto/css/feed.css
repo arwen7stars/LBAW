@@ -312,6 +312,7 @@ color: #000;
 	padding: 5px;
 	overflow-y: auto;
 	min-height: 100px;
+	max-height: 325px;
 }
 
 .notification-content {
@@ -330,17 +331,22 @@ color: #000;
 .notification-list .small-txt {
 	font-size: 1rem;
 	text-align: right;
+	margin-bottom: 1rem;
+}
+
+.news-body {
+	border: 1px solid #ccc;
+	margin-bottom: 1rem;
+	padding: 0.5rem;
 }
 
 .news-text {
-	margin-left: 11px;
 	text-overflow:ellipsis;
 	white-space:nowrap;
 	overflow:hidden;
 }
 
 .recent-news {
-	
 	flex: 1 1 content;
 	margin: 10px 15px;
 	padding: 5px;
@@ -355,6 +361,7 @@ color: #000;
 	padding: 5px;
 	overflow-y: auto;
 	min-height: 100px;
+	max-height: 200px;
 }
 
 .read-more {

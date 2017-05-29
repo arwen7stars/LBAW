@@ -126,6 +126,11 @@
 					</div>
 					{if ($admin || $isWebPageAdmin === '1')}
 					<p class="user-options">
+						{if $admin}
+						<span class="pull-left"><b>Status:</b> Admin</span>
+						{else}
+						<span class="pull-left"><b>Status:</b> Normal user</span>
+						{/if}
 						<button id="click-edit-event" class="event-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
 						<button id="click-delete-event" class="event-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
 					</p>

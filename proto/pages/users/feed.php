@@ -33,8 +33,8 @@
 	$notifications = $stmt->fetchAll();
 	
 	
-	$smarty->assign('news',$recentNews[0]);
-	
+	$smarty->assign('news',$recentNews);
+
 	$smarty->assign('character_name', $character_name);
 	$smarty->assign('username_logged', $_SESSION['username']);
 	$smarty->assign('id_logged', $_SESSION['id']);

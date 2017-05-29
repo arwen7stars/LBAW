@@ -117,7 +117,12 @@
 
         <div class="recent-news">
           <h3>Recent News</h3>
-          <p class="news-text">{$news.title}</p>
-          <div class="read-more"><a href="{$news.moreInfo}" target="_blank">Read more...</a></div>
+		  <hr>
+		  {foreach $news as $new}
+		  <div class="news-body">
+			  <p class="news-text">{$new.title}</p>
+			  <div class="read-more"><a href="{$new.moreInfo}" target="_blank">Read more...</a></div>
+		  </div>
+		  {/foreach}
         </div>
 		{/if}

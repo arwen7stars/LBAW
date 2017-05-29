@@ -136,7 +136,7 @@
 				
 					<div class="opt-group btn-group-justified">
 						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge">{$post.likes}</span></a>
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
+						<a href="post_group_display.php?user-id={$id}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
 					</div>
 
 					{if ( (isset($username_logged) && $belongs) || ($id == $id_logged))}
