@@ -115,6 +115,15 @@
 					</div>
 				</div>
 				
+				<div id="invite-event-box" class="edit_event_box">
+					<a href="javascript:void(0)" id="close-invite-event" class="close-edit pull-right">
+					<span class="close glyphicon glyphicon-remove"></span></a>
+					<h3>Select a person to invite</h3>
+					<hr>
+					{foreach $invites as $invite}
+					{/foreach}
+				</div>
+				
 				<!--Event Stuff-->  	
 				<div class="text-center event">
 					<div class="event-header">

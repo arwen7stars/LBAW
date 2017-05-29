@@ -94,6 +94,15 @@
 					</div>
 			</div>
 			
+			<div id="invite-group-box" class="edit_group_box">
+				<a href="javascript:void(0)" id="close-invite-group" class="close-edit pull-right">
+				<span class="close glyphicon glyphicon-remove"></span></a>
+				<h3>Invite people to group</h3>
+				<hr>
+				
+				
+			</div>
+			
 			
 			<div class="group-header">
 				<div class="group-header-img">
@@ -102,15 +111,24 @@
 				</div>
 			</div>
 			{if ($admin || $isWebPageAdmin === '1')}
-			<p class="user-options">
+			<div class="user-options">
 				{if $admin}
 				<span class="pull-left"><b>Status:</b> Admin</span>
 				{else}
 				<span class="pull-left"><b>Status:</b> Normal user</span>
 				{/if}
-				<button id="click-edit-group" class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
-				<button id="click-delete-group" class="group-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
-			</p>
+				
+				<div class="clearfix">
+				<div class="admin-options dropdown pull-right">
+					<button class="admin-opt btn dropdown-toggle" type="button" data-toggle="dropdown">Admin options <span class="glyphicon glyphicon-chevron-down"></span></button>
+					<ul class="dropdown-menu">
+						<li id="click-edit-group"><a href="javascript:void(0)">Edit</a></li>
+						<li id="click-delete-group"><a href="javascript:void(0)">Delete</a></li>
+						<li id="click-invite-group"><a href="javascript:void(0)">Invite people</a></li>
+					</ul>
+				</div>
+				</div>
+			</div>
 			{else}
 			{if $belongs}
 			<p class="user-options">

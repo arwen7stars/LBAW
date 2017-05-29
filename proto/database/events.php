@@ -305,4 +305,35 @@
 		$stmt->bindParam(':event', $event_id);		
 		$stmt->execute(array($type, $user_id, $event_id));		
 	}
+	
+	function getPeopleToInvite($event_id) {
+		global $dbh;
+		$query = 'SELECT "Character"."name" AS name, "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id
+		FROM "Character-Image", "Character", "Image", "User" WHERE "Character"."id" = "User"."character-id"
+			AND "Character-Image"."character-id" = "Character"."id"
+			AND "Character-Image"."image-id" = "Image"."id" AND "User"."id" NOT IN (
+				SELECT "User"."id" AS id
+				FROM "Event", "User-Event", "User"
+				WHERE "Event"."id" = :event AND "Event"."id" = "User-Event"."event-id" AND "User"."id" = "User-Event"."user-id"
+			) AND "User"."id" NOT IN (
+				SELECT "Event-Invite"."user-id" FROM "Event", "Event-Invite" WHERE "Event-Invite"."event-id" = "Event"."id" AND "Event"."id" = :event
+			) ORDER BY "Character"."name"';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($event_id));
+		
+		return $stmt;
+	}
+	
+	function addEventInvite($admin_id, $user_id, $event_id) {
+		global $dbh;
+		$query = 'INSERT INTO "Event-Invite" ("event-admin-id", "user-id", "event-id") VALUES (:admin, :user, :event)';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':admin', $admin_id);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($admin_id, $user_id, $event_id));
+			
+	}
+
 ?>

@@ -59,7 +59,9 @@
 		$admin = isUserEventAdmin($id_logged, $event_id);
 		$now = date('Y-m-d', time());
 		$guests = getEventGuests($event_id);
-
+		
+		$stmt = getPeopleToInvite($event_id);
+		$invite = $stmt->fetchAll();
 		
 		if($eventinfo['public']){
 			$public = 'Public';
@@ -83,6 +85,7 @@
 		$smarty->assign('now', $now);
 		$smarty->assign('notifications', $notifications);
 		$smarty->assign('type', $res['type']);
+		$smarty->assign('invites', $invite);
 		
 		$smarty->assign('groups', $groups);
 		$smarty->assign('events', $events);
