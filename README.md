@@ -6,7 +6,6 @@
 ## In development
 
 * Search-bar with Ajax (US001)
-* Invite people to join groups
 
 ## Important things to delevop if we have time
 
@@ -63,7 +62,7 @@
 
 | Identifier | Name| Priority | Description |
 | --- | --- | --- | --- |
-| US301 | Invite | Low | As a group admin, I want to invite people to join the group, so that they become members |
+| ~~US301~~ | Invite | Low | As a group admin, I want to invite people to join the group, so that they become members |
 | US302 | Remove | Low | As a group admin, I want to remove people from the group, so that they are no longer members |
 | US303 | Edit| Low | As a group admin, I want to edit the group's profile, posts and comments, so that they stay updated |
 | US304 | Delete | Low | As a group admin, I want to delete the group's profile, posts and comments, so that no one sees them |
