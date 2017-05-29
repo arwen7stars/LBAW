@@ -15,6 +15,8 @@
     <link href="../../css/profile.css" rel="stylesheet">
     <link href="../../css/default.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+	<link href="../../css/search_bar.css" rel="stylesheet">
+
 </head>
 
 <body>

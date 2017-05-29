@@ -1,0 +1,38 @@
+.search-results-wrap {
+	position: absolute;
+	z-index:100;
+	width: 42%;
+	left: 32%;
+}
+
+.search_res {
+	background-color:rgba(255, 255, 255, 0.95);
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	color: #7E472D;
+}
+
+.search-results-wrap li{
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+.centered-and-cropped {
+	object-fit: cover;
+}
+
+.thumb-64px {
+  width: 64px;
+  height: 64px;
+  margin: 0.1rem 0rem;
+}
+
+.search-bar-wrap {
+	overflow: hidden;
+}
+
+.search_res a {
+	text-shadow: 1px 1px #ccc !important;
+}

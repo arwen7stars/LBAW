@@ -12,6 +12,7 @@
     <!-- Default stylesheet -->
     <link href="../../css/default.css" rel="stylesheet">
     <link href="../../css/edit.css" rel="stylesheet">
+	<link href="../../css/search_bar.css" rel="stylesheet">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="../../lib/bootstrap-3.3.7/css/bootstrap-select.min.css">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />

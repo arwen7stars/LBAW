@@ -17,6 +17,7 @@
 	<link href="../../css/groups_events.css" rel="stylesheet">
 	<link href="../../css/feed.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+	<link href="../../css/search_bar.css" rel="stylesheet">
 </head>
 
 <body>

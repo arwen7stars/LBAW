@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="../../lib/bootstrap-3.3.7/css/bootstrap-select.min.css">
 	<link href="../../css/default.css" rel="stylesheet">
 	<link href="../../css/forms.css" rel="stylesheet">
+	<link href="../../css/search_bar.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 
 </head>
