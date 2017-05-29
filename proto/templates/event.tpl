@@ -326,17 +326,35 @@
 					<hr>
 					<div class="guests-body">
 							{foreach $guests as $guest}
+							
+							<div id="confirm-delete-user-{$guest.id}" class="delete_user_event edit_box">
+								<div class="modal-body">Are you sure you want to remove <a href="../users/profile_feed.php?user-id={$guest.id}">{$guest.name}</a> from this event?</div>
+								<div class="modal-footer button-container">
+									<form class="form" action="../../actions/events/delete_user.php" method="post">
+										<input type="hidden" name="event-id" value="{$event_id}">
+										<input type="hidden" name="user-id" value="{$guest.id}">
+										<button type="button" id="close-delete-{$guest.id}" class="close-delete-user btn">Cancel</button>
+										<input type="submit" class="btn btn-primary" value="Delete">
+									</form>
+								</div>
+							</div>
+							
 							<figure class="imgContainer">
 								<a href="../users/profile_feed.php?user-id={$guest.id}"><img src="{$guest.url}" alt="{$guest.alt}" class="thumb-150px centered-and-cropped"></a>
+								<figcaption>
 								{if $guest.type == 'ignore'}
-								<figcaption><a href="../users/profile_feed.php?user-id={$guest.id}">IGNORE</a></figcaption>
+								<a href="../users/profile_feed.php?user-id={$guest.id}">IGNORE</a>
 								{else}
 								{if $guest.type == 'going'}
-								<figcaption><a href="../users/profile_feed.php?user-id={$guest.id}">GOING</a></figcaption>
+								<a href="../users/profile_feed.php?user-id={$guest.id}">GOING</a>
 								{else}
-								<figcaption><a href="../users/profile_feed.php?user-id={$guest.id}">MAYBE</a></figcaption>					
+								<a href="../users/profile_feed.php?user-id={$guest.id}">MAYBE</a>					
 								{/if}
 								{/if}
+								{if $admin && $belongs}
+								<p><a class="click-delete-user btn btn-default" id="click-delete-user-{$guest.id}"><span class="glyphicon glyphicon-remove"></span> Delete</a></p>
+								{/if}
+								</figcaption>
 							</figure>
 							{/foreach}
 					</div>

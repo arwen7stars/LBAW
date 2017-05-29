@@ -44,7 +44,10 @@
 		$eventinfo = getEventInfo($event_id);
 		$all_images = getEventImages($event_id);
 		$location = getEventLocation($event_id);
-		$belongs = isUserFromEvent($id_logged, $event_id);
+		$res = getUserEvent($id_logged, $event_id);
+		$belongs = ($res !== false);
+		
+		
 		$admin = isUserEventAdmin($id_logged, $event_id);
 		$now = date('Y-m-d', time());
 		$guests = getEventGuests($event_id);

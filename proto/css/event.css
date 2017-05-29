@@ -70,6 +70,10 @@
 	margin-right: 2rem;
 }
 
+.guests {
+	text-align: center;
+}
+
 .about-body dd {
 	margin-bottom: 1rem;
 }
@@ -99,10 +103,16 @@
 .imgContainer {
 	display: inline-block;
 	position: relative;
+	width: 175px;
 }
 
 .imgContainer figcaption {
 	width: 90%;
+}
+
+.imgContainer .btn {
+	color: #585858;
+	font-weight: bold;
 }
 
 .guests-body figure {
@@ -172,4 +182,9 @@
 		width: 30rem;
 		margin-left: -15rem;
 	}
+}
+
+.delete_user_event {
+	text-align: left;
+	font-weight: normal;
 }

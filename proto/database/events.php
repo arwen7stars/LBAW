@@ -158,7 +158,7 @@
 		return ($res !== false);
 	}
 	
-	function isUserFromEvent($user_id, $event_id) {
+	function getUserEvent($user_id, $event_id) {
 		global $dbh;
         $stmt = $dbh->prepare('SELECT * FROM "User-Event", "Event"
 		WHERE "User-Event"."event-id" = "Event"."id" AND "Event"."id" = :event AND "User-Event"."user-id" = :user');
@@ -167,7 +167,7 @@
 		$stmt->execute(array($event_id, $user_id));
 		$res = $stmt->fetch();
 		
-		return ($res !== false);		
+		return $res;		
 	}
 	
 	function getEventLocation($event_id) {
@@ -193,7 +193,7 @@
 	
 	function getEventGuests($event_id) {
 		global $dbh;
-        $stmt = $dbh->prepare('SELECT "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id, "User-Event"."admin", "User-Event"."type"
+        $stmt = $dbh->prepare('SELECT "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id, "User-Event"."admin", "User-Event"."type", "Character"."name"
 		FROM "Event", "User-Event", "Character-Image", "Character", "Image", "User"
 		WHERE "Event"."id" = :event AND "Event"."id" = "User-Event"."event-id" AND "User"."id" = "User-Event"."user-id" AND
 		"Character"."id" = "User"."character-id" AND "Character-Image"."character-id" = "Character"."id"
