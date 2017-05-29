@@ -225,7 +225,7 @@
 									</div>
 
 									<div class="post-body">
-											{if $post.user == $id_logged}
+											{if $post.user == $id_logged || $isWebPageAdmin === '1'}
 											<div class="dropdown pull-right">
 												<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 												<ul class="dropdown-menu">
