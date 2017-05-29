@@ -24,7 +24,7 @@
 		<form class="form-horizontal" action="../../actions/users/edit_profile.php" method="post">
 			<input type="hidden" name="user-id" value="{$id_logged}">
 			<button type="submit" class="submit-btn pull-right">Save</button>
-				
+
 			<h2>Edit Profile</h2>
 			<hr>
 			<div class="info form-group">
@@ -33,16 +33,16 @@
 					<input class="form-control" type="username" id="name" name="name" value="{$user.name}" class="table-form" required>
 				</div>
 			</div>
-			
+
 			<div class="info form-group">
 				<label for="dateofbirth" class="col-sm-2 control-label"><span class="glyphicon glyphicon-gift"></span> Birthday</label>
 				<div class="col-sm-10">
 					<input class="form-control" type="date" id="dateofbirth" name="date" value="{$date}" max="{$now}">
 				</div>
 			</div>
-			
+
 			<div class="separator"><span class="glyphicon glyphicon-home"></span> Location</div>
-			
+
 			<div class="info form-group">
 				<label for="location" class="col-sm-2 control-label">City, Country</label>
 				<div class="col-sm-10">
@@ -65,7 +65,7 @@
 					</select>
 				</div>
 			</div>
-			
+
 			<div class="separator"><span class="glyphicon glyphicon-pencil"></span> Additional infomation</div>
 			<div class="info form-group">
 				<label for="about" class="col-sm-2 control-label">About</label>
@@ -79,7 +79,7 @@
 			</div>
 		</form>
 	</div>
-	
+
 	{include file='footer.tpl'}
 
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -89,6 +89,7 @@
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
+  <script src="../../javascript/search-bar.js"></script>
 </body>
 
 </html>

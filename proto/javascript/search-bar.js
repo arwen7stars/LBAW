@@ -4,7 +4,6 @@
 var searchBar = null;
 var searchResults = null;
 var activeRequest = null;
-var minLetters = 3;
 
 
 /**
@@ -15,10 +14,6 @@ var searchHandler = function(event) {
   searchResults.html("");
 
   var query = searchBar.val();
-
-  if (query.length < minLetters) {
-    return;
-  }
 
   if (activeRequest !== null) {
     activeRequest.abort();
@@ -33,7 +28,8 @@ var searchHandler = function(event) {
 
       for (var i = 0; i < data.length; i++) {
         console.log(data[i]);
-        searchResults.append("<li>" + data[i].name + "</li>");
+        var li = "<li><a href=../users/profile_feed.php?user-id=" + data[i].user_id + "><img src=\"" + data[i].char_img_url + "\" alt = \" character picture\"/>" + data[i].char_name + "</a></li>";
+        searchResults.append(li);
       }
 
       activeRequest = null;
@@ -55,5 +51,15 @@ $(document).ready(function() {
   searchBar = $("#search-bar");
 
   searchBar.keyup(searchHandler);
+
+  $("html").click(function() {
+    console.log("OLa");
+    searchResults.html("");
+    searchBar.val("");
+  });
+
+  searchBar.click(function(event) {
+    event.stopPropagation();
+  });
 
 });

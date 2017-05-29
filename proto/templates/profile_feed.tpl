@@ -106,7 +106,7 @@
 							{if ($id == $id_logged) || $public || $friend.accepted}
 							{if !empty($images)}
 							<div class="user_photos">
-								<h3><b>Photos</b></h3>							
+								<h3><b>Photos</b></h3>
 								{foreach $images key=k item=img}
 									<a href="post_display.php?user-id={$id}&post-id={$img.id}"><img class="centered-and-cropped thumb-64px" src="{$img.url}" alt="{$img.description}"></a>
 									{if $k == 2}
@@ -121,7 +121,7 @@
 							{/if}{/if}
 						</div>
                 </div>
-				
+
                 <div class="col-md-9 push-md-3">
 					{if ($id == $id_logged) || $public || $friend.accepted}
 					<div class="timeline">
@@ -131,7 +131,7 @@
 							<li><a data-toggle="tab" href="#friends">Friends</a></li>
 							<li><a data-toggle="tab" href="#photos">Photos</a></li>
 						</ul>
-				
+
 						<div class="tab-content">
 							<div id="home" class="tab-pane fade in active">
 							  {if $username_page == $username_logged }
@@ -149,7 +149,7 @@
 														<option data-icon="glyphicon-globe" value="t">Public</option>
 														<option data-icon="glyphicon-lock" value="f">Private</option>
 													</select>
-													
+
 													<label class="btn btn-primary" for="my-file-selector">
 														<input id="my-file-selector" type="file" name="image" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
 														<span class="glyphicon glyphicon-picture"></span> Upload
@@ -162,9 +162,9 @@
 									</form>
 								</div>
 								{/if}
-								
+
 								<div id="black" class="black_overlay"></div>
-								
+
 								{if empty($posts)}
 								<div id="welcome-message">
 									<p><h1>No posts to show yet...</h1></p>
@@ -173,18 +173,18 @@
 								{else}
 								{foreach $posts as $post}{if ($id_logged == $post.user) || $post.public || $friend.accepted}
 								<div class="post_space"><div class="post">
-								
+
 									<div id="edit-{$post.postid}" class="edit_box">
 										<a href="javascript:void(0)" id="close-edit-{$post.postid}" class="close-edit pull-right">
 										<span class="close glyphicon glyphicon-remove"></span></a>
-										
+
 										<div class="poster">
 											<p><a href="profile_feed.php?user-id={$id_logged}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px">
 												<span>{$post.charname}</span></a>
 												<br><span class="post-date">{$post.date|date_format}</span>
 											</p>
 										</div>
-										
+
 										<form class="form" action="../../actions/posts/edit_post.php" method="post">
 											<div class="wrapper">
 												<input type="hidden" name="user-id" value="{$id_logged}">
@@ -209,7 +209,7 @@
 											</div>
 										</form>
 									</div>
-									
+
 									<div id="confirm-{$post.postid}" class="edit_box">
 										<div class="modal-body">Are you sure you want to delete this post?</div>
 											<div class="modal-footer button-container">
@@ -247,19 +247,19 @@
 										</div>
 
 									</div>
-									
+
 									<div class="opt-group btn-group-justified hidden-sm hidden-xs">
 										<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
 										<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
 										<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
 									</div>
-									
+
 									<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
 										<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
 										<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
 										<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
 									</div>
-									
+
 									{if ((isset($username_logged) && $friendship && $friend.accepted) || ($id == $id_logged))}
 									<div class="make-comment-wrap">
 										<form class="form" action="../../actions/posts/comment.php" method="post">
@@ -298,14 +298,14 @@
 											<dd class="col-sm-8">{$age}</dd>
 										</dl>
 										{/if}
-										
+
 										{if !empty($location)}
 										<dl>
 											<dt class="col-sm-4">Location</dt>
 											<dd class="col-sm-8">{$location.city}, {$location.country}</dd>
 										</dl>
 										{/if}
-										
+
 										{if !empty($about)}
 										<dl>
 											<dt class="col-sm-4">Additional information</dt>
@@ -353,13 +353,13 @@
 					</div>
 					{/if}
                 </div>
-			
+
             </div>
 		</div>
 		{else}
 		<div id="not-found"><h1>{$page_not_found}</h1></div>
 		{/if}
-		
+
     {include file='footer.tpl'}
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -369,7 +369,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/script.js"></script>
-        
+  <script src="../../javascript/search-bar.js"></script>      
 </body>
 
 </html>

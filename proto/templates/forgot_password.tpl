@@ -28,7 +28,7 @@
 						<label for="email">E-mail</label>
 						<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
 					</div>
-					
+
 					<div class="form-group">
 						<button type="submit" class="submit btn btn-primary">Recover</button>
 					</div>
@@ -46,7 +46,7 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
   <script src="../../javascript/script.js"></script>
-
+  <script src="../../javascript/search-bar.js"></script>
 </body>
 
 </html>

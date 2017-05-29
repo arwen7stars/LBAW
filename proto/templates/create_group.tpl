@@ -31,16 +31,16 @@
 					<fieldset>
 						<p><label for="name">Group Name</label>
 						<input type="text" class="form-control" id="name" name="group_name" placeholder="Group Name" required></p>
-						
+
 						<p><label for="group_description">Group Description</label>
 						<input type="text" class="form-control" id="group_description" name="group_description" placeholder="Small description of the group"></p>
-						
+
 						<p><label for="group_privacy">Group Privacy</label>
 						<select name="group_privacy" class="form-control" id="event_privacy">
 								<option value="t">Public</option>
 								<option value="f">Private</option>
 						</select></p>
-						
+
 						<p><button type="submit" class="submit btn btn-primary">Create Group</button></p>
 					</fieldset>
 				</form>
@@ -59,5 +59,6 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/script.js"></script>
+	<script src="../../javascript/search-bar.js"></script>
 </body>
 </html>

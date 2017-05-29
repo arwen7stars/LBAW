@@ -24,28 +24,28 @@
 {include file='header.tpl'}
 <div class="container">
 	<div class="row">
-	
-	
+
+
 	<div class="forms col-lg-1 col-centered">
 		<h2>Register</h2>
 		<hr>
 		<form action="../../actions/users/register.php" method="post">
 			<fieldset>
 				<h4><span class="number">1</span>User credentials</h4>
-			
+
 				<div class="form-group">
 					<label for="username" class="required">Username</label>
-					
+
 					{if isset({$username_error}) && !empty({$username_error})}
 					<input type="text" class="form-control error-input" id="username" name="username" maxlength="20" placeholder="Type username" required>
 					<div class="error-in">Sorry, that username's taken. Try another?</div>
 					{else}
 					<input type="text" class="form-control" id="username" name="username" maxlength="20" placeholder="Type username" required>
 					{/if}
-					
-					
+
+
 				</div>
-				
+
 				<div class="form-group">
 					<label for="email" class="required">E-mail address</label>
 					{if isset({$email_error}) && !empty({$email_error})}
@@ -54,8 +54,8 @@
 					{else}
 					<input type="email" class="form-control" id="email" name="email" placeholder="Type your e-mail address" required>
 					{/if}
-				</div>				
-				
+				</div>
+
 				<div class="form-group">
 					<label for="password" class="required">Password</label>
 					{if isset({$password_error}) && !empty({$password_error})}
@@ -77,12 +77,12 @@
 				</div>
 				<hr>
 				<h4><span class="number">2</span>User information</h4>
-				
+
 				<div class="form-group">
 					<label for="name" class="required">Name (only letters and spaces)</label>
 					<input type="text" class="form-control" id="name" name="name" placeholder="Type your name" required>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="location">Choose location</label>
 					<select class="selectpicker form-control" id="location" name="location">
@@ -97,7 +97,7 @@
 					<label for="dateofbirth">Birthday</label>
 					<input type="date" class="form-control" id="dateofbirth" name="date" max="{$now}">
 				</div>
-				
+
 				<hr>
 				<h4><span class="number">3</span>Selecting character</h4>
 
@@ -109,14 +109,14 @@
 						<option value="{$character.id}" data-thumbnail="{$character.image}">{$character.name} - {$character.charname}</option>
 						{/foreach}
 					</select>
-					
+
 				</div>
 
 				<p><button type="submit" class="submit btn btn-primary">Register</button></p>
 			</fieldset>
 		</form>
 	</div></div></div>
-	
+
 {include file='footer.tpl'}
 
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -127,7 +127,7 @@
 	<script src="../../javascript/script.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
-
+  <script src="../../javascript/search-bar.js"></script>
 </body>
 
 </html>

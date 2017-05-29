@@ -31,7 +31,7 @@
 					<fieldset>
 						<p><label for="name">Event Name</label>
 						<input type="text" class="form-control" id="name" name="event_name" placeholder="Event Name" required></p>
-						
+
 						{if isset({$wrong_dates}) && !empty({$wrong_dates})}
 						<p><label for="event_start">Start Date</label>
 						<input type="date" class="form-control error-input" id="event_start" name="event_start" min="{$now}" required>
@@ -40,7 +40,7 @@
 						<p><label for="event_start">Start Date</label>
 						<input type="date" class="form-control" id="event_start" name="event_start" min="{$now}" required></p>
 						{/if}
-						
+
 						{if isset({$wrong_dates}) && !empty({$wrong_dates})}
 						<p><label for="event_end">End Date</label>
 						<input type="date" class="form-control error-input" id="event_end" name="event_end" min="{$now}" required>
@@ -49,10 +49,10 @@
 						<p><label for="event_end">End Date</label>
 						<input type="date" class="form-control" id="event_end" name="event_end" min="{$now}" required></p>
 						{/if}
-						
+
 						<p><label for="event_description">Event Description</label>
 						<input type="text" class="form-control" id="event_description" name="event_description" placeholder="Small description of the event"></p>
-						
+
 						<p><label for="location">Event Location</label>
 						<select id="location" name="location" class="form-control">
 							{if !empty($location)}
@@ -70,13 +70,13 @@
 									{/foreach}
 							{/if}
 						</select></p>
-						
+
 						<p><label for="event_privacy">Event Privacy</label>
 						<select name="event_privacy" class="form-control" id="event_privacy">
 								<option id="event_public" value="true">Public</option>
 								<option id="event_private" value="false">Private</option>
 						</select></p>
-						
+
 						<p><button type="submit" class="submit btn btn-primary">Create Event</button></p>
 					</fieldset>
 				</form>
@@ -95,5 +95,6 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/script.js"></script>
+	<script src="../../javascript/search-bar.js"></script>
 </body>
 </html>

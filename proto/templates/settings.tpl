@@ -28,9 +28,9 @@
 			<strong>Success!</strong> {$password_success}
 		</div>
 		{/if}
-	
+
 	</div>
-	
+
 	<div class="settings">
 		<form class="form-horizontal" action="../../actions/users/settings.php" method="post">
 			<input type="hidden" name="user-id" value="{$id_logged}">
@@ -48,7 +48,7 @@
 					{/if}
 				</div>
 			</div>
-			
+
 			<div class="form-group info">
 				<label class="col-sm-3" for="newemail">Change e-mail address</label>
 				<div class="col-sm-9">
@@ -60,9 +60,9 @@
 					{/if}
 				</div>
 			</div>
-			
+
 			<div class="separator"><span class="glyphicon glyphicon-lock"></span> Change password</div>
-			
+
 			<div class="form-group info">
 				<label class="col-sm-3" for="oldPassword">Old password</label>
 				<div class="col-sm-9">
@@ -74,7 +74,7 @@
 					{/if}
 				</div>
 			</div>
-			
+
 			<div class="form-group info">
 				<label class="col-sm-3" for="newPassword">New password</label>
 				<div class="col-sm-9">
@@ -86,7 +86,7 @@
 					{/if}
 				</div>
 			</div>
-			
+
 			<div class="form-group info">
 				<label class="col-sm-3" for="repNewPassword">Repeat new password</label>
 				<div class="col-sm-9">
@@ -98,9 +98,9 @@
 					{/if}
 				</div>
 			</div>
-			
+
 			<div class="separator"><span class="glyphicon glyphicon glyphicon-user"></span> Profile settings</div>
-			
+
 			<div class="form-group info">
 				<label class="col-sm-3" for="exampleSelect1">Notifications</label>
 				<div class="col-sm-9">
@@ -115,7 +115,7 @@
 					</select>
 				</div>
 			</div>
-			
+
 			<div class="form-group info">
 				<label class="col-sm-3" for="privacy">Profile privacy</label>
 				<div class="col-sm-9">
@@ -125,7 +125,7 @@
 						<option data-icon="glyphicon-lock" value="f">Private</option>
 						{else}
 						<option data-icon="glyphicon-globe" value="t">Public</option>
-						<option data-icon="glyphicon-lock" value="f" selected="selected">Private</option>						
+						<option data-icon="glyphicon-lock" value="f" selected="selected">Private</option>
 						{/if}
 					</select>
 				</div>
@@ -133,7 +133,7 @@
 		</form>
 	</div>
 	<div id="black" class="black_overlay"></div>
-	
+
 	<div id="popup" class="edit_box">
 		<div class="modal-body">Are you sure you want to delete your profile? This action cannot be undone.</div>
 			<div class="modal-footer button-container">
@@ -144,11 +144,11 @@
 				</form>
 			</div>
 	</div>
-	
-	
+
+
 	<div class="settings">
 		<h2>Deactivate account</h2>
-		<hr>		
+		<hr>
 		<div class="delete-wrap">
 			<button id="delete-profile" class="popup-trigger btn btn-danger">Delete account</button>
 		</div>
@@ -164,5 +164,6 @@
 	<script src="../../javascript/settings.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
+	<script src="../../javascript/search-bar.js"></script>
 </body>
 </html>

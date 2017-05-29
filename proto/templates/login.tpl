@@ -27,7 +27,7 @@
 			<strong>Error!</strong> Username and password combination incorrect
 		</div>
 		{/if}
-	
+
 	</div>
 		<div class="forms col-lg-1 col-centered">
 			<h2>Login</h2>
@@ -43,7 +43,7 @@
 						<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
 						<p><a href="../../pages/users/forgot_password.php">Forgot your password?</a></p>
 					</div>
-					
+
 					<div class="form-group">
 						<button type="submit" class="submit btn btn-primary">Login</button>
 					</div>
@@ -61,7 +61,7 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
   <script src="../../javascript/script.js"></script>
-
+	<script src="../../javascript/search-bar.js"></script>
 </body>
 
 </html>
