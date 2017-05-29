@@ -74,7 +74,7 @@
 | Identifier | Name| Priority | Description |
 | --- | --- | --- | --- |
 | US401 | Invite | Medium | As a event admin, I want to invite people to join the event, so that they participate in it |
-| US402 | Remove | Medium | As a event admin, I want to remove people from the event, so that they no longer participate in it |
+| ~~US402~~ | Remove | Medium | As a event admin, I want to remove people from the event, so that they no longer participate in it |
 | US403 | Edit| Low | As a event admin, I want to edit the event's profile, posts and comments, so that they stay updated |
 | US404 | Delete | Low | As a event admin, I want to delete the event's profile, posts and comments, so that no one sees them |
 | US405 | Permissions | Low | As a event admin, I want to set custom permissions for the event's profile and posts |
