@@ -165,10 +165,12 @@
 								
 								<div id="black" class="black_overlay"></div>
 								
-								{if empty($posts)}
+								{if empty($posts) && isset($id_logged)}
 								<div id="welcome-message">
 									<p><h1>No posts to show yet...</h1></p>
+									{if ($id_logged == $id)}
 									<p><h3>Make a post!</h3></p>
+									{/if}
 								</div>
 								{else}
 								{foreach $posts as $post}{if ($id_logged == $post.user) || $post.public || $friend.accepted}

@@ -147,10 +147,27 @@
     border-radius: 5px;
 	font-weight:bold;
 	width: 8rem;
+	border-color: #ccc;
 }
 
-.event-opt:hover {
+.admin-opt {
+	background: linear-gradient(to bottom, #F0ABAB,#8A2F2F);
 	color: white;
+    border-color: #ccc;
+	border-width: 0.1rem;
+    cursor:pointer;
+    border-radius: 5px;
+	font-weight:bold;
+	width: 14rem;
+	border-color: #ccc;
+}
+
+.admin-opt:hover {
+	color: white;
+}
+
+.admin-opt:focus {
+	background-color: #8A2F2F;
 }
 
 .edit-event-opt {

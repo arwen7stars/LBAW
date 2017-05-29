@@ -12,13 +12,12 @@
 	<!-- Bootstrap -->
 	<link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Default stylesheet -->
-	<link href="../../css/feed.css" rel="stylesheet">
-	<link href="../../css/event.css" rel="stylesheet">
 	<link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
     <!-- Default stylesheet -->
 	<link rel="stylesheet" href="../../lib/bootstrap-3.3.7/css/bootstrap-select.min.css">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-
+	<link href="../../css/feed.css" rel="stylesheet">
+	<link href="../../css/event.css" rel="stylesheet">
 </head>
 
 <body>
@@ -125,15 +124,23 @@
 						</div>
 					</div>
 					{if ($admin || $isWebPageAdmin === '1')}
-					<p class="user-options">
+					<div class="user-options">
 						{if $admin}
 						<span class="pull-left"><b>Status:</b> Admin</span>
 						{else}
 						<span class="pull-left"><b>Status:</b> Normal user</span>
 						{/if}
-						<button id="click-edit-event" class="event-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
-						<button id="click-delete-event" class="event-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
-					</p>
+						<div class="clearfix">
+						<div class="admin-options dropdown pull-right">
+							<button class="admin-opt btn dropdown-toggle" type="button" data-toggle="dropdown">Admin options <span class="glyphicon glyphicon-chevron-down"></span></button>
+							<ul class="dropdown-menu">
+								<li id="click-edit-event"><a href="javascript:void(0)">Edit</a></li>
+								<li id="click-delete-event"><a href="javascript:void(0)">Delete</a></li>
+								<li id="click-invite-event"><a href="javascript:void(0)">Invite people</a></li>
+							</ul>
+						</div>
+						</div>
+					</div>
 					{else}
 					{if $belongs}
 					<p class="user-options">
