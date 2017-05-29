@@ -4,6 +4,13 @@
 	include_once($BASE_DIR . 'database/users.php');
 	include_once($BASE_DIR . 'database/posts.php');
 	include_once($BASE_DIR . 'database/groups.php');
+	
+	$isWebPageAdmin = IsWebPageAdmin($_SESSION['id']);
+	
+	if ($isWebPageAdmin['admin'] === true)
+		$smarty->assign('isWebPageAdmin', '1');
+	else 
+		$smarty->assign('isWebPageAdmin', '0');
 
 	$id = $_GET['user-id'];					// profile id
 	$postid = $_GET['post-id'];				// post id
