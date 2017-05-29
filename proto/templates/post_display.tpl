@@ -246,9 +246,10 @@
 					</div>
 					{/if}
 				</div>
-
+				
+				<div class="comments">
 				{foreach $comments as $comment}
-					<div class="comment">
+					<div class="comment" id="comment-{$comment.comid}">
 
 						<div id="edit-comment-{$comment.comid}" class="edit_box">
 							<a href="javascript:void(0)" id="close-comment-{$comment.comid}" class="close-comment pull-right">
@@ -299,10 +300,11 @@
 						</div>
 
 						<p>{$comment.body}</p>
+						<a href="javascript:void(0)" class="like-comment-btn"><span class="glyphicon glyphicon-heart"></span> <span class="like-comment-number">{$comment.likes}</span></a>
 
-						<a href="#"><span class="glyphicon glyphicon-heart"></span> {$comment.likes}</a>
 					</div>
 				{/foreach}
+				</div>
 				{else}
 					<h3>Post not found!</h3>
 				{/if}
@@ -335,5 +337,6 @@
 	<script src="../../javascript/script.js"></script>
 	<script src="../../javascript/search-bar.js"></script>
 	<script src="../../javascript/like.js"></script>
+	<script src="../../javascript/like_comment.js"></script>
 </body>
 </html>

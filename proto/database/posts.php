@@ -431,4 +431,14 @@
 		$res = $stmt->fetch();
 		return ($res !== false);
 	}
+	
+	function hasUserLikedComment($user_id, $comment_id) {
+		global $dbh;
+
+		$query = 'SELECT * FROM "Likes" WHERE "Likes"."user-id" = ? AND "Likes"."comment-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($user_id, $comment_id));
+		$res = $stmt->fetch();
+		return ($res !== false);
+	}
 ?>

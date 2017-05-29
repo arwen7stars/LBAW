@@ -171,7 +171,7 @@
 				</div>
 
 				{foreach $comments as $comment}
-					<div class="comment">
+					<div class="comment" id="comment-{$comment.comid}">
 
 						<div id="edit-comment-{$comment.comid}" class="edit_box">
 							<a href="javascript:void(0)" id="close-comment-{$comment.comid}" class="close-comment pull-right">
@@ -222,8 +222,7 @@
 						</div>
 
 						<p>{$comment.body}</p>
-
-						<a href="#"><span class="glyphicon glyphicon-heart"></span> {$comment.likes}</a>
+						<a href="#" class="like-comment-btn"><span class="glyphicon glyphicon-heart"></span> <span class="like-comment-number">{$comment.likes}</span></a>
 					</div>
 				{/foreach}
 				{else}
@@ -252,5 +251,6 @@
 	<script src="../../javascript/script.js"></script>
 	<script src="../../javascript/search-bar.js"></script>
 	<script src="../../javascript/like.js"></script>
+	<script src="../../javascript/like_comment.js"></script>
 </body>
 </html>
