@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	
+
 	<title>Anibook</title>
 
     <!-- Bootstrap -->
@@ -72,7 +72,7 @@
 		{else}
 		{foreach $posts as $post}
 		<div class="post_space">
-        <div class="post">
+        <div class="post" id="post-{$post.postid}">
 			<div id="edit-{$post.postid}" class="edit_box">
 				<a href="javascript:void(0)" id="close-edit-{$post.postid}" class="close-edit pull-right">
 				<span class="close glyphicon glyphicon-remove"></span></a>
@@ -147,7 +147,7 @@
 			</div>
 
 			<div class="opt-group btn-group-justified">
-				<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge">{$post.likes}</span></a>
+				<a href="#" class="btn btn-default post-opt like-btn"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge like-number">{$post.likes}</span></a>
 				<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
 			</div>
 
@@ -189,5 +189,6 @@
 	<script src="../../javascript/script.js"></script>
 	<script src="../../javascript/search-bar.js"></script>
 	<script src="../../javascript/feed.js"></script>
+	<script src="../../javascript/like.js"></script>
 </body>
 </html>
