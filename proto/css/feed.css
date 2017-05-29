@@ -478,3 +478,21 @@ color: #000;
 	padding: 0;
 	text-align: left;
 }
+
+.centered-and-cropped {
+	object-fit: cover;
+}
+
+.thumb-64px {
+  width: 64px;
+  height: 64px;
+  margin: 0.1rem 0rem;
+}
+
+.search-bar-wrap {
+	overflow: hidden;
+}
+
+.search_res a {
+	text-shadow: 1px 1px #ccc !important;
+}

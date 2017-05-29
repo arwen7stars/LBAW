@@ -60,6 +60,16 @@ html {
 	text-shadow: 2px 2px #ccc;
 }
 
+.centered-and-cropped {
+	object-fit: cover;
+}
+
+.thumb-64px {
+  width: 64px;
+  height: 64px;
+  margin: 0.1rem 0rem;
+}
+
 .search-results-wrap {
 	position: absolute;
 	z-index:100;
