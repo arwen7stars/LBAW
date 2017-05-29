@@ -125,7 +125,7 @@
 			</div>
 			{if ($admin || $isWebPageAdmin === '1')}
 			<div class="user-options">
-				{if $admin}
+				{if ($admin || $isWebPageAdmin === '1')}
 				<span class="pull-left"><b>Status:</b> Admin</span>
 				{else}
 				<span class="pull-left"><b>Status:</b> Normal user</span>
@@ -145,7 +145,7 @@
 			{else}
 			{if $belongs}
 			<p class="user-options">
-				{if $admin}
+				{if ($admin || $isWebPageAdmin === '1')}
 				<span class="pull-left"><b>Status:</b> Admin</span>
 				{else}
 				<span class="pull-left"><b>Status:</b> Normal user</span>
