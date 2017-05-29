@@ -30,7 +30,7 @@
 			<div class="info form-group">
 				<label for="name" class="col-sm-2 control-label"><span class="glyphicon glyphicon-user"></span> Name</label>
 				<div class="col-sm-10">
-					<input class="form-control" type="username" id="name" name="name" value="{$user.name}" class="table-form" required>
+					<input class="form-control" id="name" name="name" value="{$user.name}" required>
 				</div>
 			</div>
 

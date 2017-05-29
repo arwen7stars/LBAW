@@ -24,7 +24,7 @@
 	<div id="black" class="black_overlay"></div>
 	<div id="group-event-box">
 		<h2>Notifications</h2>
-		<ul class="notification-list list-unstyled">
+		
 		{foreach $notifications as $notification}
 		
 		{if ($id_logged == $notification.usertwo)}
@@ -130,7 +130,6 @@
 		{/if}
 		</div>
 		{/foreach}
-		</ul>
 	</div>
 	
 	{include file='footer.tpl'}
