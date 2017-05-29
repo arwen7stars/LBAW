@@ -6,6 +6,7 @@
 ## In development
 
 * Search-bar with Ajax (US001)
+* Likes with Ajax (US107)
 
 ## Important things to delevop if we have time
 
