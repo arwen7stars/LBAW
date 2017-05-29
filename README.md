@@ -11,6 +11,7 @@
 ## Important things to delevop if we have time
 
 * custom permissions for users/posts
+* admin pode editar/apagar posts (mas so dos amigos dele :D)
 
 ## User Stories
 
