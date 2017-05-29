@@ -186,7 +186,7 @@
 		$query = 'SELECT "User"."id" AS userid, "Comment"."id" AS comid, "Comment"."body", "Character"."name", "Image"."url", COUNT("Likes"."id") AS "likes"
 		FROM "User", "Character", "Image", "Character-Image", "Comment" 
 		LEFT JOIN "Likes" ON "Comment"."id" = "Likes"."comment-id" AND "Likes"."post-id" IS NULL
-		WHERE "Comment"."post-id" = ?
+		WHERE "Comment"."post-id" = :id
 		AND "Character-Image"."character-id" = "Character"."id"
 		AND "Character-Image"."image-id" = "Image"."id"
 		AND "Comment"."user-id" = "User"."id"
@@ -195,6 +195,7 @@
 		GROUP BY "User"."id", "Comment"."id", "Character"."name", "Image"."url"
 		ORDER BY "Comment"."id" DESC;';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':id', $post_id);
 		$stmt->execute(array($post_id));
 		
 		return $stmt;
@@ -203,8 +204,9 @@
 	function getSinglePost($post_id) {
 		global $dbh;
 		
-		$query = 'SELECT * FROM "Post" WHERE "Post"."id" = ?';
+		$query = 'SELECT * FROM "Post" WHERE "Post"."id" = :id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':id', $post_id);
 		$stmt->execute(array($post_id));
 		
 		return $stmt->fetch();
@@ -247,12 +249,13 @@
 			GROUP BY "Comment"."post-id", "NoLikes"."likes", "NoLikes"."postid"
 		) AS "Comments-Likes"
 		ON "Post"."id" = "Comments-Likes"."post-id"
-		WHERE "Post"."id" = ?
+		WHERE "Post"."id" = :id
 			AND "User".id = "Post"."user-id"
 			AND "Character"."id" = "User"."character-id"
 			AND "Character-Image"."character-id" = "Character"."id"
 			AND "Character-Image"."image-id" = "Image"."id"
 		GROUP BY "Post"."id", "Post-Images"."id", "Post-Images"."url", "Post-Images"."description", "Character"."name", "Image"."url", "Likes-Comments"."likes", "Comments-Likes"."comments";');
+		$stmt->bindParam(':id', $id);
         $stmt->execute(array($id));
         $img = $stmt->fetch();
 		return $img;
@@ -301,8 +304,9 @@
 	function getImagePost($post_id) {
 		global $dbh;
 		
-		$query = 'SELECT * FROM "Image" WHERE "Image"."post-id" = ?';
+		$query = 'SELECT * FROM "Image" WHERE "Image"."post-id" = :id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':id', $post_id);
 		$stmt->execute(array($post_id));
 		
 		return $stmt;
@@ -311,8 +315,9 @@
 	function getLikesPost($post_id) {
 		global $dbh;
 		
-		$query = 'SELECT * FROM "Likes" WHERE "Likes"."post-id" = ?';
+		$query = 'SELECT * FROM "Likes" WHERE "Likes"."post-id" = :id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':id', $post_id);
 		$stmt->execute(array($post_id));
 		
 		return $stmt;
@@ -321,8 +326,9 @@
 	function getLikesComment($comment_id) {
 		global $dbh;
 		
-		$query = 'SELECT * FROM "Likes" WHERE "Likes"."comment-id" = ?';
+		$query = 'SELECT * FROM "Likes" WHERE "Likes"."comment-id" = :id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':id', $comment_id);
 		$stmt->execute(array($comment_id));
 		
 		return $stmt;		
@@ -331,102 +337,132 @@
 	function addPost($body, $shared, $public, $user_id, $original_poster, $event_id, $group_id) {
 		global $dbh;
 		
-		$query = 'INSERT INTO "Post" ("body", "shared", "public", "user-id", "op-id", "event-id", "group-id") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id';
+		$query = 'INSERT INTO "Post" ("body", "shared", "public", "user-id", "op-id", "event-id", "group-id") VALUES (:body, :shared, :public, 
+		:user_id, :original_poster, :event_id, :group_id) RETURNING id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':body', $body);
+		$stmt->bindParam(':shared', $shared);
+		$stmt->bindParam(':public', $public);
+		$stmt->bindParam(':user_id', $user_id);
+		$stmt->bindParam(':original_poster', $original_poster);
+		$stmt->bindParam(':event_id', $event_id);
+		$stmt->bindParam(':group_id', $group_id);
 		$stmt->execute(array($body, $shared, $public, $user_id, $original_poster, $event_id, $group_id));
 		$res = $stmt->fetch();
 		
 		return $res['id'];
 	}
 	
-	function addPostImage($path, $description, $date, $post_id, $usr_id) {
+	function addPostImage($path, $description, $date, $post_id, $user_id) {
 		global $dbh;
 		
-		$query = 'INSERT INTO "Image" ("url", "description", "date", "post-id", "user-id") VALUES (?, ?, ?, ?, ?)';
+		$query = 'INSERT INTO "Image" ("url", "description", "date", "post-id", "user-id") VALUES (:url, :description, :date, :post_id, :user_id)';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':url', $path);
+		$stmt->bindParam(':description', $description);
+		$stmt->bindParam(':date', $date);
+		$stmt->bindParam(':post_id', $post_id);
+		$stmt->bindParam(':user_id', $user_id);
 		$stmt->execute(array($path, $description, $date, $post_id, $usr_id));
 	}
 	
 	function addCommentPost($body, $user_id, $post_id) {
 		global $dbh;
 		
-		$query = 'INSERT INTO "Comment" ("body", "user-id", "post-id") VALUES (?, ?, ?)';
+		$query = 'INSERT INTO "Comment" ("body", "user-id", "post-id") VALUES (:body, :user_id, :post_id)';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':body', $body);
+		$stmt->bindParam(':user_id', $user_id);
+		$stmt->bindParam(':post_id', $post_id);
 		$stmt->execute(array($body, $user_id, $post_id));		
 	}
 	
 	function updatePost($post_id, $body, $public) {
 		global $dbh;
 		$query = 'UPDATE "Post"
-		SET ("body", "public") = (?, ?)
-		WHERE "Post"."id" = ?';
+		SET ("body", "public") = (:body, :public)
+		WHERE "Post"."id" = :post_id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':body', $body);
+		$stmt->bindParam(':public', $public);
+		$stmt->bindParam(':post_id', $post_id);
 		$stmt->execute(array($body, $public, $post_id));
 	}
 	
 	function updateComment($comment_id, $body) {
 		global $dbh;
 		$query = 'UPDATE "Comment"
-		SET ("body") = (?)
-		WHERE "Comment"."id" = ?';
+		SET ("body") = (:body)
+		WHERE "Comment"."id" = :comment_id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':body', $body);
+		$stmt->bindParam(':comment_id', $comment_id);
 		$stmt->execute(array($body, $comment_id));
 	}
 	
 	function deleteImagePost($img_id) {
 		global $dbh;
-		$query = 'DELETE FROM "Image" WHERE "Image"."id" = ?';
+		$query = 'DELETE FROM "Image" WHERE "Image"."id" = :img_id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':img_id', $img_id);
 		$stmt->execute(array($img_id));
 	}
 	
 	function deletePost($post_id) {
 		global $dbh;
-		$query = 'DELETE FROM "Post" WHERE "Post"."id" = ?';
+		$query = 'DELETE FROM "Post" WHERE "Post"."id" = :post_id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':post_id', $post_id);
 		$stmt->execute(array($post_id));	
 	}
 	
 	function deleteComment($comment_id) {
 		global $dbh;
-		$query = 'DELETE FROM "Comment" WHERE "Comment"."id" = ?';
+		$query = 'DELETE FROM "Comment" WHERE "Comment"."id" = :comment_id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':comment_id', $comment_id);
 		$stmt->execute(array($comment_id));	
 	}
 	
 	function deleteCommentNotification($comment_id) {
 		global $dbh;
-		$query = 'DELETE FROM "Notification" WHERE "Notification"."comment-id" = ?';
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."comment-id" = :comment_id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':comment_id', $comment_id);
 		$stmt->execute(array($comment_id));	
 	}
 	
 	function deleteLikeNotification($like_id) {
 		global $dbh;
-		$query = 'DELETE FROM "Notification" WHERE "Notification"."like-id" = ?';
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."like-id" = :like_id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':like_id', $like_id);
 		$stmt->execute(array($like_id));
 	}
 	
 	function deleteLike($like_id) {
 		global $dbh;
-		$query = 'DELETE FROM "Likes" WHERE "Likes"."id" = ?';
+		$query = 'DELETE FROM "Likes" WHERE "Likes"."id" = :like_id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':like_id', $like_id);
 		$stmt->execute(array($like_id));			
 	}
 	
 	function deleteNotificationsPost($post_id) {
 		global $dbh;
-		$query = 'DELETE FROM "Notification" WHERE "Notification"."post-id" = ?';
+		$query = 'DELETE FROM "Notification" WHERE "Notification"."post-id" = :post_id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':post_id', $post_id);
 		$stmt->execute(array($post_id));	
 	}
 	
 	function hasUserLikedPost($user_id, $post_id) {
 		global $dbh;
 		
-		$query = 'SELECT * FROM "Likes" WHERE "Likes"."user-id" = ? AND "Likes"."post-id" = ?';
+		$query = 'SELECT * FROM "Likes" WHERE "Likes"."user-id" = :user_id AND "Likes"."post-id" = :post_id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':post_id', $post_id);
+		$stmt->bindParam(':user_id', $user_id);
 		$stmt->execute(array($user_id, $post_id));
 		$res = $stmt->fetch();
 		return ($res !== false);
@@ -435,8 +471,10 @@
 	function hasUserLikedComment($user_id, $comment_id) {
 		global $dbh;
 
-		$query = 'SELECT * FROM "Likes" WHERE "Likes"."user-id" = ? AND "Likes"."comment-id" = ?';
+		$query = 'SELECT * FROM "Likes" WHERE "Likes"."user-id" = :user_id AND "Likes"."comment-id" = :comment_id';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':comment_id', $comment_id);
+		$stmt->bindParam(':user_id', $user_id);
 		$stmt->execute(array($user_id, $comment_id));
 		$res = $stmt->fetch();
 		return ($res !== false);
