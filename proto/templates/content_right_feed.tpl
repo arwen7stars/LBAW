@@ -1,6 +1,6 @@
 {if isset($id_logged)}
 <div class="notifications">
-	<h3><a href="#">Notifications</a></h3>
+	<h3>Notifications</h3>
 	{if empty($notifications)}
 		<hr>
 		No pending notifications...
@@ -119,7 +119,7 @@
 </div>
 
         <div class="recent-news">
-          <h3><a href="#">Recent News </a></h3>
+          <h3>Recent News</h3>
           <p>{$news.body}</p>
           <div class="read-more"><a href="{$news.moreInfo}" target="_blank">Read more...</a></div>
         </div>

@@ -98,7 +98,7 @@ body {
 	font-size: 2rem;
 }
 
-.event-list, .group-list {
+.event-list, .group-list, .notification-list {
   /* remove bootstrap margin */
   margin: 0;
 }
@@ -324,7 +324,7 @@ color: #000;
   text-decoration: none;
 }
 
-.notifications hr {
+.content-left hr, .content-right {
 	margin: 0;
 }
 
