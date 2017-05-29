@@ -23,12 +23,14 @@ $stmtg = $dbh->prepare('
 SELECT "Group"."name" AS "group_name", "Group"."id" AS "group_id"
 FROM "Group"
 WHERE to_tsvector("Group"."name") @@ plainto_tsquery(:name)
+AND "Group"."public" = true
 LIMIT 5;');
 
 $stmte = $dbh->prepare('
 SELECT "Event"."name" AS "event_name", "Event"."id" AS "event_id"
 FROM "Event"
 WHERE to_tsvector("Event"."name") @@ plainto_tsquery(:name)
+AND "Event"."public" = true
 LIMIT 5;');
 
 $stmtu->bindParam(':name', $name);
