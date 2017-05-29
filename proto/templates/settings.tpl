@@ -102,21 +102,6 @@
 			<div class="separator"><span class="glyphicon glyphicon glyphicon-user"></span> Profile settings</div>
 
 			<div class="form-group info">
-				<label class="col-sm-3" for="exampleSelect1">Notifications</label>
-				<div class="col-sm-9">
-					<select class="form-control" id="exampleSelect1" name="notifications">
-						{if isset($notifications) && !empty($notifications)}
-						<option value="0" selected="selected">I want to receive notifications</option>
-						<option value="1">I don't want to receive notifications</option>
-						{else}
-						<option value="0">I want to receive notifications</option>
-						<option value="1" selected="selected">I don't want to receive notifications</option>
-						{/if}
-					</select>
-				</div>
-			</div>
-
-			<div class="form-group info">
 				<label class="col-sm-3" for="privacy">Profile privacy</label>
 				<div class="col-sm-9">
 					<select id="privacy" name="privacy" class="selectpicker" data-width="fit">

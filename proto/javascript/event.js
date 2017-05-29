@@ -28,4 +28,26 @@ $(document).ready(function () {
 		$('#confirm-leave-event').css('display', 'none');
 		$('#black').css('display', 'none');	
 	})
+	
+	$("#click-invite-event").on('click', function(e) {
+		$('#invite-event-box').css('display', 'block');
+		$('#black').css('display', 'block');	
+	})
+	
+	$('#close-invite-event').on('click', function(e) {
+		$('#invite-event-box').css('display', 'none');
+		$('#black').css('display', 'none');	
+	})
+	
+	$('.click-delete-user').on('click', function(e) {
+		var id = $(this).attr('id').split("-")[3];
+		$('#confirm-delete-user-' + id).css('display', 'block');
+		$('#black').css('display', 'block');	
+	})
+	
+	$('.close-delete-user').on('click', function(e) {
+		var id = $(this).attr('id').split("-")[2];
+		$('#confirm-delete-user-' + id).css('display', 'none');
+		$('#black').css('display', 'none');	
+	})
 });

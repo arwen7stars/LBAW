@@ -8,6 +8,13 @@
 	
 	$id_logged = $_SESSION['id'];
 	
+	$isAdmin = IsWebPageAdmin($id_logged);
+	
+	if ($isAdmin['admin'] === true)
+		$smarty->assign('isAdmin', '1');
+	else 
+		$smarty->assign('isAdmin', '0');
+	
 	$recentNews = getRecentNews();
 	
 	$all_events = listEvents($_SESSION['id']);
@@ -22,12 +29,17 @@
 	$posts = $stmt->fetchAll();
 	$character_name = getUserCharacterName($_SESSION['username']);
 	
-	$smarty->assign('news',$recentNews[0]);
+	$stmt = getNotifications($id_logged);
+	$notifications = $stmt->fetchAll();
 	
+	
+	$smarty->assign('news',$recentNews);
+
 	$smarty->assign('character_name', $character_name);
 	$smarty->assign('username_logged', $_SESSION['username']);
 	$smarty->assign('id_logged', $_SESSION['id']);
 	$smarty->assign('posts', $posts);
+	$smarty->assign('notifications', $notifications);
 	
 	$smarty->assign('groups', $groups);
 	$smarty->assign('events', $events);

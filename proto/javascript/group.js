@@ -28,4 +28,14 @@ $(document).ready(function () {
 		$('#confirm-leave-group').css('display', 'none');
 		$('#black').css('display', 'none');	
 	})
+	
+	$("#click-invite-group").on('click', function(e) {
+		$('#invite-group-box').css('display', 'block');
+		$('#black').css('display', 'block');	
+	})
+	
+	$('#close-invite-group').on('click', function(e) {
+		$('#invite-group-box').css('display', 'none');
+		$('#black').css('display', 'none');	
+	})
 });

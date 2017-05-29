@@ -7,18 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <title>{$eventinfo.name}</title>
+  <title>Event</title>
 
 	<!-- Bootstrap -->
 	<link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Default stylesheet -->
-	<link href="../../css/feed.css" rel="stylesheet">
-	<link href="../../css/event.css" rel="stylesheet">
 	<link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css">
     <!-- Default stylesheet -->
 	<link rel="stylesheet" href="../../lib/bootstrap-3.3.7/css/bootstrap-select.min.css">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-
+	<link href="../../css/feed.css" rel="stylesheet">
+	<link href="../../css/event.css" rel="stylesheet">
 </head>
 
 <body>
@@ -116,6 +115,26 @@
 					</div>
 				</div>
 
+				<div id="invite-event-box" class="edit_event_box">
+					<a href="javascript:void(0)" id="close-invite-event" class="close-edit pull-right">
+					<span class="close glyphicon glyphicon-remove"></span></a>
+					<h3>Select a person to invite</h3>
+					<hr>
+					{foreach $invites as $invite}
+						<figure class="imgContainer">
+							<a href="../users/profile_feed.php?user-id={$invite.id}"><img src="{$invite.url}" alt="{$guest.alt}" class="thumb-100px centered-and-cropped"></a>
+							<figcaption>
+								<a class="invite-name" id="invite-name-{$invite.id}" href="../users/profile_feed.php?user-id={$invite.id}">{$invite.name}</a>
+								<form class="form" action="../../actions/events/invite_people.php" method="post">
+									<input type="hidden" name="event-id" value="{$event_id}">
+									<input type="hidden" name="user-id" value="{$invite.id}">
+									<p><button type="submit" class="btn btn-default"><i class="fa fa-sign-in"></i> Invite</button></p>
+								</form>
+							</figcaption>
+						</figure>
+					{/foreach}
+				</div>
+
 				<!--Event Stuff-->
 				<div class="text-center event">
 					<div class="event-header">
@@ -124,14 +143,32 @@
 							<h2>{$eventinfo.name}</h2>
 						</div>
 					</div>
-					{if $admin}
-					<p class="user-options">
-						<button id="click-edit-event" class="event-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
-						<button id="click-delete-event" class="event-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
-					</p>
+					{if ($admin || $isWebPageAdmin === '1')}
+					<div class="user-options">
+						{if $admin}
+						<span class="pull-left"><b>Status:</b> Admin</span>
+						{else}
+						<span class="pull-left"><b>Status:</b> Normal user</span>
+						{/if}
+						<div class="clearfix">
+						<div class="admin-options dropdown pull-right">
+							<button class="admin-opt btn dropdown-toggle" type="button" data-toggle="dropdown">Admin options <span class="glyphicon glyphicon-chevron-down"></span></button>
+							<ul class="dropdown-menu">
+								<li id="click-edit-event"><a href="javascript:void(0)">Edit</a></li>
+								<li id="click-delete-event"><a href="javascript:void(0)">Delete</a></li>
+								<li id="click-invite-event"><a href="javascript:void(0)">Invite people</a></li>
+							</ul>
+						</div>
+						</div>
+					</div>
 					{else}
 					{if $belongs}
 					<p class="user-options">
+						{if $admin}
+						<span class="pull-left"><b>Status:</b> Admin</span>
+						{else}
+						<span class="pull-left"><b>Status:</b> Normal user</span>
+						{/if}
 						<button id="click-leave-event" class="event-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
 					</p>
 					{/if}
@@ -139,9 +176,40 @@
 
 					{if ($public && isset($username_logged)) || $belongs}
 					<div class="btn-group-lg info" role="group" aria-label="...">
-						<button type="button" class="btn btn-primary">Going</button>
-						<button type="button" class="btn btn-primary">Maybe</button>
-						<button type="button" class="btn btn-primary">Ignore</button>
+							{if $type == 'going'}
+						<form class="form" action="../../actions/events/update_state.php" method="post">
+							<input type="hidden" name="event-id" value="{$event_id}">
+							<button type="button" class="selected-opt btn btn-primary">Going <i class="fa fa-check"></i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="maybe">Maybe <i class="fa fa-times"></i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="ignore">Ignore <i class="fa fa-times"></i></button>
+						</form>
+							{else}
+							{if $type == 'maybe'}
+						<form class="form" action="../../actions/events/update_state.php" method="post">
+							<input type="hidden" name="event-id" value="{$event_id}">
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="going">Going <i class="fa fa-times"></i></button>
+							<button type="button" class="selected-opt btn btn-primary">Maybe <i class="fa fa-check"></i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="ignore">Ignore <i class="fa fa-times"></i></button>
+						</form>
+							{else}
+							{if $type == 'ignore'}
+						<form class="form" action="../../actions/events/update_state.php" method="post">
+							<input type="hidden" name="event-id" value="{$event_id}">
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="going">Going <i class="fa fa-times"></i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="maybe">Maybe <i class="fa fa-times"></i></button>
+							<button type="button" class="selected-opt btn btn-primary">Ignore <i class="fa fa-check"></i></button>
+						</form>
+							{else}
+						<form class="form" action="../../actions/events/join_event.php" method="post">
+							<input type="hidden" name="event-id" value="{$event_id}">
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="going">Going</i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="maybe">Maybe</i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="ignore">Ignore</i></button>
+						</form>
+							{/if}
+							{/if}
+							{/if}
+
 					</div>
 					{/if}
 
@@ -229,7 +297,7 @@
 					</div>
 
 					<div class="post-body">
-						{if $post.user == $id_logged}
+						{if ($post.user == $id_logged || $admin || $isWebPageAdmin === '1')}
 						<div class="dropdown pull-right">
 							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 							<ul class="dropdown-menu">
@@ -253,16 +321,9 @@
 						</div>
 					</div>
 
-					<div class="opt-group btn-group-justified hidden-sm hidden-xs">
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
-						<a href="../events/post_event_display.php?user-id={$post.user}&post-id={$post.postid}&event-id={$event_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
-					</div>
-
-					<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
-						<a href="../events/post_event_display.php?user-id={$post.user}&post-id={$post.postid}&event-id={$event_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
+					<div class="opt-group btn-group-justified">
+						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge">{$post.likes}</span></a>
+						<a href="../events/post_event_display.php?user-id={$post.user}&post-id={$post.postid}&event-id={$event_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
 					</div>
 
 					{if isset($username_logged)}
@@ -333,17 +394,39 @@
 					<hr>
 					<div class="guests-body">
 							{foreach $guests as $guest}
+
+							<div id="confirm-delete-user-{$guest.id}" class="delete_user_event edit_box">
+								<div class="modal-body">Are you sure you want to remove <a href="../users/profile_feed.php?user-id={$guest.id}">{$guest.name}</a> from this event?</div>
+								<div class="modal-footer button-container">
+									<form class="form" action="../../actions/events/delete_user.php" method="post">
+										<input type="hidden" name="event-id" value="{$event_id}">
+										<input type="hidden" name="user-id" value="{$guest.id}">
+										<button type="button" id="close-delete-{$guest.id}" class="close-delete-user btn">Cancel</button>
+										<input type="submit" class="btn btn-primary" value="Delete">
+									</form>
+								</div>
+							</div>
+
 							<figure class="imgContainer">
 								<a href="../users/profile_feed.php?user-id={$guest.id}"><img src="{$guest.url}" alt="{$guest.alt}" class="thumb-150px centered-and-cropped"></a>
+								<figcaption>
 								{if $guest.type == 'ignore'}
-								<figcaption><a href="../users/profile_feed.php?user-id={$guest.id}">IGNORE</a></figcaption>
+								<a href="../users/profile_feed.php?user-id={$guest.id}">IGNORE</a>
 								{else}
 								{if $guest.type == 'going'}
-								<figcaption><a href="../users/profile_feed.php?user-id={$guest.id}">GOING</a></figcaption>
+								<a href="../users/profile_feed.php?user-id={$guest.id}">GOING</a>
 								{else}
+<<<<<<< HEAD
 								<figcaption><a href="../users/profile_feed.php?user-id={$guest.id}">MAYBE</a></figcaption>
+=======
+								<a href="../users/profile_feed.php?user-id={$guest.id}">MAYBE</a>
 								{/if}
+>>>>>>> master
 								{/if}
+								{if ($admin && $belongs && ($id_logged != $guest.id)) || $isWebPageAdmin === '1'}
+								<p><a class="click-delete-user btn btn-default" id="click-delete-user-{$guest.id}"><span class="glyphicon glyphicon-remove"></span> Delete</a></p>
+								{/if}
+								</figcaption>
 							</figure>
 							{/foreach}
 					</div>
@@ -389,6 +472,7 @@
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/script.js"></script>
 	<script src="../../javascript/event.js"></script>
+	<script src="../../javascript/feed.js"></script>
   <script src="../../javascript/search-bar.js"></script>
 </body>
 

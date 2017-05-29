@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>{$groupinfo.name}</title>
+	<title>Group</title>
 
 	<!-- Bootstrap -->
     <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -93,6 +93,15 @@
 						</form>
 					</div>
 			</div>
+			
+			<div id="invite-group-box" class="edit_group_box">
+				<a href="javascript:void(0)" id="close-invite-group" class="close-edit pull-right">
+				<span class="close glyphicon glyphicon-remove"></span></a>
+				<h3>Invite people to group</h3>
+				<hr>
+
+
+			</div>
 
 
 			<div class="group-header">
@@ -101,16 +110,44 @@
 					<h2>{$groupinfo.name}</h2>
 				</div>
 			</div>
-			{if $admin}
-			<p class="user-options">
-				<button id="click-edit-group" class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
-				<button id="click-delete-group" class="group-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
-			</p>
+			{if ($admin || $isWebPageAdmin === '1')}
+			<div class="user-options">
+				{if $admin}
+				<span class="pull-left"><b>Status:</b> Admin</span>
+				{else}
+				<span class="pull-left"><b>Status:</b> Normal user</span>
+				{/if}
+
+				<div class="clearfix">
+				<div class="admin-options dropdown pull-right">
+					<button class="admin-opt btn dropdown-toggle" type="button" data-toggle="dropdown">Admin options <span class="glyphicon glyphicon-chevron-down"></span></button>
+					<ul class="dropdown-menu">
+						<li id="click-edit-group"><a href="javascript:void(0)">Edit</a></li>
+						<li id="click-delete-group"><a href="javascript:void(0)">Delete</a></li>
+						<li id="click-invite-group"><a href="javascript:void(0)">Invite people</a></li>
+					</ul>
+				</div>
+				</div>
+			</div>
 			{else}
 			{if $belongs}
 			<p class="user-options">
+				{if $admin}
+				<span class="pull-left"><b>Status:</b> Admin</span>
+				{else}
+				<span class="pull-left"><b>Status:</b> Normal user</span>
+				{/if}
 				<button id="click-leave-group" class="group-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
 			</p>
+			{else}
+			{if $public && isset($id_logged)}
+			<div class="user-options">
+				<form class="form" action="../../actions/groups/join_group.php" method="post">
+					<input type="hidden" name="group-id" value="{$group_id}">
+					<button type="submit" class="group-opt btn btn-default"><i class="fa fa-sign-in"></i> Join</button>
+				</form>
+			</div>
+			{/if}
 			{/if}
 			{/if}
 			<!--Group Stuff-->
@@ -194,7 +231,7 @@
 						</div>
 
 						<div class="post-body">
-								{if $post.user == $id_logged}
+								{if ($post.user == $id_logged || $admin || $isWebPageAdmin === '1')}
 								<div class="dropdown pull-right">
 									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 									<ul class="dropdown-menu">
@@ -219,16 +256,9 @@
 
 						</div>
 
-						<div class="opt-group btn-group-justified hidden-sm hidden-xs">
-							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
-							<a href="../groups/post_group_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
-							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
-						</div>
-
-						<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
-							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
-							<a href="../groups/post_group_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
-							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
+						<div class="opt-group btn-group-justified">
+							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge">{$post.likes}</span></a>
+							<a href="../groups/post_group_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
 						</div>
 
 						{if (isset($username_logged) && $belongs)}
@@ -337,6 +367,7 @@
 	<script src="../../lib/jquery-3.1.1.min.js"></script>
 	<script src="../../javascript/script.js"></script>
 	<script src="../../javascript/group.js"></script>
+	<script src="../../javascript/feed.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->

@@ -24,6 +24,10 @@
 	border-width: 1px;
 }
 
+.user-options form {
+	display: inline-block;
+}
+
 .group-header-img {
 	color: #8A2F2F;
 	text-align: center;
@@ -51,6 +55,10 @@
 	border-width: 1px;
 	margin-left: 2rem;
 	margin-right: 2rem;
+}
+
+.photos, .members {
+	text-align: center;
 }
 
 .centered-and-cropped {
@@ -102,6 +110,45 @@
 
 .group-opt:hover {
 	color: white;
+}
+
+.admin-opt {
+	background: linear-gradient(to bottom, #F0ABAB,#8A2F2F);
+	color: white;
+    border-color: #ccc;
+	border-width: 0.1rem;
+    cursor:pointer;
+    border-radius: 5px;
+	font-weight:bold;
+	width: 14rem;
+	border-color: #ccc;
+}
+
+.admin-opt:hover {
+	color: white;
+}
+
+.admin-opt:focus {
+	background-color: #8A2F2F;
+	color: white;
+}
+
+.edit_group_box {
+	display: none;
+	position: fixed;
+	padding: 16px;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	background-color: white;
+	z-index: 1002;
+	width: 50rem;
+	height: 400px;
+	overflow: auto;
+	top: 50%;
+	left: 50%;
+	margin-top: -200px; /* Negative half of height. */
+	margin-left: -250px; /* Negative half of width. */
 }
 
 .edit-group-opt {

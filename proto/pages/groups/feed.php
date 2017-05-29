@@ -7,6 +7,13 @@
 	include_once('../../database/events.php');
 	include_once('../../database/posts.php');
 	
+	$isWebPageAdmin = IsWebPageAdmin($_SESSION['id']);
+	
+	if ($isWebPageAdmin['admin'] === true)
+		$smarty->assign('isWebPageAdmin', '1');
+	else 
+		$smarty->assign('isWebPageAdmin', '0');
+	
 	$recentNews = getRecentNews();
 	
 	$id_logged = $_SESSION['id'];
@@ -21,7 +28,7 @@
 		$valid = false;
 	}
 	
-	$smarty->assign('news',$recentNews[0]);
+	$smarty->assign('news',$recentNews);
 	$smarty->assign('character_name', $character_name);
 	$smarty->assign('username_logged', $username_logged);
 	$smarty->assign('id_logged', $id_logged);
@@ -30,6 +37,8 @@
 		$page_not_found = '404 Error. Page not found.';
 		$smarty->assign('page_not_found', $page_not_found);
 	} else {
+		$stmt = getNotifications($id_logged);
+		$notifications = $stmt->fetchAll();
 		$belongs = isUserFromGroup($id_logged, $group);
 		$admin = isUserAdmin($id_logged, $group);
 		
@@ -66,6 +75,7 @@
 		$smarty->assign('posts', $posts);
 		$smarty->assign('members', $members);
 		$smarty->assign('all_images', $images);
+		$smarty->assign('notifications', $notifications);
 
 		$smarty->assign('public', $group_info['public']);
 		$smarty->assign('group_id', $group);

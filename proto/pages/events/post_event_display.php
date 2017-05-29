@@ -4,6 +4,13 @@
 	include_once($BASE_DIR . 'database/users.php');
 	include_once($BASE_DIR . 'database/posts.php');
 	include_once($BASE_DIR . 'database/events.php');
+	
+	$isWebPageAdmin = IsWebPageAdmin($_SESSION['id']);
+	
+	if ($isWebPageAdmin['admin'] === true)
+		$smarty->assign('isWebPageAdmin', '1');
+	else 
+		$smarty->assign('isWebPageAdmin', '0');
 
 	$id = $_GET['user-id'];					// profile id
 	$postid = $_GET['post-id'];				// post id
@@ -33,7 +40,9 @@
 	
 	if(isPostFromUser($postid, $id)){
 		if(isPostFromEvent($postid, $_GET['event-id'])){
-			$belongs = isUserFromEvent($_SESSION['id'], $_GET['event-id']);
+			$res = getUserEvent($_SESSION['id'], $_GET['event-id']);
+			$belongs = ($res !== false);
+			
 			$next_img = getNextImageEvent($_GET['event-id'], $post['imgid']);
 			$smarty->assign('nextimg', $next_img);
 			

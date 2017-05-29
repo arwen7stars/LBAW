@@ -37,11 +37,11 @@
 		return $stmt->fetch();
 	}
 	
-	function addUserEvent($user_id, $event_id, $admin) {
+	function addUserEvent($user_id, $event_id, $admin, $participation) {
         global $dbh;
-		$query = 'INSERT INTO "User-Event" ("user-id", "event-id","admin") VAlUES (? , ?, ?)';
+		$query = 'INSERT INTO "User-Event" ("user-id", "event-id","admin", "type") VAlUES (? , ?, ?, ?)';
 		$stmt = $dbh->prepare($query);
-		$stmt->execute(array($user_id, $event_id, $admin));
+		$stmt->execute(array($user_id, $event_id, $admin, $participation));
 	}
 	
 	function getEventPosts($event_id)
@@ -50,7 +50,7 @@
 		$query = 'SELECT "Post"."id" AS postid, "Post"."body" AS body, "Post"."public" as public, "Post"."date" AS date, "Post"."user-id" as user,
 		"Post-Images"."id" as imgid, "Post-Images"."url" AS url, "Post-Images"."description" AS description,
 		"Character"."name" AS charname, "Image"."url" AS "charurl",
-		COUNT("Likes"."id") AS "likes"
+		"Likes-Comments"."likes", "Comments-Likes"."comments" AS "comments"
 		FROM "User", "Character-Image", "Character", "Image", "Post"		
 		LEFT JOIN (
 		  SELECT "Image"."id", "Image"."url", "Image"."description", "Image"."post-id"
@@ -58,13 +58,36 @@
 		  WHERE "Image"."post-id" IS NOT NULL
 		) AS "Post-Images"
 		ON "Post"."id" = "Post-Images"."post-id"
-		LEFT JOIN "Likes" ON "Post"."id" = "Likes"."post-id" AND "Likes"."comment-id" IS NULL
+		LEFT JOIN (
+			SELECT "Likes"."post-id", COUNT("Likes"."id") AS "likes", "Comments"."comments" FROM "Likes" 
+			LEFT JOIN
+			(
+				SELECT COUNT("Comment"."id") AS "comments", "Comment"."post-id" AS id
+				FROM "Comment"
+				GROUP BY "Comment"."post-id"
+			) AS "Comments"
+			ON "Comments"."id" = "Likes"."post-id"
+			GROUP BY "Comments"."comments", "Likes"."post-id"
+		) AS "Likes-Comments"
+		ON "Post"."id" = "Likes-Comments"."post-id"
+		LEFT JOIN (
+		SELECT "Comment"."post-id", COUNT("Comment"."id") AS "comments", "NoLikes"."likes", "NoLikes"."postid" FROM "Comment"
+			LEFT JOIN
+			(
+				SELECT COUNT("Likes"."id") AS "likes", "Likes"."post-id" AS postid
+				FROM "Likes"
+				GROUP BY "Likes"."post-id"
+			) AS "NoLikes"
+			ON "NoLikes"."postid" = "Comment"."post-id"
+			GROUP BY "Comment"."post-id", "NoLikes"."likes", "NoLikes"."postid"
+		) AS "Comments-Likes"
+		ON "Post"."id" = "Comments-Likes"."post-id"
 		WHERE "Post"."event-id" = :event_id
 			AND "User".id = "Post"."user-id"
 			AND "Character"."id" = "User"."character-id"
 			AND "Character-Image"."character-id" = "Character"."id"
 			AND "Character-Image"."image-id" = "Image"."id" AND "Post"."group-id" IS NULL
-		GROUP BY "Post"."id", "Post-Images"."id", "Post-Images"."url", "Post-Images"."description", "Character"."name", "Image"."url"
+		GROUP BY "Post"."id", "Post-Images"."id", "Post-Images"."url", "Post-Images"."description", "Character"."name", "Image"."url", "Likes-Comments"."likes", "Comments-Likes"."comments"
 		ORDER BY date DESC, "Post"."id" DESC';
 		$stmt = $dbh->prepare($query);
 		$stmt->bindParam(':event_id', $event_id);
@@ -135,7 +158,7 @@
 		return ($res !== false);
 	}
 	
-	function isUserFromEvent($user_id, $event_id) {
+	function getUserEvent($user_id, $event_id) {
 		global $dbh;
         $stmt = $dbh->prepare('SELECT * FROM "User-Event", "Event"
 		WHERE "User-Event"."event-id" = "Event"."id" AND "Event"."id" = :event AND "User-Event"."user-id" = :user');
@@ -144,7 +167,7 @@
 		$stmt->execute(array($event_id, $user_id));
 		$res = $stmt->fetch();
 		
-		return ($res !== false);		
+		return $res;		
 	}
 	
 	function getEventLocation($event_id) {
@@ -170,7 +193,7 @@
 	
 	function getEventGuests($event_id) {
 		global $dbh;
-        $stmt = $dbh->prepare('SELECT "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id, "User-Event"."admin", "User-Event"."type"
+        $stmt = $dbh->prepare('SELECT "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id, "User-Event"."admin", "User-Event"."type", "Character"."name"
 		FROM "Event", "User-Event", "Character-Image", "Character", "Image", "User"
 		WHERE "Event"."id" = :event AND "Event"."id" = "User-Event"."event-id" AND "User"."id" = "User-Event"."user-id" AND
 		"Character"."id" = "User"."character-id" AND "Character-Image"."character-id" = "Character"."id"
@@ -254,4 +277,63 @@
 		
 		return ($res !== false);
 	}
+	
+	function deleteEventNotification($user_id, $event_id) {
+		global $dbh;
+		
+		$stmt = $dbh->prepare('DELETE FROM "Notification" WHERE "Notification"."user-id" = :user AND "Notification"."event-id" = :event');
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($user_id, $event_id));
+	}
+	
+	function deleteEventInvitation($user_id, $event_id) {
+		global $dbh;
+		
+		$stmt = $dbh->prepare('DELETE FROM "Event-Invite"
+		WHERE "Event-Invite"."user-id" = :user AND "Event-Invite"."event-id" = :event');
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($user_id, $event_id));
+	}
+	
+	function updateUserEvent($user_id, $event_id, $type) {
+		global $dbh;
+		$stmt = $dbh->prepare('UPDATE "User-Event" SET "type" = :type WHERE "User-Event"."user-id" = :user AND "User-Event"."event-id" = :event');
+		$stmt->bindParam(':type', $type);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':event', $event_id);		
+		$stmt->execute(array($type, $user_id, $event_id));		
+	}
+	
+	function getPeopleToInvite($event_id) {
+		global $dbh;
+		$query = 'SELECT "Character"."name" AS name, "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id
+		FROM "Character-Image", "Character", "Image", "User" WHERE "Character"."id" = "User"."character-id"
+			AND "Character-Image"."character-id" = "Character"."id"
+			AND "Character-Image"."image-id" = "Image"."id" AND "User"."id" NOT IN (
+				SELECT "User"."id" AS id
+				FROM "Event", "User-Event", "User"
+				WHERE "Event"."id" = :event AND "Event"."id" = "User-Event"."event-id" AND "User"."id" = "User-Event"."user-id"
+			) AND "User"."id" NOT IN (
+				SELECT "Event-Invite"."user-id" FROM "Event", "Event-Invite" WHERE "Event-Invite"."event-id" = "Event"."id" AND "Event"."id" = :event
+			) ORDER BY "Character"."name"';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($event_id));
+		
+		return $stmt;
+	}
+	
+	function addEventInvite($admin_id, $user_id, $event_id) {
+		global $dbh;
+		$query = 'INSERT INTO "Event-Invite" ("event-admin-id", "user-id", "event-id") VALUES (:admin, :user, :event)';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':admin', $admin_id);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->execute(array($admin_id, $user_id, $event_id));
+			
+	}
+
 ?>

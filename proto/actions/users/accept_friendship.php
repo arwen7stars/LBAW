@@ -6,6 +6,7 @@
 	$id1 = $_POST['user1-id'];
 	$id2 = $_SESSION['id'];
 	
+	deleteFriendshipNotification($id1, $id2);
 	acceptFriendship($id1, $id2);
 	
 	header('Location: ' . $_SERVER['HTTP_REFERER']);

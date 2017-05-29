@@ -18,10 +18,11 @@
 			$public = '0';
 		
 		$user_id = $_SESSION['id'];
+		$participation = $_POST['participation'];
 		$admin = 't';
 		
 		$event_id = addEvent($_POST['event_name'], $_POST['event_start'], $_POST['event_end'], $public, $_POST['event_description'], $_POST['location']);
-		addUserEvent($user_id, $event_id, $admin);
+		addUserEvent($user_id, $event_id, $admin, $participation);
 		
 		header('Location: ../../pages/users/feed.php');
 	}

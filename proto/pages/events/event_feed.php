@@ -7,6 +7,14 @@
 	include_once('../../database/posts.php');
 	include_once('../../database/users.php');
 	
+	$isWebPageAdmin = IsWebPageAdmin($_SESSION['id']);
+	
+	if ($isWebPageAdmin['admin'] === true)
+		$smarty->assign('isWebPageAdmin', '1');
+	else 
+		$smarty->assign('isWebPageAdmin', '0');
+	
+	
 	$recentNews = getRecentNews();
 	
 	$id_logged = $_SESSION['id'];
@@ -30,7 +38,7 @@
 		$valid = false;
 	}
 	
-	$smarty->assign('news',$recentNews[0]);
+	$smarty->assign('news',$recentNews);
 	$smarty->assign('username_logged', $_SESSION['username']);
 	$smarty->assign('id_logged', $_SESSION['id']);
 	$smarty->assign('character_name', $character_name);
@@ -39,16 +47,21 @@
 		$page_not_found = '404 Error. Page not found.';
 		$smarty->assign('page_not_found', $page_not_found);
 	} else {
-
+		$stmt = getNotifications($id_logged);
+		$notifications = $stmt->fetchAll();
 		$posts = getEventPosts($event_id);
 		$eventinfo = getEventInfo($event_id);
 		$all_images = getEventImages($event_id);
 		$location = getEventLocation($event_id);
-		$belongs = isUserFromEvent($id_logged, $event_id);
+		$res = getUserEvent($id_logged, $event_id);
+		$belongs = ($res !== false);
+		
 		$admin = isUserEventAdmin($id_logged, $event_id);
 		$now = date('Y-m-d', time());
 		$guests = getEventGuests($event_id);
-
+		
+		$stmt = getPeopleToInvite($event_id);
+		$invite = $stmt->fetchAll();
 		
 		if($eventinfo['public']){
 			$public = 'Public';
@@ -70,6 +83,9 @@
 		$smarty->assign('guests', $guests);
 		$smarty->assign('locations', $locations);
 		$smarty->assign('now', $now);
+		$smarty->assign('notifications', $notifications);
+		$smarty->assign('type', $res['type']);
+		$smarty->assign('invites', $invite);
 		
 		$smarty->assign('groups', $groups);
 		$smarty->assign('events', $events);

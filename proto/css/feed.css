@@ -98,7 +98,7 @@ body {
 	font-size: 2rem;
 }
 
-.event-list, .group-list {
+.event-list, .group-list, .notification-list {
   /* remove bootstrap margin */
   margin: 0;
 }
@@ -298,50 +298,74 @@ color: #000;
 }
 
 .notifications {
-  border: 1px solid black;
-  flex: 1 1 content;
-  margin: 10px 15px;
-  padding: 5px;
-  overflow-y: auto;
-  min-height: 100px;
+	flex: 1 1 content;
+	margin: 10px 15px;
+	padding: 5px;
+	overflow-y: hidden;
+	background-color: white;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	text-indent: 0.5rem;
+	line-height: 160%;
+	margin: 10px 15px;
+	padding: 5px;
+	overflow-y: auto;
+	min-height: 100px;
+	max-height: 325px;
 }
 
-.notification-list {
-  /* remove bootstrap margin */
-  margin: 0;
+.notification-content {
+	text-align: center;
 }
 
-.notification-list li {
-  background-color: #e8e8e8;
-  border: 1px solid black;
-  border-radius: 2px;
-  margin: 10px auto;
+.content-left hr, .content-right hr {
+	margin: 0.5rem;
 }
 
-.notification-list li > a {
-  display: block;
-  text-decoration: none;
+.notification-list .friendship, .notification-list .event-invitation, .notification-list .group-invitation {
+	color: #8a2f2f;
+	width: 15rem;
+}
+
+.notification-list .small-txt {
+	font-size: 1rem;
+	text-align: right;
+	margin-bottom: 1rem;
+}
+
+.news-body {
+	border: 1px solid #ccc;
+	margin-bottom: 1rem;
+	padding: 0.5rem;
+}
+
+.news-text {
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow:hidden;
 }
 
 .recent-news {
-  border: 1px solid black;
-  flex: none;
-  margin: 10px 15px;
-  padding: 5px;
-  position: relative;
+	flex: 1 1 content;
+	margin: 10px 15px;
+	padding: 5px;
+	overflow-y: hidden;
+	background-color: white;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	text-indent: 0.5rem;
+	line-height: 160%;
+	margin: 10px 15px;
+	padding: 5px;
+	overflow-y: auto;
+	min-height: 100px;
+	max-height: 200px;
 }
 
 .read-more {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
-footer {
-  border-top: 1px solid black;
-  text-align: center;
-  /* const size */
-  flex: none;
+  text-align: right;
 }
 
 /*
@@ -362,8 +386,8 @@ footer {
 	height: 3.2rem;
 }
 
-.button-container input{
-	display: inline;
+.button-container form {
+	display: inline-block;
 }
 
 .btn-wrap {
@@ -399,4 +423,37 @@ footer {
 .events-content, .groups-content {
 	max-height: 150px;
 	overflow: auto;
+}
+
+.event-info dl {
+	border: 1px solid #ccc;
+	padding: 0.5rem;
+	margin: 0rem;
+}
+
+.friend-invite h3 {
+	text-align: center;
+}
+
+.friend-invite {
+	background-color: white;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	flex: none;
+	margin: 10px 15px;
+	padding: 5px;
+	position: relative;
+	height:125px;
+}
+
+.invite-text {
+	width: 94%;
+	padding-left: 3px;
+	margin-left:8px;
+}
+
+#result {
+	color: red;
+	margin-left:8px;
 }

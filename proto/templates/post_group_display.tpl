@@ -7,7 +7,7 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  	<title>{$group.name} - {$post.charname}'s Post</title>
+  	<title>Group Post</title>
 
     <!-- Bootstrap -->
     <link href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -109,7 +109,7 @@
 					</div>
 
 					<div class="post-body">
-						{if $post.user == $id_logged}
+						{if $post.user == $id_logged || $isWebPageAdmin === '1'}
 						<div class="dropdown pull-right">
 							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 							<ul class="dropdown-menu">
@@ -133,17 +133,10 @@
 							{/if}
 						</div>
 					</div>
-
-					<div class="opt-group btn-group-justified hidden-sm hidden-xs">
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like {$post.likes}</a>
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment 99</a>
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> Share 99</a>
-					</div>
-
-					<div class="opt-group btn-group-justified hidden-lg hidden-md visible-xs visible-sm">
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> {$post.likes}</a>
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> 99</a>
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-share"></span> 99</a>
+				
+					<div class="opt-group btn-group-justified">
+						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge">{$post.likes}</span></a>
+						<a href="post_group_display.php?user-id={$id}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
 					</div>
 
 					{if ( (isset($username_logged) && $belongs) || ($id == $id_logged))}
