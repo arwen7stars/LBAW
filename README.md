@@ -6,7 +6,7 @@
 ## In development
 
 * Search-bar with Ajax (US001)
-* Invite people to join groups/events
+* Invite people to join groups
 
 ## Important things to delevop if we have time
 
@@ -73,7 +73,7 @@
 
 | Identifier | Name| Priority | Description |
 | --- | --- | --- | --- |
-| US401 | Invite | Medium | As a event admin, I want to invite people to join the event, so that they participate in it |
+| ~~US401~~ | Invite | Medium | As a event admin, I want to invite people to join the event, so that they participate in it |
 | ~~US402~~ | Remove | Medium | As a event admin, I want to remove people from the event, so that they no longer participate in it |
 | US403 | Edit| Low | As a event admin, I want to edit the event's profile, posts and comments, so that they stay updated |
 | US404 | Delete | Low | As a event admin, I want to delete the event's profile, posts and comments, so that no one sees them |
