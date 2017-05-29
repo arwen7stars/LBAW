@@ -352,13 +352,6 @@ color: #000;
   text-align: right;
 }
 
-footer {
-  border-top: 1px solid black;
-  text-align: center;
-  /* const size */
-  flex: none;
-}
-
 /*
 	Write post personalization
 */

@@ -287,14 +287,13 @@
 		$stmt->execute(array($user_id, $event_id));
 	}
 	
-	function deleteEventInvitation($admin_id, $user_id, $event_id) {
+	function deleteEventInvitation($user_id, $event_id) {
 		global $dbh;
 		
 		$stmt = $dbh->prepare('DELETE FROM "Event-Invite"
-		WHERE "Event-Invite"."event-admin-id" = :admin AND "Event-Invite"."user-id" = :user AND "Event-Invite"."event-id" = :event');
-		$stmt->bindParam(':admin', $admin_id);
+		WHERE "Event-Invite"."user-id" = :user AND "Event-Invite"."event-id" = :event');
 		$stmt->bindParam(':user', $user_id);
 		$stmt->bindParam(':event', $event_id);
-		$stmt->execute(array($admin_id, $user_id, $event_id));
+		$stmt->execute(array($user_id, $event_id));
 	}
 ?>

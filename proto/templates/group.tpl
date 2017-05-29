@@ -330,6 +330,7 @@
 	<script src="../../lib/jquery-3.1.1.min.js"></script>
 	<script src="../../javascript/script.js"></script>
 	<script src="../../javascript/group.js"></script>
+	<script src="../../javascript/feed.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
