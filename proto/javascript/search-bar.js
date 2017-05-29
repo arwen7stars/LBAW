@@ -28,7 +28,7 @@ var searchHandler = function(event) {
 
       for (var i = 0; i < data.length; i++) {
         console.log(data[i]);
-        var li = "<li><a href=../users/profile_feed.php?user-id=" + data[i].user_id + "><img src=\"" + data[i].char_img_url + "\" alt = \" character picture\"/>" + data[i].char_name + "</a></li>";
+        var li = "<li class=\"search_res\"><a href=../users/profile_feed.php?user-id=" + data[i].user_id + "><img src=\"" + data[i].char_img_url + "\" alt = \" character picture\" class = \" centered-and-cropped thumb-64px\"/> " + data[i].char_name + "</a></li>";
         searchResults.append(li);
       }
 

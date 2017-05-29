@@ -59,3 +59,36 @@ html {
 	color: #7E472D;
 	text-shadow: 2px 2px #ccc;
 }
+
+.search-results-wrap {
+	position: absolute;
+	z-index:100;
+	width: 96.5%;
+}
+
+.search-results-wrap li{
+	margin: 0;
+	padding: 0;
+}
+
+.search_res {
+	background-color:rgba(255, 255, 255, 0.95);
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	color: #7E472D;
+}
+
+.search_res a {
+	text-shadow: 1px 1px #ccc !important;
+}
+
+.form-group {
+	margin-bottom: 0px !important;
+}
+
+@media (max-width: 768px) {
+	.search-results-wrap {
+		width: 91% !important;
+	}
+}

@@ -26,6 +26,10 @@ footer {
 	height: 2rem;
 }
 
+.search-bar-wrap {
+	overflow: hidden;
+}
+
 .navbar-search-bar {
   margin-top: 8px;
   margin-bottom: -8px;
@@ -75,3 +79,21 @@ a:hover {
 	text-align: center;
 	padding: 2rem;
 }
+
+.centered-and-cropped {
+	object-fit: cover;
+}
+
+.thumb-64px {
+  width: 64px;
+  height: 64px;
+  margin: 0.1rem 0rem;
+}
+
+@media (max-width: 768px) {
+	.search-results-wrap {
+		width: 100% !important;
+		left: 0;
+	}
+}
+
