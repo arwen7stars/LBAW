@@ -256,18 +256,53 @@
 		$stmt->execute(array($user_id, $group_id));
 	}
 	
-	function updateGroupInvite($user_id, $ignored, $accepted, $group_id) {
+	function deleteGroupInvitation($user_id, $group_id) {
 		global $dbh;
 		
-		$query = 'UPDATE "Group-Invite"
-		SET("ignored", "accepted") = (:ignored, :accepted)
+		$query = 'DELETE FROM "Group-Invite"
 		WHERE "Group-Invite"."user-id" = :user AND "Group-Invite"."group-id" = :group';
 		$stmt = $dbh->prepare($query);
-		$stmt->bindParam(':ignored', $ignored);
-		$stmt->bindParam(':accepted', $accepted);
 		$stmt->bindParam(':user', $user_id);
 		$stmt->bindParam(':group', $group_id);
 		$stmt = $dbh->prepare($query);
-		$stmt->execute(array($ignored, $accepted, $user_id, $group_id));
+		$stmt->execute(array($user_id, $group_id));
+	}
+	
+	function getPeopleToInviteGroups($group_id) {
+		global $dbh;
+		
+		$query = 'SELECT "Character"."name" AS name, "Image"."url" AS url, "Image"."description" AS alt, "User"."id" AS id
+		FROM "Character-Image", "Character", "Image", "User" WHERE "Character"."id" = "User"."character-id"
+			AND "Character-Image"."character-id" = "Character"."id"
+			AND "Character-Image"."image-id" = "Image"."id" AND "User"."id" NOT IN (
+				SELECT "User"."id" AS id
+				FROM "Group", "User-Group", "User"
+				WHERE "Group"."id" = :group AND "Group"."id" = "User-Group"."group-id" AND "User"."id" = "User-Group"."user-id"
+			) AND "User"."id" NOT IN (
+				SELECT "Group-Invite"."user-id" FROM "Group", "Group-Invite" WHERE "Group-Invite"."group-id" = "Group"."id" AND "Group"."id" = :group
+			) ORDER BY "Character"."name"';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':group', $group_id);
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($group_id));
+		
+		return $stmt;
+	}
+	
+	function addGroupInvite($admin_id, $user_id, $group_id) {
+		global $dbh;
+		
+		$ignored = 'f';
+		$accepted = 'f';
+		
+		$query = 'INSERT INTO "Group-Invite" ("group-admin-id", "user-id", "group-id", "accepted", "ignored") VALUES (:admin, :user, :group, :accepted, :ignored)';
+		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':admin', $admin_id);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':group', $group_id);
+		$stmt->bindParam(':accepted', $accepted);
+		$stmt->bindParam(':ignored', $ignored);
+		$stmt->execute(array($admin_id, $user_id, $group_id, $accepted, $ignored));
+			
 	}
 ?>

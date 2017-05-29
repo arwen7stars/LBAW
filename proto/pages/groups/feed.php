@@ -41,6 +41,8 @@
 		$notifications = $stmt->fetchAll();
 		$belongs = isUserFromGroup($id_logged, $group);
 		$admin = isUserAdmin($id_logged, $group);
+		$stmt = getPeopleToInviteGroups($group);
+		$invites = $stmt->fetchAll();
 		
 		$stmt = getGroupPosts($group);
 		$posts = $stmt->fetchAll();
@@ -76,6 +78,7 @@
 		$smarty->assign('members', $members);
 		$smarty->assign('all_images', $images);
 		$smarty->assign('notifications', $notifications);
+		$smarty->assign('invites', $invites);
 
 		$smarty->assign('public', $group_info['public']);
 		$smarty->assign('group_id', $group);

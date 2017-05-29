@@ -22,13 +22,13 @@
 </head>
 
 <body>
-
-<div class="body-flex">
+	
+<div class="body-flex">	 
 	 {include file='header.tpl'}
-
+	
 	{if empty($page_not_found)}
 	<div id="black" class="black_overlay"></div>
-
+	
 	<!-- Main Content -->
 	<div class="content">
 
@@ -46,12 +46,12 @@
 				<hr>
 				<form class="form" action="../../actions/groups/edit.php" method="post">
 					<input type="hidden" name="group-id" value="{$group_id}">
-
+						
 					<div class="form-group">
 						<label for="name">Name</label>
 						<input type="text" class="form-control" id="name" name="name" maxlength="20" value="{$groupinfo.name}" required>
 					</div>
-					<div class="form-group">
+					<div class="form-group">			
 						<label for="privacy">Privacy</label>
 						<select class="selectpicker form-control" id="privacy" name="privacy">
 							{if $groupinfo.public}
@@ -63,7 +63,7 @@
 							{/if}
 						</select>
 					</div>
-
+					
 					<div class="form-group">
 						<label for="about-txt">About</label>
 						<textarea name="about" id="about-txt" class="form-control" rows="3">{$groupinfo.about}</textarea>
@@ -71,7 +71,7 @@
 					<button class="edit-group-opt pull-right" type="submit">Update group</button>
 				</form>
 			</div>
-
+			
 			<div id="confirm-delete-group" class="edit_box">
 				<div class="modal-body">Are you sure you want to delete this group?</div>
 					<div class="modal-footer button-container">
@@ -82,7 +82,7 @@
 						</form>
 					</div>
 			</div>
-
+			
 			<div id="confirm-leave-group" class="edit_box">
 				<div class="modal-body">Are you sure you want to leave this group?</div>
 					<div class="modal-footer button-container">
@@ -97,13 +97,25 @@
 			<div id="invite-group-box" class="edit_group_box">
 				<a href="javascript:void(0)" id="close-invite-group" class="close-edit pull-right">
 				<span class="close glyphicon glyphicon-remove"></span></a>
-				<h3>Invite people to group</h3>
+				<h3>Select a person to invite</h3>
 				<hr>
-
-
+				{foreach $invites as $invite}
+					<figure class="imgContainer">
+						<a href="../users/profile_feed.php?user-id={$invite.id}"><img src="{$invite.url}" alt="{$guest.alt}" class="thumb-100px centered-and-cropped"></a>
+						<figcaption>
+							<a class="invite-name" id="invite-name-{$invite.id}" href="../users/profile_feed.php?user-id={$invite.id}">{$invite.name}</a>
+							<form class="form" action="../../actions/groups/invite_people.php" method="post">
+								<input type="hidden" name="group-id" value="{$group_id}">
+								<input type="hidden" name="user-id" value="{$invite.id}">
+								<p><button type="submit" class="btn btn-default"><i class="fa fa-sign-in"></i> Invite</button></p>
+							</form>
+						</figcaption>
+					</figure>
+				{/foreach}				
+				
 			</div>
-
-
+			
+			
 			<div class="group-header">
 				<div class="group-header-img">
 					<i class="fa fa-group" id="group-image"></i>
@@ -117,7 +129,7 @@
 				{else}
 				<span class="pull-left"><b>Status:</b> Normal user</span>
 				{/if}
-
+				
 				<div class="clearfix">
 				<div class="admin-options dropdown pull-right">
 					<button class="admin-opt btn dropdown-toggle" type="button" data-toggle="dropdown">Admin options <span class="glyphicon glyphicon-chevron-down"></span></button>
@@ -150,7 +162,7 @@
 			{/if}
 			{/if}
 			{/if}
-			<!--Group Stuff-->
+			<!--Group Stuff-->  	
 			<ul class="group_bar nav nav-tabs nav-justified">
 				<li class="active"><a data-toggle="tab" href="#home">Feed</a></li>
 				<li><a data-toggle="tab" href="#about">About</a></li>
@@ -159,7 +171,7 @@
 				<li><a data-toggle="tab" href="#photos">Photos</a></li>
 				{/if}
 			</ul>
-
+		
 			<div class="tab-content">
 				{if $public || $belongs}
 				<div id="home" class="tab-pane fade in active">
@@ -189,18 +201,18 @@
 
 					{foreach $posts as $post}
 					<div class="post_space"><div class="post">
-
+					
 						<div id="edit-{$post.postid}" class="edit_box">
 							<a href="javascript:void(0)" id="close-edit-{$post.postid}" class="close-edit pull-right">
 							<span class="close glyphicon glyphicon-remove"></span></a>
-
+							
 							<div class="poster">
 								<p><a href="../users/profile_feed.php?user-id={$id_logged}"><img src="{$post.charurl}" alt="Profile picture of {$post.charname}" class="centered-and-cropped thumb-32px">
 									<span>{$post.charname}</span></a>
 									<br><span class="post-date">{$post.date|date_format}</span>
 								</p>
 							</div>
-
+							
 							<form class="form" action="../../actions/posts/edit_post.php" method="post">
 								<div class="wrapper">
 									<input type="hidden" name="user-id" value="{$id_logged}">
@@ -216,7 +228,7 @@
 								</div>
 							</form>
 						</div>
-
+						
 						<div id="confirm-{$post.postid}" class="edit_box">
 							<div class="modal-body">Are you sure you want to delete this post?</div>
 								<div class="modal-footer button-container">
@@ -255,12 +267,12 @@
 							</div>
 
 						</div>
-
+						
 						<div class="opt-group btn-group-justified">
 							<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge">{$post.likes}</span></a>
 							<a href="../groups/post_group_display.php?user-id={$post.user}&post-id={$post.postid}&group-id={$group_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
 						</div>
-
+						
 						{if (isset($username_logged) && $belongs)}
 						<div class="make-comment-wrap">
 							<form class="form" action="../../actions/posts/comment.php" method="post">
@@ -283,9 +295,9 @@
 				<div id="welcome-message"><h2>This group is private.</h2>
 				<h3>You need to be a member of this group to see its posts.</h3></div>
 				</div>
-
+				
 				{/if}
-
+			  
 				<div id="about" class="tab-pane fade">
 					<div class="about">
 						<div class="about-header">
@@ -297,12 +309,12 @@
 								<dt class="col-sm-4">Name</dt>
 								<dd class="col-sm-8">{$groupinfo.name}</dd>
 							</dl>
-
+							
 							<dl>
 								<dt class="col-sm-4">Privacy</dt>
 								<dd class="col-sm-8">{$privacy}</dd>
 							</dl>
-
+							
 							{if !empty($groupinfo.about)}
 							<dl>
 								<dt class="col-sm-4">Additional information</dt>
@@ -312,7 +324,7 @@
 						</div>
 					</div>
 				</div>
-
+				
 				<div id="members" class="tab-pane fade">
 					<div class="members">
 						<h2>Members</h2>
@@ -361,7 +373,7 @@
 	{/if}
 	{include file='footer.tpl'}
 	</div>
-
+	
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="../../lib/jquery-3.1.1.min.js"></script>
@@ -373,6 +385,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/search-bar.js"></script>
+
 </body>
 
 </html>

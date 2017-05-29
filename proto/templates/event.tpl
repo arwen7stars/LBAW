@@ -21,9 +21,9 @@
 </head>
 
 <body>
-	<div class="body-flex">
+	<div class="body-flex">	
 	{include file='header.tpl'}
-
+	
 		{if empty($page_not_found)}
 		<!-- Main Content -->
 		<div class="content">
@@ -41,15 +41,15 @@
 					<span class="close glyphicon glyphicon-remove"></span></a>
 					<h3>Edit event</h3>
 					<hr>
-
+					
 					<form class="form" action="../../actions/events/edit.php" method="post">
 						<input type="hidden" name="event-id" value="{$event_id}">
-
+							
 						<div class="form-group">
 							<label for="name">Name</label>
 							<input type="text" class="form-control" id="name" name="name" maxlength="20" value="{$eventinfo.name}" required>
 						</div>
-						<div class="form-group">
+						<div class="form-group">			
 							<label for="privacy">Privacy</label>
 							<select class="selectpicker form-control" id="privacy" name="privacy">
 								{if $eventinfo.public}
@@ -61,17 +61,17 @@
 								{/if}
 							</select>
 						</div>
-
+						
 						<div class="form-group">
 							<label for="event_start">Start Date</label>
 							<input type="date" class="form-control" id="event_start" name="event_start" value="{$eventinfo.start}" min="{$now}" required>
 						</div>
-
+						
 						<div class="form-group">
 							<label for="event_end">End Date</label>
 							<input type="date" class="form-control" id="event_end" name="event_end" value="{$eventinfo.finish}" min="{$now}" required>
 						</div>
-
+						
 						<div class="form-group">
 							<label for="location">Choose location</label>
 							<select class="selectpicker form-control" id="location" name="location">
@@ -84,7 +84,7 @@
 								{/foreach}
 							</select>
 						</div>
-
+						
 						<div class="form-group">
 							<label for="about-txt">About</label>
 							<textarea name="about" id="about-txt" class="form-control" rows="3">{$eventinfo.about}</textarea>
@@ -92,7 +92,7 @@
 						<button class="edit-event-opt pull-right" type="submit">Update event</button>
 					</form>
 				</div>
-
+				
 				<div id="confirm-delete-event" class="edit_box">
 					<div class="modal-body">Are you sure you want to delete this event?</div>
 					<div class="modal-footer button-container">
@@ -103,7 +103,7 @@
 						</form>
 					</div>
 				</div>
-
+				
 				<div id="confirm-leave-event" class="edit_box">
 					<div class="modal-body">Are you sure you want to leave this event?</div>
 					<div class="modal-footer button-container">
@@ -114,7 +114,7 @@
 						</form>
 					</div>
 				</div>
-
+				
 				<div id="invite-event-box" class="edit_event_box">
 					<a href="javascript:void(0)" id="close-invite-event" class="close-edit pull-right">
 					<span class="close glyphicon glyphicon-remove"></span></a>
@@ -134,8 +134,8 @@
 						</figure>
 					{/foreach}
 				</div>
-
-				<!--Event Stuff-->
+				
+				<!--Event Stuff-->  	
 				<div class="text-center event">
 					<div class="event-header">
 						<div class="event-header-img">
@@ -173,9 +173,9 @@
 					</p>
 					{/if}
 					{/if}
-
+					
 					{if ($public && isset($username_logged)) || $belongs}
-					<div class="btn-group-lg info" role="group" aria-label="...">
+					<div class="btn-group-lg info" role="group" aria-label="...">							
 							{if $type == 'going'}
 						<form class="form" action="../../actions/events/update_state.php" method="post">
 							<input type="hidden" name="event-id" value="{$event_id}">
@@ -209,13 +209,13 @@
 							{/if}
 							{/if}
 							{/if}
-
+						
 					</div>
 					{/if}
-
+				
 				</div>
-
-
+			
+			
 			<ul class="event_bar nav nav-tabs nav-justified">
 				<li class="active"><a data-toggle="tab" href="#home">Discussion</a></li>
 				<li><a data-toggle="tab" href="#about">About</a></li>
@@ -224,7 +224,7 @@
 				<li><a data-toggle="tab" href="#photos">Photos</a></li>
 				{/if}
 			</ul>
-
+			
 
 		<div class="tab-content">
 			{if $public || $belongs}
@@ -251,11 +251,11 @@
 					</form>
 				</div>
 				{/if}
-
+				
 				{foreach $posts as $post}
 				<div class="post_space">
 				<div class="post">
-
+				
 					<div id="edit-{$post.postid}" class="edit_box">
 						<a href="javascript:void(0)" id="close-edit-{$post.postid}" class="close-edit pull-right">
 						<span class="close glyphicon glyphicon-remove"></span></a>
@@ -325,7 +325,7 @@
 						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge">{$post.likes}</span></a>
 						<a href="../events/post_event_display.php?user-id={$post.user}&post-id={$post.postid}&event-id={$event_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
 					</div>
-
+					
 					{if isset($username_logged)}
 					<div class="make-comment-wrap">
 						<form class="form" action="../../actions/posts/comment.php" method="post">
@@ -349,7 +349,7 @@
 				<div id="welcome-message"><h2>This event is private.</h2>
 				<h3>You need to be invited to this event to see its posts.</h3></div>
 			</div>
-
+			
 			{/if}
 			<div id="about" class="tab-pane fade">
 				<div class="about">
@@ -362,22 +362,22 @@
 							<dt class="col-sm-4">Name</dt>
 							<dd class="col-sm-8">{$eventinfo.name}</dd>
 						</dl>
-
+						
 						<dl>
 							<dt class="col-sm-4">Privacy</dt>
 							<dd class="col-sm-8">{$privacy}</dd>
 						</dl>
-
+						
 						<dl>
 							<dt class="col-sm-4">Duration of the event:</dt>
 							<dd class="col-sm-8">{$eventinfo.start|date_format} - {$eventinfo.finish|date_format}</dd>
 						</dl>
-
+						
 						<dl>
 							<dt class="col-sm-4">Location</dt>
 							<dd class="col-sm-8">{$location.city}, {$location.country}</dd>
-						</dl>
-
+						</dl>						
+						
 						{if !empty($eventinfo.about)}
 						<dl>
 							<dt class="col-sm-4">Additional information</dt>
@@ -387,14 +387,14 @@
 					</div>
 				</div>
 			</div>
-
+			
 			<div id="guests" class="tab-pane fade">
 				<div class="guests">
 					<h2>Guests</h2>
 					<hr>
 					<div class="guests-body">
 							{foreach $guests as $guest}
-
+							
 							<div id="confirm-delete-user-{$guest.id}" class="delete_user_event edit_box">
 								<div class="modal-body">Are you sure you want to remove <a href="../users/profile_feed.php?user-id={$guest.id}">{$guest.name}</a> from this event?</div>
 								<div class="modal-footer button-container">
@@ -406,7 +406,7 @@
 									</form>
 								</div>
 							</div>
-
+							
 							<figure class="imgContainer">
 								<a href="../users/profile_feed.php?user-id={$guest.id}"><img src="{$guest.url}" alt="{$guest.alt}" class="thumb-150px centered-and-cropped"></a>
 								<figcaption>
@@ -416,12 +416,8 @@
 								{if $guest.type == 'going'}
 								<a href="../users/profile_feed.php?user-id={$guest.id}">GOING</a>
 								{else}
-<<<<<<< HEAD
-								<figcaption><a href="../users/profile_feed.php?user-id={$guest.id}">MAYBE</a></figcaption>
-=======
-								<a href="../users/profile_feed.php?user-id={$guest.id}">MAYBE</a>
+								<a href="../users/profile_feed.php?user-id={$guest.id}">MAYBE</a>					
 								{/if}
->>>>>>> master
 								{/if}
 								{if ($admin && $belongs && ($id_logged != $guest.id)) || $isWebPageAdmin === '1'}
 								<p><a class="click-delete-user btn btn-default" id="click-delete-user-{$guest.id}"><span class="glyphicon glyphicon-remove"></span> Delete</a></p>
@@ -432,7 +428,7 @@
 					</div>
 				</div>
 			</div>
-
+				
 			{if $public || $belongs}
 			<div id="photos" class="tab-pane fade">
 				<div class="photos">
@@ -462,7 +458,7 @@
 
 	{include file='footer.tpl'}
 	</div>
-
+	
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="../../lib/jquery-3.1.1.min.js"></script>
@@ -473,7 +469,7 @@
 	<script src="../../javascript/script.js"></script>
 	<script src="../../javascript/event.js"></script>
 	<script src="../../javascript/feed.js"></script>
-  <script src="../../javascript/search-bar.js"></script>
+	<script src="../../javascript/search-bar.js"></script>
 </body>
 
 </html>

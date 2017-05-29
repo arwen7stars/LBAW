@@ -7,11 +7,9 @@
 	$group_id = $_POST['group-id'];
 	
 	$admin = 'f';
-	$ignored = 'f';
-	$accepted = 't';
 	
 	deleteGroupNotification($user_id, $group_id);
-	updateGroupInvite($user_id, $ignored, $accepted, $group_id);
+	deleteGroupInvitation($user_id, $group_id);
 	addUserGroup($user_id, $group_id, $admin);
 	
 	header('Location: ' . $_SERVER['HTTP_REFERER']);

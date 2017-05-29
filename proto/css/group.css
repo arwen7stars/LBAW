@@ -71,6 +71,13 @@
 	margin: 0.2rem 0.1rem;
 }
 
+.thumb-100px {
+  width: 100px;
+  height: 100px;
+  margin: 0.1rem 0rem;
+}
+
+
 .members-body, .photos-body {
 	font-weight: bold;
 }
@@ -86,6 +93,19 @@
 
 .imgContainer figcaption {
 	width: 90%;
+}
+
+.imgContainer .btn {
+	color: #585858;
+	font-weight: bold;
+}
+
+#invite-group-box .imgContainer {
+	width: 125px;
+}
+
+#invite-group-box {
+	text-align: center;
 }
 
 .members-body figure {
