@@ -99,7 +99,7 @@
 	
 	function getNextImageGroup($group_id, $image_id) {
 		global $dbh;
-		$stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id"
+		$stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id", "Post"."user-id" AS "user"
 				FROM "Post", "Image"
 				WHERE "Post"."group-id" = :group AND "post-id" = "Post".id AND "Image"."id" > :img
 				ORDER BY "Image"."id"
@@ -115,7 +115,7 @@
 	
 	function getPreviousImageGroup($group_id, $image_id) {
 		global $dbh;
-        $stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id"
+        $stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id", "Post"."user-id" AS "user"
 				FROM "Post", "Image"
 				WHERE "Post"."group-id" = :group AND "post-id" = "Post".id AND :img > "Image"."id"
 				ORDER BY "Image"."id" DESC LIMIT 1');

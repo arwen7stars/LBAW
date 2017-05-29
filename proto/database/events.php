@@ -39,8 +39,12 @@
 	
 	function addUserEvent($user_id, $event_id, $admin, $participation) {
         global $dbh;
-		$query = 'INSERT INTO "User-Event" ("user-id", "event-id","admin", "type") VAlUES (? , ?, ?, ?)';
+		$query = 'INSERT INTO "User-Event" ("user-id", "event-id","admin", "type") VAlUES (:user , :event, :admin, :type)';
 		$stmt = $dbh->prepare($query);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':event', $event_id);
+		$stmt->bindParam(':admin', $admin);
+		$stmt->bindParam(':type', $participation);
 		$stmt->execute(array($user_id, $event_id, $admin, $participation));
 	}
 	
@@ -118,7 +122,7 @@
 	
 	function getNextImageEvent($event_id, $image_id) {
 		global $dbh;
-		$stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id"
+		$stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id", "Post"."user-id" AS "user"
 				FROM "Post", "Image"
 				WHERE "Post"."event-id" = :event AND "post-id" = "Post".id AND "Image"."id" > :img
 				ORDER BY "Image"."id"
@@ -134,7 +138,7 @@
 	
 	function getPreviousImageEvent($event_id, $image_id) {
 		global $dbh;
-        $stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id"
+        $stmt = $dbh->prepare('SELECT "Post"."id" AS id, "Image"."id" as imgid, "Image"."url" AS url, "Image"."description" AS description, "Image"."post-id", "Post"."user-id" AS "user"
 				FROM "Post", "Image"
 				WHERE "Post"."event-id" = :event AND "post-id" = "Post".id AND :img > "Image"."id"
 				ORDER BY "Image"."id" DESC LIMIT 1');

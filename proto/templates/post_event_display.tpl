@@ -47,15 +47,14 @@
 					<h3><b>Photos</b></h3>
 					{if !empty($previousimg)}
 					<figure class="imgContainer">
-						<a href="post_event_display.php?user-id={$id}&post-id={$previousimg.id}&event-id={$event_id}"><img class="centered-and-cropped thumb-100px" src="{$previousimg.url}" alt="{$previousimg.description}"></a>
-						<figcaption><a href="post_event_display.php?user-id={$id}&post-id={$previousimg.id}&event-id={$event_id}">Previous</a></figcaption>
+						<a href="post_event_display.php?user-id={$previousimg.user}&post-id={$previousimg.id}&event-id={$event_id}"><img class="centered-and-cropped thumb-100px" src="{$previousimg.url}" alt="{$previousimg.description}"></a>
+						<figcaption><a href="post_event_display.php?user-id={$previousimg.user}&post-id={$previousimg.id}&event-id={$event_id}">Previous</a></figcaption>
 					</figure>
 					{/if}
-
 					{if !empty($nextimg)}
 					<figure class="imgContainer">
-						<a href="post_event_display.php?user-id={$id}&post-id={$nextimg.id}&event-id={$event_id}"><img class="centered-and-cropped thumb-100px" src="{$nextimg.url}" alt="{$nextimg.description}"></a>
-						<figcaption><a href="post_event_display.php?user-id={$id}&post-id={$nextimg.id}&event-id={$event_id}">Next</a>
+						<a href="post_event_display.php?user-id={$nextimg.user}&post-id={$nextimg.id}&event-id={$event_id}"><img class="centered-and-cropped thumb-100px" src="{$nextimg.url}" alt="{$nextimg.description}"></a>
+						<figcaption><a href="post_event_display.php?user-id={$nextimg.user}&post-id={$nextimg.id}&event-id={$event_id}">Next</a>
 					</figure>
 					{/if}
 				</div>
