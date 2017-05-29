@@ -332,14 +332,29 @@ color: #000;
 	text-align: right;
 }
 
+.news-text {
+	margin-left: 11px;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow:hidden;
+}
+
 .recent-news {
-  border: 1px solid black;
-  flex: none;
-  margin: 10px 15px;
-  padding: 5px;
-  position: relative;
-  height: 20rem;
-  overflow: auto;
+	
+	flex: 1 1 content;
+	margin: 10px 15px;
+	padding: 5px;
+	overflow-y: hidden;
+	background-color: white;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	text-indent: 0.5rem;
+	line-height: 160%;
+	margin: 10px 15px;
+	padding: 5px;
+	overflow-y: auto;
+	min-height: 100px;
 }
 
 .read-more {

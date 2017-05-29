@@ -7,6 +7,13 @@
 	include_once('../../database/events.php');
 	include_once('../../database/posts.php');
 	
+	$isWebPageAdmin = IsWebPageAdmin($_SESSION['id']);
+	
+	if ($isWebPageAdmin['admin'] === true)
+		$smarty->assign('isWebPageAdmin', '1');
+	else 
+		$smarty->assign('isWebPageAdmin', '0');
+	
 	$recentNews = getRecentNews();
 	
 	$id_logged = $_SESSION['id'];

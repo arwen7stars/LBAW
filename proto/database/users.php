@@ -492,4 +492,14 @@
 		
 		return $stmt;
 	}
+	
+	function IsWebPageAdmin($userId)
+	{
+		global $dbh;
+        $stmt = $dbh->prepare('SELECT admin FROM "User" WHERE "User".id= :user_id');
+		$stmt->bindParam(':user_id', $userId);
+		$stmt->execute(array($userId));
+		$res = $stmt->fetch();
+		return $res;
+	}
 ?>

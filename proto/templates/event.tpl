@@ -124,7 +124,7 @@
 							<h2>{$eventinfo.name}</h2>
 						</div>
 					</div>
-					{if $admin}
+					{if ($admin || $isWebPageAdmin === '1')}
 					<p class="user-options">
 						<button id="click-edit-event" class="event-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
 						<button id="click-delete-event" class="event-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
@@ -265,7 +265,7 @@
 					</div>
 
 					<div class="post-body">
-						{if $post.user == $id_logged}
+						{if ($post.user == $id_logged || $admin || $isWebPageAdmin === '1')}
 						<div class="dropdown pull-right">
 							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 							<ul class="dropdown-menu">
@@ -387,7 +387,7 @@
 								<a href="../users/profile_feed.php?user-id={$guest.id}">MAYBE</a>					
 								{/if}
 								{/if}
-								{if $admin && $belongs && ($id_logged != $guest.id)}
+								{if ($admin && $belongs && ($id_logged != $guest.id)) || $isWebPageAdmin === '1'}
 								<p><a class="click-delete-user btn btn-default" id="click-delete-user-{$guest.id}"><span class="glyphicon glyphicon-remove"></span> Delete</a></p>
 								{/if}
 								</figcaption>

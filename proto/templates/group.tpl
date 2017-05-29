@@ -101,7 +101,7 @@
 					<h2>{$groupinfo.name}</h2>
 				</div>
 			</div>
-			{if $admin}
+			{if ($admin || $isWebPageAdmin === '1')}
 			<p class="user-options">
 				<button id="click-edit-group" class="group-opt btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
 				<button id="click-delete-group" class="group-opt btn btn-default"><i class="fa fa-times"></i> Delete</button>
@@ -203,7 +203,7 @@
 						</div>
 
 						<div class="post-body">
-								{if $post.user == $id_logged}
+								{if ($post.user == $id_logged || $admin || $isWebPageAdmin === '1')}
 								<div class="dropdown pull-right">
 									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
 									<ul class="dropdown-menu">

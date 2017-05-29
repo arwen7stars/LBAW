@@ -8,6 +8,13 @@
 	
 	$id_logged = $_SESSION['id'];
 	
+	$isAdmin = IsWebPageAdmin($id_logged);
+	
+	if ($isAdmin['admin'] === true)
+		$smarty->assign('isAdmin', '1');
+	else 
+		$smarty->assign('isAdmin', '0');
+	
 	$recentNews = getRecentNews();
 	
 	$all_events = listEvents($_SESSION['id']);
@@ -24,6 +31,7 @@
 	
 	$stmt = getNotifications($id_logged);
 	$notifications = $stmt->fetchAll();
+	
 	
 	$smarty->assign('news',$recentNews[0]);
 	

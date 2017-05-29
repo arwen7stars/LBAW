@@ -117,7 +117,7 @@
 
         <div class="recent-news">
           <h3>Recent News</h3>
-          <p>{$news.body}</p>
+          <p class="news-text">{$news.title}</p>
           <div class="read-more"><a href="{$news.moreInfo}" target="_blank">Read more...</a></div>
         </div>
 		{/if}

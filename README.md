@@ -83,13 +83,13 @@
 
 | Identifier | Name| Priority | Description |
 | --- | --- | --- | --- |
-| US501 | Edit Posts | Low | As an admin, I want to edit posts, so that I can manage the web app |
+| ~~US501~~ | Edit Posts | Low | As an admin, I want to edit posts, so that I can manage the web app |
 | US502 | Edit Profiles | Low | As an admin, I want to edit profiles, so that I can manage the web app |
-| US503 | Edit Groups | Low | As an admin, I want to edit groups, so that I can manage the web app|
-| US504 | Edit Events | Low | As an admin, I want to edit events, so that I can manage the web app|
-| US505 | Delete Posts| Low | As an admin, I want to delete posts, so that I can manage the web app |
+| ~~US503~~ | Edit Groups | Low | As an admin, I want to edit groups, so that I can manage the web app|
+| ~~US504~~ | Edit Events | Low | As an admin, I want to edit events, so that I can manage the web app|
+| ~~US505~~ | Delete Posts| Low | As an admin, I want to delete posts, so that I can manage the web app |
 | US506 | Delete Profiles | Low | As an admin, I want to delete profiles, so that I can manage the web app|
-| US507 | Delete Groups | Low | As an admin, I want to delete posts, so that I can manage the web app |
-| US508 | Delete Events | Low | As an admin, I want to delete events, so that I can manage the web app |
+| ~~US507~~ | Delete Groups | Low | As an admin, I want to delete posts, so that I can manage the web app |
+| ~~US508~~ | Delete Events | Low | As an admin, I want to delete events, so that I can manage the web app |
 | US509 | See Reports | Low | As an admin, I want to see reports, so that I can manage the web app |
 | US510 | Close Reports | Low | As an admin, I want to close handled reports, so that I can manage the web app |
