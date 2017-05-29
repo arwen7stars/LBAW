@@ -19,3 +19,7 @@
 #event-title {
 	height: 10rem;
 }
+
+.notification-content .btn {
+	color: #8a2f2f;
+}

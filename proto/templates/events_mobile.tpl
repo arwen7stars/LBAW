@@ -27,7 +27,7 @@
 		<ul class="events-content list-group">
 		{foreach $all_events as $event}
 			<li class="list-group-item">
-			<p><a href="../../pages/events/event_feed.php?event-id={$event.id}" id="event-title"><i class="fa fa-calendar"></i> {$event.name}</a></p>
+			<p><a href="../../pages/events/event_feed.php?event-id={$event.id}" class="event-title"><i class="fa fa-calendar"></i> {$event.name}</a></p>
 			<dl>
 				<dt>Duration</dt>
 				<dd>{$event.start|date_format} - {$event.finish|date_format}</dd>

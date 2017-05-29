@@ -20,23 +20,23 @@
 
   <!-- SEARCH BAR -->
   <div class="container-fluid search-bar-wrap">
-    <div class="row">
+    <div class="row-fluid">
       <div class="col-md-8 col-md-offset-2">
         <form>
           <div class="form-group">
             <label class="sr-only" for="search-bar">Search bar</label>
             <div class="input-group">
-              <input type="search" id="search-bar" class="form-control" placeholder="Search..." autocomplete="on">
+              <input type="search" id="search-bar" class="form-control" placeholder="Search..." autocomplete="off">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
               </span>
             </div>
           </div>
         </form>
-				<div class="search-results-wrap">
-					<ul>
-					</ul>
-				</div>
+		<div class="search-results-wrap">
+			<ul class="list-unstyled">
+			</ul>
+		</div>
       </div>
     </div>
   </div>

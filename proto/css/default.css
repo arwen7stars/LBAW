@@ -6,11 +6,11 @@ html {
 
 body {
 	/* necessary because of navbar fixed to top */
-  padding-top: 51px;
-  /* background */
-  background: url("../images/backg.jpg") no-repeat center center fixed;
-  background-size: cover;
-  font-family: "Open Sans";
+	padding-top: 51px;
+	/* background */
+	background: url("../images/backg.jpg") no-repeat center center fixed;
+	background-size: cover;
+	font-family: "Open Sans", serif;
 }
 
 footer {

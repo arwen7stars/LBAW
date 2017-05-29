@@ -36,7 +36,7 @@
 						<input type="text" class="form-control" id="group_description" name="group_description" placeholder="Small description of the group"></p>
 
 						<p><label for="group_privacy">Group Privacy</label>
-						<select name="group_privacy" class="form-control" id="event_privacy">
+						<select name="group_privacy" class="form-control" id="group_privacy">
 								<option value="t">Public</option>
 								<option value="f">Private</option>
 						</select></p>
