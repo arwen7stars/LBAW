@@ -134,7 +134,7 @@
 			<div class="timeline">
 
 				{if !empty($post)}
-				<div class="photo-display">
+				<div class="photo-display post" id="post-{$post.postid}">
 					<div id="black" class="black_overlay"></div>
 
 					<div id="edit-{$post.postid}" class="edit_box">
@@ -212,8 +212,20 @@
 					</div>
 				
 					<div class="opt-group btn-group-justified">
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge">{$post.likes}</span></a>
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
+						{if $like}
+						<a href="#" class="btn btn-default post-opt like-btn"><span class="glyphicon glyphicon-heart"></span> Dislike <span class="badge like-number">{$post.likes}</span></a>
+						{else}
+						{if $post.likes == 0}
+						<a href="#" class="btn btn-default post-opt like-btn"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge like-number">0</span></a>
+						{else}
+						<a href="#" class="btn btn-default post-opt like-btn"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge like-number">{$post.likes}</span></a>
+						{/if}
+						{/if}
+						{if $post.comments == 0}
+						<a href="post_display.php?user-id={$id}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">0</span></a>
+						{else}
+						<a href="post_display.php?user-id={$id}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
+						{/if}
 					</div>
 
 					{if ((isset($username_logged) && $friendship) || ($id == $id_logged))}
@@ -320,5 +332,6 @@
 	<script src="../../lib/bootstrap-3.3.7/js/bootstrap-select.min.js"></script>
 	<script src="../../javascript/script.js"></script>
 	<script src="../../javascript/search-bar.js"></script>
+	<script src="../../javascript/like.js"></script>
 </body>
 </html>

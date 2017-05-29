@@ -68,7 +68,12 @@
 		} else {
 			$public = 'Private';
 		}
+		
+		foreach($posts as $post){
+			$likes[$post['postid']] = hasUserLikedPost($id_logged, $post['postid']);
+		}
 
+		$smarty->assign('likes', $likes);
 		$smarty->assign('posts', $posts);
 		
 		$smarty->assign('belongs', $belongs);

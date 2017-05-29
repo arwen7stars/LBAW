@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+	
 	<title>Anibook</title>
 
     <!-- Bootstrap -->
@@ -147,8 +147,28 @@
 			</div>
 
 			<div class="opt-group btn-group-justified">
+				{foreach from=$likes key=k item=v}
+				{if $k == $post.postid}
+				
+				{if $v}
+				<a href="#" class="btn btn-default post-opt like-btn"><span class="glyphicon glyphicon-heart"></span> Dislike <span class="badge like-number">{$post.likes}</span></a>
+				{else}
+				
+				{if $post.likes == 0}
+				<a href="#" class="btn btn-default post-opt like-btn"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge like-number">0</span></a>
+				{else}
 				<a href="#" class="btn btn-default post-opt like-btn"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge like-number">{$post.likes}</span></a>
+				{/if}
+				
+				{/if}
+				
+				{/if}
+				{/foreach}
+				{if $post.comments == 0}
+				<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">0</span></a>
+				{else}
 				<a href="post_display.php?user-id={$post.user}&post-id={$post.postid}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
+				{/if}
 			</div>
 
 			<div class="make-comment-wrap">

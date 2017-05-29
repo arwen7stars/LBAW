@@ -31,6 +31,9 @@
 	$post = getPost($postid);
 	$smarty->assign('post', $post);
 	
+	$like = hasUserLikedPost($id_logged, $post['postid']);
+	$smarty->assign('like', $like);
+	
 	// get post comments
 	$stmt = getCommentsPost($postid);
 	$comments = $stmt->fetchAll();

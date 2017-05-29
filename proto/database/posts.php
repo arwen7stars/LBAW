@@ -421,4 +421,14 @@
 		$stmt = $dbh->prepare($query);
 		$stmt->execute(array($post_id));	
 	}
+	
+	function hasUserLikedPost($user_id, $post_id) {
+		global $dbh;
+		
+		$query = 'SELECT * FROM "Likes" WHERE "Likes"."user-id" = ? AND "Likes"."post-id" = ?';
+		$stmt = $dbh->prepare($query);
+		$stmt->execute(array($user_id, $post_id));
+		$res = $stmt->fetch();
+		return ($res !== false);
+	}
 ?>

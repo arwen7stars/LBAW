@@ -32,7 +32,11 @@
 	$stmt = getNotifications($id_logged);
 	$notifications = $stmt->fetchAll();
 	
+	foreach($posts as $post){
+		$likes[$post['postid']] = hasUserLikedPost($id_logged, $post['postid']);
+	}
 	
+	$smarty->assign('likes', $likes);
 	$smarty->assign('news',$recentNews);
 
 	$smarty->assign('character_name', $character_name);

@@ -46,6 +46,10 @@
 		
 		$stmt = getGroupPosts($group);
 		$posts = $stmt->fetchAll();
+		
+		foreach($posts as $post){
+			$likes[$post['postid']] = hasUserLikedPost($id_logged, $post['postid']);
+		}
 	
 		$stmt = getGroupImages($group);
 		$images = $stmt->fetchAll();
@@ -72,6 +76,7 @@
 		$smarty->assign('belongs', $belongs);
 		$smarty->assign('admin', $admin);
 		
+		$smarty->assign('likes', $likes);
 		$smarty->assign('groupinfo', $group_info);
 		$smarty->assign('privacy', $public);
 		$smarty->assign('posts', $posts);

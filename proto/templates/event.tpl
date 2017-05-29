@@ -254,7 +254,7 @@
 				
 				{foreach $posts as $post}
 				<div class="post_space">
-				<div class="post">
+				<div class="post" id="post-{$post.postid}">
 				
 					<div id="edit-{$post.postid}" class="edit_box">
 						<a href="javascript:void(0)" id="close-edit-{$post.postid}" class="close-edit pull-right">
@@ -322,9 +322,30 @@
 					</div>
 
 					<div class="opt-group btn-group-justified">
-						<a href="#" class="btn btn-default post-opt"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge">{$post.likes}</span></a>
+						{foreach from=$likes key=k item=v}
+						{if $k == $post.postid}
+						
+						{if $v}
+						<a href="#" class="btn btn-default post-opt like-btn"><span class="glyphicon glyphicon-heart"></span> Dislike <span class="badge like-number">{$post.likes}</span></a>
+						{else}
+						
+						{if $post.likes == 0}
+						<a href="#" class="btn btn-default post-opt like-btn"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge like-number">0</span></a>
+						{else}
+						<a href="#" class="btn btn-default post-opt like-btn"><span class="glyphicon glyphicon-heart"></span> Like <span class="badge like-number">{$post.likes}</span></a>
+						{/if}
+						
+						{/if}
+						
+						{/if}
+						{/foreach}
+						
+						{if empty($post.comments)}
+						<a href="../events/post_event_display.php?user-id={$post.user}&post-id={$post.postid}&event-id={$event_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">0</span></a>
+						{else}
 						<a href="../events/post_event_display.php?user-id={$post.user}&post-id={$post.postid}&event-id={$event_id}" class="btn btn-default post-opt"><span class="glyphicon glyphicon-comment"></span> Comment <span class="badge">{$post.comments}</span></a>
-					</div>
+						{/if}
+						</div>
 					
 					{if isset($username_logged)}
 					<div class="make-comment-wrap">
@@ -470,6 +491,7 @@
 	<script src="../../javascript/event.js"></script>
 	<script src="../../javascript/feed.js"></script>
 	<script src="../../javascript/search-bar.js"></script>
+	<script src="../../javascript/like.js"></script>
 </body>
 
 </html>

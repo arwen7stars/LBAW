@@ -9,7 +9,7 @@ var activeRequest = null;
 /**
 * Handler for keyup on search bar
 */
-var searchHandler = function() {
+var searchHandler = function(event) {
 
   searchResults.html("");
 
@@ -67,6 +67,7 @@ $(document).ready(function() {
   searchBar.keyup(searchHandler);
 
   $("html").click(function() {
+    console.log("OLa");
     searchResults.html("");
     searchBar.val("");
   });
