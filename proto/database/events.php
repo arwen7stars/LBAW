@@ -296,4 +296,13 @@
 		$stmt->bindParam(':event', $event_id);
 		$stmt->execute(array($user_id, $event_id));
 	}
+	
+	function updateUserEvent($user_id, $event_id, $type) {
+		global $dbh;
+		$stmt = $dbh->prepare('UPDATE "User-Event" SET "type" = :type WHERE "User-Event"."user-id" = :user AND "User-Event"."event-id" = :event');
+		$stmt->bindParam(':type', $type);
+		$stmt->bindParam(':user', $user_id);
+		$stmt->bindParam(':event', $event_id);		
+		$stmt->execute(array($type, $user_id, $event_id));		
+	}
 ?>

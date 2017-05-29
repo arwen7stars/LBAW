@@ -39,14 +39,14 @@
 		$page_not_found = '404 Error. Page not found.';
 		$smarty->assign('page_not_found', $page_not_found);
 	} else {
-
+		$stmt = getNotifications($id_logged);
+		$notifications = $stmt->fetchAll();
 		$posts = getEventPosts($event_id);
 		$eventinfo = getEventInfo($event_id);
 		$all_images = getEventImages($event_id);
 		$location = getEventLocation($event_id);
 		$res = getUserEvent($id_logged, $event_id);
 		$belongs = ($res !== false);
-		
 		
 		$admin = isUserEventAdmin($id_logged, $event_id);
 		$now = date('Y-m-d', time());
@@ -73,6 +73,8 @@
 		$smarty->assign('guests', $guests);
 		$smarty->assign('locations', $locations);
 		$smarty->assign('now', $now);
+		$smarty->assign('notifications', $notifications);
+		$smarty->assign('type', $res['type']);
 		
 		$smarty->assign('groups', $groups);
 		$smarty->assign('events', $events);

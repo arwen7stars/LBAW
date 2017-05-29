@@ -30,6 +30,8 @@
 		$page_not_found = '404 Error. Page not found.';
 		$smarty->assign('page_not_found', $page_not_found);
 	} else {
+		$stmt = getNotifications($id_logged);
+		$notifications = $stmt->fetchAll();
 		$belongs = isUserFromGroup($id_logged, $group);
 		$admin = isUserAdmin($id_logged, $group);
 		
@@ -66,6 +68,7 @@
 		$smarty->assign('posts', $posts);
 		$smarty->assign('members', $members);
 		$smarty->assign('all_images', $images);
+		$smarty->assign('notifications', $notifications);
 
 		$smarty->assign('public', $group_info['public']);
 		$smarty->assign('group_id', $group);

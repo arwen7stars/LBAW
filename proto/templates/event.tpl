@@ -132,16 +132,52 @@
 					{else}
 					{if $belongs}
 					<p class="user-options">
+						{if $admin}
+						<span class="pull-left"><b>Status:</b> Admin</span>
+						{else}
+						<span class="pull-left"><b>Status:</b> Normal user</span>
+						{/if}
 						<button id="click-leave-event" class="event-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
 					</p>
 					{/if}
 					{/if}
 					
 					{if ($public && isset($username_logged)) || $belongs}
-					<div class="btn-group-lg info" role="group" aria-label="...">
-						<button type="button" class="btn btn-primary">Going</button>
-						<button type="button" class="btn btn-primary">Maybe</button>
-						<button type="button" class="btn btn-primary">Ignore</button>
+					<div class="btn-group-lg info" role="group" aria-label="...">							
+							{if $type == 'going'}
+						<form class="form" action="../../actions/events/update_state.php" method="post">
+							<input type="hidden" name="event-id" value="{$event_id}">
+							<button type="button" class="selected-opt btn btn-primary">Going <i class="fa fa-check"></i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="maybe">Maybe <i class="fa fa-times"></i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="ignore">Ignore <i class="fa fa-times"></i></button>
+						</form>
+							{else}
+							{if $type == 'maybe'}
+						<form class="form" action="../../actions/events/update_state.php" method="post">
+							<input type="hidden" name="event-id" value="{$event_id}">
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="going">Going <i class="fa fa-times"></i></button>
+							<button type="button" class="selected-opt btn btn-primary">Maybe <i class="fa fa-check"></i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="ignore">Ignore <i class="fa fa-times"></i></button>
+						</form>
+							{else}
+							{if $type == 'ignore'}
+						<form class="form" action="../../actions/events/update_state.php" method="post">
+							<input type="hidden" name="event-id" value="{$event_id}">
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="going">Going <i class="fa fa-times"></i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="maybe">Maybe <i class="fa fa-times"></i></button>
+							<button type="button" class="selected-opt btn btn-primary">Ignore <i class="fa fa-check"></i></button>
+						</form>
+							{else}
+						<form class="form" action="../../actions/events/join_event.php" method="post">
+							<input type="hidden" name="event-id" value="{$event_id}">
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="going">Going</i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="maybe">Maybe</i></button>
+							<button type="submit" name="type" class="not-selected-opt btn btn-primary" value="ignore">Ignore</i></button>
+						</form>
+							{/if}
+							{/if}
+							{/if}
+						
 					</div>
 					{/if}
 				
@@ -351,7 +387,7 @@
 								<a href="../users/profile_feed.php?user-id={$guest.id}">MAYBE</a>					
 								{/if}
 								{/if}
-								{if $admin && $belongs}
+								{if $admin && $belongs && ($id_logged != $guest.id)}
 								<p><a class="click-delete-user btn btn-default" id="click-delete-user-{$guest.id}"><span class="glyphicon glyphicon-remove"></span> Delete</a></p>
 								{/if}
 								</figcaption>

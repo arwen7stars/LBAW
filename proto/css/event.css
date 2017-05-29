@@ -2,10 +2,18 @@
 	margin: 1rem;
 }
 
-.info .btn {
+.info .selected-opt {
 	width: 10rem;
 	font-size: 1.5rem;
 	background-color: #8A2F2F;
+	border-color: #ccc;
+	font-weight: bold;
+}
+
+.info .not-selected-opt {
+	width: 10rem;
+	font-size: 1.5rem;
+	background-color: #F27878;
 	border-color: #ccc;
 	font-weight: bold;
 }
@@ -70,7 +78,7 @@
 	margin-right: 2rem;
 }
 
-.guests {
+.guests, .photos {
 	text-align: center;
 }
 

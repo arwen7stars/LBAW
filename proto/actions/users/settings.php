@@ -52,12 +52,6 @@
 		}
 	}
 	
-	if($_POST['notifications'] == 0) {
-		$_SESSION['notifications'] = true;
-	} else {
-		$_SESSION['notifications'] = false;
-	}
-	
 	$privacy = $_POST['privacy'];
 	
 	if(!(isset($_SESSION['passwords']) || isset($_SESSION['user_exists']) || isset($_SESSION['email_exists']) || isset($_SESSION['old-password'])))

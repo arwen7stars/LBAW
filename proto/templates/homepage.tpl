@@ -53,7 +53,7 @@
             <a href="{$recentNews.moreInfo}"><h2>{$recentNews.title}</h2></a>
             <p>{$recentNews.body}</p>
           </div>
-          <h4><div class="read-more"><a href="{$recentNews.moreInfo}">Read more...</a></div></h4>
+          <div class="read-more"><a href="{$recentNews.moreInfo}"><h4>Read more...</h4></a></div>
         </div>
 		{/foreach}
 

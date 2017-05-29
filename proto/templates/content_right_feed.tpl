@@ -5,9 +5,10 @@
 		<hr>
 		No pending notifications...
 	{else}
-	<ul class="notification-list list-unstyled">
+	<div class="notification-list list-unstyled">
 		{foreach $notifications as $notification}
 		
+		{if ($id_logged == $notification.usertwo)}
 		<div id="confirm-friendship-{$notification.id}" class="edit_box">
 		
 			<div class="modal-body">
@@ -16,7 +17,7 @@
 				
 				<div class="poster">					
 					<p><a href="profile_feed.php?user-id={$notification.userid}"><img src="{$notification.charurl}" alt="Profile picture of {$notification.charname}" class="centered-and-cropped thumb-32px"></a>
-						<span><a href="profile_feed.php?user-id={$notification.userid}">{$notification.charname}</a> has sent you a friend request!</span></a>
+						<span><a href="profile_feed.php?user-id={$notification.userid}">{$notification.charname}</a> has sent you a friend request!</span>
 					</p>
 				</div>
 				
@@ -34,7 +35,7 @@
 				</form>
 			</div>
 		</div>
-		
+		{/if}
 		<div id="confirm-event-{$notification.id}" class="edit_box">
 		
 			<div class="modal-body">
@@ -87,34 +88,30 @@
 			</div>
 		</div>
 		
+		<div class="notification-content">
 		{if ($id_logged == $notification.usertwo)}
 		<hr>
-		<li>
 			<button id="click-friendship-{$notification.id}" class="friendship btn btn-default">
 			<i class="fa fa-user-plus"></i> Friend request</button>
 			<div class="small-txt">{$notification.date|date_format}</div>
-		</li>
 		{else}
 		{if !empty($notification.eventid)}
 		<hr>
-		<li>
 		<button id="click-event-invitation-{$notification.id}" class="event-invitation btn btn-default">
 		<i class="fa fa-calendar"></i> Event invitation</button>
 		<div class="small-txt">{$notification.date|date_format}</div>
-		</li>
 		{else}
 		{if !empty($notification.groupid)}
 		<hr>
-		<li>
 		<button id="click-group-invitation-{$notification.id}" class="group-invitation btn btn-default">
 		<i class="fa fa-users"></i> Group invitation</button>
 		<div class="small-txt">{$notification.date|date_format}</div>
-		</li>
 		{/if}
 		{/if}
 		{/if}
+		</div>
 		{/foreach}
-	</ul>
+	</div>
 	{/if}
 </div>
 

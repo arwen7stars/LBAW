@@ -33,7 +33,9 @@
 	
 	if(isPostFromUser($postid, $id)){
 		if(isPostFromEvent($postid, $_GET['event-id'])){
-			$belongs = isUserFromEvent($_SESSION['id'], $_GET['event-id']);
+			$res = getUserEvent($_SESSION['id'], $_GET['event-id']);
+			$belongs = ($res !== false);
+			
 			$next_img = getNextImageEvent($_GET['event-id'], $post['imgid']);
 			$smarty->assign('nextimg', $next_img);
 			

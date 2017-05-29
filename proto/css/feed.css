@@ -314,18 +314,12 @@ color: #000;
 	min-height: 100px;
 }
 
-.notification-list li {
-  margin: 10px auto;
-  text-align: center;
+.notification-content {
+	text-align: center;
 }
 
-.notification-list li > a {
-  display: block;
-  text-decoration: none;
-}
-
-.content-left hr, .content-right {
-	margin: 0;
+.content-left hr, .content-right hr {
+	margin: 0.5rem;
 }
 
 .notification-list .friendship, .notification-list .event-invitation, .notification-list .group-invitation {

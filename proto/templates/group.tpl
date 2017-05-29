@@ -111,6 +111,15 @@
 			<p class="user-options">
 				<button id="click-leave-group" class="group-opt btn btn-default"><i class="fa fa-sign-out"></i> Leave</button>
 			</p>
+			{else}
+			{if $public}
+			<div class="user-options">
+				<form class="form" action="../../actions/groups/join_group.php" method="post">
+					<input type="hidden" name="group-id" value="{$group_id}">
+					<button type="submit" class="group-opt btn btn-default"><i class="fa fa-sign-in"></i> Join</button>
+				</form>
+			</div>
+			{/if}
 			{/if}
 			{/if}
 			<!--Group Stuff-->  	

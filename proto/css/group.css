@@ -24,6 +24,10 @@
 	border-width: 1px;
 }
 
+.user-options form {
+	display: inline-block;
+}
+
 .group-header-img {
 	color: #8A2F2F;
 	text-align: center;
@@ -51,6 +55,10 @@
 	border-width: 1px;
 	margin-left: 2rem;
 	margin-right: 2rem;
+}
+
+.photos, .members {
+	text-align: center;
 }
 
 .centered-and-cropped {
