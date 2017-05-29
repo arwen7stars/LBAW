@@ -5,7 +5,6 @@
 
 ## In development
 
-* Search-bar with Ajax (US001)
 * Likes with Ajax (US107)
 
 ## Important things to delevop if we have time
@@ -19,7 +18,7 @@
 
 | Identifier | Name | Priority | Description |
 | --- | --- | --- | --- |
-| US001 | Search | High | As an user, I want to use the search bar to look for public profiles, groups and events, so that I can find them |
+| ~~US001~~ | Search | High | As an user, I want to use the search bar to look for public profiles, groups and events, so that I can find them |
 | ~~US002~~ | See Profiles | High | As an user, I want to see public information (posts, comments, photos) on a public profile, so that I can see them |
 
 
