@@ -4,12 +4,6 @@
 
 If you want to learn more about this project, click [here](https://arwen7stars.github.io/pages/anibook.html "Anibook").
 
-
-## Important things to delevop if we have time
-
-* custom permissions for users/posts
-* admin pode editar/apagar posts (mas só dos amigos dele :D)
-
 ## User Stories
 
 ### User
@@ -90,3 +84,9 @@ If you want to learn more about this project, click [here](https://arwen7stars.g
 | ~~US508~~ | Delete Events | Low | As an admin, I want to delete events, so that I can manage the web app |
 | US509 | See Reports | Low | As an admin, I want to see reports, so that I can manage the web app |
 | US510 | Close Reports | Low | As an admin, I want to close handled reports, so that I can manage the web app |
+
+
+## Important things to delevop if we have time
+
+* custom permissions for users/posts
+* admin pode editar/apagar posts (mas só dos amigos dele :D)
