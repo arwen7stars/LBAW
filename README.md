@@ -1,16 +1,14 @@
-# LBAW
+# Anibook
 
-## To be fixed
+**Anibook** is an online social platform where users can roleplay as their favorite character and interact with many others, benefiting from an user-friendly interface and a huge variety of features that will make the user's experience much more engaging.
 
+If you want to learn more about this project, click [here](https://arwen7stars.github.io/pages/anibook.html "Anibook").
 
-## In development
-
-* Likes with Ajax (US107)
 
 ## Important things to delevop if we have time
 
 * custom permissions for users/posts
-* admin pode editar/apagar posts (mas so dos amigos dele :D)
+* admin pode editar/apagar posts (mas só dos amigos dele :D)
 
 ## User Stories
 
