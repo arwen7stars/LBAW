@@ -8,8 +8,7 @@
 If you want to see videos, screenshots and some other information of this project on my personal website, click [here](https://arwen7stars.github.io/pages/anibook.html "Anibook").
 
 ## Team
-This project was developed for the subject of LBAW@FEUP by the following team.
-
+This project was developed for the subject of LBAW@FEUP by the following team:
 * António Magalhães - [up201404375](https://github.com/up201404375)
 * Cláudia Marinho - [arwen7stars](https://github.com/arwen7stars)
 * Hugo Cunha - [huguinho27](https://github.com/huguinho27)
