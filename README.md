@@ -1,11 +1,21 @@
-# Anibook
+<p align="center">
+  <img src=https://i.imgur.com/v0OLKnL.png" />
+</p>
 
+## Description
 **Anibook** is an online social platform where users can roleplay as their favorite character and interact with many others, benefiting from an user-friendly interface and a huge variety of features that make the user's experience engaging.
 
-If you want to learn more about this project, click [here](https://arwen7stars.github.io/pages/anibook.html "Anibook").
+If you want to see videos, screenshots and some other information of this project on my personal website, click [here](https://arwen7stars.github.io/pages/anibook.html "Anibook").
+
+## Team
+This project was developed for the subject of DJCO@FEUP by the following team.
+### Programming
+* António Magalhães - [up201404375](https://github.com/up201404375)
+* Cláudia Marinho - [arwen7stars](https://github.com/arwen7stars)
+* Hugo Cunha - [huguinho27](https://github.com/huguinho27)
+* Tiago Silva - [Tirafesi](https://github.com/tirafesi)
 
 ## User Stories
-
 ### User
 
 | Identifier | Name | Priority | Description |
